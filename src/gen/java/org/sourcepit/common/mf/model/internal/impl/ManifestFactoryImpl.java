@@ -13,6 +13,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
+import org.sourcepit.common.mf.internal.model.*;
 import org.sourcepit.common.mf.internal.model.Manifest;
 import org.sourcepit.common.mf.internal.model.ManifestFactory;
 import org.sourcepit.common.mf.internal.model.ManifestPackage;
@@ -20,7 +21,6 @@ import org.sourcepit.common.mf.internal.model.Section;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model <b>Factory</b>. <!-- end-user-doc -->
- * 
  * @generated
  */
 public class ManifestFactoryImpl extends EFactoryImpl implements ManifestFactory
@@ -49,8 +49,8 @@ public class ManifestFactoryImpl extends EFactoryImpl implements ManifestFactory
    }
 
    /**
-    * Creates an instance of the factory. <!-- begin-user-doc --> <!-- end-user-doc -->
-    * 
+    * Creates an instance of the factory.
+    * <!-- begin-user-doc --> <!-- end-user-doc -->
     * @generated
     */
    public ManifestFactoryImpl()
@@ -60,7 +60,6 @@ public class ManifestFactoryImpl extends EFactoryImpl implements ManifestFactory
 
    /**
     * <!-- begin-user-doc --> <!-- end-user-doc -->
-    * 
     * @generated
     */
    @Override
@@ -68,20 +67,16 @@ public class ManifestFactoryImpl extends EFactoryImpl implements ManifestFactory
    {
       switch (eClass.getClassifierID())
       {
-         case ManifestPackage.MANIFEST :
-            return createManifest();
-         case ManifestPackage.EMAP_ENTRY :
-            return (EObject) createEMapEntry();
-         case ManifestPackage.SECTION :
-            return createSection();
-         default :
+         case ManifestPackage.MANIFEST: return createManifest();
+         case ManifestPackage.EMAP_ENTRY: return (EObject)createEMapEntry();
+         case ManifestPackage.SECTION: return createSection();
+         default:
             throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
       }
    }
 
    /**
     * <!-- begin-user-doc --> <!-- end-user-doc -->
-    * 
     * @generated
     */
    public Manifest createManifest()
@@ -92,7 +87,6 @@ public class ManifestFactoryImpl extends EFactoryImpl implements ManifestFactory
 
    /**
     * <!-- begin-user-doc --> <!-- end-user-doc -->
-    * 
     * @generated
     */
    public <K, V> Map.Entry<K, V> createEMapEntry()
@@ -103,7 +97,6 @@ public class ManifestFactoryImpl extends EFactoryImpl implements ManifestFactory
 
    /**
     * <!-- begin-user-doc --> <!-- end-user-doc -->
-    * 
     * @generated
     */
    public Section createSection()
@@ -114,17 +107,15 @@ public class ManifestFactoryImpl extends EFactoryImpl implements ManifestFactory
 
    /**
     * <!-- begin-user-doc --> <!-- end-user-doc -->
-    * 
     * @generated
     */
    public ManifestPackage getManifestPackage()
    {
-      return (ManifestPackage) getEPackage();
+      return (ManifestPackage)getEPackage();
    }
 
    /**
     * <!-- begin-user-doc --> <!-- end-user-doc -->
-    * 
     * @deprecated
     * @generated
     */

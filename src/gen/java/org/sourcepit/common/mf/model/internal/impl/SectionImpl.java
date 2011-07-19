@@ -17,10 +17,10 @@ import org.sourcepit.common.mf.internal.model.Section;
  * <p>
  * The following features are implemented:
  * <ul>
- * <li>{@link org.sourcepit.common.mf.model.internal.impl.SectionImpl#getName <em>Name</em>}</li>
+ *   <li>{@link org.sourcepit.common.mf.model.internal.impl.SectionImpl#getName <em>Name</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class SectionImpl extends AbstractEntriesContainerImpl implements Section
@@ -47,7 +47,6 @@ public class SectionImpl extends AbstractEntriesContainerImpl implements Section
 
    /**
     * <!-- begin-user-doc --> <!-- end-user-doc -->
-    * 
     * @generated
     */
    protected SectionImpl()
@@ -57,7 +56,6 @@ public class SectionImpl extends AbstractEntriesContainerImpl implements Section
 
    /**
     * <!-- begin-user-doc --> <!-- end-user-doc -->
-    * 
     * @generated
     */
    @Override
@@ -68,7 +66,6 @@ public class SectionImpl extends AbstractEntriesContainerImpl implements Section
 
    /**
     * <!-- begin-user-doc --> <!-- end-user-doc -->
-    * 
     * @generated
     */
    public String getName()
@@ -78,7 +75,6 @@ public class SectionImpl extends AbstractEntriesContainerImpl implements Section
 
    /**
     * <!-- begin-user-doc --> <!-- end-user-doc -->
-    * 
     * @generated
     */
    public void setName(String newName)
@@ -91,7 +87,6 @@ public class SectionImpl extends AbstractEntriesContainerImpl implements Section
 
    /**
     * <!-- begin-user-doc --> <!-- end-user-doc -->
-    * 
     * @generated
     */
    @Override
@@ -99,7 +94,7 @@ public class SectionImpl extends AbstractEntriesContainerImpl implements Section
    {
       switch (featureID)
       {
-         case ManifestPackage.SECTION__NAME :
+         case ManifestPackage.SECTION__NAME:
             return getName();
       }
       return super.eGet(featureID, resolve, coreType);
@@ -107,7 +102,6 @@ public class SectionImpl extends AbstractEntriesContainerImpl implements Section
 
    /**
     * <!-- begin-user-doc --> <!-- end-user-doc -->
-    * 
     * @generated
     */
    @Override
@@ -115,8 +109,8 @@ public class SectionImpl extends AbstractEntriesContainerImpl implements Section
    {
       switch (featureID)
       {
-         case ManifestPackage.SECTION__NAME :
-            setName((String) newValue);
+         case ManifestPackage.SECTION__NAME:
+            setName((String)newValue);
             return;
       }
       super.eSet(featureID, newValue);
@@ -124,7 +118,6 @@ public class SectionImpl extends AbstractEntriesContainerImpl implements Section
 
    /**
     * <!-- begin-user-doc --> <!-- end-user-doc -->
-    * 
     * @generated
     */
    @Override
@@ -132,7 +125,7 @@ public class SectionImpl extends AbstractEntriesContainerImpl implements Section
    {
       switch (featureID)
       {
-         case ManifestPackage.SECTION__NAME :
+         case ManifestPackage.SECTION__NAME:
             setName(NAME_EDEFAULT);
             return;
       }
@@ -141,7 +134,6 @@ public class SectionImpl extends AbstractEntriesContainerImpl implements Section
 
    /**
     * <!-- begin-user-doc --> <!-- end-user-doc -->
-    * 
     * @generated
     */
    @Override
@@ -149,7 +141,7 @@ public class SectionImpl extends AbstractEntriesContainerImpl implements Section
    {
       switch (featureID)
       {
-         case ManifestPackage.SECTION__NAME :
+         case ManifestPackage.SECTION__NAME:
             return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
       }
       return super.eIsSet(featureID);
@@ -157,14 +149,12 @@ public class SectionImpl extends AbstractEntriesContainerImpl implements Section
 
    /**
     * <!-- begin-user-doc --> <!-- end-user-doc -->
-    * 
     * @generated
     */
    @Override
    public String toString()
    {
-      if (eIsProxy())
-         return super.toString();
+      if (eIsProxy()) return super.toString();
 
       StringBuffer result = new StringBuffer(super.toString());
       result.append(" (name: ");
