@@ -20,14 +20,14 @@ import org.sourcepit.common.mf.internal.model.ManifestPackage;
  * <p>
  * The following features are implemented:
  * <ul>
- * <li>{@link org.sourcepit.common.mf.model.internal.impl.EMapEntryImpl#getTypedKey <em>Key</em>}</li>
- * <li>{@link org.sourcepit.common.mf.model.internal.impl.EMapEntryImpl#getTypedValue <em>Value</em>}</li>
+ *   <li>{@link org.sourcepit.common.mf.model.internal.impl.EMapEntryImpl#getTypedKey <em>Key</em>}</li>
+ *   <li>{@link org.sourcepit.common.mf.model.internal.impl.EMapEntryImpl#getTypedValue <em>Value</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
-public class EMapEntryImpl<K, V> extends EObjectImpl implements BasicEMap.Entry<K, V>
+public class EMapEntryImpl<K, V> extends EObjectImpl implements BasicEMap.Entry<K,V>
 {
    /**
     * The cached value of the '{@link #getTypedKey() <em>Key</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
@@ -40,9 +40,9 @@ public class EMapEntryImpl<K, V> extends EObjectImpl implements BasicEMap.Entry<
    protected K key;
 
    /**
-    * The cached value of the '{@link #getTypedValue() <em>Value</em>}' attribute. <!-- begin-user-doc --> <!--
+    * The cached value of the '{@link #getTypedValue() <em>Value</em>}' attribute.
+    * <!-- begin-user-doc --> <!--
     * end-user-doc -->
-    * 
     * @see #getTypedValue()
     * @generated
     * @ordered
@@ -51,7 +51,6 @@ public class EMapEntryImpl<K, V> extends EObjectImpl implements BasicEMap.Entry<
 
    /**
     * <!-- begin-user-doc --> <!-- end-user-doc -->
-    * 
     * @generated
     */
    protected EMapEntryImpl()
@@ -61,7 +60,6 @@ public class EMapEntryImpl<K, V> extends EObjectImpl implements BasicEMap.Entry<
 
    /**
     * <!-- begin-user-doc --> <!-- end-user-doc -->
-    * 
     * @generated
     */
    @Override
@@ -72,7 +70,6 @@ public class EMapEntryImpl<K, V> extends EObjectImpl implements BasicEMap.Entry<
 
    /**
     * <!-- begin-user-doc --> <!-- end-user-doc -->
-    * 
     * @generated
     */
    public K getTypedKey()
@@ -82,7 +79,6 @@ public class EMapEntryImpl<K, V> extends EObjectImpl implements BasicEMap.Entry<
 
    /**
     * <!-- begin-user-doc --> <!-- end-user-doc -->
-    * 
     * @generated
     */
    public void setTypedKey(K newKey)
@@ -95,7 +91,6 @@ public class EMapEntryImpl<K, V> extends EObjectImpl implements BasicEMap.Entry<
 
    /**
     * <!-- begin-user-doc --> <!-- end-user-doc -->
-    * 
     * @generated
     */
    public V getTypedValue()
@@ -105,7 +100,6 @@ public class EMapEntryImpl<K, V> extends EObjectImpl implements BasicEMap.Entry<
 
    /**
     * <!-- begin-user-doc --> <!-- end-user-doc -->
-    * 
     * @generated
     */
    public void setTypedValue(V newValue)
@@ -118,7 +112,6 @@ public class EMapEntryImpl<K, V> extends EObjectImpl implements BasicEMap.Entry<
 
    /**
     * <!-- begin-user-doc --> <!-- end-user-doc -->
-    * 
     * @generated
     */
    @Override
@@ -126,9 +119,9 @@ public class EMapEntryImpl<K, V> extends EObjectImpl implements BasicEMap.Entry<
    {
       switch (featureID)
       {
-         case ManifestPackage.EMAP_ENTRY__KEY :
+         case ManifestPackage.EMAP_ENTRY__KEY:
             return getTypedKey();
-         case ManifestPackage.EMAP_ENTRY__VALUE :
+         case ManifestPackage.EMAP_ENTRY__VALUE:
             return getTypedValue();
       }
       return super.eGet(featureID, resolve, coreType);
@@ -136,7 +129,6 @@ public class EMapEntryImpl<K, V> extends EObjectImpl implements BasicEMap.Entry<
 
    /**
     * <!-- begin-user-doc --> <!-- end-user-doc -->
-    * 
     * @generated
     */
    @SuppressWarnings("unchecked")
@@ -145,11 +137,11 @@ public class EMapEntryImpl<K, V> extends EObjectImpl implements BasicEMap.Entry<
    {
       switch (featureID)
       {
-         case ManifestPackage.EMAP_ENTRY__KEY :
-            setTypedKey((K) newValue);
+         case ManifestPackage.EMAP_ENTRY__KEY:
+            setTypedKey((K)newValue);
             return;
-         case ManifestPackage.EMAP_ENTRY__VALUE :
-            setTypedValue((V) newValue);
+         case ManifestPackage.EMAP_ENTRY__VALUE:
+            setTypedValue((V)newValue);
             return;
       }
       super.eSet(featureID, newValue);
@@ -157,7 +149,6 @@ public class EMapEntryImpl<K, V> extends EObjectImpl implements BasicEMap.Entry<
 
    /**
     * <!-- begin-user-doc --> <!-- end-user-doc -->
-    * 
     * @generated
     */
    @Override
@@ -165,11 +156,11 @@ public class EMapEntryImpl<K, V> extends EObjectImpl implements BasicEMap.Entry<
    {
       switch (featureID)
       {
-         case ManifestPackage.EMAP_ENTRY__KEY :
-            setTypedKey((K) null);
+         case ManifestPackage.EMAP_ENTRY__KEY:
+            setTypedKey((K)null);
             return;
-         case ManifestPackage.EMAP_ENTRY__VALUE :
-            setTypedValue((V) null);
+         case ManifestPackage.EMAP_ENTRY__VALUE:
+            setTypedValue((V)null);
             return;
       }
       super.eUnset(featureID);
@@ -177,7 +168,6 @@ public class EMapEntryImpl<K, V> extends EObjectImpl implements BasicEMap.Entry<
 
    /**
     * <!-- begin-user-doc --> <!-- end-user-doc -->
-    * 
     * @generated
     */
    @Override
@@ -185,9 +175,9 @@ public class EMapEntryImpl<K, V> extends EObjectImpl implements BasicEMap.Entry<
    {
       switch (featureID)
       {
-         case ManifestPackage.EMAP_ENTRY__KEY :
+         case ManifestPackage.EMAP_ENTRY__KEY:
             return key != null;
-         case ManifestPackage.EMAP_ENTRY__VALUE :
+         case ManifestPackage.EMAP_ENTRY__VALUE:
             return value != null;
       }
       return super.eIsSet(featureID);
@@ -195,14 +185,12 @@ public class EMapEntryImpl<K, V> extends EObjectImpl implements BasicEMap.Entry<
 
    /**
     * <!-- begin-user-doc --> <!-- end-user-doc -->
-    * 
     * @generated
     */
    @Override
    public String toString()
    {
-      if (eIsProxy())
-         return super.toString();
+      if (eIsProxy()) return super.toString();
 
       StringBuffer result = new StringBuffer(super.toString());
       result.append(" (key: ");
@@ -215,14 +203,12 @@ public class EMapEntryImpl<K, V> extends EObjectImpl implements BasicEMap.Entry<
 
    /**
     * <!-- begin-user-doc --> <!-- end-user-doc -->
-    * 
     * @generated
     */
    protected int hash = -1;
 
    /**
     * <!-- begin-user-doc --> <!-- end-user-doc -->
-    * 
     * @generated
     */
    public int getHash()
@@ -237,7 +223,6 @@ public class EMapEntryImpl<K, V> extends EObjectImpl implements BasicEMap.Entry<
 
    /**
     * <!-- begin-user-doc --> <!-- end-user-doc -->
-    * 
     * @generated
     */
    public void setHash(int hash)
@@ -247,7 +232,6 @@ public class EMapEntryImpl<K, V> extends EObjectImpl implements BasicEMap.Entry<
 
    /**
     * <!-- begin-user-doc --> <!-- end-user-doc -->
-    * 
     * @generated
     */
    public K getKey()
@@ -257,7 +241,6 @@ public class EMapEntryImpl<K, V> extends EObjectImpl implements BasicEMap.Entry<
 
    /**
     * <!-- begin-user-doc --> <!-- end-user-doc -->
-    * 
     * @generated
     */
    public void setKey(K key)
@@ -267,7 +250,6 @@ public class EMapEntryImpl<K, V> extends EObjectImpl implements BasicEMap.Entry<
 
    /**
     * <!-- begin-user-doc --> <!-- end-user-doc -->
-    * 
     * @generated
     */
    public V getValue()
@@ -277,7 +259,6 @@ public class EMapEntryImpl<K, V> extends EObjectImpl implements BasicEMap.Entry<
 
    /**
     * <!-- begin-user-doc --> <!-- end-user-doc -->
-    * 
     * @generated
     */
    public V setValue(V value)
@@ -289,14 +270,13 @@ public class EMapEntryImpl<K, V> extends EObjectImpl implements BasicEMap.Entry<
 
    /**
     * <!-- begin-user-doc --> <!-- end-user-doc -->
-    * 
     * @generated
     */
    @SuppressWarnings("unchecked")
    public EMap<K, V> getEMap()
    {
       EObject container = eContainer();
-      return container == null ? null : (EMap<K, V>) container.eGet(eContainmentFeature());
+      return container == null ? null : (EMap<K, V>)container.eGet(eContainmentFeature());
    }
 
 } // EMapEntryImpl

@@ -4,6 +4,7 @@
 
 package org.sourcepit.common.mf.model.internal.impl;
 
+import java.util.Map;
 import java.util.jar.Attributes.Name;
 
 import org.sourcepit.common.mf.internal.model.ManifestFactory;
@@ -45,5 +46,11 @@ public class CManifestImpl extends ManifestImpl
          getSections().add(section);
       }
       return section;
+   }
+   
+   @Override
+   public void addEntries(Map<String, String> entries)
+   {
+      getEntries().putAll(entries);
    }
 }

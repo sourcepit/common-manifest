@@ -6,6 +6,7 @@
 
 package org.sourcepit.common.mf.model.internal.impl;
 
+import java.util.Map;
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EMap;
 import org.eclipse.emf.ecore.EClass;
@@ -23,10 +24,10 @@ import org.sourcepit.common.mf.internal.model.ManifestPackage;
  * <p>
  * The following features are implemented:
  * <ul>
- * <li>{@link org.sourcepit.common.mf.model.internal.impl.AbstractEntriesContainerImpl#getEntries <em>Entries</em>}</li>
+ *   <li>{@link org.sourcepit.common.mf.model.internal.impl.AbstractEntriesContainerImpl#getEntries <em>Entries</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public abstract class AbstractEntriesContainerImpl extends EObjectImpl implements AbstractEntriesContainer
@@ -43,7 +44,6 @@ public abstract class AbstractEntriesContainerImpl extends EObjectImpl implement
 
    /**
     * <!-- begin-user-doc --> <!-- end-user-doc -->
-    * 
     * @generated
     */
    protected AbstractEntriesContainerImpl()
@@ -53,7 +53,6 @@ public abstract class AbstractEntriesContainerImpl extends EObjectImpl implement
 
    /**
     * <!-- begin-user-doc --> <!-- end-user-doc -->
-    * 
     * @generated
     */
    @Override
@@ -64,22 +63,31 @@ public abstract class AbstractEntriesContainerImpl extends EObjectImpl implement
 
    /**
     * <!-- begin-user-doc --> <!-- end-user-doc -->
-    * 
     * @generated
     */
    public EMap<String, String> getEntries()
    {
       if (entries == null)
       {
-         entries = new EcoreEMap<String, String>(ManifestPackage.Literals.EMAP_ENTRY, EMapEntryImpl.class, this,
-            ManifestPackage.ABSTRACT_ENTRIES_CONTAINER__ENTRIES);
+         entries = new EcoreEMap<String,String>(ManifestPackage.Literals.EMAP_ENTRY, EMapEntryImpl.class, this, ManifestPackage.ABSTRACT_ENTRIES_CONTAINER__ENTRIES);
       }
       return entries;
    }
 
    /**
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * @generated
+    */
+   public void addEntries(Map<String, String> entries)
+   {
+      // TODO: implement this method
+      // Ensure that you remove @generated or mark it @generated NOT
+      throw new UnsupportedOperationException();
+   }
+
+   /**
     * <!-- begin-user-doc --> <!-- end-user-doc -->
-    * 
     * @generated
     */
    @Override
@@ -87,15 +95,14 @@ public abstract class AbstractEntriesContainerImpl extends EObjectImpl implement
    {
       switch (featureID)
       {
-         case ManifestPackage.ABSTRACT_ENTRIES_CONTAINER__ENTRIES :
-            return ((InternalEList<?>) getEntries()).basicRemove(otherEnd, msgs);
+         case ManifestPackage.ABSTRACT_ENTRIES_CONTAINER__ENTRIES:
+            return ((InternalEList<?>)getEntries()).basicRemove(otherEnd, msgs);
       }
       return super.eInverseRemove(otherEnd, featureID, msgs);
    }
 
    /**
     * <!-- begin-user-doc --> <!-- end-user-doc -->
-    * 
     * @generated
     */
    @Override
@@ -103,18 +110,15 @@ public abstract class AbstractEntriesContainerImpl extends EObjectImpl implement
    {
       switch (featureID)
       {
-         case ManifestPackage.ABSTRACT_ENTRIES_CONTAINER__ENTRIES :
-            if (coreType)
-               return getEntries();
-            else
-               return getEntries().map();
+         case ManifestPackage.ABSTRACT_ENTRIES_CONTAINER__ENTRIES:
+            if (coreType) return getEntries();
+            else return getEntries().map();
       }
       return super.eGet(featureID, resolve, coreType);
    }
 
    /**
     * <!-- begin-user-doc --> <!-- end-user-doc -->
-    * 
     * @generated
     */
    @Override
@@ -122,8 +126,8 @@ public abstract class AbstractEntriesContainerImpl extends EObjectImpl implement
    {
       switch (featureID)
       {
-         case ManifestPackage.ABSTRACT_ENTRIES_CONTAINER__ENTRIES :
-            ((EStructuralFeature.Setting) getEntries()).set(newValue);
+         case ManifestPackage.ABSTRACT_ENTRIES_CONTAINER__ENTRIES:
+            ((EStructuralFeature.Setting)getEntries()).set(newValue);
             return;
       }
       super.eSet(featureID, newValue);
@@ -131,7 +135,6 @@ public abstract class AbstractEntriesContainerImpl extends EObjectImpl implement
 
    /**
     * <!-- begin-user-doc --> <!-- end-user-doc -->
-    * 
     * @generated
     */
    @Override
@@ -139,7 +142,7 @@ public abstract class AbstractEntriesContainerImpl extends EObjectImpl implement
    {
       switch (featureID)
       {
-         case ManifestPackage.ABSTRACT_ENTRIES_CONTAINER__ENTRIES :
+         case ManifestPackage.ABSTRACT_ENTRIES_CONTAINER__ENTRIES:
             getEntries().clear();
             return;
       }
@@ -148,7 +151,6 @@ public abstract class AbstractEntriesContainerImpl extends EObjectImpl implement
 
    /**
     * <!-- begin-user-doc --> <!-- end-user-doc -->
-    * 
     * @generated
     */
    @Override
@@ -156,7 +158,7 @@ public abstract class AbstractEntriesContainerImpl extends EObjectImpl implement
    {
       switch (featureID)
       {
-         case ManifestPackage.ABSTRACT_ENTRIES_CONTAINER__ENTRIES :
+         case ManifestPackage.ABSTRACT_ENTRIES_CONTAINER__ENTRIES:
             return entries != null && !entries.isEmpty();
       }
       return super.eIsSet(featureID);
