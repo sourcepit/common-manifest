@@ -9,13 +9,13 @@ import junit.framework.TestCase;
 /**
  * @author Bernd
  */
-public class MultiValueEntryMergerTest extends TestCase
+public class MultiValueHeaderMergerTest extends TestCase
 {
    public void test1() throws Exception
    {
       String newValue;
 
-      MultiValueEntryMerger merger = new MultiValueEntryMerger();
+      MultiValueHeaderMerger merger = new MultiValueHeaderMerger();
       newValue = merger.computeNewValue("", "", "");
       assertEquals("", newValue);
 

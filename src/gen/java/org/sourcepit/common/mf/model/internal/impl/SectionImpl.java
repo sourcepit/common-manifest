@@ -23,7 +23,7 @@ import org.sourcepit.common.mf.internal.model.Section;
  * 
  * @generated
  */
-public class SectionImpl extends AbstractEntriesContainerImpl implements Section
+public class SectionImpl extends AbstractSectionImpl implements Section
 {
    /**
     * The default value of the '{@link #getName() <em>Name</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc

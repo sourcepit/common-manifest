@@ -6,11 +6,11 @@ package org.sourcepit.common.mf.internal.merge;
 
 import junit.framework.TestCase;
 
-public class DefaultEntryMergerTest extends TestCase
+public class DefaultHeaderMergerTest extends TestCase
 {
    public void testComputeNewValue() throws Exception
    {
-      DefaultEntryMerger merger = new DefaultEntryMerger();
+      DefaultHeaderMerger merger = new DefaultHeaderMerger();
       assertEquals("", merger.computeNewValue("", "", ""));
       assertEquals("hallo", merger.computeNewValue("", "", "hallo"));
       assertEquals("hallo", merger.computeNewValue("", null, "hallo"));

@@ -6,8 +6,6 @@
 
 package org.sourcepit.common.mf.model.internal.impl;
 
-import java.util.Map;
-
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EMap;
 import org.eclipse.emf.ecore.EClass;
@@ -16,39 +14,39 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 import org.eclipse.emf.ecore.util.EcoreEMap;
 import org.eclipse.emf.ecore.util.InternalEList;
-import org.sourcepit.common.mf.internal.model.AbstractEntriesContainer;
+import org.sourcepit.common.mf.internal.model.AbstractSection;
 import org.sourcepit.common.mf.internal.model.ManifestPackage;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '<em><b>Abstract Entries Container</b></em>'. <!--
- * end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>Abstract Section</b></em>'. <!-- end-user-doc
+ * -->
  * <p>
  * The following features are implemented:
  * <ul>
- * <li>{@link org.sourcepit.common.mf.model.internal.impl.AbstractEntriesContainerImpl#getEntries <em>Entries</em>}</li>
+ * <li>{@link org.sourcepit.common.mf.model.internal.impl.AbstractSectionImpl#getHeaders <em>Headers</em>}</li>
  * </ul>
  * </p>
  * 
  * @generated
  */
-public abstract class AbstractEntriesContainerImpl extends EObjectImpl implements AbstractEntriesContainer
+public abstract class AbstractSectionImpl extends EObjectImpl implements AbstractSection
 {
    /**
-    * The cached value of the '{@link #getEntries() <em>Entries</em>}' map. <!-- begin-user-doc --> <!-- end-user-doc
+    * The cached value of the '{@link #getHeaders() <em>Headers</em>}' map. <!-- begin-user-doc --> <!-- end-user-doc
     * -->
     * 
-    * @see #getEntries()
+    * @see #getHeaders()
     * @generated
     * @ordered
     */
-   protected EMap<String, String> entries;
+   protected EMap<String, String> headers;
 
    /**
     * <!-- begin-user-doc --> <!-- end-user-doc -->
     * 
     * @generated
     */
-   protected AbstractEntriesContainerImpl()
+   protected AbstractSectionImpl()
    {
       super();
    }
@@ -61,7 +59,7 @@ public abstract class AbstractEntriesContainerImpl extends EObjectImpl implement
    @Override
    protected EClass eStaticClass()
    {
-      return ManifestPackage.Literals.ABSTRACT_ENTRIES_CONTAINER;
+      return ManifestPackage.Literals.ABSTRACT_SECTION;
    }
 
    /**
@@ -69,26 +67,14 @@ public abstract class AbstractEntriesContainerImpl extends EObjectImpl implement
     * 
     * @generated
     */
-   public EMap<String, String> getEntries()
+   public EMap<String, String> getHeaders()
    {
-      if (entries == null)
+      if (headers == null)
       {
-         entries = new EcoreEMap<String, String>(ManifestPackage.Literals.EMAP_ENTRY, EMapEntryImpl.class, this,
-            ManifestPackage.ABSTRACT_ENTRIES_CONTAINER__ENTRIES);
+         headers = new EcoreEMap<String, String>(ManifestPackage.Literals.EMAP_ENTRY, EMapEntryImpl.class, this,
+            ManifestPackage.ABSTRACT_SECTION__HEADERS);
       }
-      return entries;
-   }
-
-   /**
-    * <!-- begin-user-doc --> <!-- end-user-doc -->
-    * 
-    * @generated
-    */
-   public void addEntries(Map<String, String> entries)
-   {
-      // TODO: implement this method
-      // Ensure that you remove @generated or mark it @generated NOT
-      throw new UnsupportedOperationException();
+      return headers;
    }
 
    /**
@@ -101,8 +87,8 @@ public abstract class AbstractEntriesContainerImpl extends EObjectImpl implement
    {
       switch (featureID)
       {
-         case ManifestPackage.ABSTRACT_ENTRIES_CONTAINER__ENTRIES :
-            return ((InternalEList<?>) getEntries()).basicRemove(otherEnd, msgs);
+         case ManifestPackage.ABSTRACT_SECTION__HEADERS :
+            return ((InternalEList<?>) getHeaders()).basicRemove(otherEnd, msgs);
       }
       return super.eInverseRemove(otherEnd, featureID, msgs);
    }
@@ -117,11 +103,11 @@ public abstract class AbstractEntriesContainerImpl extends EObjectImpl implement
    {
       switch (featureID)
       {
-         case ManifestPackage.ABSTRACT_ENTRIES_CONTAINER__ENTRIES :
+         case ManifestPackage.ABSTRACT_SECTION__HEADERS :
             if (coreType)
-               return getEntries();
+               return getHeaders();
             else
-               return getEntries().map();
+               return getHeaders().map();
       }
       return super.eGet(featureID, resolve, coreType);
    }
@@ -136,8 +122,8 @@ public abstract class AbstractEntriesContainerImpl extends EObjectImpl implement
    {
       switch (featureID)
       {
-         case ManifestPackage.ABSTRACT_ENTRIES_CONTAINER__ENTRIES :
-            ((EStructuralFeature.Setting) getEntries()).set(newValue);
+         case ManifestPackage.ABSTRACT_SECTION__HEADERS :
+            ((EStructuralFeature.Setting) getHeaders()).set(newValue);
             return;
       }
       super.eSet(featureID, newValue);
@@ -153,8 +139,8 @@ public abstract class AbstractEntriesContainerImpl extends EObjectImpl implement
    {
       switch (featureID)
       {
-         case ManifestPackage.ABSTRACT_ENTRIES_CONTAINER__ENTRIES :
-            getEntries().clear();
+         case ManifestPackage.ABSTRACT_SECTION__HEADERS :
+            getHeaders().clear();
             return;
       }
       super.eUnset(featureID);
@@ -170,10 +156,10 @@ public abstract class AbstractEntriesContainerImpl extends EObjectImpl implement
    {
       switch (featureID)
       {
-         case ManifestPackage.ABSTRACT_ENTRIES_CONTAINER__ENTRIES :
-            return entries != null && !entries.isEmpty();
+         case ManifestPackage.ABSTRACT_SECTION__HEADERS :
+            return headers != null && !headers.isEmpty();
       }
       return super.eIsSet(featureID);
    }
 
-} // AbstractEntriesContainerImpl
+} // AbstractSectionImpl

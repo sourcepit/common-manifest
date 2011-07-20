@@ -11,7 +11,7 @@ import java.util.Map;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.util.Switch;
-import org.sourcepit.common.mf.internal.model.AbstractEntriesContainer;
+import org.sourcepit.common.mf.internal.model.AbstractSection;
 import org.sourcepit.common.mf.internal.model.Manifest;
 import org.sourcepit.common.mf.internal.model.ManifestPackage;
 import org.sourcepit.common.mf.internal.model.Section;
@@ -77,14 +77,13 @@ public class ManifestSwitch<T> extends Switch<T>
             Manifest manifest = (Manifest) theEObject;
             T result = caseManifest(manifest);
             if (result == null)
-               result = caseAbstractEntriesContainer(manifest);
+               result = caseAbstractSection(manifest);
             if (result == null)
                result = defaultCase(theEObject);
             return result;
          }
          case ManifestPackage.EMAP_ENTRY :
          {
-            @SuppressWarnings("unchecked")
             Map.Entry<?, ?> eMapEntry = (Map.Entry<?, ?>) theEObject;
             T result = caseEMapEntry(eMapEntry);
             if (result == null)
@@ -96,15 +95,15 @@ public class ManifestSwitch<T> extends Switch<T>
             Section section = (Section) theEObject;
             T result = caseSection(section);
             if (result == null)
-               result = caseAbstractEntriesContainer(section);
+               result = caseAbstractSection(section);
             if (result == null)
                result = defaultCase(theEObject);
             return result;
          }
-         case ManifestPackage.ABSTRACT_ENTRIES_CONTAINER :
+         case ManifestPackage.ABSTRACT_SECTION :
          {
-            AbstractEntriesContainer abstractEntriesContainer = (AbstractEntriesContainer) theEObject;
-            T result = caseAbstractEntriesContainer(abstractEntriesContainer);
+            AbstractSection abstractSection = (AbstractSection) theEObject;
+            T result = caseAbstractSection(abstractSection);
             if (result == null)
                result = defaultCase(theEObject);
             return result;
@@ -157,16 +156,15 @@ public class ManifestSwitch<T> extends Switch<T>
    }
 
    /**
-    * Returns the result of interpreting the object as an instance of '<em>Abstract Entries Container</em>'. <!--
-    * begin-user-doc --> This implementation returns null; returning a non-null result will terminate the switch. <!--
-    * end-user-doc -->
+    * Returns the result of interpreting the object as an instance of '<em>Abstract Section</em>'. <!-- begin-user-doc
+    * --> This implementation returns null; returning a non-null result will terminate the switch. <!-- end-user-doc -->
     * 
     * @param object the target of the switch.
-    * @return the result of interpreting the object as an instance of '<em>Abstract Entries Container</em>'.
+    * @return the result of interpreting the object as an instance of '<em>Abstract Section</em>'.
     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
     * @generated
     */
-   public T caseAbstractEntriesContainer(AbstractEntriesContainer object)
+   public T caseAbstractSection(AbstractSection object)
    {
       return null;
    }

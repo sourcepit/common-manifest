@@ -15,7 +15,7 @@ import java.util.jar.Attributes;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.impl.ResourceImpl;
-import org.sourcepit.common.mf.internal.model.AbstractEntriesContainer;
+import org.sourcepit.common.mf.internal.model.AbstractSection;
 import org.sourcepit.common.mf.internal.model.Manifest;
 import org.sourcepit.common.mf.internal.model.Section;
 import org.sourcepit.common.mf.internal.parser.ManifestBuilder;
@@ -62,11 +62,11 @@ public class ManifestResourceImpl extends ResourceImpl
       javaManifest.write(outputStream);
    }
 
-   private void doSave(AbstractEntriesContainer container, Attributes attributes)
+   private void doSave(AbstractSection container, Attributes attributes)
    {
-      for (Entry<String, String> entry : container.getEntries())
+      for (Entry<String, String> header : container.getHeaders())
       {
-         attributes.putValue(entry.getKey(), entry.getValue());
+         attributes.putValue(header.getKey(), header.getValue());
       }
    }
 

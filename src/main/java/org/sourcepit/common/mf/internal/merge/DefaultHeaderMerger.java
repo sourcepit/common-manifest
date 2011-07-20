@@ -6,10 +6,10 @@ package org.sourcepit.common.mf.internal.merge;
 /**
  * @author Bernd
  */
-public class DefaultEntryMerger extends AbstractEntryMerger
+public class DefaultHeaderMerger extends AbstractHeaderMerger
 {
    @Override
-   public String computeNewValue(String entryName, String leftValue, String rightValue)
+   public String computeNewValue(String headerName, String leftValue, String rightValue)
    {
       return rightValue;
    }

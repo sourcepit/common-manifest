@@ -56,31 +56,31 @@ public interface ManifestPackage extends EPackage
    ManifestPackage eINSTANCE = org.sourcepit.common.mf.model.internal.impl.ManifestPackageImpl.init();
 
    /**
-    * The meta object id for the '{@link org.sourcepit.common.mf.model.internal.impl.AbstractEntriesContainerImpl
-    * <em>Abstract Entries Container</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+    * The meta object id for the '{@link org.sourcepit.common.mf.model.internal.impl.AbstractSectionImpl
+    * <em>Abstract Section</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
     * 
-    * @see org.sourcepit.common.mf.model.internal.impl.AbstractEntriesContainerImpl
-    * @see org.sourcepit.common.mf.model.internal.impl.ManifestPackageImpl#getAbstractEntriesContainer()
+    * @see org.sourcepit.common.mf.model.internal.impl.AbstractSectionImpl
+    * @see org.sourcepit.common.mf.model.internal.impl.ManifestPackageImpl#getAbstractSection()
     * @generated
     */
-   int ABSTRACT_ENTRIES_CONTAINER = 3;
+   int ABSTRACT_SECTION = 3;
 
    /**
-    * The feature id for the '<em><b>Entries</b></em>' map. <!-- begin-user-doc --> <!-- end-user-doc -->
+    * The feature id for the '<em><b>Headers</b></em>' map. <!-- begin-user-doc --> <!-- end-user-doc -->
     * 
     * @generated
     * @ordered
     */
-   int ABSTRACT_ENTRIES_CONTAINER__ENTRIES = 0;
+   int ABSTRACT_SECTION__HEADERS = 0;
 
    /**
-    * The number of structural features of the '<em>Abstract Entries Container</em>' class. <!-- begin-user-doc --> <!--
+    * The number of structural features of the '<em>Abstract Section</em>' class. <!-- begin-user-doc --> <!--
     * end-user-doc -->
     * 
     * @generated
     * @ordered
     */
-   int ABSTRACT_ENTRIES_CONTAINER_FEATURE_COUNT = 1;
+   int ABSTRACT_SECTION_FEATURE_COUNT = 1;
 
    /**
     * The meta object id for the '{@link org.sourcepit.common.mf.model.internal.impl.ManifestImpl <em>Manifest</em>}'
@@ -93,12 +93,12 @@ public interface ManifestPackage extends EPackage
    int MANIFEST = 0;
 
    /**
-    * The feature id for the '<em><b>Entries</b></em>' map. <!-- begin-user-doc --> <!-- end-user-doc -->
+    * The feature id for the '<em><b>Headers</b></em>' map. <!-- begin-user-doc --> <!-- end-user-doc -->
     * 
     * @generated
     * @ordered
     */
-   int MANIFEST__ENTRIES = ABSTRACT_ENTRIES_CONTAINER__ENTRIES;
+   int MANIFEST__HEADERS = ABSTRACT_SECTION__HEADERS;
 
    /**
     * The feature id for the '<em><b>Sections</b></em>' containment reference list. <!-- begin-user-doc --> <!--
@@ -107,7 +107,7 @@ public interface ManifestPackage extends EPackage
     * @generated
     * @ordered
     */
-   int MANIFEST__SECTIONS = ABSTRACT_ENTRIES_CONTAINER_FEATURE_COUNT + 0;
+   int MANIFEST__SECTIONS = ABSTRACT_SECTION_FEATURE_COUNT + 0;
 
    /**
     * The number of structural features of the '<em>Manifest</em>' class. <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -115,7 +115,7 @@ public interface ManifestPackage extends EPackage
     * @generated
     * @ordered
     */
-   int MANIFEST_FEATURE_COUNT = ABSTRACT_ENTRIES_CONTAINER_FEATURE_COUNT + 1;
+   int MANIFEST_FEATURE_COUNT = ABSTRACT_SECTION_FEATURE_COUNT + 1;
 
    /**
     * The meta object id for the '{@link org.sourcepit.common.mf.model.internal.impl.EMapEntryImpl <em>EMap Entry</em>}'
@@ -163,12 +163,12 @@ public interface ManifestPackage extends EPackage
    int SECTION = 2;
 
    /**
-    * The feature id for the '<em><b>Entries</b></em>' map. <!-- begin-user-doc --> <!-- end-user-doc -->
+    * The feature id for the '<em><b>Headers</b></em>' map. <!-- begin-user-doc --> <!-- end-user-doc -->
     * 
     * @generated
     * @ordered
     */
-   int SECTION__ENTRIES = ABSTRACT_ENTRIES_CONTAINER__ENTRIES;
+   int SECTION__HEADERS = ABSTRACT_SECTION__HEADERS;
 
    /**
     * The feature id for the '<em><b>Name</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -176,7 +176,7 @@ public interface ManifestPackage extends EPackage
     * @generated
     * @ordered
     */
-   int SECTION__NAME = ABSTRACT_ENTRIES_CONTAINER_FEATURE_COUNT + 0;
+   int SECTION__NAME = ABSTRACT_SECTION_FEATURE_COUNT + 0;
 
    /**
     * The number of structural features of the '<em>Section</em>' class. <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -184,7 +184,7 @@ public interface ManifestPackage extends EPackage
     * @generated
     * @ordered
     */
-   int SECTION_FEATURE_COUNT = ABSTRACT_ENTRIES_CONTAINER_FEATURE_COUNT + 1;
+   int SECTION_FEATURE_COUNT = ABSTRACT_SECTION_FEATURE_COUNT + 1;
 
 
    /**
@@ -264,26 +264,25 @@ public interface ManifestPackage extends EPackage
    EAttribute getSection_Name();
 
    /**
-    * Returns the meta object for class '{@link org.sourcepit.common.mf.internal.model.AbstractEntriesContainer
-    * <em>Abstract Entries Container</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+    * Returns the meta object for class '{@link org.sourcepit.common.mf.internal.model.AbstractSection
+    * <em>Abstract Section</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
     * 
-    * @return the meta object for class '<em>Abstract Entries Container</em>'.
-    * @see org.sourcepit.common.mf.internal.model.AbstractEntriesContainer
+    * @return the meta object for class '<em>Abstract Section</em>'.
+    * @see org.sourcepit.common.mf.internal.model.AbstractSection
     * @generated
     */
-   EClass getAbstractEntriesContainer();
+   EClass getAbstractSection();
 
    /**
-    * Returns the meta object for the map '
-    * {@link org.sourcepit.common.mf.internal.model.AbstractEntriesContainer#getEntries <em>Entries</em>}'. <!--
-    * begin-user-doc --> <!-- end-user-doc -->
+    * Returns the meta object for the map '{@link org.sourcepit.common.mf.internal.model.AbstractSection#getHeaders
+    * <em>Headers</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
     * 
-    * @return the meta object for the map '<em>Entries</em>'.
-    * @see org.sourcepit.common.mf.internal.model.AbstractEntriesContainer#getEntries()
-    * @see #getAbstractEntriesContainer()
+    * @return the meta object for the map '<em>Headers</em>'.
+    * @see org.sourcepit.common.mf.internal.model.AbstractSection#getHeaders()
+    * @see #getAbstractSection()
     * @generated
     */
-   EReference getAbstractEntriesContainer_Entries();
+   EReference getAbstractSection_Headers();
 
    /**
     * Returns the factory that creates the instances of the model. <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -370,23 +369,22 @@ public interface ManifestPackage extends EPackage
       EAttribute SECTION__NAME = eINSTANCE.getSection_Name();
 
       /**
-       * The meta object literal for the '
-       * {@link org.sourcepit.common.mf.model.internal.impl.AbstractEntriesContainerImpl
-       * <em>Abstract Entries Container</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+       * The meta object literal for the '{@link org.sourcepit.common.mf.model.internal.impl.AbstractSectionImpl
+       * <em>Abstract Section</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
        * 
-       * @see org.sourcepit.common.mf.model.internal.impl.AbstractEntriesContainerImpl
-       * @see org.sourcepit.common.mf.model.internal.impl.ManifestPackageImpl#getAbstractEntriesContainer()
+       * @see org.sourcepit.common.mf.model.internal.impl.AbstractSectionImpl
+       * @see org.sourcepit.common.mf.model.internal.impl.ManifestPackageImpl#getAbstractSection()
        * @generated
        */
-      EClass ABSTRACT_ENTRIES_CONTAINER = eINSTANCE.getAbstractEntriesContainer();
+      EClass ABSTRACT_SECTION = eINSTANCE.getAbstractSection();
 
       /**
-       * The meta object literal for the '<em><b>Entries</b></em>' map feature. <!-- begin-user-doc --> <!--
+       * The meta object literal for the '<em><b>Headers</b></em>' map feature. <!-- begin-user-doc --> <!--
        * end-user-doc -->
        * 
        * @generated
        */
-      EReference ABSTRACT_ENTRIES_CONTAINER__ENTRIES = eINSTANCE.getAbstractEntriesContainer_Entries();
+      EReference ABSTRACT_SECTION__HEADERS = eINSTANCE.getAbstractSection_Headers();
 
    }
 

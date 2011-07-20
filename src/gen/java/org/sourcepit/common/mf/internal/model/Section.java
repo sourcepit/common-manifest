@@ -21,7 +21,7 @@ package org.sourcepit.common.mf.internal.model;
  * @model
  * @generated
  */
-public interface Section extends AbstractEntriesContainer
+public interface Section extends AbstractSection
 {
    /**
     * Returns the value of the '<em><b>Name</b></em>' attribute. <!-- begin-user-doc -->
