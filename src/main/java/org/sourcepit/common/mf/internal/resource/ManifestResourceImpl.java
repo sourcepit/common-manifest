@@ -120,7 +120,7 @@ public class ManifestResourceImpl extends ResourceImpl
    {
       for (Entry<String, String> entry : container.getEntries())
       {
-         attributes.put(entry.getKey(), entry.getValue());
+         attributes.putValue(entry.getKey(), entry.getValue());
       }
    }
 

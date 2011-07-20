@@ -4,7 +4,9 @@
 
 package org.sourcepit.common.mf.internal.merge;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
@@ -16,8 +18,22 @@ import org.sourcepit.common.mf.internal.model.Section;
 
 public class ManifestMerger
 {
-   private Map<String, AbstractEntryMerger> mergerMap = new HashMap<String, AbstractEntryMerger>();
+   private final List<AbstractEntryMerger> entryMergers = new ArrayList<AbstractEntryMerger>();
 
+   public List<AbstractEntryMerger> getEntryMergers()
+   {
+      return entryMergers;
+   }
+
+   // adder for maven mojo configuration injection
+   public void addEntryMergers(List<AbstractEntryMerger> entryMergers)
+   {
+      this.entryMergers.addAll(entryMergers);
+   }
+
+   /**
+    * {@inheritDoc}
+    */
    public void merge(Manifest target, Manifest source)
    {
       final EMap<String, String> targetEntries = target.getEntries();
@@ -84,10 +100,12 @@ public class ManifestMerger
 
    private AbstractEntryMerger getEntryMerger(String sectionName, String entryName)
    {
-      final AbstractEntryMerger merger = mergerMap.get(entryName);
-      if (merger != null)
+      for (AbstractEntryMerger merger : this.entryMergers)
       {
-         return merger;
+         if (merger.isEntryMergerFor(entryName))
+         {
+            return merger;
+         }
       }
       return new DefaultEntryMerger();
    }
