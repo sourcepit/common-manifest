@@ -23,18 +23,18 @@ import org.sourcepit.common.mf.internal.model.Section;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.sourcepit.common.mf.model.internal.impl.ManifestImpl#getSections <em>Sections</em>}</li>
+ * <li>{@link org.sourcepit.common.mf.model.internal.impl.ManifestImpl#getSections <em>Sections</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
 public class ManifestImpl extends AbstractEntriesContainerImpl implements Manifest
 {
    /**
-    * The cached value of the '{@link #getSections() <em>Sections</em>}' containment reference list.
-    * <!-- begin-user-doc
+    * The cached value of the '{@link #getSections() <em>Sections</em>}' containment reference list. <!-- begin-user-doc
     * --> <!-- end-user-doc -->
+    * 
     * @see #getSections()
     * @generated
     * @ordered
@@ -43,6 +43,7 @@ public class ManifestImpl extends AbstractEntriesContainerImpl implements Manife
 
    /**
     * <!-- begin-user-doc --> <!-- end-user-doc -->
+    * 
     * @generated
     */
    protected ManifestImpl()
@@ -52,6 +53,7 @@ public class ManifestImpl extends AbstractEntriesContainerImpl implements Manife
 
    /**
     * <!-- begin-user-doc --> <!-- end-user-doc -->
+    * 
     * @generated
     */
    @Override
@@ -62,6 +64,7 @@ public class ManifestImpl extends AbstractEntriesContainerImpl implements Manife
 
    /**
     * <!-- begin-user-doc --> <!-- end-user-doc -->
+    * 
     * @generated
     */
    public EList<Section> getSections()
@@ -75,6 +78,7 @@ public class ManifestImpl extends AbstractEntriesContainerImpl implements Manife
 
    /**
     * <!-- begin-user-doc --> <!-- end-user-doc -->
+    * 
     * @generated
     */
    public String getVersion()
@@ -86,6 +90,7 @@ public class ManifestImpl extends AbstractEntriesContainerImpl implements Manife
 
    /**
     * <!-- begin-user-doc --> <!-- end-user-doc -->
+    * 
     * @generated
     */
    public Section getSection(String name)
@@ -97,6 +102,7 @@ public class ManifestImpl extends AbstractEntriesContainerImpl implements Manife
 
    /**
     * <!-- begin-user-doc --> <!-- end-user-doc -->
+    * 
     * @generated
     */
    public Section getSection(String name, boolean createOnDemand)
@@ -108,6 +114,7 @@ public class ManifestImpl extends AbstractEntriesContainerImpl implements Manife
 
    /**
     * <!-- begin-user-doc --> <!-- end-user-doc -->
+    * 
     * @generated
     */
    @Override
@@ -115,14 +122,15 @@ public class ManifestImpl extends AbstractEntriesContainerImpl implements Manife
    {
       switch (featureID)
       {
-         case ManifestPackage.MANIFEST__SECTIONS:
-            return ((InternalEList<?>)getSections()).basicRemove(otherEnd, msgs);
+         case ManifestPackage.MANIFEST__SECTIONS :
+            return ((InternalEList<?>) getSections()).basicRemove(otherEnd, msgs);
       }
       return super.eInverseRemove(otherEnd, featureID, msgs);
    }
 
    /**
     * <!-- begin-user-doc --> <!-- end-user-doc -->
+    * 
     * @generated
     */
    @Override
@@ -130,7 +138,7 @@ public class ManifestImpl extends AbstractEntriesContainerImpl implements Manife
    {
       switch (featureID)
       {
-         case ManifestPackage.MANIFEST__SECTIONS:
+         case ManifestPackage.MANIFEST__SECTIONS :
             return getSections();
       }
       return super.eGet(featureID, resolve, coreType);
@@ -138,6 +146,7 @@ public class ManifestImpl extends AbstractEntriesContainerImpl implements Manife
 
    /**
     * <!-- begin-user-doc --> <!-- end-user-doc -->
+    * 
     * @generated
     */
    @SuppressWarnings("unchecked")
@@ -146,9 +155,9 @@ public class ManifestImpl extends AbstractEntriesContainerImpl implements Manife
    {
       switch (featureID)
       {
-         case ManifestPackage.MANIFEST__SECTIONS:
+         case ManifestPackage.MANIFEST__SECTIONS :
             getSections().clear();
-            getSections().addAll((Collection<? extends Section>)newValue);
+            getSections().addAll((Collection<? extends Section>) newValue);
             return;
       }
       super.eSet(featureID, newValue);
@@ -156,6 +165,7 @@ public class ManifestImpl extends AbstractEntriesContainerImpl implements Manife
 
    /**
     * <!-- begin-user-doc --> <!-- end-user-doc -->
+    * 
     * @generated
     */
    @Override
@@ -163,7 +173,7 @@ public class ManifestImpl extends AbstractEntriesContainerImpl implements Manife
    {
       switch (featureID)
       {
-         case ManifestPackage.MANIFEST__SECTIONS:
+         case ManifestPackage.MANIFEST__SECTIONS :
             getSections().clear();
             return;
       }
@@ -172,6 +182,7 @@ public class ManifestImpl extends AbstractEntriesContainerImpl implements Manife
 
    /**
     * <!-- begin-user-doc --> <!-- end-user-doc -->
+    * 
     * @generated
     */
    @Override
@@ -179,7 +190,7 @@ public class ManifestImpl extends AbstractEntriesContainerImpl implements Manife
    {
       switch (featureID)
       {
-         case ManifestPackage.MANIFEST__SECTIONS:
+         case ManifestPackage.MANIFEST__SECTIONS :
             return sections != null && !sections.isEmpty();
       }
       return super.eIsSet(featureID);

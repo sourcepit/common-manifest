@@ -47,7 +47,7 @@ public class CManifestImpl extends ManifestImpl
       }
       return section;
    }
-   
+
    @Override
    public void addEntries(Map<String, String> entries)
    {
