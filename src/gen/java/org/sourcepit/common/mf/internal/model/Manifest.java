@@ -22,7 +22,7 @@ import org.eclipse.emf.common.util.EList;
  * @model
  * @generated
  */
-public interface Manifest extends AbstractEntriesContainer
+public interface Manifest extends AbstractSection
 {
    /**
     * Returns the value of the '<em><b>Sections</b></em>' containment reference list. The list contents are of type

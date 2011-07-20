@@ -16,7 +16,7 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.ETypeParameter;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
-import org.sourcepit.common.mf.internal.model.AbstractEntriesContainer;
+import org.sourcepit.common.mf.internal.model.AbstractSection;
 import org.sourcepit.common.mf.internal.model.Manifest;
 import org.sourcepit.common.mf.internal.model.ManifestFactory;
 import org.sourcepit.common.mf.internal.model.ManifestPackage;
@@ -55,7 +55,7 @@ public class ManifestPackageImpl extends EPackageImpl implements ManifestPackage
     * 
     * @generated
     */
-   private EClass abstractEntriesContainerEClass = null;
+   private EClass abstractSectionEClass = null;
 
    /**
     * Creates an instance of the model <b>Package</b>, registered with {@link org.eclipse.emf.ecore.EPackage.Registry
@@ -197,9 +197,9 @@ public class ManifestPackageImpl extends EPackageImpl implements ManifestPackage
     * 
     * @generated
     */
-   public EClass getAbstractEntriesContainer()
+   public EClass getAbstractSection()
    {
-      return abstractEntriesContainerEClass;
+      return abstractSectionEClass;
    }
 
    /**
@@ -207,9 +207,9 @@ public class ManifestPackageImpl extends EPackageImpl implements ManifestPackage
     * 
     * @generated
     */
-   public EReference getAbstractEntriesContainer_Entries()
+   public EReference getAbstractSection_Headers()
    {
-      return (EReference) abstractEntriesContainerEClass.getEStructuralFeatures().get(0);
+      return (EReference) abstractSectionEClass.getEStructuralFeatures().get(0);
    }
 
    /**
@@ -252,8 +252,8 @@ public class ManifestPackageImpl extends EPackageImpl implements ManifestPackage
       sectionEClass = createEClass(SECTION);
       createEAttribute(sectionEClass, SECTION__NAME);
 
-      abstractEntriesContainerEClass = createEClass(ABSTRACT_ENTRIES_CONTAINER);
-      createEReference(abstractEntriesContainerEClass, ABSTRACT_ENTRIES_CONTAINER__ENTRIES);
+      abstractSectionEClass = createEClass(ABSTRACT_SECTION);
+      createEReference(abstractSectionEClass, ABSTRACT_SECTION__HEADERS);
    }
 
    /**
@@ -287,8 +287,8 @@ public class ManifestPackageImpl extends EPackageImpl implements ManifestPackage
       // Set bounds for type parameters
 
       // Add supertypes to classes
-      manifestEClass.getESuperTypes().add(this.getAbstractEntriesContainer());
-      sectionEClass.getESuperTypes().add(this.getAbstractEntriesContainer());
+      manifestEClass.getESuperTypes().add(this.getAbstractSection());
+      sectionEClass.getESuperTypes().add(this.getAbstractSection());
 
       // Initialize classes and features; add operations and parameters
       initEClass(manifestEClass, Manifest.class, "Manifest", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -321,24 +321,16 @@ public class ManifestPackageImpl extends EPackageImpl implements ManifestPackage
       initEAttribute(getSection_Name(), ecorePackage.getEString(), "name", null, 0, 1, Section.class, !IS_TRANSIENT,
          !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-      initEClass(abstractEntriesContainerEClass, AbstractEntriesContainer.class, "AbstractEntriesContainer",
-         IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+      initEClass(abstractSectionEClass, AbstractSection.class, "AbstractSection", IS_ABSTRACT, !IS_INTERFACE,
+         IS_GENERATED_INSTANCE_CLASS);
       g1 = createEGenericType(this.getEMapEntry());
       EGenericType g2 = createEGenericType(ecorePackage.getEString());
       g1.getETypeArguments().add(g2);
       g2 = createEGenericType(ecorePackage.getEString());
       g1.getETypeArguments().add(g2);
-      initEReference(getAbstractEntriesContainer_Entries(), g1, null, "entries", null, 0, -1,
-         AbstractEntriesContainer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
-         !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-      op = addEOperation(abstractEntriesContainerEClass, null, "addEntries", 0, 1, IS_UNIQUE, IS_ORDERED);
-      g1 = createEGenericType(ecorePackage.getEMap());
-      g2 = createEGenericType(ecorePackage.getEString());
-      g1.getETypeArguments().add(g2);
-      g2 = createEGenericType(ecorePackage.getEString());
-      g1.getETypeArguments().add(g2);
-      addEParameter(op, g1, "entries", 0, 1, IS_UNIQUE, IS_ORDERED);
+      initEReference(getAbstractSection_Headers(), g1, null, "headers", null, 0, -1, AbstractSection.class,
+         !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE,
+         !IS_DERIVED, IS_ORDERED);
 
       // Create resource
       createResource(eNS_URI);

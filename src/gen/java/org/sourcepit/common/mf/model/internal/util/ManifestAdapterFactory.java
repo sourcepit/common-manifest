@@ -12,7 +12,7 @@ import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
 import org.eclipse.emf.ecore.EObject;
-import org.sourcepit.common.mf.internal.model.AbstractEntriesContainer;
+import org.sourcepit.common.mf.internal.model.AbstractSection;
 import org.sourcepit.common.mf.internal.model.Manifest;
 import org.sourcepit.common.mf.internal.model.ManifestPackage;
 import org.sourcepit.common.mf.internal.model.Section;
@@ -94,9 +94,9 @@ public class ManifestAdapterFactory extends AdapterFactoryImpl
       }
 
       @Override
-      public Adapter caseAbstractEntriesContainer(AbstractEntriesContainer object)
+      public Adapter caseAbstractSection(AbstractSection object)
       {
-         return createAbstractEntriesContainerAdapter();
+         return createAbstractSectionAdapter();
       }
 
       @Override
@@ -163,16 +163,16 @@ public class ManifestAdapterFactory extends AdapterFactoryImpl
    }
 
    /**
-    * Creates a new adapter for an object of class '
-    * {@link org.sourcepit.common.mf.internal.model.AbstractEntriesContainer <em>Abstract Entries Container</em>}'. <!--
-    * begin-user-doc --> This default implementation returns null so that we can easily ignore cases; it's useful to
-    * ignore a case when inheritance will catch all the cases anyway. <!-- end-user-doc -->
+    * Creates a new adapter for an object of class '{@link org.sourcepit.common.mf.internal.model.AbstractSection
+    * <em>Abstract Section</em>}'. <!-- begin-user-doc --> This default implementation returns null so that we can
+    * easily ignore cases; it's useful to ignore a case when inheritance will catch all the cases anyway. <!--
+    * end-user-doc -->
     * 
     * @return the new adapter.
-    * @see org.sourcepit.common.mf.internal.model.AbstractEntriesContainer
+    * @see org.sourcepit.common.mf.internal.model.AbstractSection
     * @generated
     */
-   public Adapter createAbstractEntriesContainerAdapter()
+   public Adapter createAbstractSectionAdapter()
    {
       return null;
    }

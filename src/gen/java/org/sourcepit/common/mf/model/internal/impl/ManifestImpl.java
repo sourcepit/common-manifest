@@ -29,7 +29,7 @@ import org.sourcepit.common.mf.internal.model.Section;
  * 
  * @generated
  */
-public class ManifestImpl extends AbstractEntriesContainerImpl implements Manifest
+public class ManifestImpl extends AbstractSectionImpl implements Manifest
 {
    /**
     * The cached value of the '{@link #getSections() <em>Sections</em>}' containment reference list. <!-- begin-user-doc

@@ -15,19 +15,19 @@ public class ManifestTest extends TestCase
    public void testOrdering() throws Exception
    {
       Manifest manifest = ManifestFactory.eINSTANCE.createManifest();
-      EMap<String, String> entries = manifest.getEntries();
+      EMap<String, String> headers = manifest.getHeaders();
 
-      entries.put("c", "123");
-      entries.put("b", "456");
-      entries.put("a", "789");
+      headers.put("c", "123");
+      headers.put("b", "456");
+      headers.put("a", "789");
 
-      for (Entry<String, String> entry : entries)
+      for (Entry<String, String> header : headers)
       {
-         System.out.println(entry.getKey() + ": " + entry.getValue());
+         System.out.println(header.getKey() + ": " + header.getValue());
       }
 
-      System.out.println(entries.get(0));
-      System.out.println(entries.get(1));
-      System.out.println(entries.get(2));
+      System.out.println(headers.get(0));
+      System.out.println(headers.get(1));
+      System.out.println(headers.get(2));
    }
 }

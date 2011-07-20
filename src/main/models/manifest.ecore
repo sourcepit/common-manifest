@@ -3,7 +3,7 @@
     xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="mf"
     nsURI="http://www.sourcepit.org/common/mf/0.1" nsPrefix="mf">
-  <eClassifiers xsi:type="ecore:EClass" name="Manifest" eSuperTypes="#//AbstractEntriesContainer">
+  <eClassifiers xsi:type="ecore:EClass" name="Manifest" eSuperTypes="#//AbstractSection">
     <eOperations name="getVersion" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eOperations name="getSection" eType="#//Section">
       <eParameters name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -28,19 +28,11 @@
       <eGenericType eTypeParameter="#//EMapEntry/V"/>
     </eStructuralFeatures>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Section" eSuperTypes="#//AbstractEntriesContainer">
+  <eClassifiers xsi:type="ecore:EClass" name="Section" eSuperTypes="#//AbstractSection">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="AbstractEntriesContainer" abstract="true">
-    <eOperations name="addEntries">
-      <eParameters name="entries">
-        <eGenericType eClassifier="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EMap">
-          <eTypeArguments eClassifier="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-          <eTypeArguments eClassifier="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-        </eGenericType>
-      </eParameters>
-    </eOperations>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="entries" upperBound="-1"
+  <eClassifiers xsi:type="ecore:EClass" name="AbstractSection" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="headers" upperBound="-1"
         containment="true">
       <eGenericType eClassifier="#//EMapEntry">
         <eTypeArguments eClassifier="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>

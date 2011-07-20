@@ -18,17 +18,17 @@ import org.sourcepit.common.mf.internal.model.Section;
 
 public class ManifestMerger
 {
-   private final List<AbstractEntryMerger> entryMergers = new ArrayList<AbstractEntryMerger>();
+   private final List<AbstractHeaderMerger> headerMergers = new ArrayList<AbstractHeaderMerger>();
 
-   public List<AbstractEntryMerger> getEntryMergers()
+   public List<AbstractHeaderMerger> getHeaderMergers()
    {
-      return entryMergers;
+      return headerMergers;
    }
 
    // adder for maven mojo configuration injection
-   public void addEntryMergers(List<AbstractEntryMerger> entryMergers)
+   public void addHeaderMergers(List<AbstractHeaderMerger> headerMergers)
    {
-      this.entryMergers.addAll(entryMergers);
+      this.headerMergers.addAll(headerMergers);
    }
 
    /**
@@ -36,9 +36,9 @@ public class ManifestMerger
     */
    public void merge(Manifest target, Manifest source)
    {
-      final EMap<String, String> targetEntries = target.getEntries();
-      final EMap<String, String> sourceEntries = source.getEntries();
-      mergeEntries(null, targetEntries, sourceEntries);
+      final EMap<String, String> targetHeaders = target.getHeaders();
+      final EMap<String, String> sourceHeaders = source.getHeaders();
+      mergeHeaders(null, targetHeaders, sourceHeaders);
 
       final EList<Section> targetSections = target.getSections();
       final EList<Section> sourceSections = source.getSections();
@@ -65,11 +65,11 @@ public class ManifestMerger
             targetSections.add(targetSection);
          }
 
-         final EMap<String, String> targetEntries = targetSection.getEntries();
-         final EMap<String, String> sourceEntries = sourceSection.getEntries();
-         mergeEntries(sectionName, targetEntries, sourceEntries);
+         final EMap<String, String> targetHeaders = targetSection.getHeaders();
+         final EMap<String, String> sourceHeaders = sourceSection.getHeaders();
+         mergeHeaders(sectionName, targetHeaders, sourceHeaders);
 
-         if (targetEntries.isEmpty())
+         if (targetHeaders.isEmpty())
          {
             targetSectionMap.remove(sectionName);
             targetSections.remove(targetSection);
@@ -77,36 +77,36 @@ public class ManifestMerger
       }
    }
 
-   private void mergeEntries(final String sectionName, final EMap<String, String> targetEntries,
-      final EMap<String, String> sourceEntries)
+   private void mergeHeaders(final String sectionName, final EMap<String, String> targetHeaders,
+      final EMap<String, String> sourceHeaders)
    {
-      for (Entry<String, String> entry : sourceEntries)
+      for (Entry<String, String> header : sourceHeaders)
       {
-         final String entryName = entry.getKey();
-         final String targetValue = targetEntries.get(entryName);
-         final String sourceValue = entry.getValue();
-         final String newValue = getEntryMerger(sectionName, entryName).computeNewValue(entryName, targetValue,
+         final String headerName = header.getKey();
+         final String targetValue = targetHeaders.get(headerName);
+         final String sourceValue = header.getValue();
+         final String newValue = getHeaderMerger(sectionName, headerName).computeNewValue(headerName, targetValue,
             sourceValue);
          if (newValue == null)
          {
-            targetEntries.removeKey(entryName);
+            targetHeaders.removeKey(headerName);
          }
          else
          {
-            targetEntries.put(entryName, newValue);
+            targetHeaders.put(headerName, newValue);
          }
       }
    }
 
-   private AbstractEntryMerger getEntryMerger(String sectionName, String entryName)
+   private AbstractHeaderMerger getHeaderMerger(String sectionName, String headerName)
    {
-      for (AbstractEntryMerger merger : this.entryMergers)
+      for (AbstractHeaderMerger merger : this.headerMergers)
       {
-         if (merger.isEntryMergerFor(entryName))
+         if (merger.isHeaderMergerFor(headerName))
          {
             return merger;
          }
       }
-      return new DefaultEntryMerger();
+      return new DefaultHeaderMerger();
    }
 }

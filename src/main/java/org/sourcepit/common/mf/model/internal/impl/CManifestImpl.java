@@ -4,7 +4,6 @@
 
 package org.sourcepit.common.mf.model.internal.impl;
 
-import java.util.Map;
 import java.util.jar.Attributes.Name;
 
 import org.sourcepit.common.mf.internal.model.ManifestFactory;
@@ -15,7 +14,7 @@ public class CManifestImpl extends ManifestImpl
    @Override
    public String getVersion()
    {
-      return getEntries().get(Name.MANIFEST_VERSION.toString());
+      return getHeaders().get(Name.MANIFEST_VERSION.toString());
    }
 
    @Override
@@ -23,15 +22,15 @@ public class CManifestImpl extends ManifestImpl
    {
       if (getVersion() != null)
       {
-         getEntries().put(Name.MANIFEST_VERSION.toString(), version);
+         getHeaders().put(Name.MANIFEST_VERSION.toString(), version);
       }
       else
       {
-         getEntries().put(Name.MANIFEST_VERSION.toString(), version);
-         int idx = getEntries().indexOfKey(Name.MANIFEST_VERSION.toString());
+         getHeaders().put(Name.MANIFEST_VERSION.toString(), version);
+         int idx = getHeaders().indexOfKey(Name.MANIFEST_VERSION.toString());
          if (idx != 0)
          {
-            getEntries().move(0, idx);
+            getHeaders().move(0, idx);
          }
       }
    }
@@ -64,11 +63,5 @@ public class CManifestImpl extends ManifestImpl
          getSections().add(section);
       }
       return section;
-   }
-
-   @Override
-   public void addEntries(Map<String, String> entries)
-   {
-      getEntries().putAll(entries);
    }
 }

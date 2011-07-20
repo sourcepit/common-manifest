@@ -11,11 +11,9 @@ import java.util.LinkedHashSet;
 import java.util.List;
 
 /**
- * MultiValueEntryMerger
- * 
  * @author Bernd
  */
-public class MultiValueEntryMerger extends AbstractEntryMerger
+public class MultiValueHeaderMerger extends AbstractHeaderMerger
 {
    private String separator = ",";
 
@@ -42,7 +40,7 @@ public class MultiValueEntryMerger extends AbstractEntryMerger
    }
 
    @Override
-   public String computeNewValue(String entryName, String leftValue, String rightValue)
+   public String computeNewValue(String headerName, String leftValue, String rightValue)
    {
       Collection<String> leftValues = parse(leftValue);
       if (unique)

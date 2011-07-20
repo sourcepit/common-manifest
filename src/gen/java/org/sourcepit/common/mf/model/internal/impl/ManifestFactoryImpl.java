@@ -28,14 +28,14 @@ public class ManifestFactoryImpl extends EFactoryImpl implements ManifestFactory
    /**
     * Creates the default factory implementation. <!-- begin-user-doc --> <!-- end-user-doc -->
     * 
-    * @generated NOT
+    * @generated
     */
    public static ManifestFactory init()
    {
       try
       {
          ManifestFactory theManifestFactory = (ManifestFactory) EPackage.Registry.INSTANCE
-            .getEFactory(ManifestPackage.eNS_URI);
+            .getEFactory("http://www.sourcepit.org/common/mf/0.1");
          if (theManifestFactory != null)
          {
             return theManifestFactory;

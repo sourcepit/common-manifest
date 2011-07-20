@@ -4,7 +4,7 @@
 
 package org.sourcepit.common.mf.internal.parser;
 
-import org.sourcepit.common.mf.internal.model.AbstractEntriesContainer;
+import org.sourcepit.common.mf.internal.model.AbstractSection;
 import org.sourcepit.common.mf.internal.model.Manifest;
 import org.sourcepit.common.mf.internal.model.ManifestFactory;
 import org.sourcepit.common.mf.internal.model.Section;
@@ -16,7 +16,7 @@ public class ManifestBuilder extends AbstractManifestVisitor
 {
    protected Manifest manifest;
 
-   protected AbstractEntriesContainer current;
+   protected AbstractSection current;
 
    public Manifest getManifest()
    {
@@ -44,7 +44,7 @@ public class ManifestBuilder extends AbstractManifestVisitor
    @Override
    public void visitHeader(String name, String value)
    {
-      current.getEntries().put(name, value);
+      current.getHeaders().put(name, value);
    }
 
    protected Manifest createManifest()
