@@ -4,12 +4,12 @@
 
 package org.sourcepit.common.mf.internal.merge;
 
+import junit.framework.TestCase;
+
 import org.eclipse.emf.common.util.EMap;
 import org.sourcepit.common.mf.internal.model.Manifest;
 import org.sourcepit.common.mf.internal.model.ManifestFactory;
 import org.sourcepit.common.mf.internal.model.Section;
-
-import junit.framework.TestCase;
 
 public class ManifestMergerTest extends TestCase
 {
@@ -143,7 +143,7 @@ public class ManifestMergerTest extends TestCase
       assertEquals(1, targetEntries.size());
       assertEquals("value", targetEntries.get("key"));
    }
-   
+
    public void testSection4() throws Exception
    {
       Manifest target = ManifestFactory.eINSTANCE.createManifest();
@@ -163,7 +163,7 @@ public class ManifestMergerTest extends TestCase
       assertEquals("value", targetEntries.get("key"));
       assertEquals("value2", targetEntries.get("key2"));
    }
-   
+
    public void testSection5() throws Exception
    {
       Manifest target = ManifestFactory.eINSTANCE.createManifest();
@@ -181,7 +181,7 @@ public class ManifestMergerTest extends TestCase
       EMap<String, String> targetEntries = target.getSection("section", false).getEntries();
       assertEquals(1, targetEntries.size());
       assertEquals("value", targetEntries.get("key"));
-      
+
       targetEntries = target.getSection("section2", false).getEntries();
       assertEquals(1, targetEntries.size());
       assertEquals("value2", targetEntries.get("key2"));

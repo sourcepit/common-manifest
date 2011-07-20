@@ -12,6 +12,10 @@
         <element xmi:type="ecore:EOperation" href="manifest.ecore#//Manifest/getVersion"/>
         <layoutConstraint xmi:type="notation:Location" xmi:id="_igY9UbHVEeCrEawZ2y5LrQ"/>
       </children>
+      <children xmi:type="notation:Node" xmi:id="_Rx5EYbMBEeCW1MGEyRzGpA" type="2002">
+        <element xmi:type="ecore:EOperation" href="manifest.ecore#//Manifest/setVersion"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_Rx5EYrMBEeCW1MGEyRzGpA"/>
+      </children>
       <children xmi:type="notation:Node" xmi:id="_J0JQwLH7EeCnPfdtklhk1A" type="2002">
         <element xmi:type="ecore:EOperation" href="manifest.ecore#//Manifest/getSection"/>
         <layoutConstraint xmi:type="notation:Location" xmi:id="_J0JQwbH7EeCnPfdtklhk1A"/>
