@@ -6,91 +6,33 @@ package org.sourcepit.common.mf.internal.resource;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.lang.reflect.Field;
 import java.util.LinkedHashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.jar.Attributes;
-import java.util.jar.Attributes.Name;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.impl.ResourceImpl;
 import org.sourcepit.common.mf.internal.model.AbstractEntriesContainer;
 import org.sourcepit.common.mf.internal.model.Manifest;
-import org.sourcepit.common.mf.internal.model.ManifestFactory;
 import org.sourcepit.common.mf.internal.model.Section;
-
-import com.springsource.util.parser.manifest.ManifestContents;
-import com.springsource.util.parser.manifest.RecoveringManifestParser;
-import com.springsource.util.parser.manifest.internal.ManifestVisitor;
+import org.sourcepit.common.mf.internal.parser.ManifestBuilder;
+import org.sourcepit.common.mf.internal.parser.ManifestParser;
 
 public class ManifestResourceImpl extends ResourceImpl
 {
    @Override
    protected void doLoad(InputStream inputStream, Map<?, ?> options) throws IOException
    {
-      final Manifest manifest = ManifestFactory.eINSTANCE.createManifest();
-      RecoveringManifestParser parser = new RecoveringManifestParser(new ManifestVisitor()
+      final ManifestBuilder builder = new ManifestBuilder();
+      new ManifestParser().parse(inputStream, builder);
+      final Manifest manifest = builder.getManifest();
+      if (manifest != null)
       {
-         private AbstractEntriesContainer current;
-
-         public boolean visitSection(boolean isMainSection, String name)
-         {
-            if (isMainSection)
-            {
-               current = manifest;
-            }
-            else
-            {
-               current = manifest.getSection(name, true);
-            }
-            return true;
-         }
-
-         public void visitManifestVersion(String version)
-         {
-            current.getEntries().put(Name.MANIFEST_VERSION.toString(), version);
-         }
-
-         public void visitHeader(String name, String value)
-         {
-            current.getEntries().put(name, value);
-         }
-
-         public void setTerminateAfterMainSection(boolean shouldTerminate)
-         {
-         }
-
-         public String getVersion()
-         {
-            return null;
-         }
-
-         public List<String> getSectionNames()
-         {
-            return null;
-         }
-
-         public ManifestContents getManifestContents()
-         {
-            return null;
-         }
-
-         public Map<String, String> getMainAttributes()
-         {
-            return null;
-         }
-
-         public Map<String, String> getAttributesForSection(String sectionName)
-         {
-            return null;
-         }
-      });
-      parser.parse(new InputStreamReader(inputStream, "UTF-8"));
-      getContents().add(manifest);
+         getContents().add(manifest);
+      }
    }
 
    @Override
@@ -104,6 +46,10 @@ public class ManifestResourceImpl extends ResourceImpl
 
    protected void doSave(Manifest manifest, OutputStream outputStream) throws IOException
    {
+      if (manifest.getVersion() == null)
+      {
+         manifest.setVersion("1.0");
+      }
       java.util.jar.Manifest javaManifest = createOrderedManifest();
       Attributes attributes = javaManifest.getMainAttributes();
       doSave(manifest, attributes);

@@ -64,4 +64,12 @@ public interface Manifest extends AbstractEntriesContainer
     */
    Section getSection(String name, boolean createOnDemand);
 
+   /**
+    * <!-- begin-user-doc --> <!-- end-user-doc -->
+    * 
+    * @model
+    * @generated
+    */
+   void setVersion(String version);
+
 } // Manifest

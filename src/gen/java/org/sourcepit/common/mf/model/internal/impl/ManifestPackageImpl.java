@@ -305,6 +305,9 @@ public class ManifestPackageImpl extends EPackageImpl implements ManifestPackage
       addEParameter(op, ecorePackage.getEString(), "name", 0, 1, IS_UNIQUE, IS_ORDERED);
       addEParameter(op, ecorePackage.getEBoolean(), "createOnDemand", 0, 1, IS_UNIQUE, IS_ORDERED);
 
+      op = addEOperation(manifestEClass, null, "setVersion", 0, 1, IS_UNIQUE, IS_ORDERED);
+      addEParameter(op, ecorePackage.getEString(), "version", 0, 1, IS_UNIQUE, IS_ORDERED);
+
       initEClass(eMapEntryEClass, Map.Entry.class, "EMapEntry", !IS_ABSTRACT, !IS_INTERFACE,
          !IS_GENERATED_INSTANCE_CLASS);
       EGenericType g1 = createEGenericType(eMapEntryEClass_K);

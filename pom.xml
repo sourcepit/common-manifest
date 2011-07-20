@@ -19,16 +19,6 @@
 			<id>srcpit-public</id>
 			<url>http://nexus.sourcepit.org/content/groups/public/</url>
 		</repository>
-		<repository>
-			<id>com.springsource.repository.bundles.release</id>
-			<name>SpringSource Enterprise Bundle Repository - SpringSource Bundle Releases</name>
-			<url>http://repository.springsource.com/maven/bundles/release</url>
-		</repository>
-		<repository>
-			<id>com.springsource.repository.bundles.external</id>
-			<name>SpringSource Enterprise Bundle Repository - External Bundle Releases</name>
-			<url>http://repository.springsource.com/maven/bundles/external</url>
-		</repository>
 	</repositories>
 
 	<dependencies>
@@ -44,11 +34,6 @@
 			</exclusions>
 		</dependency>
 		<dependency>
-			<groupId>com.springsource.util</groupId>
-			<artifactId>com.springsource.util.parser.manifest</artifactId>
-			<version>2.0.5.RELEASE</version>
-		</dependency>
-		<dependency>
 			<groupId>commons-io</groupId>
 			<artifactId>commons-io</artifactId>
 			<scope>test</scope>
@@ -58,11 +43,6 @@
 			<artifactId>junit</artifactId>
 			<scope>test</scope>
 		</dependency>
-		<!-- <dependency> -->
-		<!-- <groupId>com.springsource.util</groupId> -->
-		<!-- <artifactId>com.springsource.util.osgi</artifactId> -->
-		<!-- <version>2.0.0.RELEASE</version> -->
-		<!-- </dependency> -->
 	</dependencies>
 
 	<build>
