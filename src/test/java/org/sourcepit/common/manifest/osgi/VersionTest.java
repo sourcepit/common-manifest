@@ -37,7 +37,7 @@ public class VersionTest extends AbstractVersionCompatibilityTest
          fail();
       }
       catch (IllegalArgumentException e)
-      {
+      { // noop
       }
    }
 
@@ -131,7 +131,7 @@ public class VersionTest extends AbstractVersionCompatibilityTest
          fail();
       }
       catch (IllegalArgumentException e)
-      {
+      { // noop
       }
 
       try
@@ -140,7 +140,7 @@ public class VersionTest extends AbstractVersionCompatibilityTest
          fail();
       }
       catch (IllegalArgumentException e)
-      {
+      { // noop
       }
 
       try
@@ -149,7 +149,7 @@ public class VersionTest extends AbstractVersionCompatibilityTest
          fail();
       }
       catch (IllegalArgumentException e)
-      {
+      { // noop
       }
 
       try
@@ -158,7 +158,7 @@ public class VersionTest extends AbstractVersionCompatibilityTest
          fail();
       }
       catch (IllegalArgumentException e)
-      {
+      { // noop
       }
 
       try
@@ -167,7 +167,7 @@ public class VersionTest extends AbstractVersionCompatibilityTest
          fail();
       }
       catch (IllegalArgumentException e)
-      {
+      { // noop
       }
 
       try
@@ -176,7 +176,7 @@ public class VersionTest extends AbstractVersionCompatibilityTest
          fail();
       }
       catch (IllegalArgumentException e)
-      {
+      { // noop
       }
    }
 

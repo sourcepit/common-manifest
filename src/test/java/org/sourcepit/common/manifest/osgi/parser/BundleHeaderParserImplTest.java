@@ -78,7 +78,7 @@ public class BundleHeaderParserImplTest
 
       assertThat(parser.toString(verionParam), IsEqual.equalTo("version=1.2.3"));
 
-      Version parsedValue = (Version) parser.parse(verionParam);
+      Version parsedValue = (Version) parser.parseParameter(verionParam);
       assertThat(parsedValue, IsEqual.equalTo(version));
    }
 
@@ -95,7 +95,7 @@ public class BundleHeaderParserImplTest
 
       assertThat(parser.toString(verionParam), IsEqual.equalTo("version=\"[1,2)\""));
 
-      VersionRange parsedValue = (VersionRange) parser.parse(verionParam);
+      VersionRange parsedValue = (VersionRange) parser.parseParameter(verionParam);
       assertThat(parsedValue, IsEqual.equalTo(range));
    }
 

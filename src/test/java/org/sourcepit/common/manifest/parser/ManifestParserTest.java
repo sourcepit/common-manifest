@@ -44,7 +44,7 @@ public class ManifestParserTest
       final Map<String, String>[] headers = new Map[] {mainHeaders, sectionHeaders};
       new ManifestParser().parse(new ByteArrayInputStream(out.toByteArray()), new AbstractManifestVisitor()
       {
-         int i = -1;
+         private int i = -1;
 
          @Override
          public void visitSection(boolean isMainSection, String name)

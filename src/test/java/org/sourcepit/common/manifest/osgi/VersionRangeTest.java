@@ -40,7 +40,7 @@ public class VersionRangeTest extends AbstractVersionCompatibilityTest
          fail();
       }
       catch (IllegalArgumentException e)
-      {
+      { // noop
       }
 
       try
@@ -49,7 +49,7 @@ public class VersionRangeTest extends AbstractVersionCompatibilityTest
          fail();
       }
       catch (IllegalArgumentException e)
-      {
+      { // noop
       }
 
       try
@@ -58,7 +58,7 @@ public class VersionRangeTest extends AbstractVersionCompatibilityTest
          fail();
       }
       catch (IllegalArgumentException e)
-      {
+      { // noop
       }
    }
 

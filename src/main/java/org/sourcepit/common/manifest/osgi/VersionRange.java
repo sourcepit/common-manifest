@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) 2011 Sourcepit.org contributors and others. All rights reserved. This program and the accompanying
+ * materials are made available under the terms of the Eclipse Public License v1.0 which accompanies this distribution,
+ * and is available at http://www.eclipse.org/legal/epl-v10.html
+ */
 
 package org.sourcepit.common.manifest.osgi;
 
@@ -168,6 +173,7 @@ public class VersionRange
       return result;
    }
 
+   // CSOFF generated code
    @Override
    public boolean equals(Object obj)
    {
@@ -197,7 +203,7 @@ public class VersionRange
       else if (!lowVersion.equals(other.lowVersion))
          return false;
       return true;
-   }
+   } // CSON
 
    public String toString()
    {

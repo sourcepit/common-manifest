@@ -32,16 +32,16 @@ public class BundleHeaderParserImpl implements BundleHeaderParser
    {
       if (parseable instanceof Header)
       {
-         return parse((Header) parseable);
+         return parseHeader((Header) parseable);
       }
       if (parseable instanceof Parameter)
       {
-         return parse((Parameter) parseable);
+         return parseParameter((Parameter) parseable);
       }
       return null;
    }
 
-   protected Object parse(Header header)
+   protected Object parseHeader(Header header)
    {
       final String name = header.getName();
       final String value = header.getValue();
@@ -52,6 +52,11 @@ public class BundleHeaderParserImpl implements BundleHeaderParser
          return null;
       }
 
+      return parseHeader(headerName, value);
+   }
+
+   protected Object parseHeader(BundleHeaderName headerName, String value)
+   {
       switch (headerName)
       {
          case BUNDLE_ACTIVATIONPOLICY :
@@ -77,37 +82,55 @@ public class BundleHeaderParserImpl implements BundleHeaderParser
       }
    }
 
-   protected Object parse(Parameter parameter)
+   protected Object parseParameter(Parameter parameter)
    {
       final String name = parameter.getName();
       if ("version".equals(name) || "specification-version".equals(name))
       {
-         final Parameterized parameterized = parameter.getParameterized();
-         if (parameterized instanceof PackageImport)
-         {
-            return VersionRange.parse(parameter.getValue());
-         }
-         if (parameterized instanceof PackageExport)
-         {
-            return Version.parse(parameter.getValue());
-         }
+         return parseParameterVersion(parameter);
       }
       else if ("singleton".equals(name))
       {
-         final Parameterized parameterized = parameter.getParameterized();
-         if (parameterized instanceof BundleSymbolicName)
-         {
-            return Boolean.valueOf(parameter.getValue());
-         }
+         return parseParameterSingleton(parameter);
       }
       else if ("bundle-version".equals(name))
       {
-         final Parameterized parameterized = parameter.getParameterized();
-         if (parameterized instanceof FragmentHost || parameterized instanceof PackageImport
-            || parameterized instanceof BundleRequirement)
-         {
-            return VersionRange.parse(parameter.getValue());
-         }
+         return parseParameterBundleVersion(parameter);
+      }
+      return null;
+   }
+
+   protected Object parseParameterVersion(Parameter parameter)
+   {
+      final Parameterized parameterized = parameter.getParameterized();
+      if (parameterized instanceof PackageImport)
+      {
+         return VersionRange.parse(parameter.getValue());
+      }
+      if (parameterized instanceof PackageExport)
+      {
+         return Version.parse(parameter.getValue());
+      }
+      return null;
+   }
+
+   protected Boolean parseParameterSingleton(Parameter parameter)
+   {
+      final Parameterized parameterized = parameter.getParameterized();
+      if (parameterized instanceof BundleSymbolicName)
+      {
+         return Boolean.valueOf(parameter.getValue());
+      }
+      return null;
+   }
+
+   protected VersionRange parseParameterBundleVersion(Parameter parameter)
+   {
+      final Parameterized parameterized = parameter.getParameterized();
+      if (parameterized instanceof FragmentHost || parameterized instanceof PackageImport
+         || parameterized instanceof BundleRequirement)
+      {
+         return VersionRange.parse(parameter.getValue());
       }
       return null;
    }
@@ -280,8 +303,8 @@ public class BundleHeaderParserImpl implements BundleHeaderParser
 
       protected BundleManifestParser newParser()
       {
-         return parser = new BundleManifestParser(new CommonTokenStream(new BundleManifestLexer(new ANTLRStringStream(
-            value))));
+         parser = new BundleManifestParser(new CommonTokenStream(new BundleManifestLexer(new ANTLRStringStream(value))));
+         return parser;
       }
    }
 }
