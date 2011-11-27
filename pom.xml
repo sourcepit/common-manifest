@@ -30,7 +30,7 @@
 		<dependency>
 			<groupId>org.antlr</groupId>
 			<artifactId>antlr-runtime</artifactId>
-			<version>3.4</version>
+			<version>3.3</version>
 			<exclusions>
 				<exclusion>
 					<artifactId>stringtemplate</artifactId>
@@ -98,7 +98,7 @@
 			<plugin>
 				<groupId>org.antlr</groupId>
 				<artifactId>antlr3-maven-plugin</artifactId>
-				<version>3.4</version>
+				<version>3.3</version>
 				<executions>
 					<execution>
 						<goals>
