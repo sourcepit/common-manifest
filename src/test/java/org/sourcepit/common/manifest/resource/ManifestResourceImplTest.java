@@ -16,7 +16,6 @@ import java.net.URL;
 import java.util.Map.Entry;
 
 import org.apache.commons.io.IOUtils;
-import org.apache.commons.lang.SystemUtils;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.hamcrest.core.Is;
@@ -51,14 +50,14 @@ public class ManifestResourceImplTest
 
       StringBuilder sb = new StringBuilder();
       sb.append("Manifest-Version: 1.0");
-      sb.append(SystemUtils.LINE_SEPARATOR);
+      sb.append("\r\n");
       sb.append("Main-Class: foo");
-      sb.append(SystemUtils.LINE_SEPARATOR);
+      sb.append("\r\n");
       sb.append("foo: bar");
-      sb.append(SystemUtils.LINE_SEPARATOR);
+      sb.append("\r\n");
       sb.append("fu: bä");
-      sb.append(SystemUtils.LINE_SEPARATOR);
-      sb.append(SystemUtils.LINE_SEPARATOR);
+      sb.append("\r\n");
+      sb.append("\r\n");
 
       String expectedContent = sb.toString();
       assertThat(content, IsEqual.equalTo(expectedContent));

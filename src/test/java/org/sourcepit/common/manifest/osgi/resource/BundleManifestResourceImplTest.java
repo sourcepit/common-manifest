@@ -14,7 +14,6 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.Map.Entry;
 
-import org.apache.commons.lang.SystemUtils;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.hamcrest.core.Is;
@@ -50,16 +49,16 @@ public class BundleManifestResourceImplTest
 
       StringBuilder sb = new StringBuilder();
       sb.append("Manifest-Version: 1.0");
-      sb.append(SystemUtils.LINE_SEPARATOR);
+      sb.append("\r\n");
       sb.append("Bundle-ManifestVersion: 2");
-      sb.append(SystemUtils.LINE_SEPARATOR);
+      sb.append("\r\n");
       sb.append("Bundle-Version: 1.2.3");
-      sb.append(SystemUtils.LINE_SEPARATOR);
+      sb.append("\r\n");
       sb.append("foo: bar");
-      sb.append(SystemUtils.LINE_SEPARATOR);
+      sb.append("\r\n");
       sb.append("fu: bä");
-      sb.append(SystemUtils.LINE_SEPARATOR);
-      sb.append(SystemUtils.LINE_SEPARATOR);
+      sb.append("\r\n");
+      sb.append("\r\n");
 
       String expectedContent = sb.toString();
       assertThat(content, IsEqual.equalTo(expectedContent));
