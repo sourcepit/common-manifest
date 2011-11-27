@@ -45,7 +45,14 @@ public class BundleHeaderParserImpl implements BundleHeaderParser
    {
       final String name = header.getName();
       final String value = header.getValue();
-      switch (BundleHeaderName.get(name))
+
+      final BundleHeaderName headerName = BundleHeaderName.get(name);
+      if (headerName == null)
+      {
+         return null;
+      }
+
+      switch (headerName)
       {
          case BUNDLE_ACTIVATIONPOLICY :
             return parseBundleActivationPolicy(value);
