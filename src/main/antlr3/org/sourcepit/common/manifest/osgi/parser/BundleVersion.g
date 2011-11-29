@@ -146,7 +146,7 @@ fragment
 ALPHA
   :
   'a'..'z'
-  | 'A' 'Z'
+  | 'A'..'Z'
   ;
 
 fragment
