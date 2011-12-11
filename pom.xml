@@ -11,7 +11,7 @@
 	<version>0.1.0-SNAPSHOT</version>
 
 	<scm>
-		<connection>scm:svn:http://svn.sourcepit.org/common/trunk/common-bundle-manifest</connection>
+		<connection>scm:svn:http://svn.sourcepit.org/common/trunk/common-manifest</connection>
 	</scm>
 
 	<!-- repo to resolve parent pom from -->
