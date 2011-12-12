@@ -40,9 +40,8 @@ public interface Manifest extends AbstractSection
     * 
     * @return the value of the '<em>Headers</em>' map.
     * @see org.sourcepit.common.manifest.ManifestPackage#getManifest_Headers()
-    * @model
-    *        mapType=
-    *        "org.sourcepit.common.manifest.HeaderEntry<org.eclipse.emf.ecore.EString, org.eclipse.emf.ecore.EString>"
+    * @model 
+    *        mapType="org.sourcepit.common.manifest.HeaderEntry<org.eclipse.emf.ecore.EString, org.eclipse.emf.ecore.EString>"
     * @generated
     */
    EMap<String, String> getHeaders();
