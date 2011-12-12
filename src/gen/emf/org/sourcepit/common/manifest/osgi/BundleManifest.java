@@ -1,8 +1,7 @@
 /**
- * <copyright>
- * </copyright>
- * 
- * $Id$
+ * Copyright (c) 2011 Sourcepit.org contributors and others. All rights reserved. This program and the accompanying
+ * materials are made available under the terms of the Eclipse Public License v1.0 which accompanies this distribution,
+ * and is available at http://www.eclipse.org/legal/epl-v10.html
  */
 
 package org.sourcepit.common.manifest.osgi;
@@ -31,69 +30,6 @@ public interface BundleManifest extends Manifest
     * @generated
     */
    Header getHeader(BundleHeaderName name);
-
-   /**
-    * <!-- begin-user-doc -->
-    * <!-- end-user-doc -->
-    * 
-    * @model kind="operation"
-    * @generated
-    */
-   BundleActivationPolicy getBundleActivationPolicy();
-
-   /**
-    * <!-- begin-user-doc -->
-    * <!-- end-user-doc -->
-    * 
-    * @model kind="operation"
-    * @generated
-    */
-   String getBundleActivator();
-
-   /**
-    * <!-- begin-user-doc -->
-    * <!-- end-user-doc -->
-    * 
-    * @model kind="operation" many="false"
-    * @generated
-    */
-   EList<PackageExport> getExportPackage();
-
-   /**
-    * <!-- begin-user-doc -->
-    * <!-- end-user-doc -->
-    * 
-    * @model kind="operation" many="false"
-    * @generated
-    */
-   EList<PackageImport> getImportPackage();
-
-   /**
-    * <!-- begin-user-doc -->
-    * <!-- end-user-doc -->
-    * 
-    * @model kind="operation" many="false"
-    * @generated
-    */
-   EList<PackageImport> getDynamicImportPackage();
-
-   /**
-    * <!-- begin-user-doc -->
-    * <!-- end-user-doc -->
-    * 
-    * @model kind="operation" many="false"
-    * @generated
-    */
-   EList<BundleRequirement> getRequireBundle();
-
-   /**
-    * <!-- begin-user-doc -->
-    * <!-- end-user-doc -->
-    * 
-    * @model kind="operation" many="false"
-    * @generated
-    */
-   EList<ClassPathEntry> getBundleClassPath();
 
    /**
     * <!-- begin-user-doc -->
@@ -157,5 +93,68 @@ public interface BundleManifest extends Manifest
     * @generated
     */
    FragmentHost getFragmentHost();
+
+   /**
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @model kind="operation"
+    * @generated
+    */
+   BundleActivationPolicy getBundleActivationPolicy();
+
+   /**
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @model kind="operation"
+    * @generated
+    */
+   String getBundleActivator();
+
+   /**
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @model kind="operation" many="false"
+    * @generated
+    */
+   EList<PackageExport> getExportPackage();
+
+   /**
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @model kind="operation" many="false"
+    * @generated
+    */
+   EList<PackageImport> getImportPackage();
+
+   /**
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @model kind="operation" many="false"
+    * @generated
+    */
+   EList<PackageImport> getDynamicImportPackage();
+
+   /**
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @model kind="operation" many="false"
+    * @generated
+    */
+   EList<BundleRequirement> getRequireBundle();
+
+   /**
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @model kind="operation" many="false"
+    * @generated
+    */
+   EList<ClassPathEntry> getBundleClassPath();
 
 } // BundleManifest

@@ -1,8 +1,7 @@
 /**
- * <copyright>
- * </copyright>
- * 
- * $Id$
+ * Copyright (c) 2011 Sourcepit.org contributors and others. All rights reserved. This program and the accompanying
+ * materials are made available under the terms of the Eclipse Public License v1.0 which accompanies this distribution,
+ * and is available at http://www.eclipse.org/legal/epl-v10.html
  */
 
 package org.sourcepit.common.manifest.osgi;
@@ -70,42 +69,6 @@ public interface BundleManifestPackage extends EPackage
    BundleManifestPackage eINSTANCE = org.sourcepit.common.manifest.osgi.impl.BundleManifestPackageImpl.init();
 
    /**
-    * The meta object id for the '{@link org.sourcepit.common.manifest.osgi.impl.ParameterImpl <em>Parameter</em>}'
-    * class.
-    * <!-- begin-user-doc -->
-    * <!-- end-user-doc -->
-    * 
-    * @see org.sourcepit.common.manifest.osgi.impl.ParameterImpl
-    * @see org.sourcepit.common.manifest.osgi.impl.BundleManifestPackageImpl#getParameter()
-    * @generated
-    */
-   int PARAMETER = 2;
-
-   /**
-    * The meta object id for the '{@link org.sourcepit.common.manifest.osgi.impl.ParameterizedImpl
-    * <em>Parameterized</em>}' class.
-    * <!-- begin-user-doc -->
-    * <!-- end-user-doc -->
-    * 
-    * @see org.sourcepit.common.manifest.osgi.impl.ParameterizedImpl
-    * @see org.sourcepit.common.manifest.osgi.impl.BundleManifestPackageImpl#getParameterized()
-    * @generated
-    */
-   int PARAMETERIZED = 1;
-
-   /**
-    * The meta object id for the '{@link org.sourcepit.common.manifest.osgi.impl.BundleActivationPolicyImpl
-    * <em>Bundle Activation Policy</em>}' class.
-    * <!-- begin-user-doc -->
-    * <!-- end-user-doc -->
-    * 
-    * @see org.sourcepit.common.manifest.osgi.impl.BundleActivationPolicyImpl
-    * @see org.sourcepit.common.manifest.osgi.impl.BundleManifestPackageImpl#getBundleActivationPolicy()
-    * @generated
-    */
-   int BUNDLE_ACTIVATION_POLICY = 3;
-
-   /**
     * The meta object id for the '{@link org.sourcepit.common.manifest.osgi.impl.BundleManifestImpl
     * <em>Bundle Manifest</em>}' class.
     * <!-- begin-user-doc -->
@@ -148,6 +111,18 @@ public interface BundleManifestPackage extends EPackage
    int BUNDLE_MANIFEST_FEATURE_COUNT = ManifestPackage.MANIFEST_FEATURE_COUNT + 0;
 
    /**
+    * The meta object id for the '{@link org.sourcepit.common.manifest.osgi.impl.ParameterizedImpl
+    * <em>Parameterized</em>}' class.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @see org.sourcepit.common.manifest.osgi.impl.ParameterizedImpl
+    * @see org.sourcepit.common.manifest.osgi.impl.BundleManifestPackageImpl#getParameterized()
+    * @generated
+    */
+   int PARAMETERIZED = 1;
+
+   /**
     * The feature id for the '<em><b>Parameters</b></em>' containment reference list.
     * <!-- begin-user-doc -->
     * <!-- end-user-doc -->
@@ -166,6 +141,18 @@ public interface BundleManifestPackage extends EPackage
     * @ordered
     */
    int PARAMETERIZED_FEATURE_COUNT = 1;
+
+   /**
+    * The meta object id for the '{@link org.sourcepit.common.manifest.osgi.impl.ParameterImpl <em>Parameter</em>}'
+    * class.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @see org.sourcepit.common.manifest.osgi.impl.ParameterImpl
+    * @see org.sourcepit.common.manifest.osgi.impl.BundleManifestPackageImpl#getParameter()
+    * @generated
+    */
+   int PARAMETER = 2;
 
    /**
     * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -226,6 +213,18 @@ public interface BundleManifestPackage extends EPackage
     * @ordered
     */
    int PARAMETER_FEATURE_COUNT = ManifestPackage.PARSEABLE_FEATURE_COUNT + 5;
+
+   /**
+    * The meta object id for the '{@link org.sourcepit.common.manifest.osgi.impl.BundleActivationPolicyImpl
+    * <em>Bundle Activation Policy</em>}' class.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @see org.sourcepit.common.manifest.osgi.impl.BundleActivationPolicyImpl
+    * @see org.sourcepit.common.manifest.osgi.impl.BundleManifestPackageImpl#getBundleActivationPolicy()
+    * @generated
+    */
+   int BUNDLE_ACTIVATION_POLICY = 3;
 
    /**
     * The feature id for the '<em><b>Parameters</b></em>' containment reference list.
@@ -564,18 +563,6 @@ public interface BundleManifestPackage extends EPackage
    int BUNDLE_HEADER_NAME = 11;
 
    /**
-    * The meta object id for the '{@link org.sourcepit.common.manifest.osgi.ParameterType <em>Parameter Type</em>}'
-    * enum.
-    * <!-- begin-user-doc -->
-    * <!-- end-user-doc -->
-    * 
-    * @see org.sourcepit.common.manifest.osgi.ParameterType
-    * @see org.sourcepit.common.manifest.osgi.impl.BundleManifestPackageImpl#getParameterType()
-    * @generated
-    */
-   int PARAMETER_TYPE = 13;
-
-   /**
     * The meta object id for the '{@link org.sourcepit.common.manifest.osgi.ActivationPolicy <em>Activation Policy</em>}
     * ' enum.
     * <!-- begin-user-doc -->
@@ -588,6 +575,18 @@ public interface BundleManifestPackage extends EPackage
    int ACTIVATION_POLICY = 12;
 
    /**
+    * The meta object id for the '{@link org.sourcepit.common.manifest.osgi.ParameterType <em>Parameter Type</em>}'
+    * enum.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @see org.sourcepit.common.manifest.osgi.ParameterType
+    * @see org.sourcepit.common.manifest.osgi.impl.BundleManifestPackageImpl#getParameterType()
+    * @generated
+    */
+   int PARAMETER_TYPE = 13;
+
+   /**
     * The meta object id for the '<em>EList</em>' data type.
     * <!-- begin-user-doc -->
     * <!-- end-user-doc -->
@@ -597,7 +596,6 @@ public interface BundleManifestPackage extends EPackage
     * @generated
     */
    int ELIST = 14;
-
 
    /**
     * The meta object id for the '<em>Version</em>' data type.
@@ -621,6 +619,43 @@ public interface BundleManifestPackage extends EPackage
     */
    int VERSION_RANGE = 16;
 
+
+   /**
+    * Returns the meta object for class '{@link org.sourcepit.common.manifest.osgi.BundleManifest
+    * <em>Bundle Manifest</em>}'.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @return the meta object for class '<em>Bundle Manifest</em>'.
+    * @see org.sourcepit.common.manifest.osgi.BundleManifest
+    * @generated
+    */
+   EClass getBundleManifest();
+
+   /**
+    * Returns the meta object for class '{@link org.sourcepit.common.manifest.osgi.Parameterized <em>Parameterized</em>}
+    * '.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @return the meta object for class '<em>Parameterized</em>'.
+    * @see org.sourcepit.common.manifest.osgi.Parameterized
+    * @generated
+    */
+   EClass getParameterized();
+
+   /**
+    * Returns the meta object for the containment reference list '
+    * {@link org.sourcepit.common.manifest.osgi.Parameterized#getParameters <em>Parameters</em>}'.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @return the meta object for the containment reference list '<em>Parameters</em>'.
+    * @see org.sourcepit.common.manifest.osgi.Parameterized#getParameters()
+    * @see #getParameterized()
+    * @generated
+    */
+   EReference getParameterized_Parameters();
 
    /**
     * Returns the meta object for class '{@link org.sourcepit.common.manifest.osgi.Parameter <em>Parameter</em>}'.
@@ -699,31 +734,6 @@ public interface BundleManifestPackage extends EPackage
    EReference getParameter_Parameterized();
 
    /**
-    * Returns the meta object for class '{@link org.sourcepit.common.manifest.osgi.Parameterized <em>Parameterized</em>}
-    * '.
-    * <!-- begin-user-doc -->
-    * <!-- end-user-doc -->
-    * 
-    * @return the meta object for class '<em>Parameterized</em>'.
-    * @see org.sourcepit.common.manifest.osgi.Parameterized
-    * @generated
-    */
-   EClass getParameterized();
-
-   /**
-    * Returns the meta object for the containment reference list '
-    * {@link org.sourcepit.common.manifest.osgi.Parameterized#getParameters <em>Parameters</em>}'.
-    * <!-- begin-user-doc -->
-    * <!-- end-user-doc -->
-    * 
-    * @return the meta object for the containment reference list '<em>Parameters</em>'.
-    * @see org.sourcepit.common.manifest.osgi.Parameterized#getParameters()
-    * @see #getParameterized()
-    * @generated
-    */
-   EReference getParameterized_Parameters();
-
-   /**
     * Returns the meta object for class '{@link org.sourcepit.common.manifest.osgi.BundleActivationPolicy
     * <em>Bundle Activation Policy</em>}'.
     * <!-- begin-user-doc -->
@@ -747,18 +757,6 @@ public interface BundleManifestPackage extends EPackage
     * @generated
     */
    EAttribute getBundleActivationPolicy_Policy();
-
-   /**
-    * Returns the meta object for class '{@link org.sourcepit.common.manifest.osgi.BundleManifest
-    * <em>Bundle Manifest</em>}'.
-    * <!-- begin-user-doc -->
-    * <!-- end-user-doc -->
-    * 
-    * @return the meta object for class '<em>Bundle Manifest</em>'.
-    * @see org.sourcepit.common.manifest.osgi.BundleManifest
-    * @generated
-    */
-   EClass getBundleManifest();
 
    /**
     * Returns the meta object for class '{@link org.sourcepit.common.manifest.osgi.PackagesDeclaration
@@ -922,18 +920,6 @@ public interface BundleManifestPackage extends EPackage
    EEnum getBundleHeaderName();
 
    /**
-    * Returns the meta object for enum '{@link org.sourcepit.common.manifest.osgi.ParameterType <em>Parameter Type</em>}
-    * '.
-    * <!-- begin-user-doc -->
-    * <!-- end-user-doc -->
-    * 
-    * @return the meta object for enum '<em>Parameter Type</em>'.
-    * @see org.sourcepit.common.manifest.osgi.ParameterType
-    * @generated
-    */
-   EEnum getParameterType();
-
-   /**
     * Returns the meta object for enum '{@link org.sourcepit.common.manifest.osgi.ActivationPolicy
     * <em>Activation Policy</em>}'.
     * <!-- begin-user-doc -->
@@ -944,6 +930,18 @@ public interface BundleManifestPackage extends EPackage
     * @generated
     */
    EEnum getActivationPolicy();
+
+   /**
+    * Returns the meta object for enum '{@link org.sourcepit.common.manifest.osgi.ParameterType <em>Parameter Type</em>}
+    * '.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @return the meta object for enum '<em>Parameter Type</em>'.
+    * @see org.sourcepit.common.manifest.osgi.ParameterType
+    * @generated
+    */
+   EEnum getParameterType();
 
    /**
     * Returns the meta object for data type '{@link java.util.List <em>EList</em>}'.
@@ -1008,6 +1006,39 @@ public interface BundleManifestPackage extends EPackage
    interface Literals
    {
       /**
+       * The meta object literal for the '{@link org.sourcepit.common.manifest.osgi.impl.BundleManifestImpl
+       * <em>Bundle Manifest</em>}' class.
+       * <!-- begin-user-doc -->
+       * <!-- end-user-doc -->
+       * 
+       * @see org.sourcepit.common.manifest.osgi.impl.BundleManifestImpl
+       * @see org.sourcepit.common.manifest.osgi.impl.BundleManifestPackageImpl#getBundleManifest()
+       * @generated
+       */
+      EClass BUNDLE_MANIFEST = eINSTANCE.getBundleManifest();
+
+      /**
+       * The meta object literal for the '{@link org.sourcepit.common.manifest.osgi.impl.ParameterizedImpl
+       * <em>Parameterized</em>}' class.
+       * <!-- begin-user-doc -->
+       * <!-- end-user-doc -->
+       * 
+       * @see org.sourcepit.common.manifest.osgi.impl.ParameterizedImpl
+       * @see org.sourcepit.common.manifest.osgi.impl.BundleManifestPackageImpl#getParameterized()
+       * @generated
+       */
+      EClass PARAMETERIZED = eINSTANCE.getParameterized();
+
+      /**
+       * The meta object literal for the '<em><b>Parameters</b></em>' containment reference list feature.
+       * <!-- begin-user-doc -->
+       * <!-- end-user-doc -->
+       * 
+       * @generated
+       */
+      EReference PARAMETERIZED__PARAMETERS = eINSTANCE.getParameterized_Parameters();
+
+      /**
        * The meta object literal for the '{@link org.sourcepit.common.manifest.osgi.impl.ParameterImpl
        * <em>Parameter</em>}' class.
        * <!-- begin-user-doc -->
@@ -1065,27 +1096,6 @@ public interface BundleManifestPackage extends EPackage
       EReference PARAMETER__PARAMETERIZED = eINSTANCE.getParameter_Parameterized();
 
       /**
-       * The meta object literal for the '{@link org.sourcepit.common.manifest.osgi.impl.ParameterizedImpl
-       * <em>Parameterized</em>}' class.
-       * <!-- begin-user-doc -->
-       * <!-- end-user-doc -->
-       * 
-       * @see org.sourcepit.common.manifest.osgi.impl.ParameterizedImpl
-       * @see org.sourcepit.common.manifest.osgi.impl.BundleManifestPackageImpl#getParameterized()
-       * @generated
-       */
-      EClass PARAMETERIZED = eINSTANCE.getParameterized();
-
-      /**
-       * The meta object literal for the '<em><b>Parameters</b></em>' containment reference list feature.
-       * <!-- begin-user-doc -->
-       * <!-- end-user-doc -->
-       * 
-       * @generated
-       */
-      EReference PARAMETERIZED__PARAMETERS = eINSTANCE.getParameterized_Parameters();
-
-      /**
        * The meta object literal for the '{@link org.sourcepit.common.manifest.osgi.impl.BundleActivationPolicyImpl
        * <em>Bundle Activation Policy</em>}' class.
        * <!-- begin-user-doc -->
@@ -1105,18 +1115,6 @@ public interface BundleManifestPackage extends EPackage
        * @generated
        */
       EAttribute BUNDLE_ACTIVATION_POLICY__POLICY = eINSTANCE.getBundleActivationPolicy_Policy();
-
-      /**
-       * The meta object literal for the '{@link org.sourcepit.common.manifest.osgi.impl.BundleManifestImpl
-       * <em>Bundle Manifest</em>}' class.
-       * <!-- begin-user-doc -->
-       * <!-- end-user-doc -->
-       * 
-       * @see org.sourcepit.common.manifest.osgi.impl.BundleManifestImpl
-       * @see org.sourcepit.common.manifest.osgi.impl.BundleManifestPackageImpl#getBundleManifest()
-       * @generated
-       */
-      EClass BUNDLE_MANIFEST = eINSTANCE.getBundleManifest();
 
       /**
        * The meta object literal for the '{@link org.sourcepit.common.manifest.osgi.impl.PackagesDeclarationImpl
@@ -1260,18 +1258,6 @@ public interface BundleManifestPackage extends EPackage
       EEnum BUNDLE_HEADER_NAME = eINSTANCE.getBundleHeaderName();
 
       /**
-       * The meta object literal for the '{@link org.sourcepit.common.manifest.osgi.ParameterType
-       * <em>Parameter Type</em>}' enum.
-       * <!-- begin-user-doc -->
-       * <!-- end-user-doc -->
-       * 
-       * @see org.sourcepit.common.manifest.osgi.ParameterType
-       * @see org.sourcepit.common.manifest.osgi.impl.BundleManifestPackageImpl#getParameterType()
-       * @generated
-       */
-      EEnum PARAMETER_TYPE = eINSTANCE.getParameterType();
-
-      /**
        * The meta object literal for the '{@link org.sourcepit.common.manifest.osgi.ActivationPolicy
        * <em>Activation Policy</em>}' enum.
        * <!-- begin-user-doc -->
@@ -1282,6 +1268,18 @@ public interface BundleManifestPackage extends EPackage
        * @generated
        */
       EEnum ACTIVATION_POLICY = eINSTANCE.getActivationPolicy();
+
+      /**
+       * The meta object literal for the '{@link org.sourcepit.common.manifest.osgi.ParameterType
+       * <em>Parameter Type</em>}' enum.
+       * <!-- begin-user-doc -->
+       * <!-- end-user-doc -->
+       * 
+       * @see org.sourcepit.common.manifest.osgi.ParameterType
+       * @see org.sourcepit.common.manifest.osgi.impl.BundleManifestPackageImpl#getParameterType()
+       * @generated
+       */
+      EEnum PARAMETER_TYPE = eINSTANCE.getParameterType();
 
       /**
        * The meta object literal for the '<em>EList</em>' data type.

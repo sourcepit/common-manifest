@@ -1,8 +1,7 @@
 /**
- * <copyright>
- * </copyright>
- * 
- * $Id$
+ * Copyright (c) 2011 Sourcepit.org contributors and others. All rights reserved. This program and the accompanying
+ * materials are made available under the terms of the Eclipse Public License v1.0 which accompanies this distribution,
+ * and is available at http://www.eclipse.org/legal/epl-v10.html
  */
 
 package org.sourcepit.common.manifest.osgi;
@@ -30,6 +29,16 @@ public interface BundleManifestFactory extends EFactory
    BundleManifestFactory eINSTANCE = org.sourcepit.common.manifest.osgi.impl.BundleManifestFactoryImpl.init();
 
    /**
+    * Returns a new object of class '<em>Bundle Manifest</em>'.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @return a new object of class '<em>Bundle Manifest</em>'.
+    * @generated
+    */
+   BundleManifest createBundleManifest();
+
+   /**
     * Returns a new object of class '<em>Parameter</em>'.
     * <!-- begin-user-doc -->
     * <!-- end-user-doc -->
@@ -48,16 +57,6 @@ public interface BundleManifestFactory extends EFactory
     * @generated
     */
    BundleActivationPolicy createBundleActivationPolicy();
-
-   /**
-    * Returns a new object of class '<em>Bundle Manifest</em>'.
-    * <!-- begin-user-doc -->
-    * <!-- end-user-doc -->
-    * 
-    * @return a new object of class '<em>Bundle Manifest</em>'.
-    * @generated
-    */
-   BundleManifest createBundleManifest();
 
    /**
     * Returns a new object of class '<em>Package Export</em>'.

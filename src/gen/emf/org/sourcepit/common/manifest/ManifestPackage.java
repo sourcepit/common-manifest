@@ -1,8 +1,7 @@
 /**
- * <copyright>
- * </copyright>
- * 
- * $Id$
+ * Copyright (c) 2011 Sourcepit.org contributors and others. All rights reserved. This program and the accompanying
+ * materials are made available under the terms of the Eclipse Public License v1.0 which accompanies this distribution,
+ * and is available at http://www.eclipse.org/legal/epl-v10.html
  */
 
 package org.sourcepit.common.manifest;
@@ -91,18 +90,6 @@ public interface ManifestPackage extends EPackage
    int ABSTRACT_SECTION_FEATURE_COUNT = 0;
 
    /**
-    * The meta object id for the '{@link org.sourcepit.common.manifest.impl.ManifestSectionImpl <em>Section</em>}'
-    * class.
-    * <!-- begin-user-doc -->
-    * <!-- end-user-doc -->
-    * 
-    * @see org.sourcepit.common.manifest.impl.ManifestSectionImpl
-    * @see org.sourcepit.common.manifest.impl.ManifestPackageImpl#getManifestSection()
-    * @generated
-    */
-   int MANIFEST_SECTION = 1;
-
-   /**
     * The meta object id for the '{@link org.sourcepit.common.manifest.impl.ManifestImpl <em>Manifest</em>}' class.
     * <!-- begin-user-doc -->
     * <!-- end-user-doc -->
@@ -142,6 +129,18 @@ public interface ManifestPackage extends EPackage
     * @ordered
     */
    int MANIFEST_FEATURE_COUNT = ABSTRACT_SECTION_FEATURE_COUNT + 2;
+
+   /**
+    * The meta object id for the '{@link org.sourcepit.common.manifest.impl.ManifestSectionImpl <em>Section</em>}'
+    * class.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @see org.sourcepit.common.manifest.impl.ManifestSectionImpl
+    * @see org.sourcepit.common.manifest.impl.ManifestPackageImpl#getManifestSection()
+    * @generated
+    */
+   int MANIFEST_SECTION = 1;
 
    /**
     * The number of structural features of the '<em>Section</em>' class.

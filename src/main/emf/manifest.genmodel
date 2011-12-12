@@ -1,18 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <genmodel:GenModel xmi:version="2.0"
     xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
-    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/common-bundle-manifest/src/gen/emf"
-    modelPluginID="" modelName="Manifest" updateClasspath="false" importerID="org.eclipse.emf.importer.ecore"
-    bundleManifest="false" complianceLevel="5.0" copyrightFields="false">
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" copyrightText="Copyright (c) 2011 Sourcepit.org contributors and others. All rights reserved. This program and the accompanying&#xD;&#xA;materials are made available under the terms of the Eclipse Public License v1.0 which accompanies this distribution,&#xD;&#xA;and is available at http://www.eclipse.org/legal/epl-v10.html"
+    modelDirectory="/common-manifest/src/gen/emf" modelPluginID="" modelName="Manifest"
+    updateClasspath="false" importerID="org.eclipse.emf.importer.ecore" bundleManifest="false"
+    complianceLevel="5.0" copyrightFields="false">
   <foreignModel>manifest.ecore</foreignModel>
   <genPackages prefix="Manifest" basePackage="org.sourcepit.common" disposableProviderFactory="true"
       ecorePackage="manifest.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="manifest.ecore#//HeaderName">
+      <genEnumLiterals ecoreEnumLiteral="manifest.ecore#//HeaderName/MANIFEST_VERSION"/>
+      <genEnumLiterals ecoreEnumLiteral="manifest.ecore#//HeaderName/SIGNATURE_VERSION"/>
+      <genEnumLiterals ecoreEnumLiteral="manifest.ecore#//HeaderName/CONTENT_TYPE"/>
+      <genEnumLiterals ecoreEnumLiteral="manifest.ecore#//HeaderName/CLASS_PATH"/>
+      <genEnumLiterals ecoreEnumLiteral="manifest.ecore#//HeaderName/MAIN_CLASS"/>
+      <genEnumLiterals ecoreEnumLiteral="manifest.ecore#//HeaderName/SEALED"/>
+      <genEnumLiterals ecoreEnumLiteral="manifest.ecore#//HeaderName/EXTENSION_LIST"/>
+      <genEnumLiterals ecoreEnumLiteral="manifest.ecore#//HeaderName/EXTENSION_NAME"/>
+      <genEnumLiterals ecoreEnumLiteral="manifest.ecore#//HeaderName/EXTENSION_INSTALLATION"/>
+      <genEnumLiterals ecoreEnumLiteral="manifest.ecore#//HeaderName/IMPLEMENTATION_TITLE"/>
+      <genEnumLiterals ecoreEnumLiteral="manifest.ecore#//HeaderName/IMPLEMENTATION_VERSION"/>
+      <genEnumLiterals ecoreEnumLiteral="manifest.ecore#//HeaderName/IMPLEMENTATION_VENDOR"/>
+      <genEnumLiterals ecoreEnumLiteral="manifest.ecore#//HeaderName/IMPLEMENTATION_VENDOR_ID"/>
+      <genEnumLiterals ecoreEnumLiteral="manifest.ecore#//HeaderName/IMPLEMENTATION_URL"/>
+      <genEnumLiterals ecoreEnumLiteral="manifest.ecore#//HeaderName/SPECIFICATION_TITLE"/>
+      <genEnumLiterals ecoreEnumLiteral="manifest.ecore#//HeaderName/SPECIFICATION_VERSION"/>
+      <genEnumLiterals ecoreEnumLiteral="manifest.ecore#//HeaderName/SPECIFICATION_VENDOR"/>
+    </genEnums>
     <genDataTypes ecoreDataType="manifest.ecore#//EEMap">
       <genTypeParameters ecoreTypeParameter="manifest.ecore#//EEMap/K"/>
       <genTypeParameters ecoreTypeParameter="manifest.ecore#//EEMap/V"/>
-    </genDataTypes>
-    <genDataTypes ecoreDataType="manifest.ecore#//EList">
-      <genTypeParameters ecoreTypeParameter="manifest.ecore#//EList/T"/>
     </genDataTypes>
     <genClasses ecoreClass="manifest.ecore#//Manifest">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference manifest.ecore#//Manifest/headers"/>
@@ -21,20 +38,29 @@
         <genParameters ecoreParameter="manifest.ecore#//Manifest/getSection/name"/>
         <genParameters ecoreParameter="manifest.ecore#//Manifest/getSection/createOnDemand"/>
       </genOperations>
+      <genOperations ecoreOperation="manifest.ecore#//Manifest/setHeader">
+        <genParameters ecoreParameter="manifest.ecore#//Manifest/setHeader/name"/>
+        <genParameters ecoreParameter="manifest.ecore#//Manifest/setHeader/value"/>
+      </genOperations>
+      <genOperations ecoreOperation="manifest.ecore#//Manifest/getHeader">
+        <genParameters ecoreParameter="manifest.ecore#//Manifest/getHeader/name"/>
+      </genOperations>
+      <genOperations ecoreOperation="manifest.ecore#//Manifest/getHeaderValue">
+        <genParameters ecoreParameter="manifest.ecore#//Manifest/getHeaderValue/name"/>
+      </genOperations>
+      <genOperations ecoreOperation="manifest.ecore#//Manifest/getParsedHeaderValue">
+        <genParameters ecoreParameter="manifest.ecore#//Manifest/getParsedHeaderValue/name"/>
+      </genOperations>
     </genClasses>
     <genClasses image="false" ecoreClass="manifest.ecore#//ManifestSection">
-      <genOperations ecoreOperation="manifest.ecore#//ManifestSection/getHeader">
-        <genParameters ecoreParameter="manifest.ecore#//ManifestSection/getHeader/name"/>
-      </genOperations>
-      <genOperations ecoreOperation="manifest.ecore#//ManifestSection/getHeaders"/>
+      <genOperations ecoreOperation="manifest.ecore#//ManifestSection/getName"/>
     </genClasses>
     <genClasses ecoreClass="manifest.ecore#//Header">
-      <genOperations ecoreOperation="manifest.ecore#//Header/getParsedValue"/>
       <genOperations ecoreOperation="manifest.ecore#//Header/getName"/>
-      <genOperations ecoreOperation="manifest.ecore#//Header/getValue"/>
       <genOperations ecoreOperation="manifest.ecore#//Header/setValue">
         <genParameters ecoreParameter="manifest.ecore#//Header/setValue/name"/>
       </genOperations>
+      <genOperations ecoreOperation="manifest.ecore#//Header/getManifest"/>
     </genClasses>
     <genClasses ecoreClass="manifest.ecore#//SectionEntry">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute manifest.ecore#//SectionEntry/key"/>
@@ -43,68 +69,143 @@
     <genClasses ecoreClass="manifest.ecore#//HeaderEntry">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute manifest.ecore#//HeaderEntry/key"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute manifest.ecore#//HeaderEntry/value"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference manifest.ecore#//HeaderEntry/manifest"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="manifest.ecore#//AbstractSection">
+      <genOperations ecoreOperation="manifest.ecore#//AbstractSection/getHeaders"/>
+      <genOperations ecoreOperation="manifest.ecore#//AbstractSection/getHeader">
+        <genParameters ecoreParameter="manifest.ecore#//AbstractSection/getHeader/name"/>
+      </genOperations>
+      <genOperations ecoreOperation="manifest.ecore#//AbstractSection/setHeader">
+        <genParameters ecoreParameter="manifest.ecore#//AbstractSection/setHeader/name"/>
+        <genParameters ecoreParameter="manifest.ecore#//AbstractSection/setHeader/value"/>
+      </genOperations>
+      <genOperations ecoreOperation="manifest.ecore#//AbstractSection/getHeaderValue">
+        <genParameters ecoreParameter="manifest.ecore#//AbstractSection/getHeaderValue/name"/>
+      </genOperations>
+      <genOperations ecoreOperation="manifest.ecore#//AbstractSection/getParsedHeaderValue">
+        <genParameters ecoreParameter="manifest.ecore#//AbstractSection/getParsedHeaderValue/name"/>
+      </genOperations>
+    </genClasses>
+    <genClasses image="false" ecoreClass="manifest.ecore#//Parseable">
+      <genOperations ecoreOperation="manifest.ecore#//Parseable/getValue"/>
+      <genOperations ecoreOperation="manifest.ecore#//Parseable/getParsedValue"/>
     </genClasses>
     <nestedGenPackages prefix="BundleManifest" disposableProviderFactory="true" ecorePackage="manifest.ecore#//osgi">
-      <genEnums typeSafeEnumCompatible="false" ecoreEnum="manifest.ecore#//osgi/ParameterType">
-        <genEnumLiterals ecoreEnumLiteral="manifest.ecore#//osgi/ParameterType/ATTRIBUTE"/>
-        <genEnumLiterals ecoreEnumLiteral="manifest.ecore#//osgi/ParameterType/DIRECTIVE"/>
+      <genEnums typeSafeEnumCompatible="false" ecoreEnum="manifest.ecore#//osgi/BundleHeaderName">
+        <genEnumLiterals ecoreEnumLiteral="manifest.ecore#//osgi/BundleHeaderName/BUNDLE_ACTIVATIONPOLICY"/>
+        <genEnumLiterals ecoreEnumLiteral="manifest.ecore#//osgi/BundleHeaderName/BUNDLE_ACTIVATOR"/>
+        <genEnumLiterals ecoreEnumLiteral="manifest.ecore#//osgi/BundleHeaderName/BUNDLE_CATEGORY"/>
+        <genEnumLiterals ecoreEnumLiteral="manifest.ecore#//osgi/BundleHeaderName/BUNDLE_CLASSPATH"/>
+        <genEnumLiterals ecoreEnumLiteral="manifest.ecore#//osgi/BundleHeaderName/BUNDLE_CONTACTADRESS"/>
+        <genEnumLiterals ecoreEnumLiteral="manifest.ecore#//osgi/BundleHeaderName/BUNDLE_COPYRIGHT"/>
+        <genEnumLiterals ecoreEnumLiteral="manifest.ecore#//osgi/BundleHeaderName/BUNDLE_DESCRIPTION"/>
+        <genEnumLiterals ecoreEnumLiteral="manifest.ecore#//osgi/BundleHeaderName/BUNDLE_DOCURL"/>
+        <genEnumLiterals ecoreEnumLiteral="manifest.ecore#//osgi/BundleHeaderName/BUNDLE_ICON"/>
+        <genEnumLiterals ecoreEnumLiteral="manifest.ecore#//osgi/BundleHeaderName/BUNDLE_LICENSE"/>
+        <genEnumLiterals ecoreEnumLiteral="manifest.ecore#//osgi/BundleHeaderName/BUNDLE_LOCALIZATION"/>
+        <genEnumLiterals ecoreEnumLiteral="manifest.ecore#//osgi/BundleHeaderName/BUNDLE_MANIFESTVERSION"/>
+        <genEnumLiterals ecoreEnumLiteral="manifest.ecore#//osgi/BundleHeaderName/BUNDLE_NAME"/>
+        <genEnumLiterals ecoreEnumLiteral="manifest.ecore#//osgi/BundleHeaderName/BUNDLE_NATIVECODE"/>
+        <genEnumLiterals ecoreEnumLiteral="manifest.ecore#//osgi/BundleHeaderName/BUNDLE_REQUIREDEXECUTIONENVIRONMENT"/>
+        <genEnumLiterals ecoreEnumLiteral="manifest.ecore#//osgi/BundleHeaderName/BUNDLE_SYMBOLICNAME"/>
+        <genEnumLiterals ecoreEnumLiteral="manifest.ecore#//osgi/BundleHeaderName/BUNDLE_UPDATELOCATION"/>
+        <genEnumLiterals ecoreEnumLiteral="manifest.ecore#//osgi/BundleHeaderName/BUNDLE_VENDOR"/>
+        <genEnumLiterals ecoreEnumLiteral="manifest.ecore#//osgi/BundleHeaderName/BUNDLE_VERSION"/>
+        <genEnumLiterals ecoreEnumLiteral="manifest.ecore#//osgi/BundleHeaderName/DYNAMICIMPORT_PACKAGE"/>
+        <genEnumLiterals ecoreEnumLiteral="manifest.ecore#//osgi/BundleHeaderName/EXPORT_PACKAGE"/>
+        <genEnumLiterals ecoreEnumLiteral="manifest.ecore#//osgi/BundleHeaderName/EXPORT_SERVICE"/>
+        <genEnumLiterals ecoreEnumLiteral="manifest.ecore#//osgi/BundleHeaderName/FRAGMENT_HOST"/>
+        <genEnumLiterals ecoreEnumLiteral="manifest.ecore#//osgi/BundleHeaderName/IMPORT_PACKAGE"/>
+        <genEnumLiterals ecoreEnumLiteral="manifest.ecore#//osgi/BundleHeaderName/IMPORT_SERVICE"/>
+        <genEnumLiterals ecoreEnumLiteral="manifest.ecore#//osgi/BundleHeaderName/PROVIDED_CAPABILITY"/>
+        <genEnumLiterals ecoreEnumLiteral="manifest.ecore#//osgi/BundleHeaderName/REQUIRE_BUNDLE"/>
+        <genEnumLiterals ecoreEnumLiteral="manifest.ecore#//osgi/BundleHeaderName/REQUIRE_CAPABILITY"/>
       </genEnums>
       <genEnums typeSafeEnumCompatible="false" ecoreEnum="manifest.ecore#//osgi/ActivationPolicy">
         <genEnumLiterals ecoreEnumLiteral="manifest.ecore#//osgi/ActivationPolicy/EAGER"/>
         <genEnumLiterals ecoreEnumLiteral="manifest.ecore#//osgi/ActivationPolicy/LAZY"/>
       </genEnums>
-      <genEnums typeSafeEnumCompatible="false" ecoreEnum="manifest.ecore#//osgi/BundleHeaders">
-        <genEnumLiterals ecoreEnumLiteral="manifest.ecore#//osgi/BundleHeaders/BUNDLE_ACTIVATIONPOLICY"/>
-        <genEnumLiterals ecoreEnumLiteral="manifest.ecore#//osgi/BundleHeaders/BUNDLE_ACTIVATOR"/>
-        <genEnumLiterals ecoreEnumLiteral="manifest.ecore#//osgi/BundleHeaders/BUNDLE_CATEGORY"/>
-        <genEnumLiterals ecoreEnumLiteral="manifest.ecore#//osgi/BundleHeaders/BUNDLE_CLASSPATH"/>
-        <genEnumLiterals ecoreEnumLiteral="manifest.ecore#//osgi/BundleHeaders/BUNDLE_CONTACTADRESS"/>
-        <genEnumLiterals ecoreEnumLiteral="manifest.ecore#//osgi/BundleHeaders/BUNDLE_COPYRIGHT"/>
-        <genEnumLiterals ecoreEnumLiteral="manifest.ecore#//osgi/BundleHeaders/BUNDLE_DESCRIPTION"/>
-        <genEnumLiterals ecoreEnumLiteral="manifest.ecore#//osgi/BundleHeaders/BUNDLE_DOCURL"/>
-        <genEnumLiterals ecoreEnumLiteral="manifest.ecore#//osgi/BundleHeaders/BUNDLE_ICON"/>
-        <genEnumLiterals ecoreEnumLiteral="manifest.ecore#//osgi/BundleHeaders/BUNDLE_LICENSE"/>
-        <genEnumLiterals ecoreEnumLiteral="manifest.ecore#//osgi/BundleHeaders/BUNDLE_LOCALIZATION"/>
-        <genEnumLiterals ecoreEnumLiteral="manifest.ecore#//osgi/BundleHeaders/BUNDLE_MANIFESTVERSION"/>
-        <genEnumLiterals ecoreEnumLiteral="manifest.ecore#//osgi/BundleHeaders/BUNDLE_NAME"/>
-        <genEnumLiterals ecoreEnumLiteral="manifest.ecore#//osgi/BundleHeaders/BUNDLE_NATIVECODE"/>
-        <genEnumLiterals ecoreEnumLiteral="manifest.ecore#//osgi/BundleHeaders/BUNDLE_REQUIREDEXECUTIONENVIRONMENT"/>
-        <genEnumLiterals ecoreEnumLiteral="manifest.ecore#//osgi/BundleHeaders/BUNDLE_SYMBOLICNAME"/>
-        <genEnumLiterals ecoreEnumLiteral="manifest.ecore#//osgi/BundleHeaders/BUNDLE_UPDATELOCATION"/>
-        <genEnumLiterals ecoreEnumLiteral="manifest.ecore#//osgi/BundleHeaders/BUNDLE_VENDOR"/>
-        <genEnumLiterals ecoreEnumLiteral="manifest.ecore#//osgi/BundleHeaders/BUNDLE_VERSION"/>
-        <genEnumLiterals ecoreEnumLiteral="manifest.ecore#//osgi/BundleHeaders/DYNAMICIMPORT_PACKAGE"/>
-        <genEnumLiterals ecoreEnumLiteral="manifest.ecore#//osgi/BundleHeaders/EXPORT_PACKAGE"/>
-        <genEnumLiterals ecoreEnumLiteral="manifest.ecore#//osgi/BundleHeaders/EXPORT_SERVICE"/>
-        <genEnumLiterals ecoreEnumLiteral="manifest.ecore#//osgi/BundleHeaders/FRAGMENT_HOST"/>
-        <genEnumLiterals ecoreEnumLiteral="manifest.ecore#//osgi/BundleHeaders/IMPORT_PACKAGE"/>
-        <genEnumLiterals ecoreEnumLiteral="manifest.ecore#//osgi/BundleHeaders/IMPORT_SERVICE"/>
-        <genEnumLiterals ecoreEnumLiteral="manifest.ecore#//osgi/BundleHeaders/PROVIDED_CAPABILITY"/>
-        <genEnumLiterals ecoreEnumLiteral="manifest.ecore#//osgi/BundleHeaders/REQUIRE_BUNDLE"/>
-        <genEnumLiterals ecoreEnumLiteral="manifest.ecore#//osgi/BundleHeaders/REQUIRE_CAPABILITY"/>
+      <genEnums typeSafeEnumCompatible="false" ecoreEnum="manifest.ecore#//osgi/ParameterType">
+        <genEnumLiterals ecoreEnumLiteral="manifest.ecore#//osgi/ParameterType/ATTRIBUTE"/>
+        <genEnumLiterals ecoreEnumLiteral="manifest.ecore#//osgi/ParameterType/DIRECTIVE"/>
       </genEnums>
+      <genDataTypes ecoreDataType="manifest.ecore#//osgi/EList">
+        <genTypeParameters ecoreTypeParameter="manifest.ecore#//osgi/EList/T"/>
+      </genDataTypes>
+      <genDataTypes ecoreDataType="manifest.ecore#//osgi/Version"/>
+      <genDataTypes ecoreDataType="manifest.ecore#//osgi/VersionRange"/>
+      <genClasses ecoreClass="manifest.ecore#//osgi/BundleManifest">
+        <genOperations ecoreOperation="manifest.ecore#//osgi/BundleManifest/getHeader">
+          <genParameters ecoreParameter="manifest.ecore#//osgi/BundleManifest/getHeader/name"/>
+        </genOperations>
+        <genOperations ecoreOperation="manifest.ecore#//osgi/BundleManifest/setHeader">
+          <genParameters ecoreParameter="manifest.ecore#//osgi/BundleManifest/setHeader/name"/>
+          <genParameters ecoreParameter="manifest.ecore#//osgi/BundleManifest/setHeader/value"/>
+        </genOperations>
+        <genOperations ecoreOperation="manifest.ecore#//osgi/BundleManifest/getHeaderValue">
+          <genParameters ecoreParameter="manifest.ecore#//osgi/BundleManifest/getHeaderValue/name"/>
+        </genOperations>
+        <genOperations ecoreOperation="manifest.ecore#//osgi/BundleManifest/getParsedHeaderValue">
+          <genParameters ecoreParameter="manifest.ecore#//osgi/BundleManifest/getParsedHeaderValue/name"/>
+        </genOperations>
+        <genOperations ecoreOperation="manifest.ecore#//osgi/BundleManifest/getBundleManifestVersion"/>
+        <genOperations ecoreOperation="manifest.ecore#//osgi/BundleManifest/getBundleVersion"/>
+        <genOperations ecoreOperation="manifest.ecore#//osgi/BundleManifest/getBundleSymbolicName"/>
+        <genOperations ecoreOperation="manifest.ecore#//osgi/BundleManifest/getFragmentHost"/>
+        <genOperations ecoreOperation="manifest.ecore#//osgi/BundleManifest/getBundleActivationPolicy"/>
+        <genOperations ecoreOperation="manifest.ecore#//osgi/BundleManifest/getBundleActivator"/>
+        <genOperations ecoreOperation="manifest.ecore#//osgi/BundleManifest/getExportPackage"/>
+        <genOperations ecoreOperation="manifest.ecore#//osgi/BundleManifest/getImportPackage"/>
+        <genOperations ecoreOperation="manifest.ecore#//osgi/BundleManifest/getDynamicImportPackage"/>
+        <genOperations ecoreOperation="manifest.ecore#//osgi/BundleManifest/getRequireBundle"/>
+        <genOperations ecoreOperation="manifest.ecore#//osgi/BundleManifest/getBundleClassPath"/>
+      </genClasses>
+      <genClasses image="false" ecoreClass="manifest.ecore#//osgi/Parameterized">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference manifest.ecore#//osgi/Parameterized/parameters"/>
+        <genOperations ecoreOperation="manifest.ecore#//osgi/Parameterized/getParameter">
+          <genParameters ecoreParameter="manifest.ecore#//osgi/Parameterized/getParameter/name"/>
+        </genOperations>
+        <genOperations ecoreOperation="manifest.ecore#//osgi/Parameterized/getParameterValue">
+          <genParameters ecoreParameter="manifest.ecore#//osgi/Parameterized/getParameterValue/name"/>
+        </genOperations>
+        <genOperations ecoreOperation="manifest.ecore#//osgi/Parameterized/getParsedParameterValue">
+          <genParameters ecoreParameter="manifest.ecore#//osgi/Parameterized/getParsedParameterValue/name"/>
+        </genOperations>
+      </genClasses>
       <genClasses ecoreClass="manifest.ecore#//osgi/Parameter">
         <genFeatures createChild="false" ecoreFeature="ecore:EAttribute manifest.ecore#//osgi/Parameter/name"/>
         <genFeatures createChild="false" ecoreFeature="ecore:EAttribute manifest.ecore#//osgi/Parameter/value"/>
         <genFeatures createChild="false" ecoreFeature="ecore:EAttribute manifest.ecore#//osgi/Parameter/quoted"/>
         <genFeatures createChild="false" ecoreFeature="ecore:EAttribute manifest.ecore#//osgi/Parameter/type"/>
-      </genClasses>
-      <genClasses image="false" ecoreClass="manifest.ecore#//osgi/Parameterized">
-        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference manifest.ecore#//osgi/Parameterized/parameters"/>
+        <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference manifest.ecore#//osgi/Parameter/parameterized"/>
       </genClasses>
       <genClasses ecoreClass="manifest.ecore#//osgi/BundleActivationPolicy">
         <genFeatures createChild="false" ecoreFeature="ecore:EAttribute manifest.ecore#//osgi/BundleActivationPolicy/policy"/>
       </genClasses>
-      <genClasses ecoreClass="manifest.ecore#//osgi/BundleManifest">
-        <genOperations ecoreOperation="manifest.ecore#//osgi/BundleManifest/getHeader">
-          <genParameters ecoreParameter="manifest.ecore#//osgi/BundleManifest/getHeader/type"/>
-        </genOperations>
-        <genOperations ecoreOperation="manifest.ecore#//osgi/BundleManifest/getBundleActivationPolicy"/>
-        <genOperations ecoreOperation="manifest.ecore#//osgi/BundleManifest/getExportPackage"/>
-        <genOperations ecoreOperation="manifest.ecore#//osgi/BundleManifest/getImportPackage"/>
-      </genClasses>
       <genClasses ecoreClass="manifest.ecore#//osgi/PackagesDeclaration">
         <genFeatures createChild="false" ecoreFeature="ecore:EAttribute manifest.ecore#//osgi/PackagesDeclaration/packageNames"/>
+      </genClasses>
+      <genClasses ecoreClass="manifest.ecore#//osgi/PackageExport">
+        <genOperations ecoreOperation="manifest.ecore#//osgi/PackageExport/getVersion"/>
+      </genClasses>
+      <genClasses ecoreClass="manifest.ecore#//osgi/PackageImport">
+        <genOperations ecoreOperation="manifest.ecore#//osgi/PackageImport/getVersionRange"/>
+      </genClasses>
+      <genClasses ecoreClass="manifest.ecore#//osgi/BundleRequirement">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute manifest.ecore#//osgi/BundleRequirement/symbolicNames"/>
+        <genOperations ecoreOperation="manifest.ecore#//osgi/BundleRequirement/getVersionRange"/>
+      </genClasses>
+      <genClasses ecoreClass="manifest.ecore#//osgi/BundleSymbolicName">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute manifest.ecore#//osgi/BundleSymbolicName/symbolicName"/>
+        <genOperations ecoreOperation="manifest.ecore#//osgi/BundleSymbolicName/isSingleton"/>
+      </genClasses>
+      <genClasses ecoreClass="manifest.ecore#//osgi/ClassPathEntry">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute manifest.ecore#//osgi/ClassPathEntry/paths"/>
+      </genClasses>
+      <genClasses ecoreClass="manifest.ecore#//osgi/FragmentHost">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute manifest.ecore#//osgi/FragmentHost/symbolicName"/>
+        <genOperations ecoreOperation="manifest.ecore#//osgi/FragmentHost/getVersionRange"/>
       </genClasses>
     </nestedGenPackages>
   </genPackages>

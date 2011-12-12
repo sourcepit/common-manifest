@@ -1,8 +1,7 @@
 /**
- * <copyright>
- * </copyright>
- * 
- * $Id$
+ * Copyright (c) 2011 Sourcepit.org contributors and others. All rights reserved. This program and the accompanying
+ * materials are made available under the terms of the Eclipse Public License v1.0 which accompanies this distribution,
+ * and is available at http://www.eclipse.org/legal/epl-v10.html
  */
 
 package org.sourcepit.common.manifest.osgi.util;
@@ -203,18 +202,18 @@ public class BundleManifestAdapterFactory extends AdapterFactoryImpl
 
 
    /**
-    * Creates a new adapter for an object of class '{@link org.sourcepit.common.manifest.osgi.Parameter
-    * <em>Parameter</em>}'.
+    * Creates a new adapter for an object of class '{@link org.sourcepit.common.manifest.osgi.BundleManifest
+    * <em>Bundle Manifest</em>}'.
     * <!-- begin-user-doc -->
     * This default implementation returns null so that we can easily ignore cases;
     * it's useful to ignore a case when inheritance will catch all the cases anyway.
     * <!-- end-user-doc -->
     * 
     * @return the new adapter.
-    * @see org.sourcepit.common.manifest.osgi.Parameter
+    * @see org.sourcepit.common.manifest.osgi.BundleManifest
     * @generated
     */
-   public Adapter createParameterAdapter()
+   public Adapter createBundleManifestAdapter()
    {
       return null;
    }
@@ -237,6 +236,23 @@ public class BundleManifestAdapterFactory extends AdapterFactoryImpl
    }
 
    /**
+    * Creates a new adapter for an object of class '{@link org.sourcepit.common.manifest.osgi.Parameter
+    * <em>Parameter</em>}'.
+    * <!-- begin-user-doc -->
+    * This default implementation returns null so that we can easily ignore cases;
+    * it's useful to ignore a case when inheritance will catch all the cases anyway.
+    * <!-- end-user-doc -->
+    * 
+    * @return the new adapter.
+    * @see org.sourcepit.common.manifest.osgi.Parameter
+    * @generated
+    */
+   public Adapter createParameterAdapter()
+   {
+      return null;
+   }
+
+   /**
     * Creates a new adapter for an object of class '{@link org.sourcepit.common.manifest.osgi.BundleActivationPolicy
     * <em>Bundle Activation Policy</em>}'.
     * <!-- begin-user-doc -->
@@ -249,23 +265,6 @@ public class BundleManifestAdapterFactory extends AdapterFactoryImpl
     * @generated
     */
    public Adapter createBundleActivationPolicyAdapter()
-   {
-      return null;
-   }
-
-   /**
-    * Creates a new adapter for an object of class '{@link org.sourcepit.common.manifest.osgi.BundleManifest
-    * <em>Bundle Manifest</em>}'.
-    * <!-- begin-user-doc -->
-    * This default implementation returns null so that we can easily ignore cases;
-    * it's useful to ignore a case when inheritance will catch all the cases anyway.
-    * <!-- end-user-doc -->
-    * 
-    * @return the new adapter.
-    * @see org.sourcepit.common.manifest.osgi.BundleManifest
-    * @generated
-    */
-   public Adapter createBundleManifestAdapter()
    {
       return null;
    }

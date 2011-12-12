@@ -1,8 +1,7 @@
 /**
- * <copyright>
- * </copyright>
- * 
- * $Id$
+ * Copyright (c) 2011 Sourcepit.org contributors and others. All rights reserved. This program and the accompanying
+ * materials are made available under the terms of the Eclipse Public License v1.0 which accompanies this distribution,
+ * and is available at http://www.eclipse.org/legal/epl-v10.html
  */
 
 package org.sourcepit.common.manifest.osgi.util;
@@ -214,18 +213,18 @@ public class BundleManifestSwitch<T> extends Switch<T>
    }
 
    /**
-    * Returns the result of interpreting the object as an instance of '<em>Parameter</em>'.
+    * Returns the result of interpreting the object as an instance of '<em>Bundle Manifest</em>'.
     * <!-- begin-user-doc -->
     * This implementation returns null;
     * returning a non-null result will terminate the switch.
     * <!-- end-user-doc -->
     * 
     * @param object the target of the switch.
-    * @return the result of interpreting the object as an instance of '<em>Parameter</em>'.
+    * @return the result of interpreting the object as an instance of '<em>Bundle Manifest</em>'.
     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
     * @generated
     */
-   public T caseParameter(Parameter object)
+   public T caseBundleManifest(BundleManifest object)
    {
       return null;
    }
@@ -248,6 +247,23 @@ public class BundleManifestSwitch<T> extends Switch<T>
    }
 
    /**
+    * Returns the result of interpreting the object as an instance of '<em>Parameter</em>'.
+    * <!-- begin-user-doc -->
+    * This implementation returns null;
+    * returning a non-null result will terminate the switch.
+    * <!-- end-user-doc -->
+    * 
+    * @param object the target of the switch.
+    * @return the result of interpreting the object as an instance of '<em>Parameter</em>'.
+    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+    * @generated
+    */
+   public T caseParameter(Parameter object)
+   {
+      return null;
+   }
+
+   /**
     * Returns the result of interpreting the object as an instance of '<em>Bundle Activation Policy</em>'.
     * <!-- begin-user-doc -->
     * This implementation returns null;
@@ -260,23 +276,6 @@ public class BundleManifestSwitch<T> extends Switch<T>
     * @generated
     */
    public T caseBundleActivationPolicy(BundleActivationPolicy object)
-   {
-      return null;
-   }
-
-   /**
-    * Returns the result of interpreting the object as an instance of '<em>Bundle Manifest</em>'.
-    * <!-- begin-user-doc -->
-    * This implementation returns null;
-    * returning a non-null result will terminate the switch.
-    * <!-- end-user-doc -->
-    * 
-    * @param object the target of the switch.
-    * @return the result of interpreting the object as an instance of '<em>Bundle Manifest</em>'.
-    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-    * @generated
-    */
-   public T caseBundleManifest(BundleManifest object)
    {
       return null;
    }
