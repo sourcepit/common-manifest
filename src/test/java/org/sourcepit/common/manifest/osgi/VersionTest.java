@@ -181,31 +181,59 @@ public class VersionTest extends AbstractVersionCompatibilityTest
    }
 
    @Test
-   public void testToString()
+   public void testToMinimalString()
    {
       String string = "1";
       Version version = Version.parse(string);
-      assertThat(version.toString(), IsEqual.equalTo(string));
+      assertThat(version.toString(false), IsEqual.equalTo(string));
       version = new Version(1, -1, -1);
-      assertThat(version.toString(), IsEqual.equalTo(string));
+      assertThat(version.toString(false), IsEqual.equalTo(string));
 
       string = "1.2";
       version = Version.parse(string);
-      assertThat(version.toString(), IsEqual.equalTo(string));
+      assertThat(version.toString(false), IsEqual.equalTo(string));
       version = new Version(1, 2, -1);
-      assertThat(version.toString(), IsEqual.equalTo(string));
+      assertThat(version.toString(false), IsEqual.equalTo(string));
 
       string = "1.2.3";
       version = Version.parse(string);
-      assertThat(version.toString(), IsEqual.equalTo(string));
+      assertThat(version.toString(false), IsEqual.equalTo(string));
       version = new Version(1, 2, 3);
-      assertThat(version.toString(), IsEqual.equalTo(string));
+      assertThat(version.toString(false), IsEqual.equalTo(string));
 
       string = "1.2.3.foo";
       version = Version.parse(string);
-      assertThat(version.toString(), IsEqual.equalTo(string));
+      assertThat(version.toString(false), IsEqual.equalTo(string));
       version = new Version(1, 2, 3, "foo");
-      assertThat(version.toString(), IsEqual.equalTo(string));
+      assertThat(version.toString(false), IsEqual.equalTo(string));
+   }
+   
+   @Test
+   public void testToString()
+   {
+      for (Class<?> versionType : versionTypes)
+      {
+         testToString(versionType);
+      }
+   }
+   
+   protected <V> void testToString(Class<V> versionType)
+   {
+      String string = "1";
+      V version = parse(versionType, string);
+      assertThat(version.toString(), IsEqual.equalTo("1.0.0"));
+
+      string = "1.2";
+      version = parse(versionType, string);
+      assertThat(version.toString(), IsEqual.equalTo("1.2.0"));
+
+      string = "1.2.3";
+      version = parse(versionType, string);
+      assertThat(version.toString(), IsEqual.equalTo("1.2.3"));
+
+      string = "1.2.3.foo";
+      version = parse(versionType, string);
+      assertThat(version.toString(), IsEqual.equalTo("1.2.3.foo"));
    }
 
    protected <V extends Comparable<Object>> void testCompare(Class<V> versionType)

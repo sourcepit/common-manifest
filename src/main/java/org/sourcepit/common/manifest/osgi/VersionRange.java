@@ -211,15 +211,15 @@ public class VersionRange
       {
          StringBuffer sb = new StringBuffer();
          sb.append(lowInclusive ? '[' : '(');
-         sb.append(lowVersion.toString());
+         sb.append(lowVersion.toMinimalString());
          sb.append(',');
-         sb.append(highVersion.toString());
+         sb.append(highVersion.toMinimalString());
          sb.append(highInclusive ? ']' : ')');
          return sb.toString();
       }
       else
       {
-         return lowVersion.toString();
+         return lowVersion.toMinimalString();
       }
    }
 }

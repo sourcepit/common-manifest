@@ -37,7 +37,7 @@ public class Version implements Comparable<Version>
    private final int micro;
    private final String qualifier;
    private static final String SEPARATOR = ".";
-   private transient String versionString;
+   private transient String minimalString, fullString;
 
    /**
     * The empty version "0.0.0".
@@ -62,14 +62,10 @@ public class Version implements Comparable<Version>
     * 
     * There must be no whitespace in version.
     * 
-    * @param version String representation of the version identifier. Leading
-    *           and trailing whitespace will be ignored.
-    * @return A {@code Version} object representing the version
-    *         identifier. If {@code version} is {@code null} or
-    *         the empty string then {@code emptyVersion} will be
-    *         returned.
-    * @throws IllegalArgumentException If {@code version} is improperly
-    *            formatted.
+    * @param version String representation of the version identifier. Leading and trailing whitespace will be ignored.
+    * @return A {@code Version} object representing the version identifier. If {@code version} is {@code null} or the
+    *         empty string then {@code emptyVersion} will be returned.
+    * @throws IllegalArgumentException If {@code version} is improperly formatted.
     */
    public static Version parse(String version)
    {
@@ -117,8 +113,7 @@ public class Version implements Comparable<Version>
     * @param major Major component of the version identifier.
     * @param minor Minor component of the version identifier.
     * @param micro Micro component of the version identifier.
-    * @throws IllegalArgumentException If the numerical components are
-    *            negative.
+    * @throws IllegalArgumentException If the numerical components are negative.
     */
    public Version(int major, int minor, int micro)
    {
@@ -132,10 +127,8 @@ public class Version implements Comparable<Version>
     * @param minor Minor component of the version identifier.
     * @param micro Micro component of the version identifier.
     * @param qualifier Qualifier component of the version identifier. If {@code null} is specified, then the qualifier
-    *           will be set to
-    *           the empty string.
-    * @throws IllegalArgumentException If the numerical components are negative
-    *            or the qualifier string is invalid.
+    *           will be set to the empty string.
+    * @throws IllegalArgumentException If the numerical components are negative or the qualifier string is invalid.
     */
    public Version(int major, int minor, int micro, String qualifier)
    {
@@ -152,15 +145,14 @@ public class Version implements Comparable<Version>
       this.minor = isMinorSet ? minor : 0;
       this.micro = isMicroSet ? micro : 0;
       this.qualifier = qualifier;
-      versionString = null;
+      fullString = null;
       validate();
    }
 
    /**
     * Called by the Version constructors to validate the version components.
     * 
-    * @throws IllegalArgumentException If the numerical components are negative
-    *            or the qualifier string is invalid.
+    * @throws IllegalArgumentException If the numerical components are negative or the qualifier string is invalid.
     */
    private void validate()
    {
@@ -265,23 +257,84 @@ public class Version implements Comparable<Version>
     * The format of the version string will be {@code major.minor.micro} if qualifier is the empty string or
     * {@code major.minor.micro.qualifier} otherwise.
     * 
+    * <p>
+    * This method is equivalent to {@link #toString()} and {@link #toString(boolean)} with <code>true</code>.
+    * 
     * @return The string representation of this version identifier.
+    * 
+    * @see #toString(boolean)
+    * @see #toFullString()
+    * @see #toMinimalString()
     */
    public String toString()
    {
-      if (versionString != null)
+      return toFullString();
+   }
+
+   /**
+    * Returns the string representation of this version identifier.
+    * 
+    * <p>
+    * The format of the version string will be {@code major.minor.micro} if qualifier is the empty string or
+    * {@code major.minor.micro.qualifier} otherwise.
+    * 
+    * <p>
+    * This method is equivalent to {@link #toString()} and {@link #toString(boolean)} with <code>true</code>.
+    * 
+    * @return The string representation of this version identifier.
+    * 
+    * @see #toString()
+    * @see #toString(boolean)
+    * @see #toMinimalString()
+    */
+   public String toFullString()
+   {
+      if (fullString != null)
       {
-         return versionString;
+         return fullString;
       }
+      fullString = toString(true);
+      return fullString;
+   }
+
+   /**
+    * Returns the compressed string representation of this version identifier.
+    * 
+    * <p>
+    * 
+    * This method differs from {@link #toFullString()} in that not-set version segments won't be included in the
+    * returned string (unless the qualifier is present).
+    * 
+    * <p>
+    * This method is equivalent to {@link #toString(boolean)} with <code>false</code>.
+    * 
+    * @return The string representation of this version identifier.
+    * 
+    * @see #toString()
+    * @see #toString(boolean)
+    * @see #toMinimalString()
+    */
+   public String toMinimalString()
+   {
+      if (minimalString != null)
+      {
+         return minimalString;
+      }
+      minimalString = toString(false);
+      return minimalString;
+   }
+
+   public String toString(boolean expand)
+   {
       int q = qualifier.length();
-      StringBuffer result = new StringBuffer(20 + q);
+      StringBuilder result = new StringBuilder(20 + q);
       result.append(major);
-      if (isMinorSet)
+      if (expand || isMinorSet)
       {
          result.append(SEPARATOR);
          result.append(minor);
       }
-      if (isMicroSet)
+      if (expand || isMicroSet)
       {
          result.append(SEPARATOR);
          result.append(micro);
@@ -291,8 +344,7 @@ public class Version implements Comparable<Version>
          result.append(SEPARATOR);
          result.append(qualifier);
       }
-      versionString = result.toString();
-      return versionString;
+      return result.toString();
    }
 
    /**
@@ -347,8 +399,8 @@ public class Version implements Comparable<Version>
     * and the qualifier component is equal (using {@code String.compareTo}).
     * 
     * @param other The {@code Version} object to be compared.
-    * @return A negative integer, zero, or a positive integer if this version
-    *         is less than, equal to, or greater than the specified {@code Version} object.
+    * @return A negative integer, zero, or a positive integer if this version is less than, equal to, or greater than
+    *         the specified {@code Version} object.
     * @throws ClassCastException If the specified object is not a {@code Version} object.
     */
    public int compareTo(Version other)
