@@ -11,6 +11,7 @@ import static junit.framework.Assert.fail;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 
+import org.hamcrest.core.Is;
 import org.hamcrest.core.IsEqual;
 import org.hamcrest.core.IsNull;
 import org.junit.Test;
@@ -20,8 +21,8 @@ import org.junit.Test;
  */
 public class VersionRangeTest extends AbstractVersionCompatibilityTest
 {
-   protected final Class<?>[] rangeTypes = new Class[] {org.eclipse.osgi.service.resolver.VersionRange.class,
-      VersionRange.class};
+   private final Class<?>[] rangeTypes = new Class[] { com.springsource.util.osgi.VersionRange.class,
+      org.eclipse.osgi.service.resolver.VersionRange.class, VersionRange.class };
 
    @Test
    public void testInvalidRange()
@@ -63,6 +64,57 @@ public class VersionRangeTest extends AbstractVersionCompatibilityTest
    }
 
    @Test
+   public void testInviniteRange()
+   {
+      for (int i = 0; i < rangeTypes.length; i++)
+      {
+         testInviniteRange(rangeTypes[i], versionTypes[i]);
+      }
+   }
+
+   private <R, V> void testInviniteRange(Class<R> rangeType, Class<V> versionType)
+   {
+      R invinite = newInviniteRange(rangeType);
+      assertThat("0.0.0", IsEqual.equalTo(toParseString(invinite)));
+   }
+
+   @SuppressWarnings("unchecked")
+   private <R> R newInviniteRange(Class<R> rangeType)
+   {
+      if (VersionRange.class == rangeType)
+      {
+         return (R) VersionRange.INFINITE_RANGE;
+      }
+      if (org.eclipse.osgi.service.resolver.VersionRange.class == rangeType)
+      {
+         return (R) new org.eclipse.osgi.service.resolver.VersionRange(org.osgi.framework.Version.emptyVersion, true,
+            null, false);
+      }
+      if (com.springsource.util.osgi.VersionRange.class == rangeType)
+      {
+         return (R) new com.springsource.util.osgi.VersionRange(null);
+      }
+      throw new IllegalArgumentException();
+   }
+
+   private <R> String toParseString(R range)
+   {
+      if (range instanceof VersionRange)
+      {
+         return ((VersionRange) range).toString();
+      }
+      if (range instanceof org.eclipse.osgi.service.resolver.VersionRange)
+      {
+         return ((org.eclipse.osgi.service.resolver.VersionRange) range).toString();
+      }
+      if (range instanceof com.springsource.util.osgi.VersionRange)
+      {
+         return ((com.springsource.util.osgi.VersionRange) range).toParseString();
+      }
+      throw new IllegalArgumentException();
+   }
+
+   @Test
    public void testRange()
    {
       for (int i = 0; i < rangeTypes.length; i++)
@@ -99,6 +151,31 @@ public class VersionRangeTest extends AbstractVersionCompatibilityTest
       range = parseRange(rangeType, "[,1.2.3]"); // [0.0.0,1.2.3]
       assertThat(range, IsNull.notNullValue());
       assertTrue(includes(range, parse(versionType, "0.0.0")));
+      assertTrue(includes(range, parse(versionType, "0.0.1")));
+      assertTrue(includes(range, parse(versionType, "1.2.2")));
+      assertTrue(includes(range, parse(versionType, "1.2.3")));
+      assertFalse(includes(range, parse(versionType, "1.2.4")));
+      
+      range = parseRange(rangeType, "[0,1.2.3]"); // [0.0.0,1.2.3]
+      assertThat(range, IsNull.notNullValue());
+      assertTrue(includes(range, parse(versionType, "0.0.0")));
+      assertTrue(includes(range, parse(versionType, "0.0.1")));
+      assertTrue(includes(range, parse(versionType, "1.2.2")));
+      assertTrue(includes(range, parse(versionType, "1.2.3")));
+      assertFalse(includes(range, parse(versionType, "1.2.4")));
+      
+      range = parseRange(rangeType, "(,1.2.3]"); // (0.0.0,1.2.3]
+      assertThat(range, IsNull.notNullValue());
+      assertFalse(includes(range, parse(versionType, "0.0.0")));
+      assertTrue(includes(range, parse(versionType, "0.0.1")));
+      assertTrue(includes(range, parse(versionType, "1.2.2")));
+      assertTrue(includes(range, parse(versionType, "1.2.3")));
+      assertFalse(includes(range, parse(versionType, "1.2.4")));
+      
+      range = parseRange(rangeType, "(0,1.2.3]"); // (0.0.0,1.2.3]
+      assertThat(range, IsNull.notNullValue());
+      assertFalse(includes(range, parse(versionType, "0.0.0")));
+      assertTrue(includes(range, parse(versionType, "0.0.1")));
       assertTrue(includes(range, parse(versionType, "1.2.2")));
       assertTrue(includes(range, parse(versionType, "1.2.3")));
       assertFalse(includes(range, parse(versionType, "1.2.4")));
@@ -143,6 +220,35 @@ public class VersionRangeTest extends AbstractVersionCompatibilityTest
       assertTrue(includes(range, parse(versionType, "1.2.4")));
       assertFalse(includes(range, parse(versionType, "3")));
       assertFalse(includes(range, parse(versionType, "3.0.0")));
+      
+      range = parseRange(rangeType, "[1.0.0.RC1,2)");
+      assertThat(range, IsNull.notNullValue());
+      assertFalse(includes(range, parse(versionType, "0.0.0")));
+      assertFalse(includes(range, parse(versionType, "1.0.0")));
+      assertTrue(includes(range, parse(versionType, "1.0.0.RC1")));
+      assertTrue(includes(range, parse(versionType, "1.0.0.RC2")));
+      assertTrue(includes(range, parse(versionType, "1.0.0.Z")));
+      
+      range = parseRange(rangeType, "[1.0.0.RC1,2)");
+      assertThat(range, IsNull.notNullValue());
+      assertFalse(includes(range, parse(versionType, "0.0.0")));
+      assertFalse(includes(range, parse(versionType, "1.0.0")));
+      assertTrue(includes(range, parse(versionType, "1.0.0.RC1")));
+      assertTrue(includes(range, parse(versionType, "1.0.0.RC2")));
+      assertTrue(includes(range, parse(versionType, "1.0.0.Z")));
+      
+      assertThat(includes(parseRange(rangeType,"[1,2)"), parse(versionType, "1.0.0")), Is.is(true));
+      assertThat(includes(parseRange(rangeType,"[1.0.0.RC1,2)"), parse(versionType, "1.0.0.RC1")), Is.is(true));
+      assertThat(includes(parseRange(rangeType,"[1.0.0.RC1,2)"), parse(versionType, "1.0.0.RC2")), Is.is(true));
+      assertThat(includes(parseRange(rangeType,"[1,2)"), parse(versionType, "1.0.0")), Is.is(true));
+      assertThat(includes(parseRange(rangeType,"[1,2)"), parse(versionType, "1.0.0.A")), Is.is(true));
+      assertThat(includes(parseRange(rangeType,"[1.0.0.RC1,2)"), parse(versionType, "1.0.0.a")), Is.is(true));
+      assertThat(includes(parseRange(rangeType,"[1.0.0.RC1,2)"), parse(versionType, "1.0.0.fooooooo")), Is.is(true));
+      assertThat(includes(parseRange(rangeType,"[1,2)"), parse(versionType, "1.0.0.AAA")), Is.is(true));
+      assertThat(includes(parseRange(rangeType,"[1,2)"), parse(versionType, "1.0.0.AAAA")), Is.is(true));
+      assertThat(includes(parseRange(rangeType,"[1,2)"), parse(versionType, "1.0.0.Z")), Is.is(true));
+      assertThat(includes(parseRange(rangeType,"[1,2)"), parse(versionType, "1.0.0.SNAPSHOT")), Is.is(true));
+      assertThat(includes(parseRange(rangeType,"[1,2)"), parse(versionType, "1.0.0.121212")), Is.is(true));
    }
 
    @Test
@@ -174,43 +280,43 @@ public class VersionRangeTest extends AbstractVersionCompatibilityTest
    {
       String string = "1";
       VersionRange version = VersionRange.parse(string);
-      assertThat(version.toString(), IsEqual.equalTo(string));
-      assertThat(version.toString(), IsEqual.equalTo(string));
+      assertThat(toParseString(version), IsEqual.equalTo(string));
+      assertThat(toParseString(version), IsEqual.equalTo(string));
 
       string = "1.2";
       version = VersionRange.parse(string);
-      assertThat(version.toString(), IsEqual.equalTo(string));
-      assertThat(version.toString(), IsEqual.equalTo(string));
+      assertThat(toParseString(version), IsEqual.equalTo(string));
+      assertThat(toParseString(version), IsEqual.equalTo(string));
 
       string = "1.2.3";
       version = VersionRange.parse(string);
-      assertThat(version.toString(), IsEqual.equalTo(string));
-      assertThat(version.toString(), IsEqual.equalTo(string));
+      assertThat(toParseString(version), IsEqual.equalTo(string));
+      assertThat(toParseString(version), IsEqual.equalTo(string));
 
       string = "1.2.3.foo";
       version = VersionRange.parse(string);
-      assertThat(version.toString(), IsEqual.equalTo(string));
-      assertThat(version.toString(), IsEqual.equalTo(string));
+      assertThat(toParseString(version), IsEqual.equalTo(string));
+      assertThat(toParseString(version), IsEqual.equalTo(string));
 
       string = "[1,2)";
       version = VersionRange.parse(string);
-      assertThat(version.toString(), IsEqual.equalTo(string));
-      assertThat(version.toString(), IsEqual.equalTo(string));
+      assertThat(toParseString(version), IsEqual.equalTo(string));
+      assertThat(toParseString(version), IsEqual.equalTo(string));
 
       string = "[1.2,1.2)";
       version = VersionRange.parse(string);
-      assertThat(version.toString(), IsEqual.equalTo(string));
-      assertThat(version.toString(), IsEqual.equalTo(string));
+      assertThat(toParseString(version), IsEqual.equalTo(string));
+      assertThat(toParseString(version), IsEqual.equalTo(string));
 
       string = "[1.2.3,1.2.3)";
       version = VersionRange.parse(string);
-      assertThat(version.toString(), IsEqual.equalTo(string));
-      assertThat(version.toString(), IsEqual.equalTo(string));
+      assertThat(toParseString(version), IsEqual.equalTo(string));
+      assertThat(toParseString(version), IsEqual.equalTo(string));
 
       string = "[1.2.3.foo,1.2.3.foo)";
       version = VersionRange.parse(string);
-      assertThat(version.toString(), IsEqual.equalTo(string));
-      assertThat(version.toString(), IsEqual.equalTo(string));
+      assertThat(toParseString(version), IsEqual.equalTo(string));
+      assertThat(toParseString(version), IsEqual.equalTo(string));
    }
 
    protected <R, V> void assertInfinite(Class<V> versionType, R range)
@@ -286,6 +392,10 @@ public class VersionRangeTest extends AbstractVersionCompatibilityTest
          return ((org.eclipse.osgi.service.resolver.VersionRange) range)
             .isIncluded((org.osgi.framework.Version) version);
       }
+      else if (range instanceof com.springsource.util.osgi.VersionRange)
+      {
+         return ((com.springsource.util.osgi.VersionRange) range).includes((org.osgi.framework.Version) version);
+      }
       throw new IllegalArgumentException();
    }
 
@@ -299,6 +409,10 @@ public class VersionRangeTest extends AbstractVersionCompatibilityTest
       if (org.eclipse.osgi.service.resolver.VersionRange.class == rangeType)
       {
          return (V) new org.eclipse.osgi.service.resolver.VersionRange(range);
+      }
+      if (com.springsource.util.osgi.VersionRange.class == rangeType)
+      {
+         return (V) new com.springsource.util.osgi.VersionRange(range);
       }
       throw new IllegalArgumentException();
    }

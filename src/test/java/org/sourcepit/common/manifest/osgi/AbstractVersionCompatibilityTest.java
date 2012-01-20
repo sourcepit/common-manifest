@@ -16,8 +16,8 @@ import java.util.List;
 public abstract class AbstractVersionCompatibilityTest
 {
    @SuppressWarnings("unchecked")
-   protected final Class<? extends Comparable<Object>>[] versionTypes = new Class[] {org.osgi.framework.Version.class,
-      Version.class};
+   protected final Class<? extends Comparable<Object>>[] versionTypes = new Class[] { org.osgi.framework.Version.class,
+      org.osgi.framework.Version.class, Version.class };
 
    @SuppressWarnings("unchecked")
    protected <V> V[] parseArray(Class<V> versionType, String... versions)
