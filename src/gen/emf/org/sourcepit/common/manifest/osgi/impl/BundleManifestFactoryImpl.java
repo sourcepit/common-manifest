@@ -379,33 +379,33 @@ public class BundleManifestFactoryImpl extends EFactoryImpl implements BundleMan
     * <!-- begin-user-doc -->
     * <!-- end-user-doc -->
     * 
-    * @generated
+    * @generated NOT
     */
    public Version createVersionFromString(EDataType eDataType, String initialValue)
    {
-      return (Version) super.createFromString(eDataType, initialValue);
+      return Version.parse(initialValue);
    }
 
    /**
     * <!-- begin-user-doc -->
     * <!-- end-user-doc -->
     * 
-    * @generated
+    * @generated NOT
     */
    public String convertVersionToString(EDataType eDataType, Object instanceValue)
    {
-      return super.convertToString(eDataType, instanceValue);
+      return ((Version)instanceValue).toMinimalString();
    }
 
    /**
     * <!-- begin-user-doc -->
     * <!-- end-user-doc -->
     * 
-    * @generated
+    * @generated NOT
     */
    public VersionRange createVersionRangeFromString(EDataType eDataType, String initialValue)
    {
-      return (VersionRange) super.createFromString(eDataType, initialValue);
+      return VersionRange.parse(initialValue);
    }
 
    /**
