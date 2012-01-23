@@ -147,7 +147,7 @@ public class HeaderEntryImpl extends HeaderImpl implements BasicEMap.Entry<Strin
     */
    public void setTypedValue(String newValue)
    {
-      parsedValue = null;
+      unsetParsedValue();
 
       String oldValue = value;
       value = newValue;

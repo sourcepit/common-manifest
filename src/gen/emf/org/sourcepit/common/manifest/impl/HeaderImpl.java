@@ -47,7 +47,7 @@ public abstract class HeaderImpl extends EObjectImpl implements Header
       return ManifestPackage.Literals.HEADER;
    }
 
-   protected transient Object parsedValue;
+   private transient Object parsedValue;
 
    /**
     * <!-- begin-user-doc -->
@@ -62,6 +62,11 @@ public abstract class HeaderImpl extends EObjectImpl implements Header
          parsedValue = HeaderParser.INSTANCE.parse(this);
       }
       return parsedValue;
+   }
+   
+   protected void unsetParsedValue()
+   {
+      parsedValue = null;
    }
 
    /**
