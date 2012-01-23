@@ -394,7 +394,7 @@ public class BundleManifestFactoryImpl extends EFactoryImpl implements BundleMan
     */
    public String convertVersionToString(EDataType eDataType, Object instanceValue)
    {
-      return ((Version)instanceValue).toMinimalString();
+      return ((Version) instanceValue).toMinimalString();
    }
 
    /**

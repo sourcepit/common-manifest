@@ -63,7 +63,7 @@ public abstract class HeaderImpl extends EObjectImpl implements Header
       }
       return parsedValue;
    }
-   
+
    protected void unsetParsedValue()
    {
       parsedValue = null;

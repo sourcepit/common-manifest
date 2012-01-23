@@ -22,7 +22,8 @@ import org.eclipse.emf.common.util.Enumerator;
  * @model
  * @generated
  */
-public enum HeaderName implements Enumerator {
+public enum HeaderName implements Enumerator
+{
    /**
     * The '<em><b>MANIFEST VERSION</b></em>' literal object.
     * <!-- begin-user-doc -->
@@ -489,10 +490,10 @@ public enum HeaderName implements Enumerator {
     * 
     * @generated
     */
-   private static final HeaderName[] VALUES_ARRAY = new HeaderName[] {MANIFEST_VERSION, SIGNATURE_VERSION,
+   private static final HeaderName[] VALUES_ARRAY = new HeaderName[] { MANIFEST_VERSION, SIGNATURE_VERSION,
       CONTENT_TYPE, CLASS_PATH, MAIN_CLASS, SEALED, EXTENSION_LIST, EXTENSION_NAME, EXTENSION_INSTALLATION,
       IMPLEMENTATION_TITLE, IMPLEMENTATION_VERSION, IMPLEMENTATION_VENDOR, IMPLEMENTATION_VENDOR_ID,
-      IMPLEMENTATION_URL, SPECIFICATION_TITLE, SPECIFICATION_VERSION, SPECIFICATION_VENDOR,};
+      IMPLEMENTATION_URL, SPECIFICATION_TITLE, SPECIFICATION_VERSION, SPECIFICATION_VENDOR, };
 
    /**
     * A public read-only list of all the '<em><b>Header Name</b></em>' enumerators.

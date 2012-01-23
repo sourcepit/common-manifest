@@ -22,7 +22,8 @@ import org.eclipse.emf.common.util.Enumerator;
  * @model
  * @generated
  */
-public enum BundleHeaderName implements Enumerator {
+public enum BundleHeaderName implements Enumerator
+{
    /**
     * The '<em><b>BUNDLE ACTIVATIONPOLICY</b></em>' literal object.
     * <!-- begin-user-doc -->
@@ -786,12 +787,12 @@ public enum BundleHeaderName implements Enumerator {
     * 
     * @generated
     */
-   private static final BundleHeaderName[] VALUES_ARRAY = new BundleHeaderName[] {BUNDLE_ACTIVATIONPOLICY,
+   private static final BundleHeaderName[] VALUES_ARRAY = new BundleHeaderName[] { BUNDLE_ACTIVATIONPOLICY,
       BUNDLE_ACTIVATOR, BUNDLE_CATEGORY, BUNDLE_CLASSPATH, BUNDLE_CONTACTADRESS, BUNDLE_COPYRIGHT, BUNDLE_DESCRIPTION,
       BUNDLE_DOCURL, BUNDLE_ICON, BUNDLE_LICENSE, BUNDLE_LOCALIZATION, BUNDLE_MANIFESTVERSION, BUNDLE_NAME,
       BUNDLE_NATIVECODE, BUNDLE_REQUIREDEXECUTIONENVIRONMENT, BUNDLE_SYMBOLICNAME, BUNDLE_UPDATELOCATION,
       BUNDLE_VENDOR, BUNDLE_VERSION, DYNAMICIMPORT_PACKAGE, EXPORT_PACKAGE, EXPORT_SERVICE, FRAGMENT_HOST,
-      IMPORT_PACKAGE, IMPORT_SERVICE, PROVIDED_CAPABILITY, REQUIRE_BUNDLE, REQUIRE_CAPABILITY,};
+      IMPORT_PACKAGE, IMPORT_SERVICE, PROVIDED_CAPABILITY, REQUIRE_BUNDLE, REQUIRE_CAPABILITY, };
 
    /**
     * A public read-only list of all the '<em><b>Bundle Header Name</b></em>' enumerators.

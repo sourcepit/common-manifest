@@ -22,7 +22,8 @@ import org.eclipse.emf.common.util.Enumerator;
  * @model
  * @generated
  */
-public enum ParameterType implements Enumerator {
+public enum ParameterType implements Enumerator
+{
    /**
     * The '<em><b>ATTRIBUTE</b></em>' literal object.
     * <!-- begin-user-doc -->
@@ -84,7 +85,7 @@ public enum ParameterType implements Enumerator {
     * 
     * @generated
     */
-   private static final ParameterType[] VALUES_ARRAY = new ParameterType[] {ATTRIBUTE, DIRECTIVE,};
+   private static final ParameterType[] VALUES_ARRAY = new ParameterType[] { ATTRIBUTE, DIRECTIVE, };
 
    /**
     * A public read-only list of all the '<em><b>Parameter Type</b></em>' enumerators.

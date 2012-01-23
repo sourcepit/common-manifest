@@ -22,7 +22,8 @@ import org.eclipse.emf.common.util.Enumerator;
  * @model
  * @generated
  */
-public enum ActivationPolicy implements Enumerator {
+public enum ActivationPolicy implements Enumerator
+{
    /**
     * The '<em><b>EAGER</b></em>' literal object.
     * <!-- begin-user-doc -->
@@ -84,7 +85,7 @@ public enum ActivationPolicy implements Enumerator {
     * 
     * @generated
     */
-   private static final ActivationPolicy[] VALUES_ARRAY = new ActivationPolicy[] {EAGER, LAZY,};
+   private static final ActivationPolicy[] VALUES_ARRAY = new ActivationPolicy[] { EAGER, LAZY, };
 
    /**
     * A public read-only list of all the '<em><b>Activation Policy</b></em>' enumerators.
