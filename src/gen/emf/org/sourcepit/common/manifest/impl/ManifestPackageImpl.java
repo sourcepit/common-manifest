@@ -496,8 +496,12 @@ public class ManifestPackageImpl extends EPackageImpl implements ManifestPackage
       addEParameter(op, ecorePackage.getEBoolean(), "createOnDemand", 0, 1, IS_UNIQUE, IS_ORDERED);
 
       op = addEOperation(manifestEClass, null, "setHeader", 0, 1, IS_UNIQUE, IS_ORDERED);
-      addEParameter(op, this.getHeaderName(), "name", 0, 1, IS_UNIQUE, IS_ORDERED);
+      addEParameter(op, this.getHeaderName(), "name", 1, 1, IS_UNIQUE, IS_ORDERED);
       addEParameter(op, ecorePackage.getEString(), "value", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+      op = addEOperation(manifestEClass, null, "setHeader", 0, 1, IS_UNIQUE, IS_ORDERED);
+      addEParameter(op, this.getHeaderName(), "name", 1, 1, IS_UNIQUE, IS_ORDERED);
+      addEParameter(op, ecorePackage.getEJavaObject(), "parsedValue", 0, 1, IS_UNIQUE, IS_ORDERED);
 
       op = addEOperation(manifestEClass, this.getHeader(), "getHeader", 0, 1, IS_UNIQUE, IS_ORDERED);
       addEParameter(op, this.getHeaderName(), "name", 0, 1, IS_UNIQUE, IS_ORDERED);
@@ -553,6 +557,10 @@ public class ManifestPackageImpl extends EPackageImpl implements ManifestPackage
       op = addEOperation(abstractSectionEClass, null, "setHeader", 0, 1, IS_UNIQUE, IS_ORDERED);
       addEParameter(op, ecorePackage.getEString(), "name", 0, 1, IS_UNIQUE, IS_ORDERED);
       addEParameter(op, ecorePackage.getEString(), "value", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+      op = addEOperation(abstractSectionEClass, null, "setHeader", 0, 1, IS_UNIQUE, IS_ORDERED);
+      addEParameter(op, ecorePackage.getEString(), "name", 1, 1, IS_UNIQUE, IS_ORDERED);
+      addEParameter(op, ecorePackage.getEJavaObject(), "parsedValue", 0, 1, IS_UNIQUE, IS_ORDERED);
 
       op = addEOperation(abstractSectionEClass, ecorePackage.getEString(), "getHeaderValue", 0, 1, IS_UNIQUE,
          IS_ORDERED);

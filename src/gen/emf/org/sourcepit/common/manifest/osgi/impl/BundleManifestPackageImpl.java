@@ -704,6 +704,10 @@ public class BundleManifestPackageImpl extends EPackageImpl implements BundleMan
       addEParameter(op, this.getBundleHeaderName(), "name", 0, 1, IS_UNIQUE, IS_ORDERED);
       addEParameter(op, ecorePackage.getEString(), "value", 0, 1, IS_UNIQUE, IS_ORDERED);
 
+      op = addEOperation(bundleManifestEClass, null, "setHeader", 0, 1, IS_UNIQUE, IS_ORDERED);
+      addEParameter(op, this.getBundleHeaderName(), "name", 1, 1, IS_UNIQUE, IS_ORDERED);
+      addEParameter(op, ecorePackage.getEJavaObject(), "parsedValue", 0, 1, IS_UNIQUE, IS_ORDERED);
+
       op = addEOperation(bundleManifestEClass, ecorePackage.getEString(), "getHeaderValue", 0, 1, IS_UNIQUE, IS_ORDERED);
       addEParameter(op, this.getBundleHeaderName(), "name", 0, 1, IS_UNIQUE, IS_ORDERED);
 
@@ -716,15 +720,30 @@ public class BundleManifestPackageImpl extends EPackageImpl implements BundleMan
 
       addEOperation(bundleManifestEClass, this.getVersion(), "getBundleVersion", 0, 1, IS_UNIQUE, IS_ORDERED);
 
+      op = addEOperation(bundleManifestEClass, null, "setBundleVersion", 0, 1, IS_UNIQUE, IS_ORDERED);
+      addEParameter(op, this.getVersion(), "version", 0, 1, IS_UNIQUE, IS_ORDERED);
+
       addEOperation(bundleManifestEClass, this.getBundleSymbolicName(), "getBundleSymbolicName", 0, 1, IS_UNIQUE,
          IS_ORDERED);
 
+      op = addEOperation(bundleManifestEClass, null, "setBundleSymbolicName", 0, 1, IS_UNIQUE, IS_ORDERED);
+      addEParameter(op, this.getBundleSymbolicName(), "bundleSymbolicName", 0, 1, IS_UNIQUE, IS_ORDERED);
+
       addEOperation(bundleManifestEClass, this.getFragmentHost(), "getFragmentHost", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+      op = addEOperation(bundleManifestEClass, null, "setFragmentHost", 0, 1, IS_UNIQUE, IS_ORDERED);
+      addEParameter(op, this.getFragmentHost(), "fragmentHost", 0, 1, IS_UNIQUE, IS_ORDERED);
 
       addEOperation(bundleManifestEClass, this.getBundleActivationPolicy(), "getBundleActivationPolicy", 0, 1,
          IS_UNIQUE, IS_ORDERED);
 
+      op = addEOperation(bundleManifestEClass, null, "setBundleActivationPolicy", 0, 1, IS_UNIQUE, IS_ORDERED);
+      addEParameter(op, this.getBundleActivationPolicy(), "bundleActivationPolicy", 0, 1, IS_UNIQUE, IS_ORDERED);
+
       addEOperation(bundleManifestEClass, ecorePackage.getEString(), "getBundleActivator", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+      op = addEOperation(bundleManifestEClass, null, "setBundleActivator", 0, 1, IS_UNIQUE, IS_ORDERED);
+      addEParameter(op, ecorePackage.getEString(), "bundleActivator", 0, 1, IS_UNIQUE, IS_ORDERED);
 
       op = addEOperation(bundleManifestEClass, null, "getExportPackage", 0, 1, IS_UNIQUE, IS_ORDERED);
       EGenericType g1 = createEGenericType(ecorePackage.getEEList());
@@ -732,11 +751,23 @@ public class BundleManifestPackageImpl extends EPackageImpl implements BundleMan
       g1.getETypeArguments().add(g2);
       initEOperation(op, g1);
 
+      op = addEOperation(bundleManifestEClass, null, "setExportPackage", 0, 1, IS_UNIQUE, IS_ORDERED);
+      g1 = createEGenericType(this.getEList());
+      g2 = createEGenericType(this.getPackageExport());
+      g1.getETypeArguments().add(g2);
+      addEParameter(op, g1, "packageExports", 0, 1, IS_UNIQUE, IS_ORDERED);
+
       op = addEOperation(bundleManifestEClass, null, "getImportPackage", 0, 1, IS_UNIQUE, IS_ORDERED);
       g1 = createEGenericType(ecorePackage.getEEList());
       g2 = createEGenericType(this.getPackageImport());
       g1.getETypeArguments().add(g2);
       initEOperation(op, g1);
+
+      op = addEOperation(bundleManifestEClass, null, "setImportPackage", 0, 1, IS_UNIQUE, IS_ORDERED);
+      g1 = createEGenericType(this.getEList());
+      g2 = createEGenericType(this.getPackageImport());
+      g1.getETypeArguments().add(g2);
+      addEParameter(op, g1, "packageImports", 0, 1, IS_UNIQUE, IS_ORDERED);
 
       op = addEOperation(bundleManifestEClass, null, "getDynamicImportPackage", 0, 1, IS_UNIQUE, IS_ORDERED);
       g1 = createEGenericType(ecorePackage.getEEList());
@@ -744,17 +775,35 @@ public class BundleManifestPackageImpl extends EPackageImpl implements BundleMan
       g1.getETypeArguments().add(g2);
       initEOperation(op, g1);
 
+      op = addEOperation(bundleManifestEClass, null, "setDynamicImportPackage", 0, 1, IS_UNIQUE, IS_ORDERED);
+      g1 = createEGenericType(this.getEList());
+      g2 = createEGenericType(this.getPackageImport());
+      g1.getETypeArguments().add(g2);
+      addEParameter(op, g1, "dynamicPackageImports", 0, 1, IS_UNIQUE, IS_ORDERED);
+
       op = addEOperation(bundleManifestEClass, null, "getRequireBundle", 0, 1, IS_UNIQUE, IS_ORDERED);
       g1 = createEGenericType(ecorePackage.getEEList());
       g2 = createEGenericType(this.getBundleRequirement());
       g1.getETypeArguments().add(g2);
       initEOperation(op, g1);
 
+      op = addEOperation(bundleManifestEClass, null, "setRequireBundle", 0, 1, IS_UNIQUE, IS_ORDERED);
+      g1 = createEGenericType(this.getEList());
+      g2 = createEGenericType(this.getBundleRequirement());
+      g1.getETypeArguments().add(g2);
+      addEParameter(op, g1, "bundleRequirements", 0, 1, IS_UNIQUE, IS_ORDERED);
+
       op = addEOperation(bundleManifestEClass, null, "getBundleClassPath", 0, 1, IS_UNIQUE, IS_ORDERED);
       g1 = createEGenericType(ecorePackage.getEEList());
       g2 = createEGenericType(this.getClassPathEntry());
       g1.getETypeArguments().add(g2);
       initEOperation(op, g1);
+
+      op = addEOperation(bundleManifestEClass, null, "setBundleClassPath", 0, 1, IS_UNIQUE, IS_ORDERED);
+      g1 = createEGenericType(this.getEList());
+      g2 = createEGenericType(this.getClassPathEntry());
+      g1.getETypeArguments().add(g2);
+      addEParameter(op, g1, "classPathEntries", 0, 1, IS_UNIQUE, IS_ORDERED);
 
       initEClass(parameterizedEClass, Parameterized.class, "Parameterized", IS_ABSTRACT, !IS_INTERFACE,
          IS_GENERATED_INSTANCE_CLASS);

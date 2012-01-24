@@ -83,6 +83,25 @@ public abstract class AbstractSectionImpl extends EObjectImpl implements Abstrac
     * 
     * @generated NOT
     */
+   public void setHeader(String name, Object parsedValue)
+   {
+      if (parsedValue == null)
+      {
+         getHeaders().removeKey(name);
+      }
+      else
+      {
+         getHeaders().put(name, null);
+         getHeader(name).setParsedValue(parsedValue);
+      }
+   }
+
+   /**
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated NOT
+    */
    public String getHeaderValue(String name)
    {
       return getHeaders().get(name);

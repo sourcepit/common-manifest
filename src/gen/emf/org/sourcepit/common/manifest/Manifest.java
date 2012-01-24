@@ -76,10 +76,19 @@ public interface Manifest extends AbstractSection
     * <!-- begin-user-doc -->
     * <!-- end-user-doc -->
     * 
-    * @model
+    * @model nameRequired="true"
     * @generated
     */
    void setHeader(HeaderName name, String value);
+
+   /**
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @model nameRequired="true"
+    * @generated
+    */
+   void setHeader(HeaderName name, Object parsedValue);
 
    /**
     * <!-- begin-user-doc -->

@@ -18,7 +18,8 @@ import static org.sourcepit.common.manifest.osgi.BundleHeaderName.FRAGMENT_HOST;
 import static org.sourcepit.common.manifest.osgi.BundleHeaderName.IMPORT_PACKAGE;
 import static org.sourcepit.common.manifest.osgi.BundleHeaderName.REQUIRE_BUNDLE;
 
-import org.eclipse.emf.common.util.ECollections;
+import java.util.List;
+
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.sourcepit.common.manifest.Header;
@@ -105,6 +106,17 @@ public class BundleManifestImpl extends ManifestImpl implements BundleManifest
     * 
     * @generated NOT
     */
+   public void setBundleActivationPolicy(BundleActivationPolicy bundleActivationPolicy)
+   {
+      setHeader(BUNDLE_ACTIVATIONPOLICY, bundleActivationPolicy);
+   }
+
+   /**
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated NOT
+    */
    public String getBundleActivator()
    {
       return getHeaderValue(BUNDLE_ACTIVATOR);
@@ -116,14 +128,31 @@ public class BundleManifestImpl extends ManifestImpl implements BundleManifest
     * 
     * @generated NOT
     */
+   public void setBundleActivator(String bundleActivator)
+   {
+      setHeader(BUNDLE_ACTIVATOR, bundleActivator);
+   }
+
+   /**
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated NOT
+    */
    public EList<PackageExport> getExportPackage()
    {
-      EList<PackageExport> value = getParsedHeaderValueUnchecked(EXPORT_PACKAGE);
-      if (value == null)
-      {
-         value = ECollections.emptyEList();
-      }
-      return value;
+      return getParsedHeaderValueUnchecked(EXPORT_PACKAGE);
+   }
+
+   /**
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated NOT
+    */
+   public void setExportPackage(List<PackageExport> packageExports)
+   {
+      setHeader(EXPORT_PACKAGE, packageExports);
    }
 
    @SuppressWarnings("unchecked")
@@ -140,12 +169,18 @@ public class BundleManifestImpl extends ManifestImpl implements BundleManifest
     */
    public EList<PackageImport> getImportPackage()
    {
-      EList<PackageImport> value = getParsedHeaderValueUnchecked(IMPORT_PACKAGE);
-      if (value == null)
-      {
-         value = ECollections.emptyEList();
-      }
-      return value;
+      return getParsedHeaderValueUnchecked(IMPORT_PACKAGE);
+   }
+
+   /**
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated NOT
+    */
+   public void setImportPackage(List<PackageImport> packageImports)
+   {
+      setHeader(IMPORT_PACKAGE, packageImports);
    }
 
    /**
@@ -156,12 +191,18 @@ public class BundleManifestImpl extends ManifestImpl implements BundleManifest
     */
    public EList<PackageImport> getDynamicImportPackage()
    {
-      EList<PackageImport> value = getParsedHeaderValueUnchecked(DYNAMICIMPORT_PACKAGE);
-      if (value == null)
-      {
-         value = ECollections.emptyEList();
-      }
-      return value;
+      return getParsedHeaderValueUnchecked(DYNAMICIMPORT_PACKAGE);
+   }
+
+   /**
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated NOT
+    */
+   public void setDynamicImportPackage(List<PackageImport> dynamicPackageImports)
+   {
+      setHeader(DYNAMICIMPORT_PACKAGE, dynamicPackageImports);
    }
 
    /**
@@ -172,12 +213,18 @@ public class BundleManifestImpl extends ManifestImpl implements BundleManifest
     */
    public EList<BundleRequirement> getRequireBundle()
    {
-      EList<BundleRequirement> value = getParsedHeaderValueUnchecked(REQUIRE_BUNDLE);
-      if (value == null)
-      {
-         value = ECollections.emptyEList();
-      }
-      return value;
+      return getParsedHeaderValueUnchecked(REQUIRE_BUNDLE);
+   }
+
+   /**
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated NOT
+    */
+   public void setRequireBundle(List<BundleRequirement> bundleRequirements)
+   {
+      setHeader(REQUIRE_BUNDLE, bundleRequirements);
    }
 
    /**
@@ -188,12 +235,18 @@ public class BundleManifestImpl extends ManifestImpl implements BundleManifest
     */
    public EList<ClassPathEntry> getBundleClassPath()
    {
-      EList<ClassPathEntry> value = getParsedHeaderValueUnchecked(BUNDLE_CLASSPATH);
-      if (value == null)
-      {
-         value = ECollections.emptyEList();
-      }
-      return value;
+      return getParsedHeaderValueUnchecked(BUNDLE_CLASSPATH);
+   }
+
+   /**
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated NOT
+    */
+   public void setBundleClassPath(List<ClassPathEntry> classPathEntries)
+   {
+      setHeader(BUNDLE_CLASSPATH, classPathEntries);
    }
 
    /**
@@ -205,6 +258,17 @@ public class BundleManifestImpl extends ManifestImpl implements BundleManifest
    public void setHeader(BundleHeaderName name, String value)
    {
       setHeader(name.getLiteral(), value);
+   }
+
+   /**
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated NOT
+    */
+   public void setHeader(BundleHeaderName name, Object parsedValue)
+   {
+      setHeader(name.getLiteral(), parsedValue);
    }
 
    /**
@@ -257,6 +321,17 @@ public class BundleManifestImpl extends ManifestImpl implements BundleManifest
     * 
     * @generated NOT
     */
+   public void setBundleVersion(Version version)
+   {
+      setHeader(BUNDLE_VERSION, version);
+   }
+
+   /**
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated NOT
+    */
    public BundleSymbolicName getBundleSymbolicName()
    {
       return getParsedHeaderValueUnchecked(BUNDLE_SYMBOLICNAME);
@@ -268,9 +343,31 @@ public class BundleManifestImpl extends ManifestImpl implements BundleManifest
     * 
     * @generated NOT
     */
+   public void setBundleSymbolicName(BundleSymbolicName bundleSymbolicName)
+   {
+      setHeader(BUNDLE_SYMBOLICNAME, bundleSymbolicName);
+   }
+
+   /**
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated NOT
+    */
    public FragmentHost getFragmentHost()
    {
       return getParsedHeaderValueUnchecked(FRAGMENT_HOST);
+   }
+
+   /**
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated NOT
+    */
+   public void setFragmentHost(FragmentHost fragmentHost)
+   {
+      setHeader(FRAGMENT_HOST, fragmentHost);
    }
 
 } // BundleManifestImpl

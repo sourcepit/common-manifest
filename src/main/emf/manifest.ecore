@@ -9,8 +9,12 @@
       <eParameters name="createOnDemand" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     </eOperations>
     <eOperations name="setHeader">
-      <eParameters name="name" eType="#//HeaderName"/>
+      <eParameters name="name" lowerBound="1" eType="#//HeaderName"/>
       <eParameters name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eOperations>
+    <eOperations name="setHeader">
+      <eParameters name="name" lowerBound="1" eType="#//HeaderName"/>
+      <eParameters name="parsedValue" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaObject"/>
     </eOperations>
     <eOperations name="getHeader" eType="#//Header">
       <eParameters name="name" eType="#//HeaderName"/>
@@ -82,6 +86,10 @@
       <eParameters name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       <eParameters name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eOperations>
+    <eOperations name="setHeader">
+      <eParameters name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="parsedValue" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaObject"/>
+    </eOperations>
     <eOperations name="getHeaderValue" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
       <eParameters name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eOperations>
@@ -104,6 +112,10 @@
         <eParameters name="name" eType="#//osgi/BundleHeaderName"/>
         <eParameters name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       </eOperations>
+      <eOperations name="setHeader">
+        <eParameters name="name" lowerBound="1" eType="#//osgi/BundleHeaderName"/>
+        <eParameters name="parsedValue" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaObject"/>
+      </eOperations>
       <eOperations name="getHeaderValue" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
         <eParameters name="name" eType="#//osgi/BundleHeaderName"/>
       </eOperations>
@@ -112,34 +124,84 @@
       </eOperations>
       <eOperations name="getBundleManifestVersion" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       <eOperations name="getBundleVersion" eType="#//osgi/Version"/>
+      <eOperations name="setBundleVersion">
+        <eParameters name="version" eType="#//osgi/Version"/>
+      </eOperations>
       <eOperations name="getBundleSymbolicName" eType="#//osgi/BundleSymbolicName"/>
+      <eOperations name="setBundleSymbolicName">
+        <eParameters name="bundleSymbolicName" eType="#//osgi/BundleSymbolicName"/>
+      </eOperations>
       <eOperations name="getFragmentHost" eType="#//osgi/FragmentHost"/>
+      <eOperations name="setFragmentHost">
+        <eParameters name="fragmentHost" eType="#//osgi/FragmentHost"/>
+      </eOperations>
       <eOperations name="getBundleActivationPolicy" eType="#//osgi/BundleActivationPolicy"/>
+      <eOperations name="setBundleActivationPolicy">
+        <eParameters name="bundleActivationPolicy" eType="#//osgi/BundleActivationPolicy"/>
+      </eOperations>
       <eOperations name="getBundleActivator" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eOperations name="setBundleActivator">
+        <eParameters name="bundleActivator" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </eOperations>
       <eOperations name="getExportPackage">
         <eGenericType eClassifier="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EEList">
           <eTypeArguments eClassifier="#//osgi/PackageExport"/>
         </eGenericType>
+      </eOperations>
+      <eOperations name="setExportPackage">
+        <eParameters name="packageExports">
+          <eGenericType eClassifier="#//osgi/EList">
+            <eTypeArguments eClassifier="#//osgi/PackageExport"/>
+          </eGenericType>
+        </eParameters>
       </eOperations>
       <eOperations name="getImportPackage">
         <eGenericType eClassifier="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EEList">
           <eTypeArguments eClassifier="#//osgi/PackageImport"/>
         </eGenericType>
       </eOperations>
+      <eOperations name="setImportPackage">
+        <eParameters name="packageImports">
+          <eGenericType eClassifier="#//osgi/EList">
+            <eTypeArguments eClassifier="#//osgi/PackageImport"/>
+          </eGenericType>
+        </eParameters>
+      </eOperations>
       <eOperations name="getDynamicImportPackage">
         <eGenericType eClassifier="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EEList">
           <eTypeArguments eClassifier="#//osgi/PackageImport"/>
         </eGenericType>
+      </eOperations>
+      <eOperations name="setDynamicImportPackage">
+        <eParameters name="dynamicPackageImports">
+          <eGenericType eClassifier="#//osgi/EList">
+            <eTypeArguments eClassifier="#//osgi/PackageImport"/>
+          </eGenericType>
+        </eParameters>
       </eOperations>
       <eOperations name="getRequireBundle">
         <eGenericType eClassifier="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EEList">
           <eTypeArguments eClassifier="#//osgi/BundleRequirement"/>
         </eGenericType>
       </eOperations>
+      <eOperations name="setRequireBundle">
+        <eParameters name="bundleRequirements">
+          <eGenericType eClassifier="#//osgi/EList">
+            <eTypeArguments eClassifier="#//osgi/BundleRequirement"/>
+          </eGenericType>
+        </eParameters>
+      </eOperations>
       <eOperations name="getBundleClassPath">
         <eGenericType eClassifier="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EEList">
           <eTypeArguments eClassifier="#//osgi/ClassPathEntry"/>
         </eGenericType>
+      </eOperations>
+      <eOperations name="setBundleClassPath">
+        <eParameters name="classPathEntries">
+          <eGenericType eClassifier="#//osgi/EList">
+            <eTypeArguments eClassifier="#//osgi/ClassPathEntry"/>
+          </eGenericType>
+        </eParameters>
       </eOperations>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="Parameterized" abstract="true">

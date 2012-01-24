@@ -150,6 +150,17 @@ public class ManifestImpl extends AbstractSectionImpl implements Manifest
     * 
     * @generated NOT
     */
+   public void setHeader(HeaderName name, Object parsedValue)
+   {
+      setHeader(name.getLiteral(), parsedValue);
+   }
+
+   /**
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated NOT
+    */
    public Header getHeader(HeaderName name)
    {
       return getHeader(name.getLiteral());

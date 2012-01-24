@@ -11,6 +11,7 @@ import java.util.List;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.Notifier;
+import org.eclipse.emf.common.notify.NotifyingList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -206,10 +207,14 @@ public abstract class ParseableImpl extends EObjectImpl implements Parseable
     * <!-- begin-user-doc -->
     * <!-- end-user-doc -->
     * 
-    * @generated
+    * @generated NOT
     */
    public Object getParsedValue()
    {
+      if (parsedValue == null && value != null)
+      {
+         parsedValue = HeaderParser.INSTANCE.parse(this);
+      }
       return parsedValue;
    }
 
@@ -233,6 +238,11 @@ public abstract class ParseableImpl extends EObjectImpl implements Parseable
    {
       if (value instanceof List)
       {
+         if (value instanceof NotifyingList && ParseableImpl.this.equals(((NotifyingList<?>) value).getNotifier())
+            && ManifestPackage.eINSTANCE.getParseable_ParsedValue().equals(((NotifyingList<?>) value).getFeature()))
+         {
+            return value;
+         }
          return new DelegatingNotifyingInternalEListImpl<Object>()
          {
             private static final long serialVersionUID = 1L;
@@ -276,10 +286,14 @@ public abstract class ParseableImpl extends EObjectImpl implements Parseable
     * <!-- begin-user-doc -->
     * <!-- end-user-doc -->
     * 
-    * @generated
+    * @generated NOT
     */
    public String getValue()
    {
+      if (value == null && parsedValue != null)
+      {
+         value = HeaderParser.INSTANCE.toValueString(this);
+      }
       return value;
    }
 

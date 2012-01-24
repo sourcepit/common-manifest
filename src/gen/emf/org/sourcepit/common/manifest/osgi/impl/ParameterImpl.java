@@ -260,17 +260,6 @@ public class ParameterImpl extends ParseableImpl implements Parameter
     * <!-- begin-user-doc -->
     * <!-- end-user-doc -->
     * 
-    * @generated NOT
-    */
-   public Object getParsedValue()
-   {
-      return HeaderParser.INSTANCE.parse(this);
-   }
-
-   /**
-    * <!-- begin-user-doc -->
-    * <!-- end-user-doc -->
-    * 
     * @generated
     */
    @Override

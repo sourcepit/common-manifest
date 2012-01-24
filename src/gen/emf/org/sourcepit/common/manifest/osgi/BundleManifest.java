@@ -6,6 +6,8 @@
 
 package org.sourcepit.common.manifest.osgi;
 
+import java.util.List;
+
 import org.eclipse.emf.common.util.EList;
 import org.sourcepit.common.manifest.Header;
 import org.sourcepit.common.manifest.Manifest;
@@ -39,6 +41,15 @@ public interface BundleManifest extends Manifest
     * @generated
     */
    void setHeader(BundleHeaderName name, String value);
+
+   /**
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @model nameRequired="true"
+    * @generated
+    */
+   void setHeader(BundleHeaderName name, Object parsedValue);
 
    /**
     * <!-- begin-user-doc -->
@@ -80,10 +91,28 @@ public interface BundleManifest extends Manifest
     * <!-- begin-user-doc -->
     * <!-- end-user-doc -->
     * 
+    * @model versionDataType="org.sourcepit.common.manifest.osgi.Version"
+    * @generated
+    */
+   void setBundleVersion(Version version);
+
+   /**
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
     * @model kind="operation"
     * @generated
     */
    BundleSymbolicName getBundleSymbolicName();
+
+   /**
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @model
+    * @generated
+    */
+   void setBundleSymbolicName(BundleSymbolicName bundleSymbolicName);
 
    /**
     * <!-- begin-user-doc -->
@@ -98,10 +127,28 @@ public interface BundleManifest extends Manifest
     * <!-- begin-user-doc -->
     * <!-- end-user-doc -->
     * 
+    * @model
+    * @generated
+    */
+   void setFragmentHost(FragmentHost fragmentHost);
+
+   /**
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
     * @model kind="operation"
     * @generated
     */
    BundleActivationPolicy getBundleActivationPolicy();
+
+   /**
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @model
+    * @generated
+    */
+   void setBundleActivationPolicy(BundleActivationPolicy bundleActivationPolicy);
 
    /**
     * <!-- begin-user-doc -->
@@ -116,10 +163,30 @@ public interface BundleManifest extends Manifest
     * <!-- begin-user-doc -->
     * <!-- end-user-doc -->
     * 
+    * @model
+    * @generated
+    */
+   void setBundleActivator(String bundleActivator);
+
+   /**
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
     * @model kind="operation" many="false"
     * @generated
     */
    EList<PackageExport> getExportPackage();
+
+   /**
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @model packageExportsDataType=
+    *        "org.sourcepit.common.manifest.osgi.EList<org.sourcepit.common.manifest.osgi.PackageExport>"
+    *        packageExportsMany="false"
+    * @generated
+    */
+   void setExportPackage(List<PackageExport> packageExports);
 
    /**
     * <!-- begin-user-doc -->
@@ -134,10 +201,32 @@ public interface BundleManifest extends Manifest
     * <!-- begin-user-doc -->
     * <!-- end-user-doc -->
     * 
+    * @model packageImportsDataType=
+    *        "org.sourcepit.common.manifest.osgi.EList<org.sourcepit.common.manifest.osgi.PackageImport>"
+    *        packageImportsMany="false"
+    * @generated
+    */
+   void setImportPackage(List<PackageImport> packageImports);
+
+   /**
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
     * @model kind="operation" many="false"
     * @generated
     */
    EList<PackageImport> getDynamicImportPackage();
+
+   /**
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @model dynamicPackageImportsDataType=
+    *        "org.sourcepit.common.manifest.osgi.EList<org.sourcepit.common.manifest.osgi.PackageImport>"
+    *        dynamicPackageImportsMany="false"
+    * @generated
+    */
+   void setDynamicImportPackage(List<PackageImport> dynamicPackageImports);
 
    /**
     * <!-- begin-user-doc -->
@@ -152,9 +241,31 @@ public interface BundleManifest extends Manifest
     * <!-- begin-user-doc -->
     * <!-- end-user-doc -->
     * 
+    * @model bundleRequirementsDataType=
+    *        "org.sourcepit.common.manifest.osgi.EList<org.sourcepit.common.manifest.osgi.BundleRequirement>"
+    *        bundleRequirementsMany="false"
+    * @generated
+    */
+   void setRequireBundle(List<BundleRequirement> bundleRequirements);
+
+   /**
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
     * @model kind="operation" many="false"
     * @generated
     */
    EList<ClassPathEntry> getBundleClassPath();
+
+   /**
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @model classPathEntriesDataType=
+    *        "org.sourcepit.common.manifest.osgi.EList<org.sourcepit.common.manifest.osgi.ClassPathEntry>"
+    *        classPathEntriesMany="false"
+    * @generated
+    */
+   void setBundleClassPath(List<ClassPathEntry> classPathEntries);
 
 } // BundleManifest

@@ -13,6 +13,7 @@ import org.apache.commons.lang.StringEscapeUtils;
 import org.eclipse.emf.common.util.EList;
 import org.sourcepit.common.manifest.Header;
 import org.sourcepit.common.manifest.Parseable;
+import org.sourcepit.common.manifest.osgi.ActivationPolicy;
 import org.sourcepit.common.manifest.osgi.BundleActivationPolicy;
 import org.sourcepit.common.manifest.osgi.BundleHeaderName;
 import org.sourcepit.common.manifest.osgi.BundleRequirement;
@@ -21,6 +22,7 @@ import org.sourcepit.common.manifest.osgi.ClassPathEntry;
 import org.sourcepit.common.manifest.osgi.FragmentHost;
 import org.sourcepit.common.manifest.osgi.PackageExport;
 import org.sourcepit.common.manifest.osgi.PackageImport;
+import org.sourcepit.common.manifest.osgi.PackagesDeclaration;
 import org.sourcepit.common.manifest.osgi.Parameter;
 import org.sourcepit.common.manifest.osgi.Parameterized;
 import org.sourcepit.common.manifest.osgi.Version;
@@ -327,80 +329,175 @@ public class BundleHeaderParserImpl implements BundleHeaderParser
       }
    }
 
-   protected String toValueString(FragmentHost parsedValue)
-   {
-      // TODO: Bernd Auto-generated method stub
-      return null;
-   }
-
-   protected String toValueStringBundleClassPath(EList<ClassPathEntry> parsedValue)
-   {
-      // TODO: Bernd Auto-generated method stub
-      return null;
-   }
-
-   protected String toValueStringRequireBundle(EList<BundleRequirement> parsedValue)
-   {
-      // TODO: Bernd Auto-generated method stub
-      return null;
-   }
-
-   protected String toValueStringDynamicImportPackage(EList<PackageImport> parsedValue)
-   {
-      // TODO: Bernd Auto-generated method stub
-      return null;
-   }
-
-   protected String toValueStringImportPackage(EList<PackageImport> parsedValue)
-   {
-      // TODO: Bernd Auto-generated method stub
-      return null;
-   }
-
-   protected String toValueString(EList<PackageExport> parsedValue)
+   protected String toValueString(FragmentHost fragmentHost)
    {
       final StringBuilder sb = new StringBuilder();
-      for (PackageExport packageExport : parsedValue)
+      final String name = fragmentHost.getSymbolicName();
+      if (name != null)
       {
-         write(sb, packageExport);
-         sb.append(',');
+         sb.append(name);
+         sb.append(';');
       }
-      if (!parsedValue.isEmpty())
+      if (name != null && !appendParameterized(sb, fragmentHost))
       {
          sb.deleteCharAt(sb.length() - 1);
       }
       return sb.toString();
    }
 
-   protected void write(StringBuilder sb, PackageExport packageExport)
+   protected String toValueStringBundleClassPath(EList<ClassPathEntry> classPathEntries)
    {
-      final EList<String> packageNames = packageExport.getPackageNames();
-      for (String packageName : packageNames)
+      final StringBuilder sb = new StringBuilder();
+      for (ClassPathEntry classPathEntry : classPathEntries)
+      {
+         write(sb, classPathEntry);
+         sb.append(',');
+      }
+      if (!classPathEntries.isEmpty())
+      {
+         sb.deleteCharAt(sb.length() - 1);
+      }
+      return sb.toString();
+   }
+   
+   protected void write(StringBuilder sb, ClassPathEntry classPathEntry)
+   {
+      final EList<String> paths = classPathEntry.getPaths();
+      for (String packageName : paths)
       {
          sb.append(packageName);
          sb.append(';');
       }
-      final EList<Parameter> parameters = packageExport.getParameters();
-      for (Parameter parameter : parameters)
-      {
-         sb.append(parameter.toString());
-         sb.append(';');
-      }
-      if (!packageNames.isEmpty() || !parameters.isEmpty())
+      if (!paths.isEmpty() && !appendParameterized(sb, classPathEntry))
       {
          sb.deleteCharAt(sb.length() - 1);
       }
    }
 
-   protected String toValueString(BundleSymbolicName parsedValue)
+   protected String toValueStringRequireBundle(EList<BundleRequirement> bundleRequirements)
    {
-      // TODO: Bernd Auto-generated method stub
-      return null;
+      final StringBuilder sb = new StringBuilder();
+      for (BundleRequirement bundleRequirement : bundleRequirements)
+      {
+         write(sb, bundleRequirement);
+         sb.append(',');
+      }
+      if (!bundleRequirements.isEmpty())
+      {
+         sb.deleteCharAt(sb.length() - 1);
+      }
+      return sb.toString();
+   }
+   
+   protected void write(StringBuilder sb, BundleRequirement bundleRequirement)
+   {
+      final EList<String> symbolicNames = bundleRequirement.getSymbolicNames();
+      for (String packageName : symbolicNames)
+      {
+         sb.append(packageName);
+         sb.append(';');
+      }
+      if (!symbolicNames.isEmpty() && !appendParameterized(sb, bundleRequirement))
+      {
+         sb.deleteCharAt(sb.length() - 1);
+      }
    }
 
-   protected String toValueString(BundleActivationPolicy parsedValue)
+   protected String toValueStringDynamicImportPackage(EList<PackageImport> packageImports)
    {
-      return null;
+      return toValueStringImportPackage(packageImports);
+   }
+
+   protected String toValueStringImportPackage(EList<PackageImport> packageImports)
+   {
+      final StringBuilder sb = new StringBuilder();
+      for (PackageImport packageImport : packageImports)
+      {
+         write(sb, packageImport);
+         sb.append(',');
+      }
+      if (!packageImports.isEmpty())
+      {
+         sb.deleteCharAt(sb.length() - 1);
+      }
+      return sb.toString();
+   }
+
+   protected String toValueString(EList<PackageExport> packageExports)
+   {
+      final StringBuilder sb = new StringBuilder();
+      for (PackageExport packageExport : packageExports)
+      {
+         write(sb, packageExport);
+         sb.append(',');
+      }
+      if (!packageExports.isEmpty())
+      {
+         sb.deleteCharAt(sb.length() - 1);
+      }
+      return sb.toString();
+   }
+
+   protected void write(StringBuilder sb, PackagesDeclaration packagesDeclaration)
+   {
+      final EList<String> packageNames = packagesDeclaration.getPackageNames();
+      for (String packageName : packageNames)
+      {
+         sb.append(packageName);
+         sb.append(';');
+      }
+      if (!packageNames.isEmpty() && !appendParameterized(sb, packagesDeclaration))
+      {
+         sb.deleteCharAt(sb.length() - 1);
+      }
+   }
+
+   protected boolean appendParameterized(StringBuilder sb, Parameterized parameterized)
+   {
+      final EList<Parameter> parameters = parameterized.getParameters();
+      for (Parameter parameter : parameters)
+      {
+         sb.append(parameter.toString());
+         sb.append(';');
+      }
+      final boolean modified = !parameters.isEmpty();
+      if (modified)
+      {
+         sb.deleteCharAt(sb.length() - 1);
+      }
+      return modified;
+   }
+
+   protected String toValueString(BundleSymbolicName symbolicName)
+   {
+      final StringBuilder sb = new StringBuilder();
+      final String name = symbolicName.getSymbolicName();
+      if (name != null)
+      {
+         sb.append(name);
+         sb.append(';');
+      }
+      if (name != null && !appendParameterized(sb, symbolicName))
+      {
+         sb.deleteCharAt(sb.length() - 1);
+      }
+      return sb.toString();
+   }
+
+   protected String toValueString(BundleActivationPolicy activationPolicy)
+   {
+      final StringBuilder sb = new StringBuilder();
+      final ActivationPolicy policy = activationPolicy.getPolicy();
+      if (policy != null)
+      {
+         sb.append(policy.getLiteral());
+         sb.append(';');
+      }
+      if (policy != null && !appendParameterized(sb, activationPolicy))
+      {
+         sb.deleteCharAt(sb.length() - 1);
+      }
+      return sb.toString();
    }
 
    protected String toValueString(Parameter parameter)

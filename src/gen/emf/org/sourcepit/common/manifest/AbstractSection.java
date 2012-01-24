@@ -54,6 +54,15 @@ public interface AbstractSection extends EObject
     * <!-- begin-user-doc -->
     * <!-- end-user-doc -->
     * 
+    * @model nameRequired="true"
+    * @generated
+    */
+   void setHeader(String name, Object parsedValue);
+
+   /**
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
     * @model
     * @generated
     */
