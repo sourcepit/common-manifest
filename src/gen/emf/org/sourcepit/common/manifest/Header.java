@@ -32,15 +32,6 @@ public interface Header extends Parseable
     * <!-- begin-user-doc -->
     * <!-- end-user-doc -->
     * 
-    * @model
-    * @generated
-    */
-   String setValue(String name);
-
-   /**
-    * <!-- begin-user-doc -->
-    * <!-- end-user-doc -->
-    * 
     * @model kind="operation"
     * @generated
     */

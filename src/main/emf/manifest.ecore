@@ -31,9 +31,6 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Header" abstract="true" eSuperTypes="#//Parseable">
     <eOperations name="getName" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eOperations name="setValue" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
-      <eParameters name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    </eOperations>
     <eOperations name="getManifest" eType="#//Manifest"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="SectionEntry" instanceClassName="java.util.Map.Entry"
@@ -45,7 +42,6 @@
   <eClassifiers xsi:type="ecore:EClass" name="HeaderEntry" instanceClassName="java.util.Map.Entry"
       eSuperTypes="#//Header">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="key" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="manifest" eType="#//Manifest"
         eOpposite="#//Manifest/headers"/>
   </eClassifiers>
@@ -93,9 +89,10 @@
       <eParameters name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eOperations>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Parseable" abstract="true" interface="true">
-    <eOperations name="getValue" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eOperations name="getParsedValue" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaObject"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Parseable" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="parsedValue" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaObject"
+        transient="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eSubpackages name="osgi" nsURI="http://www.sourcepit.org/common/manifest/osgi/0.1"
       nsPrefix="manifest-osgi">
@@ -160,8 +157,6 @@
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="Parameter" eSuperTypes="#//Parseable">
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1"
-          eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" lowerBound="1"
           eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="quoted" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" lowerBound="1"

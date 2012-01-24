@@ -286,7 +286,7 @@ public class BundleManifestPackageImpl extends EPackageImpl implements BundleMan
     * 
     * @generated
     */
-   public EAttribute getParameter_Value()
+   public EAttribute getParameter_Quoted()
    {
       return (EAttribute) parameterEClass.getEStructuralFeatures().get(1);
    }
@@ -297,7 +297,7 @@ public class BundleManifestPackageImpl extends EPackageImpl implements BundleMan
     * 
     * @generated
     */
-   public EAttribute getParameter_Quoted()
+   public EAttribute getParameter_Type()
    {
       return (EAttribute) parameterEClass.getEStructuralFeatures().get(2);
    }
@@ -308,20 +308,9 @@ public class BundleManifestPackageImpl extends EPackageImpl implements BundleMan
     * 
     * @generated
     */
-   public EAttribute getParameter_Type()
-   {
-      return (EAttribute) parameterEClass.getEStructuralFeatures().get(3);
-   }
-
-   /**
-    * <!-- begin-user-doc -->
-    * <!-- end-user-doc -->
-    * 
-    * @generated
-    */
    public EReference getParameter_Parameterized()
    {
-      return (EReference) parameterEClass.getEStructuralFeatures().get(4);
+      return (EReference) parameterEClass.getEStructuralFeatures().get(3);
    }
 
    /**
@@ -618,7 +607,6 @@ public class BundleManifestPackageImpl extends EPackageImpl implements BundleMan
 
       parameterEClass = createEClass(PARAMETER);
       createEAttribute(parameterEClass, PARAMETER__NAME);
-      createEAttribute(parameterEClass, PARAMETER__VALUE);
       createEAttribute(parameterEClass, PARAMETER__QUOTED);
       createEAttribute(parameterEClass, PARAMETER__TYPE);
       createEReference(parameterEClass, PARAMETER__PARAMETERIZED);
@@ -788,8 +776,6 @@ public class BundleManifestPackageImpl extends EPackageImpl implements BundleMan
       initEClass(parameterEClass, Parameter.class, "Parameter", !IS_ABSTRACT, !IS_INTERFACE,
          IS_GENERATED_INSTANCE_CLASS);
       initEAttribute(getParameter_Name(), ecorePackage.getEString(), "name", null, 1, 1, Parameter.class,
-         !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-      initEAttribute(getParameter_Value(), ecorePackage.getEString(), "value", null, 1, 1, Parameter.class,
          !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
       initEAttribute(getParameter_Quoted(), ecorePackage.getEBoolean(), "quoted", null, 0, 1, Parameter.class,
          !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

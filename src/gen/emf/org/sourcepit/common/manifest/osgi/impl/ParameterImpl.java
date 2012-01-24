@@ -11,8 +11,8 @@ import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.EObjectImpl;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.sourcepit.common.manifest.impl.ParseableImpl;
 import org.sourcepit.common.manifest.osgi.BundleManifestPackage;
 import org.sourcepit.common.manifest.osgi.Parameter;
 import org.sourcepit.common.manifest.osgi.ParameterType;
@@ -27,7 +27,6 @@ import org.sourcepit.common.manifest.parser.HeaderParser;
  * The following features are implemented:
  * <ul>
  * <li>{@link org.sourcepit.common.manifest.osgi.impl.ParameterImpl#getName <em>Name</em>}</li>
- * <li>{@link org.sourcepit.common.manifest.osgi.impl.ParameterImpl#getValue <em>Value</em>}</li>
  * <li>{@link org.sourcepit.common.manifest.osgi.impl.ParameterImpl#isQuoted <em>Quoted</em>}</li>
  * <li>{@link org.sourcepit.common.manifest.osgi.impl.ParameterImpl#getType <em>Type</em>}</li>
  * <li>{@link org.sourcepit.common.manifest.osgi.impl.ParameterImpl#getParameterized <em>Parameterized</em>}</li>
@@ -36,7 +35,7 @@ import org.sourcepit.common.manifest.parser.HeaderParser;
  * 
  * @generated
  */
-public class ParameterImpl extends EObjectImpl implements Parameter
+public class ParameterImpl extends ParseableImpl implements Parameter
 {
    /**
     * The default value of the '{@link #getName() <em>Name</em>}' attribute.
@@ -59,28 +58,6 @@ public class ParameterImpl extends EObjectImpl implements Parameter
     * @ordered
     */
    protected String name = NAME_EDEFAULT;
-
-   /**
-    * The default value of the '{@link #getValue() <em>Value</em>}' attribute.
-    * <!-- begin-user-doc -->
-    * <!-- end-user-doc -->
-    * 
-    * @see #getValue()
-    * @generated
-    * @ordered
-    */
-   protected static final String VALUE_EDEFAULT = null;
-
-   /**
-    * The cached value of the '{@link #getValue() <em>Value</em>}' attribute.
-    * <!-- begin-user-doc -->
-    * <!-- end-user-doc -->
-    * 
-    * @see #getValue()
-    * @generated
-    * @ordered
-    */
-   protected String value = VALUE_EDEFAULT;
 
    /**
     * The default value of the '{@link #isQuoted() <em>Quoted</em>}' attribute.
@@ -172,31 +149,6 @@ public class ParameterImpl extends EObjectImpl implements Parameter
       name = newName;
       if (eNotificationRequired())
          eNotify(new ENotificationImpl(this, Notification.SET, BundleManifestPackage.PARAMETER__NAME, oldName, name));
-   }
-
-   /**
-    * <!-- begin-user-doc -->
-    * <!-- end-user-doc -->
-    * 
-    * @generated
-    */
-   public String getValue()
-   {
-      return value;
-   }
-
-   /**
-    * <!-- begin-user-doc -->
-    * <!-- end-user-doc -->
-    * 
-    * @generated
-    */
-   public void setValue(String newValue)
-   {
-      String oldValue = value;
-      value = newValue;
-      if (eNotificationRequired())
-         eNotify(new ENotificationImpl(this, Notification.SET, BundleManifestPackage.PARAMETER__VALUE, oldValue, value));
    }
 
    /**
@@ -382,8 +334,6 @@ public class ParameterImpl extends EObjectImpl implements Parameter
       {
          case BundleManifestPackage.PARAMETER__NAME :
             return getName();
-         case BundleManifestPackage.PARAMETER__VALUE :
-            return getValue();
          case BundleManifestPackage.PARAMETER__QUOTED :
             return isQuoted();
          case BundleManifestPackage.PARAMETER__TYPE :
@@ -407,9 +357,6 @@ public class ParameterImpl extends EObjectImpl implements Parameter
       {
          case BundleManifestPackage.PARAMETER__NAME :
             setName((String) newValue);
-            return;
-         case BundleManifestPackage.PARAMETER__VALUE :
-            setValue((String) newValue);
             return;
          case BundleManifestPackage.PARAMETER__QUOTED :
             setQuoted((Boolean) newValue);
@@ -438,9 +385,6 @@ public class ParameterImpl extends EObjectImpl implements Parameter
          case BundleManifestPackage.PARAMETER__NAME :
             setName(NAME_EDEFAULT);
             return;
-         case BundleManifestPackage.PARAMETER__VALUE :
-            setValue(VALUE_EDEFAULT);
-            return;
          case BundleManifestPackage.PARAMETER__QUOTED :
             setQuoted(QUOTED_EDEFAULT);
             return;
@@ -467,8 +411,6 @@ public class ParameterImpl extends EObjectImpl implements Parameter
       {
          case BundleManifestPackage.PARAMETER__NAME :
             return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-         case BundleManifestPackage.PARAMETER__VALUE :
-            return VALUE_EDEFAULT == null ? value != null : !VALUE_EDEFAULT.equals(value);
          case BundleManifestPackage.PARAMETER__QUOTED :
             return quoted != QUOTED_EDEFAULT;
          case BundleManifestPackage.PARAMETER__TYPE :

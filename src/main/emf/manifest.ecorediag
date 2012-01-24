@@ -40,10 +40,6 @@
           <element xmi:type="ecore:EAttribute" href="manifest.ecore#//HeaderEntry/key"/>
           <layoutConstraint xmi:type="notation:Location" xmi:id="_CK5w8Q0gEeGiwLQCXYIQqg"/>
         </children>
-        <children xmi:type="notation:Node" xmi:id="_9l7NAA3nEeGN3uH3eZ9ILw" type="2001">
-          <element xmi:type="ecore:EAttribute" href="manifest.ecore#//HeaderEntry/value"/>
-          <layoutConstraint xmi:type="notation:Location" xmi:id="_9l70EA3nEeGN3uH3eZ9ILw"/>
-        </children>
         <styles xmi:type="notation:DrawerStyle" xmi:id="_7vyHog0fEeGiwLQCXYIQqg"/>
         <styles xmi:type="notation:SortingStyle" xmi:id="_7vyHow0fEeGiwLQCXYIQqg"/>
         <styles xmi:type="notation:FilteringStyle" xmi:id="_7vyHpA0fEeGiwLQCXYIQqg"/>
@@ -92,10 +88,6 @@
         <children xmi:type="notation:Node" xmi:id="_LYJmwA3oEeGN3uH3eZ9ILw" type="2002">
           <element xmi:type="ecore:EOperation" href="manifest.ecore#//Header/getName"/>
           <layoutConstraint xmi:type="notation:Location" xmi:id="_LYJmwQ3oEeGN3uH3eZ9ILw"/>
-        </children>
-        <children xmi:type="notation:Node" xmi:id="_8YQOEA3pEeGN3uH3eZ9ILw" type="2002">
-          <element xmi:type="ecore:EOperation" href="manifest.ecore#//Header/setValue"/>
-          <layoutConstraint xmi:type="notation:Location" xmi:id="_8YQOEQ3pEeGN3uH3eZ9ILw"/>
         </children>
         <styles xmi:type="notation:DrawerStyle" xmi:id="_GGDQcQ3nEeGN3uH3eZ9ILw"/>
         <styles xmi:type="notation:SortingStyle" xmi:id="_GGDQcg3nEeGN3uH3eZ9ILw"/>
@@ -239,19 +231,19 @@
     <children xmi:type="notation:Node" xmi:id="_ydiUgBOTEeGAoYFna79eRA" type="1001">
       <children xmi:type="notation:Node" xmi:id="_ydiUgxOTEeGAoYFna79eRA" type="4001"/>
       <children xmi:type="notation:Node" xmi:id="_ydiUhBOTEeGAoYFna79eRA" type="5001">
+        <children xmi:type="notation:Node" xmi:id="_ezs-UEYAEeGl4ejU5dbyFQ" type="2001">
+          <element xmi:type="ecore:EAttribute" href="manifest.ecore#//Parseable/parsedValue"/>
+          <layoutConstraint xmi:type="notation:Location" xmi:id="_ezs-UUYAEeGl4ejU5dbyFQ"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_9l7NAA3nEeGN3uH3eZ9ILw" type="2001">
+          <element xmi:type="ecore:EAttribute" href="manifest.ecore#//Parseable/value"/>
+          <layoutConstraint xmi:type="notation:Location" xmi:id="_9l70EA3nEeGN3uH3eZ9ILw"/>
+        </children>
         <styles xmi:type="notation:DrawerStyle" xmi:id="_ydiUhROTEeGAoYFna79eRA"/>
         <styles xmi:type="notation:SortingStyle" xmi:id="_ydiUhhOTEeGAoYFna79eRA"/>
         <styles xmi:type="notation:FilteringStyle" xmi:id="_ydiUhxOTEeGAoYFna79eRA"/>
       </children>
       <children xmi:type="notation:Node" xmi:id="_ydiUiBOTEeGAoYFna79eRA" type="5002">
-        <children xmi:type="notation:Node" xmi:id="_RaarMA3oEeGN3uH3eZ9ILw" type="2002">
-          <element xmi:type="ecore:EOperation" href="manifest.ecore#//Parseable/getValue"/>
-          <layoutConstraint xmi:type="notation:Location" xmi:id="_RaarMQ3oEeGN3uH3eZ9ILw"/>
-        </children>
-        <children xmi:type="notation:Node" xmi:id="_rbDYAA3nEeGN3uH3eZ9ILw" type="2002">
-          <element xmi:type="ecore:EOperation" href="manifest.ecore#//Parseable/getParsedValue"/>
-          <layoutConstraint xmi:type="notation:Location" xmi:id="_rbDYAQ3nEeGN3uH3eZ9ILw"/>
-        </children>
         <styles xmi:type="notation:DrawerStyle" xmi:id="_ydiUiROTEeGAoYFna79eRA"/>
         <styles xmi:type="notation:SortingStyle" xmi:id="_ydiUihOTEeGAoYFna79eRA"/>
         <styles xmi:type="notation:FilteringStyle" xmi:id="_ydiUixOTEeGAoYFna79eRA"/>

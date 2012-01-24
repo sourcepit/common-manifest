@@ -300,20 +300,9 @@ public class ManifestPackageImpl extends EPackageImpl implements ManifestPackage
     * 
     * @generated
     */
-   public EAttribute getHeaderEntry_Value()
-   {
-      return (EAttribute) headerEntryEClass.getEStructuralFeatures().get(1);
-   }
-
-   /**
-    * <!-- begin-user-doc -->
-    * <!-- end-user-doc -->
-    * 
-    * @generated
-    */
    public EReference getHeaderEntry_Manifest()
    {
-      return (EReference) headerEntryEClass.getEStructuralFeatures().get(2);
+      return (EReference) headerEntryEClass.getEStructuralFeatures().get(1);
    }
 
    /**
@@ -336,6 +325,28 @@ public class ManifestPackageImpl extends EPackageImpl implements ManifestPackage
    public EClass getParseable()
    {
       return parseableEClass;
+   }
+
+   /**
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated
+    */
+   public EAttribute getParseable_ParsedValue()
+   {
+      return (EAttribute) parseableEClass.getEStructuralFeatures().get(0);
+   }
+
+   /**
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated
+    */
+   public EAttribute getParseable_Value()
+   {
+      return (EAttribute) parseableEClass.getEStructuralFeatures().get(1);
    }
 
    /**
@@ -408,12 +419,13 @@ public class ManifestPackageImpl extends EPackageImpl implements ManifestPackage
 
       headerEntryEClass = createEClass(HEADER_ENTRY);
       createEAttribute(headerEntryEClass, HEADER_ENTRY__KEY);
-      createEAttribute(headerEntryEClass, HEADER_ENTRY__VALUE);
       createEReference(headerEntryEClass, HEADER_ENTRY__MANIFEST);
 
       abstractSectionEClass = createEClass(ABSTRACT_SECTION);
 
       parseableEClass = createEClass(PARSEABLE);
+      createEAttribute(parseableEClass, PARSEABLE__PARSED_VALUE);
+      createEAttribute(parseableEClass, PARSEABLE__VALUE);
 
       // Create enums
       headerNameEEnum = createEEnum(HEADER_NAME);
@@ -506,9 +518,6 @@ public class ManifestPackageImpl extends EPackageImpl implements ManifestPackage
 
       addEOperation(headerEClass, ecorePackage.getEString(), "getName", 1, 1, IS_UNIQUE, IS_ORDERED);
 
-      op = addEOperation(headerEClass, ecorePackage.getEString(), "setValue", 0, 1, IS_UNIQUE, IS_ORDERED);
-      addEParameter(op, ecorePackage.getEString(), "name", 0, 1, IS_UNIQUE, IS_ORDERED);
-
       addEOperation(headerEClass, this.getManifest(), "getManifest", 0, 1, IS_UNIQUE, IS_ORDERED);
 
       initEClass(sectionEntryEClass, Entry.class, "SectionEntry", !IS_ABSTRACT, !IS_INTERFACE,
@@ -523,8 +532,6 @@ public class ManifestPackageImpl extends EPackageImpl implements ManifestPackage
          !IS_GENERATED_INSTANCE_CLASS);
       initEAttribute(getHeaderEntry_Key(), ecorePackage.getEString(), "key", null, 1, 1, Entry.class, !IS_TRANSIENT,
          !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-      initEAttribute(getHeaderEntry_Value(), ecorePackage.getEString(), "value", null, 0, 1, Entry.class,
-         !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
       initEReference(getHeaderEntry_Manifest(), this.getManifest(), this.getManifest_Headers(), "manifest", null, 0, 1,
          Entry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
          IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -555,11 +562,12 @@ public class ManifestPackageImpl extends EPackageImpl implements ManifestPackage
          IS_ORDERED);
       addEParameter(op, ecorePackage.getEString(), "name", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-      initEClass(parseableEClass, Parseable.class, "Parseable", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-      addEOperation(parseableEClass, ecorePackage.getEString(), "getValue", 0, 1, IS_UNIQUE, IS_ORDERED);
-
-      addEOperation(parseableEClass, ecorePackage.getEJavaObject(), "getParsedValue", 0, 1, IS_UNIQUE, IS_ORDERED);
+      initEClass(parseableEClass, Parseable.class, "Parseable", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+      initEAttribute(getParseable_ParsedValue(), ecorePackage.getEJavaObject(), "parsedValue", null, 0, 1,
+         Parseable.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
+         IS_ORDERED);
+      initEAttribute(getParseable_Value(), ecorePackage.getEString(), "value", null, 0, 1, Parseable.class,
+         !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
       // Initialize enums and add enum literals
       initEEnum(headerNameEEnum, HeaderName.class, "HeaderName");

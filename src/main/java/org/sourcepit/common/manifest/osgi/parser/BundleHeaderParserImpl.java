@@ -274,6 +274,153 @@ public class BundleHeaderParserImpl implements BundleHeaderParser
       return sb.toString();
    }
 
+   public String toValueString(Parseable parseable)
+   {
+      if (parseable instanceof Header)
+      {
+         return toValueString((Header) parseable);
+      }
+      if (parseable instanceof Parameter)
+      {
+         return toValueString((Parameter) parseable);
+      }
+      return null;
+   }
+
+   protected String toValueString(Header header)
+   {
+      final String name = header.getName();
+      final Object parsedValue = header.getParsedValue();
+      final BundleHeaderName headerName = BundleHeaderName.get(name);
+      if (headerName == null)
+      {
+         return null;
+      }
+      return toValueString(headerName, parsedValue);
+   }
+
+   @SuppressWarnings("unchecked")
+   protected String toValueString(BundleHeaderName headerName, Object parsedValue)
+   {
+      switch (headerName)
+      {
+         case BUNDLE_ACTIVATIONPOLICY :
+            return toValueString((BundleActivationPolicy) parsedValue);
+         case BUNDLE_VERSION :
+            return ((Version) parsedValue).toMinimalString();
+         case BUNDLE_SYMBOLICNAME :
+            return toValueString((BundleSymbolicName) parsedValue);
+         case EXPORT_PACKAGE :
+            return toValueString((EList<PackageExport>) parsedValue);
+         case IMPORT_PACKAGE :
+            return toValueStringImportPackage((EList<PackageImport>) parsedValue);
+         case DYNAMICIMPORT_PACKAGE :
+            return toValueStringDynamicImportPackage((EList<PackageImport>) parsedValue);
+         case REQUIRE_BUNDLE :
+            return toValueStringRequireBundle((EList<BundleRequirement>) parsedValue);
+         case BUNDLE_CLASSPATH :
+            return toValueStringBundleClassPath((EList<ClassPathEntry>) parsedValue);
+         case FRAGMENT_HOST :
+            return toValueString((FragmentHost) parsedValue);
+         default :
+            return null;
+      }
+   }
+
+   protected String toValueString(FragmentHost parsedValue)
+   {
+      // TODO: Bernd Auto-generated method stub
+      return null;
+   }
+
+   protected String toValueStringBundleClassPath(EList<ClassPathEntry> parsedValue)
+   {
+      // TODO: Bernd Auto-generated method stub
+      return null;
+   }
+
+   protected String toValueStringRequireBundle(EList<BundleRequirement> parsedValue)
+   {
+      // TODO: Bernd Auto-generated method stub
+      return null;
+   }
+
+   protected String toValueStringDynamicImportPackage(EList<PackageImport> parsedValue)
+   {
+      // TODO: Bernd Auto-generated method stub
+      return null;
+   }
+
+   protected String toValueStringImportPackage(EList<PackageImport> parsedValue)
+   {
+      // TODO: Bernd Auto-generated method stub
+      return null;
+   }
+
+   protected String toValueString(EList<PackageExport> parsedValue)
+   {
+      final StringBuilder sb = new StringBuilder();
+      for (PackageExport packageExport : parsedValue)
+      {
+         write(sb, packageExport);
+         sb.append(',');
+      }
+      if (!parsedValue.isEmpty())
+      {
+         sb.deleteCharAt(sb.length() - 1);
+      }
+      return sb.toString();
+   }
+
+   protected void write(StringBuilder sb, PackageExport packageExport)
+   {
+      final EList<String> packageNames = packageExport.getPackageNames();
+      for (String packageName : packageNames)
+      {
+         sb.append(packageName);
+         sb.append(';');
+      }
+      final EList<Parameter> parameters = packageExport.getParameters();
+      for (Parameter parameter : parameters)
+      {
+         sb.append(parameter.toString());
+         sb.append(';');
+      }
+      if (!packageNames.isEmpty() || !parameters.isEmpty())
+      {
+         sb.deleteCharAt(sb.length() - 1);
+      }
+   }
+
+   protected String toValueString(BundleSymbolicName parsedValue)
+   {
+      // TODO: Bernd Auto-generated method stub
+      return null;
+   }
+
+   protected String toValueString(BundleActivationPolicy parsedValue)
+   {
+      return null;
+   }
+
+   protected String toValueString(Parameter parameter)
+   {
+      final Object parsedValue = parameter.getParsedValue();
+      if (parsedValue instanceof Version)
+      {
+         return ((Version) parsedValue).toMinimalString();
+      }
+      if (parsedValue instanceof VersionRange)
+      {
+         return ((VersionRange) parsedValue).toString();
+      }
+      if (parsedValue instanceof Boolean)
+      {
+         return ((Boolean) parsedValue).toString();
+      }
+      return null;
+   }
+
    private static abstract class ParseOperation<R>
    {
       private final String value;

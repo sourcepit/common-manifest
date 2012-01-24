@@ -7,11 +7,9 @@
 package org.sourcepit.common.manifest.impl;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.impl.EObjectImpl;
 import org.sourcepit.common.manifest.Header;
 import org.sourcepit.common.manifest.Manifest;
 import org.sourcepit.common.manifest.ManifestPackage;
-import org.sourcepit.common.manifest.parser.HeaderParser;
 
 /**
  * <!-- begin-user-doc -->
@@ -22,7 +20,7 @@ import org.sourcepit.common.manifest.parser.HeaderParser;
  * 
  * @generated
  */
-public abstract class HeaderImpl extends EObjectImpl implements Header
+public abstract class HeaderImpl extends ParseableImpl implements Header
 {
    /**
     * <!-- begin-user-doc -->
@@ -47,27 +45,6 @@ public abstract class HeaderImpl extends EObjectImpl implements Header
       return ManifestPackage.Literals.HEADER;
    }
 
-   private transient Object parsedValue;
-
-   /**
-    * <!-- begin-user-doc -->
-    * <!-- end-user-doc -->
-    * 
-    * @generated NOT
-    */
-   public Object getParsedValue()
-   {
-      if (parsedValue == null)
-      {
-         parsedValue = HeaderParser.INSTANCE.parse(this);
-      }
-      return parsedValue;
-   }
-
-   protected void unsetParsedValue()
-   {
-      parsedValue = null;
-   }
 
    /**
     * <!-- begin-user-doc -->
@@ -76,22 +53,6 @@ public abstract class HeaderImpl extends EObjectImpl implements Header
     * @generated NOT
     */
    public abstract String getName();
-
-   /**
-    * <!-- begin-user-doc -->
-    * <!-- end-user-doc -->
-    * 
-    * @generated NOT
-    */
-   public abstract String getValue();
-
-   /**
-    * <!-- begin-user-doc -->
-    * <!-- end-user-doc -->
-    * 
-    * @generated NOT
-    */
-   public abstract String setValue(String name);
 
    /**
     * <!-- begin-user-doc -->

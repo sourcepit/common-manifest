@@ -155,6 +155,26 @@ public interface BundleManifestPackage extends EPackage
    int PARAMETER = 2;
 
    /**
+    * The feature id for the '<em><b>Parsed Value</b></em>' attribute.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated
+    * @ordered
+    */
+   int PARAMETER__PARSED_VALUE = ManifestPackage.PARSEABLE__PARSED_VALUE;
+
+   /**
+    * The feature id for the '<em><b>Value</b></em>' attribute.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated
+    * @ordered
+    */
+   int PARAMETER__VALUE = ManifestPackage.PARSEABLE__VALUE;
+
+   /**
     * The feature id for the '<em><b>Name</b></em>' attribute.
     * <!-- begin-user-doc -->
     * <!-- end-user-doc -->
@@ -165,16 +185,6 @@ public interface BundleManifestPackage extends EPackage
    int PARAMETER__NAME = ManifestPackage.PARSEABLE_FEATURE_COUNT + 0;
 
    /**
-    * The feature id for the '<em><b>Value</b></em>' attribute.
-    * <!-- begin-user-doc -->
-    * <!-- end-user-doc -->
-    * 
-    * @generated
-    * @ordered
-    */
-   int PARAMETER__VALUE = ManifestPackage.PARSEABLE_FEATURE_COUNT + 1;
-
-   /**
     * The feature id for the '<em><b>Quoted</b></em>' attribute.
     * <!-- begin-user-doc -->
     * <!-- end-user-doc -->
@@ -182,7 +192,7 @@ public interface BundleManifestPackage extends EPackage
     * @generated
     * @ordered
     */
-   int PARAMETER__QUOTED = ManifestPackage.PARSEABLE_FEATURE_COUNT + 2;
+   int PARAMETER__QUOTED = ManifestPackage.PARSEABLE_FEATURE_COUNT + 1;
 
    /**
     * The feature id for the '<em><b>Type</b></em>' attribute.
@@ -192,7 +202,7 @@ public interface BundleManifestPackage extends EPackage
     * @generated
     * @ordered
     */
-   int PARAMETER__TYPE = ManifestPackage.PARSEABLE_FEATURE_COUNT + 3;
+   int PARAMETER__TYPE = ManifestPackage.PARSEABLE_FEATURE_COUNT + 2;
 
    /**
     * The feature id for the '<em><b>Parameterized</b></em>' container reference.
@@ -202,7 +212,7 @@ public interface BundleManifestPackage extends EPackage
     * @generated
     * @ordered
     */
-   int PARAMETER__PARAMETERIZED = ManifestPackage.PARSEABLE_FEATURE_COUNT + 4;
+   int PARAMETER__PARAMETERIZED = ManifestPackage.PARSEABLE_FEATURE_COUNT + 3;
 
    /**
     * The number of structural features of the '<em>Parameter</em>' class.
@@ -212,7 +222,7 @@ public interface BundleManifestPackage extends EPackage
     * @generated
     * @ordered
     */
-   int PARAMETER_FEATURE_COUNT = ManifestPackage.PARSEABLE_FEATURE_COUNT + 5;
+   int PARAMETER_FEATURE_COUNT = ManifestPackage.PARSEABLE_FEATURE_COUNT + 4;
 
    /**
     * The meta object id for the '{@link org.sourcepit.common.manifest.osgi.impl.BundleActivationPolicyImpl
@@ -682,19 +692,6 @@ public interface BundleManifestPackage extends EPackage
    EAttribute getParameter_Name();
 
    /**
-    * Returns the meta object for the attribute '{@link org.sourcepit.common.manifest.osgi.Parameter#getValue
-    * <em>Value</em>}'.
-    * <!-- begin-user-doc -->
-    * <!-- end-user-doc -->
-    * 
-    * @return the meta object for the attribute '<em>Value</em>'.
-    * @see org.sourcepit.common.manifest.osgi.Parameter#getValue()
-    * @see #getParameter()
-    * @generated
-    */
-   EAttribute getParameter_Value();
-
-   /**
     * Returns the meta object for the attribute '{@link org.sourcepit.common.manifest.osgi.Parameter#isQuoted
     * <em>Quoted</em>}'.
     * <!-- begin-user-doc -->
@@ -1058,15 +1055,6 @@ public interface BundleManifestPackage extends EPackage
        * @generated
        */
       EAttribute PARAMETER__NAME = eINSTANCE.getParameter_Name();
-
-      /**
-       * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
-       * <!-- begin-user-doc -->
-       * <!-- end-user-doc -->
-       * 
-       * @generated
-       */
-      EAttribute PARAMETER__VALUE = eINSTANCE.getParameter_Value();
 
       /**
        * The meta object literal for the '<em><b>Quoted</b></em>' attribute feature.

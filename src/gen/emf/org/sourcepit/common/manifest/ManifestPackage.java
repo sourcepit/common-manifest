@@ -153,15 +153,35 @@ public interface ManifestPackage extends EPackage
    int MANIFEST_SECTION_FEATURE_COUNT = ABSTRACT_SECTION_FEATURE_COUNT + 0;
 
    /**
-    * The meta object id for the '{@link org.sourcepit.common.manifest.Parseable <em>Parseable</em>}' class.
+    * The meta object id for the '{@link org.sourcepit.common.manifest.impl.ParseableImpl <em>Parseable</em>}' class.
     * <!-- begin-user-doc -->
     * <!-- end-user-doc -->
     * 
-    * @see org.sourcepit.common.manifest.Parseable
+    * @see org.sourcepit.common.manifest.impl.ParseableImpl
     * @see org.sourcepit.common.manifest.impl.ManifestPackageImpl#getParseable()
     * @generated
     */
    int PARSEABLE = 6;
+
+   /**
+    * The feature id for the '<em><b>Parsed Value</b></em>' attribute.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated
+    * @ordered
+    */
+   int PARSEABLE__PARSED_VALUE = 0;
+
+   /**
+    * The feature id for the '<em><b>Value</b></em>' attribute.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated
+    * @ordered
+    */
+   int PARSEABLE__VALUE = 1;
 
    /**
     * The number of structural features of the '<em>Parseable</em>' class.
@@ -171,7 +191,7 @@ public interface ManifestPackage extends EPackage
     * @generated
     * @ordered
     */
-   int PARSEABLE_FEATURE_COUNT = 0;
+   int PARSEABLE_FEATURE_COUNT = 2;
 
    /**
     * The meta object id for the '{@link org.sourcepit.common.manifest.impl.HeaderImpl <em>Header</em>}' class.
@@ -183,6 +203,26 @@ public interface ManifestPackage extends EPackage
     * @generated
     */
    int HEADER = 2;
+
+   /**
+    * The feature id for the '<em><b>Parsed Value</b></em>' attribute.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated
+    * @ordered
+    */
+   int HEADER__PARSED_VALUE = PARSEABLE__PARSED_VALUE;
+
+   /**
+    * The feature id for the '<em><b>Value</b></em>' attribute.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated
+    * @ordered
+    */
+   int HEADER__VALUE = PARSEABLE__VALUE;
 
    /**
     * The number of structural features of the '<em>Header</em>' class.
@@ -249,6 +289,26 @@ public interface ManifestPackage extends EPackage
    int HEADER_ENTRY = 4;
 
    /**
+    * The feature id for the '<em><b>Parsed Value</b></em>' attribute.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated
+    * @ordered
+    */
+   int HEADER_ENTRY__PARSED_VALUE = HEADER__PARSED_VALUE;
+
+   /**
+    * The feature id for the '<em><b>Value</b></em>' attribute.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated
+    * @ordered
+    */
+   int HEADER_ENTRY__VALUE = HEADER__VALUE;
+
+   /**
     * The feature id for the '<em><b>Key</b></em>' attribute.
     * <!-- begin-user-doc -->
     * <!-- end-user-doc -->
@@ -259,16 +319,6 @@ public interface ManifestPackage extends EPackage
    int HEADER_ENTRY__KEY = HEADER_FEATURE_COUNT + 0;
 
    /**
-    * The feature id for the '<em><b>Value</b></em>' attribute.
-    * <!-- begin-user-doc -->
-    * <!-- end-user-doc -->
-    * 
-    * @generated
-    * @ordered
-    */
-   int HEADER_ENTRY__VALUE = HEADER_FEATURE_COUNT + 1;
-
-   /**
     * The feature id for the '<em><b>Manifest</b></em>' container reference.
     * <!-- begin-user-doc -->
     * <!-- end-user-doc -->
@@ -276,7 +326,7 @@ public interface ManifestPackage extends EPackage
     * @generated
     * @ordered
     */
-   int HEADER_ENTRY__MANIFEST = HEADER_FEATURE_COUNT + 2;
+   int HEADER_ENTRY__MANIFEST = HEADER_FEATURE_COUNT + 1;
 
    /**
     * The number of structural features of the '<em>Header Entry</em>' class.
@@ -286,7 +336,7 @@ public interface ManifestPackage extends EPackage
     * @generated
     * @ordered
     */
-   int HEADER_ENTRY_FEATURE_COUNT = HEADER_FEATURE_COUNT + 3;
+   int HEADER_ENTRY_FEATURE_COUNT = HEADER_FEATURE_COUNT + 2;
 
    /**
     * The meta object id for the '{@link org.sourcepit.common.manifest.HeaderName <em>Header Name</em>}' enum.
@@ -414,9 +464,8 @@ public interface ManifestPackage extends EPackage
     * 
     * @return the meta object for class '<em>Header Entry</em>'.
     * @see java.util.Map.Entry
-    * @model features="key value manifest"
+    * @model features="key manifest"
     *        keyDataType="org.eclipse.emf.ecore.EString" keyRequired="true"
-    *        valueDataType="org.eclipse.emf.ecore.EString"
     *        manifestType="org.sourcepit.common.manifest.Manifest" manifestOpposite="headers" manifestTransient="false"
     * @generated
     */
@@ -433,18 +482,6 @@ public interface ManifestPackage extends EPackage
     * @generated
     */
    EAttribute getHeaderEntry_Key();
-
-   /**
-    * Returns the meta object for the attribute '{@link java.util.Map.Entry <em>Value</em>}'.
-    * <!-- begin-user-doc -->
-    * <!-- end-user-doc -->
-    * 
-    * @return the meta object for the attribute '<em>Value</em>'.
-    * @see java.util.Map.Entry
-    * @see #getHeaderEntry()
-    * @generated
-    */
-   EAttribute getHeaderEntry_Value();
 
    /**
     * Returns the meta object for the container reference '{@link java.util.Map.Entry <em>Manifest</em>}'.
@@ -480,6 +517,32 @@ public interface ManifestPackage extends EPackage
     * @generated
     */
    EClass getParseable();
+
+   /**
+    * Returns the meta object for the attribute '{@link org.sourcepit.common.manifest.Parseable#getParsedValue
+    * <em>Parsed Value</em>}'.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @return the meta object for the attribute '<em>Parsed Value</em>'.
+    * @see org.sourcepit.common.manifest.Parseable#getParsedValue()
+    * @see #getParseable()
+    * @generated
+    */
+   EAttribute getParseable_ParsedValue();
+
+   /**
+    * Returns the meta object for the attribute '{@link org.sourcepit.common.manifest.Parseable#getValue <em>Value</em>}
+    * '.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @return the meta object for the attribute '<em>Value</em>'.
+    * @see org.sourcepit.common.manifest.Parseable#getValue()
+    * @see #getParseable()
+    * @generated
+    */
+   EAttribute getParseable_Value();
 
    /**
     * Returns the meta object for enum '{@link org.sourcepit.common.manifest.HeaderName <em>Header Name</em>}'.
@@ -634,15 +697,6 @@ public interface ManifestPackage extends EPackage
       EAttribute HEADER_ENTRY__KEY = eINSTANCE.getHeaderEntry_Key();
 
       /**
-       * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
-       * <!-- begin-user-doc -->
-       * <!-- end-user-doc -->
-       * 
-       * @generated
-       */
-      EAttribute HEADER_ENTRY__VALUE = eINSTANCE.getHeaderEntry_Value();
-
-      /**
        * The meta object literal for the '<em><b>Manifest</b></em>' container reference feature.
        * <!-- begin-user-doc -->
        * <!-- end-user-doc -->
@@ -664,15 +718,34 @@ public interface ManifestPackage extends EPackage
       EClass ABSTRACT_SECTION = eINSTANCE.getAbstractSection();
 
       /**
-       * The meta object literal for the '{@link org.sourcepit.common.manifest.Parseable <em>Parseable</em>}' class.
+       * The meta object literal for the '{@link org.sourcepit.common.manifest.impl.ParseableImpl <em>Parseable</em>}'
+       * class.
        * <!-- begin-user-doc -->
        * <!-- end-user-doc -->
        * 
-       * @see org.sourcepit.common.manifest.Parseable
+       * @see org.sourcepit.common.manifest.impl.ParseableImpl
        * @see org.sourcepit.common.manifest.impl.ManifestPackageImpl#getParseable()
        * @generated
        */
       EClass PARSEABLE = eINSTANCE.getParseable();
+
+      /**
+       * The meta object literal for the '<em><b>Parsed Value</b></em>' attribute feature.
+       * <!-- begin-user-doc -->
+       * <!-- end-user-doc -->
+       * 
+       * @generated
+       */
+      EAttribute PARSEABLE__PARSED_VALUE = eINSTANCE.getParseable_ParsedValue();
+
+      /**
+       * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
+       * <!-- begin-user-doc -->
+       * <!-- end-user-doc -->
+       * 
+       * @generated
+       */
+      EAttribute PARSEABLE__VALUE = eINSTANCE.getParseable_Value();
 
       /**
        * The meta object literal for the '{@link org.sourcepit.common.manifest.HeaderName <em>Header Name</em>}' enum.

@@ -15,6 +15,11 @@ import org.hamcrest.core.Is;
 import org.hamcrest.core.IsEqual;
 import org.hamcrest.core.IsNull;
 import org.junit.Test;
+import org.sourcepit.common.manifest.Header;
+import org.sourcepit.common.manifest.Parseable;
+import org.sourcepit.common.manifest.osgi.BundleHeaderName;
+import org.sourcepit.common.manifest.osgi.BundleManifest;
+import org.sourcepit.common.manifest.osgi.BundleManifestFactory;
 import org.sourcepit.common.manifest.osgi.PackageExport;
 import org.sourcepit.common.manifest.osgi.PackageImport;
 import org.sourcepit.common.manifest.osgi.Parameter;
@@ -114,4 +119,27 @@ public class BundleHeaderParserImplTest
       return p;
    }
 
+   @Test
+   public void testParameterToValueString() throws Exception
+   {
+      // force init of static initializers
+      BundleManifestFactory.eINSTANCE.createBundleManifest();
+
+      String str = "version=1";
+      Parameter param = parseParameter(str);
+
+      Version version = (Version) param.getParsedValue();
+      assertThat(version.toMinimalString(), IsEqual.equalTo("1"));
+      assertThat(parser.toValueString((Parseable) param), IsEqual.equalTo("1"));
+   }
+
+   @Test
+   public void testExportPackageToString() throws Exception
+   {
+      BundleManifest manifest = BundleManifestFactory.eINSTANCE.createBundleManifest();
+      manifest.setHeader(BundleHeaderName.EXPORT_PACKAGE, "a.b.c;d.e.f;version=1.0,g.h.i");
+
+      Header header = manifest.getHeader(BundleHeaderName.EXPORT_PACKAGE);
+      assertThat(parser.toValueString((Parseable) header), IsEqual.equalTo("a.b.c;d.e.f;version=1.0,g.h.i"));
+   }
 }
