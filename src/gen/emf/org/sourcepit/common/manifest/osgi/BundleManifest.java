@@ -112,6 +112,15 @@ public interface BundleManifest extends Manifest
     * @model
     * @generated
     */
+   BundleSymbolicName getBundleSymbolicName(boolean createOnDemand);
+
+   /**
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @model
+    * @generated
+    */
    void setBundleSymbolicName(BundleSymbolicName bundleSymbolicName);
 
    /**
@@ -130,6 +139,15 @@ public interface BundleManifest extends Manifest
     * @model
     * @generated
     */
+   FragmentHost getFragmentHost(boolean createOnDemand);
+
+   /**
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @model
+    * @generated
+    */
    void setFragmentHost(FragmentHost fragmentHost);
 
    /**
@@ -140,6 +158,15 @@ public interface BundleManifest extends Manifest
     * @generated
     */
    BundleActivationPolicy getBundleActivationPolicy();
+
+   /**
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @model
+    * @generated
+    */
+   BundleActivationPolicy getBundleActivationPolicy(boolean createOnDemand);
 
    /**
     * <!-- begin-user-doc -->
@@ -181,6 +208,15 @@ public interface BundleManifest extends Manifest
     * <!-- begin-user-doc -->
     * <!-- end-user-doc -->
     * 
+    * @model many="false"
+    * @generated
+    */
+   EList<PackageExport> getExportPackage(boolean createOnDemand);
+
+   /**
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
     * @model packageExportsDataType=
     *        "org.sourcepit.common.manifest.osgi.EList<org.sourcepit.common.manifest.osgi.PackageExport>"
     *        packageExportsMany="false"
@@ -196,6 +232,15 @@ public interface BundleManifest extends Manifest
     * @generated
     */
    EList<PackageImport> getImportPackage();
+
+   /**
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @model many="false"
+    * @generated
+    */
+   EList<PackageImport> getImportPackage(boolean createOnDemand);
 
    /**
     * <!-- begin-user-doc -->
@@ -221,6 +266,15 @@ public interface BundleManifest extends Manifest
     * <!-- begin-user-doc -->
     * <!-- end-user-doc -->
     * 
+    * @model many="false"
+    * @generated
+    */
+   EList<PackageImport> getDynamicImportPackage(boolean createOnDemand);
+
+   /**
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
     * @model dynamicPackageImportsDataType=
     *        "org.sourcepit.common.manifest.osgi.EList<org.sourcepit.common.manifest.osgi.PackageImport>"
     *        dynamicPackageImportsMany="false"
@@ -241,6 +295,15 @@ public interface BundleManifest extends Manifest
     * <!-- begin-user-doc -->
     * <!-- end-user-doc -->
     * 
+    * @model many="false"
+    * @generated
+    */
+   EList<BundleRequirement> getRequireBundle(boolean createOnDemand);
+
+   /**
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
     * @model bundleRequirementsDataType=
     *        "org.sourcepit.common.manifest.osgi.EList<org.sourcepit.common.manifest.osgi.BundleRequirement>"
     *        bundleRequirementsMany="false"
@@ -256,6 +319,15 @@ public interface BundleManifest extends Manifest
     * @generated
     */
    EList<ClassPathEntry> getBundleClassPath();
+
+   /**
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @model many="false"
+    * @generated
+    */
+   EList<ClassPathEntry> getBundleClassPath(boolean createOnDemand);
 
    /**
     * <!-- begin-user-doc -->

@@ -18,6 +18,7 @@ import static org.sourcepit.common.manifest.osgi.BundleHeaderName.FRAGMENT_HOST;
 import static org.sourcepit.common.manifest.osgi.BundleHeaderName.IMPORT_PACKAGE;
 import static org.sourcepit.common.manifest.osgi.BundleHeaderName.REQUIRE_BUNDLE;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.emf.common.util.EList;
@@ -27,6 +28,7 @@ import org.sourcepit.common.manifest.impl.ManifestImpl;
 import org.sourcepit.common.manifest.osgi.BundleActivationPolicy;
 import org.sourcepit.common.manifest.osgi.BundleHeaderName;
 import org.sourcepit.common.manifest.osgi.BundleManifest;
+import org.sourcepit.common.manifest.osgi.BundleManifestFactory;
 import org.sourcepit.common.manifest.osgi.BundleManifestPackage;
 import org.sourcepit.common.manifest.osgi.BundleRequirement;
 import org.sourcepit.common.manifest.osgi.BundleSymbolicName;
@@ -106,6 +108,23 @@ public class BundleManifestImpl extends ManifestImpl implements BundleManifest
     * 
     * @generated NOT
     */
+   public BundleActivationPolicy getBundleActivationPolicy(boolean createOnDemand)
+   {
+      BundleActivationPolicy activationPolicy = getBundleActivationPolicy();
+      if (activationPolicy == null && createOnDemand)
+      {
+         setHeader(BUNDLE_ACTIVATIONPOLICY, BundleManifestFactory.eINSTANCE.createBundleActivationPolicy());
+         activationPolicy = getBundleActivationPolicy();
+      }
+      return activationPolicy;
+   }
+
+   /**
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated NOT
+    */
    public void setBundleActivationPolicy(BundleActivationPolicy bundleActivationPolicy)
    {
       setHeader(BUNDLE_ACTIVATIONPOLICY, bundleActivationPolicy);
@@ -150,6 +169,23 @@ public class BundleManifestImpl extends ManifestImpl implements BundleManifest
     * 
     * @generated NOT
     */
+   public EList<PackageExport> getExportPackage(boolean createOnDemand)
+   {
+      EList<PackageExport> exportPackage = getExportPackage();
+      if (exportPackage == null && createOnDemand)
+      {
+         setHeader(EXPORT_PACKAGE, new ArrayList<PackageExport>());
+         exportPackage = getExportPackage();
+      }
+      return exportPackage;
+   }
+
+   /**
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated NOT
+    */
    public void setExportPackage(List<PackageExport> packageExports)
    {
       setHeader(EXPORT_PACKAGE, packageExports);
@@ -170,6 +206,23 @@ public class BundleManifestImpl extends ManifestImpl implements BundleManifest
    public EList<PackageImport> getImportPackage()
    {
       return getParsedHeaderValueUnchecked(IMPORT_PACKAGE);
+   }
+
+   /**
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated NOT
+    */
+   public EList<PackageImport> getImportPackage(boolean createOnDemand)
+   {
+      EList<PackageImport> importPackage = getImportPackage();
+      if (importPackage == null && createOnDemand)
+      {
+         setHeader(IMPORT_PACKAGE, new ArrayList<PackageImport>());
+         importPackage = getImportPackage();
+      }
+      return importPackage;
    }
 
    /**
@@ -200,6 +253,23 @@ public class BundleManifestImpl extends ManifestImpl implements BundleManifest
     * 
     * @generated NOT
     */
+   public EList<PackageImport> getDynamicImportPackage(boolean createOnDemand)
+   {
+      EList<PackageImport> importPackage = getDynamicImportPackage();
+      if (importPackage == null && createOnDemand)
+      {
+         setHeader(DYNAMICIMPORT_PACKAGE, new ArrayList<PackageImport>());
+         importPackage = getDynamicImportPackage();
+      }
+      return importPackage;
+   }
+
+   /**
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated NOT
+    */
    public void setDynamicImportPackage(List<PackageImport> dynamicPackageImports)
    {
       setHeader(DYNAMICIMPORT_PACKAGE, dynamicPackageImports);
@@ -222,6 +292,23 @@ public class BundleManifestImpl extends ManifestImpl implements BundleManifest
     * 
     * @generated NOT
     */
+   public EList<BundleRequirement> getRequireBundle(boolean createOnDemand)
+   {
+      EList<BundleRequirement> bundleRequirements = getRequireBundle();
+      if (bundleRequirements == null && createOnDemand)
+      {
+         setHeader(REQUIRE_BUNDLE, new ArrayList<BundleRequirement>());
+         bundleRequirements = getRequireBundle();
+      }
+      return bundleRequirements;
+   }
+
+   /**
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated NOT
+    */
    public void setRequireBundle(List<BundleRequirement> bundleRequirements)
    {
       setHeader(REQUIRE_BUNDLE, bundleRequirements);
@@ -236,6 +323,23 @@ public class BundleManifestImpl extends ManifestImpl implements BundleManifest
    public EList<ClassPathEntry> getBundleClassPath()
    {
       return getParsedHeaderValueUnchecked(BUNDLE_CLASSPATH);
+   }
+
+   /**
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated NOT
+    */
+   public EList<ClassPathEntry> getBundleClassPath(boolean createOnDemand)
+   {
+      EList<ClassPathEntry> classPathEntries = getBundleClassPath();
+      if (classPathEntries == null && createOnDemand)
+      {
+         setHeader(BUNDLE_CLASSPATH, new ArrayList<ClassPathEntry>());
+         classPathEntries = getBundleClassPath();
+      }
+      return classPathEntries;
    }
 
    /**
@@ -343,6 +447,23 @@ public class BundleManifestImpl extends ManifestImpl implements BundleManifest
     * 
     * @generated NOT
     */
+   public BundleSymbolicName getBundleSymbolicName(boolean createOnDemand)
+   {
+      BundleSymbolicName symbolicName = getBundleSymbolicName();
+      if (symbolicName == null && createOnDemand)
+      {
+         setHeader(BUNDLE_SYMBOLICNAME, BundleManifestFactory.eINSTANCE.createBundleSymbolicName());
+         symbolicName = getBundleSymbolicName();
+      }
+      return symbolicName;
+   }
+
+   /**
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated NOT
+    */
    public void setBundleSymbolicName(BundleSymbolicName bundleSymbolicName)
    {
       setHeader(BUNDLE_SYMBOLICNAME, bundleSymbolicName);
@@ -357,6 +478,23 @@ public class BundleManifestImpl extends ManifestImpl implements BundleManifest
    public FragmentHost getFragmentHost()
    {
       return getParsedHeaderValueUnchecked(FRAGMENT_HOST);
+   }
+
+   /**
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated NOT
+    */
+   public FragmentHost getFragmentHost(boolean createOnDemand)
+   {
+      FragmentHost fragmentHost = getFragmentHost();
+      if (fragmentHost == null && createOnDemand)
+      {
+         setHeader(FRAGMENT_HOST, BundleManifestFactory.eINSTANCE.createFragmentHost());
+         fragmentHost = getFragmentHost();
+      }
+      return fragmentHost;
    }
 
    /**

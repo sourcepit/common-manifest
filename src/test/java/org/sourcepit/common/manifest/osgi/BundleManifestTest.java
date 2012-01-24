@@ -18,7 +18,6 @@ import static org.sourcepit.common.manifest.osgi.BundleHeaderName.FRAGMENT_HOST;
 import static org.sourcepit.common.manifest.osgi.BundleHeaderName.IMPORT_PACKAGE;
 import static org.sourcepit.common.manifest.osgi.BundleHeaderName.REQUIRE_BUNDLE;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.emf.common.util.EList;
@@ -146,9 +145,9 @@ public class BundleManifestTest
       BundleSymbolicName symbolicName = manifest.getBundleSymbolicName();
       assertThat(symbolicName, IsNull.nullValue());
 
-      manifest.setHeader(BUNDLE_SYMBOLICNAME, "foo-bar");
-
-      symbolicName = manifest.getBundleSymbolicName();
+      symbolicName = manifest.getBundleSymbolicName(true);
+      symbolicName.setSymbolicName("foo-bar");
+      
       assertThat(symbolicName, IsNull.notNullValue());
       assertThat(symbolicName.getParameters().size(), Is.is(0));
       assertThat(symbolicName.getSymbolicName(), IsEqual.equalTo("foo-bar"));
@@ -172,11 +171,15 @@ public class BundleManifestTest
       FragmentHost fragmentHost = manifest.getFragmentHost();
       assertThat(fragmentHost, IsNull.nullValue());
 
+      fragmentHost = manifest.getFragmentHost(true);
+      fragmentHost.setSymbolicName("rg.eclipse.swt");
+      
+      assertThat(fragmentHost, IsNull.notNullValue());
+      
       manifest.setHeader(FRAGMENT_HOST, "org.eclipse.swt; bundle-version=\"[3.0.0,4.0.0)\"");
 
       fragmentHost = manifest.getFragmentHost();
-      assertThat(fragmentHost, IsNull.notNullValue());
-
+      
       VersionRange bundleVersion = fragmentHost.getVersionRange();
       assertThat(bundleVersion, IsNull.notNullValue());
       assertThat(bundleVersion, IsEqual.equalTo(VersionRange.parse("[3.0.0,4.0.0)")));
@@ -189,6 +192,9 @@ public class BundleManifestTest
 
       BundleActivationPolicy activationPolicy = manifest.getBundleActivationPolicy();
       assertThat(activationPolicy, IsNull.nullValue());
+      
+      activationPolicy = manifest.getBundleActivationPolicy(true);
+      assertThat(activationPolicy, IsNull.notNullValue());
 
       manifest.setHeader(BUNDLE_ACTIVATIONPOLICY, "lazy");
 
@@ -472,8 +478,7 @@ public class BundleManifestTest
       assertThat(mf.getHeader(EXPORT_PACKAGE), IsNull.nullValue());
       assertThat(mf.getExportPackage(), IsNull.nullValue());
 
-      mf.setExportPackage(new ArrayList<PackageExport>());
-      final EList<PackageExport> packageExports = mf.getExportPackage();
+      final EList<PackageExport> packageExports = mf.getExportPackage(true);
 
       assertThat(mf.getHeaderValue(EXPORT_PACKAGE), IsEqual.equalTo(""));
       assertThat(mf.getExportPackage(), IsEqual.equalTo(packageExports));
@@ -511,9 +516,9 @@ public class BundleManifestTest
       assertThat(mf.getHeader(IMPORT_PACKAGE), IsNull.nullValue());
       assertThat(mf.getImportPackage(), IsNull.nullValue());
 
-      mf.setImportPackage(new ArrayList<PackageImport>());
-      final EList<PackageImport> packageImports = mf.getImportPackage();
-
+      final EList<PackageImport> packageImports = mf.getImportPackage(true);
+      assertThat(packageImports, IsNull.notNullValue());
+      
       assertThat(mf.getHeaderValue(IMPORT_PACKAGE), IsEqual.equalTo(""));
       assertThat(mf.getImportPackage(), IsEqual.equalTo(packageImports));
 
@@ -550,8 +555,7 @@ public class BundleManifestTest
       assertThat(mf.getHeader(DYNAMICIMPORT_PACKAGE), IsNull.nullValue());
       assertThat(mf.getDynamicImportPackage(), IsNull.nullValue());
 
-      mf.setDynamicImportPackage(new ArrayList<PackageImport>());
-      final EList<PackageImport> packageImports = mf.getDynamicImportPackage();
+      final EList<PackageImport> packageImports = mf.getDynamicImportPackage(true);
 
       assertThat(mf.getHeaderValue(DYNAMICIMPORT_PACKAGE), IsEqual.equalTo(""));
       assertThat(mf.getDynamicImportPackage(), IsEqual.equalTo(packageImports));
@@ -589,8 +593,7 @@ public class BundleManifestTest
       assertThat(mf.getHeader(REQUIRE_BUNDLE), IsNull.nullValue());
       assertThat(mf.getRequireBundle(), IsNull.nullValue());
 
-      mf.setRequireBundle(new ArrayList<BundleRequirement>());
-      final EList<BundleRequirement> bundleRequirements = mf.getRequireBundle();
+      final EList<BundleRequirement> bundleRequirements = mf.getRequireBundle(true);
 
       assertThat(mf.getHeaderValue(REQUIRE_BUNDLE), IsEqual.equalTo(""));
       assertThat(mf.getRequireBundle(), IsEqual.equalTo(bundleRequirements));
@@ -628,8 +631,7 @@ public class BundleManifestTest
       assertThat(mf.getHeader(BUNDLE_CLASSPATH), IsNull.nullValue());
       assertThat(mf.getBundleClassPath(), IsNull.nullValue());
 
-      mf.setBundleClassPath(new ArrayList<ClassPathEntry>());
-      final EList<ClassPathEntry> classPathEntries = mf.getBundleClassPath();
+      final EList<ClassPathEntry> classPathEntries = mf.getBundleClassPath(true);
 
       assertThat(mf.getHeaderValue(BUNDLE_CLASSPATH), IsEqual.equalTo(""));
       assertThat(mf.getBundleClassPath(), IsEqual.equalTo(classPathEntries));
