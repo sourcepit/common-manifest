@@ -147,7 +147,7 @@ public class BundleManifestTest
 
       symbolicName = manifest.getBundleSymbolicName(true);
       symbolicName.setSymbolicName("foo-bar");
-      
+
       assertThat(symbolicName, IsNull.notNullValue());
       assertThat(symbolicName.getParameters().size(), Is.is(0));
       assertThat(symbolicName.getSymbolicName(), IsEqual.equalTo("foo-bar"));
@@ -173,14 +173,14 @@ public class BundleManifestTest
 
       fragmentHost = manifest.getFragmentHost(true);
       fragmentHost.setSymbolicName("rg.eclipse.swt");
-      
+
       assertThat(fragmentHost, IsNull.notNullValue());
-      
+
       manifest.setHeader(FRAGMENT_HOST, "org.eclipse.swt; bundle-version=\"[3.0.0,4.0.0)\"");
 
       fragmentHost = manifest.getFragmentHost();
-      
-      VersionRange bundleVersion = fragmentHost.getVersionRange();
+
+      VersionRange bundleVersion = fragmentHost.getBundleVersion();
       assertThat(bundleVersion, IsNull.notNullValue());
       assertThat(bundleVersion, IsEqual.equalTo(VersionRange.parse("[3.0.0,4.0.0)")));
    }
@@ -192,7 +192,7 @@ public class BundleManifestTest
 
       BundleActivationPolicy activationPolicy = manifest.getBundleActivationPolicy();
       assertThat(activationPolicy, IsNull.nullValue());
-      
+
       activationPolicy = manifest.getBundleActivationPolicy(true);
       assertThat(activationPolicy, IsNull.notNullValue());
 
@@ -223,10 +223,10 @@ public class BundleManifestTest
 
       activator = manifest.getBundleActivator();
       assertThat(activator, IsEqual.equalTo("foo.Bar"));
-      
+
       manifest.setBundleActivator(null);
       assertThat(manifest.getBundleActivator(), IsNull.nullValue());
-      
+
       manifest.setBundleActivator("murks");
       manifest.setHeader(BundleHeaderName.BUNDLE_ACTIVATOR, "murks");
       assertThat(manifest.getBundleActivator(), IsEqual.equalTo("murks"));
@@ -262,7 +262,7 @@ public class BundleManifestTest
       assertThat(manifest.getImportPackage(), IsNull.nullValue());
 
       manifest.setHeader(IMPORT_PACKAGE,
-         "a.b.c;d.e.f.g;version=\"[1.2,3)\",foo.bar;bundle-version=1.2.3,bar.foo;specification-version=\"[1.2,3)\"");
+         "a.b.c;d.e.f.g;version=\"[1.2,3)\",foo.bar;version=1.2.3,bar.foo;specification-version=\"[1.2,3)\"");
 
       List<PackageImport> importPackage = manifest.getImportPackage();
       assertThat(importPackage.size(), Is.is(3));
@@ -271,17 +271,17 @@ public class BundleManifestTest
       assertThat(i1.getPackageNames().size(), Is.is(2));
       assertThat(i1.getPackageNames().get(0), IsEqual.equalTo("a.b.c"));
       assertThat(i1.getPackageNames().get(1), IsEqual.equalTo("d.e.f.g"));
-      assertThat(i1.getVersionRange(), IsEqual.equalTo(VersionRange.parse("[1.2,3)")));
+      assertThat(i1.getVersion(), IsEqual.equalTo(VersionRange.parse("[1.2,3)")));
 
       PackageImport i2 = importPackage.get(1);
       assertThat(i2.getPackageNames().size(), Is.is(1));
       assertThat(i2.getPackageNames().get(0), IsEqual.equalTo("foo.bar"));
-      assertThat(i2.getVersionRange(), IsEqual.equalTo(VersionRange.parse("1.2.3")));
+      assertThat(i2.getVersion(), IsEqual.equalTo(VersionRange.parse("1.2.3")));
 
       PackageImport i3 = importPackage.get(2);
       assertThat(i3.getPackageNames().size(), Is.is(1));
       assertThat(i3.getPackageNames().get(0), IsEqual.equalTo("bar.foo"));
-      assertThat(i3.getVersionRange(), IsEqual.equalTo(VersionRange.parse("[1.2,3)")));
+      assertThat(i3.getVersion(), IsEqual.equalTo(VersionRange.parse("[1.2,3)")));
    }
 
    @Test
@@ -290,21 +290,21 @@ public class BundleManifestTest
       BundleManifest manifest = BundleManifestFactory.eINSTANCE.createBundleManifest();
       assertThat(manifest.getDynamicImportPackage(), IsNull.nullValue());
 
-      manifest.setHeader(DYNAMICIMPORT_PACKAGE, "*;d.e.f.g;version=\"[1.2,3)\",foo.*;version=1.2.3");
+      manifest.setHeader(DYNAMICIMPORT_PACKAGE, "*;d.e.f.g;bundle-version=\"[1.2,3)\",foo.*;version=1.2.3");
 
-      List<PackageImport> importPackage = manifest.getDynamicImportPackage();
+      List<DynamicPackageImport> importPackage = manifest.getDynamicImportPackage();
       assertThat(importPackage.size(), Is.is(2));
 
-      PackageImport i1 = importPackage.get(0);
+      DynamicPackageImport i1 = importPackage.get(0);
       assertThat(i1.getPackageNames().size(), Is.is(2));
       assertThat(i1.getPackageNames().get(0), IsEqual.equalTo("*"));
       assertThat(i1.getPackageNames().get(1), IsEqual.equalTo("d.e.f.g"));
-      assertThat(i1.getVersionRange(), IsEqual.equalTo(VersionRange.parse("[1.2,3)")));
+      assertThat(i1.getBundleVersion(), IsEqual.equalTo(VersionRange.parse("[1.2,3)")));
 
-      PackageImport i2 = importPackage.get(1);
+      DynamicPackageImport i2 = importPackage.get(1);
       assertThat(i2.getPackageNames().size(), Is.is(1));
       assertThat(i2.getPackageNames().get(0), IsEqual.equalTo("foo.*"));
-      assertThat(i2.getVersionRange(), IsEqual.equalTo(VersionRange.parse("1.2.3")));
+      assertThat(i2.getVersion(), IsEqual.equalTo(VersionRange.parse("1.2.3")));
    }
 
    @Test
@@ -322,12 +322,12 @@ public class BundleManifestTest
       assertThat(r1.getSymbolicNames().size(), Is.is(2));
       assertThat(r1.getSymbolicNames().get(0), IsEqual.equalTo("a.b.c"));
       assertThat(r1.getSymbolicNames().get(1), IsEqual.equalTo("d.e.f.g"));
-      assertThat(r1.getVersionRange(), IsEqual.equalTo(VersionRange.parse("[1.2,3)")));
+      assertThat(r1.getBundleVersion(), IsEqual.equalTo(VersionRange.parse("[1.2,3)")));
 
       BundleRequirement r2 = requireBundle.get(1);
       assertThat(r2.getSymbolicNames().size(), Is.is(1));
       assertThat(r2.getSymbolicNames().get(0), IsEqual.equalTo("foo-bar"));
-      assertThat(r2.getVersionRange(), IsEqual.equalTo(VersionRange.parse("1.2.3")));
+      assertThat(r2.getBundleVersion(), IsEqual.equalTo(VersionRange.parse("1.2.3")));
    }
 
    @Test
@@ -374,9 +374,19 @@ public class BundleManifestTest
       assertThat(mf.getHeaderValue(BUNDLE_VERSION), IsEqual.equalTo("1.2"));
       assertThat(mf.getBundleVersion(), IsEqual.equalTo(Version.parse("1.2")));
 
-      mf.setBundleVersion(null);
+      mf.setBundleVersion((Version) null);
       assertThat(mf.getHeader(BUNDLE_VERSION), IsNull.nullValue());
       assertThat(mf.getBundleVersion(), IsNull.nullValue());
+
+      Version version = mf.setBundleVersion("1.0.0");
+      assertThat(mf.getHeaderValue(BUNDLE_VERSION), IsEqual.equalTo("1.0.0"));
+      assertThat(mf.getBundleVersion(), IsEqual.equalTo(Version.parse("1.0.0")));
+      assertThat(version, IsEqual.equalTo(Version.parse("1.0.0")));
+
+      version = mf.setBundleVersion((String) null);
+      assertThat(mf.getHeader(BUNDLE_VERSION), IsNull.nullValue());
+      assertThat(mf.getBundleVersion(), IsNull.nullValue());
+      assertThat(version, IsNull.nullValue());
    }
 
    @Test
@@ -394,7 +404,7 @@ public class BundleManifestTest
       assertThat(mf.getHeaderValue(BUNDLE_SYMBOLICNAME), IsEqual.equalTo("foo"));
       assertThat(mf.getBundleSymbolicName(), IsEqual.equalTo(bundleSymbolicName));
 
-      mf.setBundleSymbolicName(null);
+      mf.setBundleSymbolicName((BundleSymbolicName) null);
       assertThat(mf.getHeader(BUNDLE_SYMBOLICNAME), IsNull.nullValue());
       assertThat(mf.getBundleSymbolicName(), IsNull.nullValue());
 
@@ -407,6 +417,14 @@ public class BundleManifestTest
 
       assertThat(mf.getHeaderValue(BUNDLE_SYMBOLICNAME), IsEqual.equalTo("foo;version=1.2"));
       assertThat(mf.getBundleSymbolicName(), IsEqual.equalTo(bundleSymbolicName));
+
+      mf.setBundleSymbolicName((String) null);
+      assertThat(mf.getHeader(BUNDLE_SYMBOLICNAME), IsNull.nullValue());
+      assertThat(mf.getBundleSymbolicName(), IsNull.nullValue());
+
+      bundleSymbolicName = mf.setBundleSymbolicName("hans");
+      assertThat(mf.getHeaderValue(BUNDLE_SYMBOLICNAME), IsEqual.equalTo("hans"));
+      assertThat(mf.getBundleSymbolicName().getSymbolicName(), IsEqual.equalTo("hans"));
    }
 
    @Test
@@ -424,10 +442,10 @@ public class BundleManifestTest
       assertThat(mf.getHeaderValue(FRAGMENT_HOST), IsEqual.equalTo("foo"));
       assertThat(mf.getFragmentHost(), IsEqual.equalTo(fragmentHost));
 
-      mf.setFragmentHost(null);
+      mf.setFragmentHost((FragmentHost) null);
 
       assertThat(mf.getHeader(FRAGMENT_HOST), IsNull.nullValue());
-      assertThat(mf.getBundleSymbolicName(), IsNull.nullValue());
+      assertThat(mf.getFragmentHost(), IsNull.nullValue());
 
       Parameter versionParameter = BundleManifestFactory.eINSTANCE.createParameter();
       versionParameter.setName("version");
@@ -438,6 +456,16 @@ public class BundleManifestTest
 
       assertThat(mf.getHeaderValue(FRAGMENT_HOST), IsEqual.equalTo("foo;version=1.2"));
       assertThat(mf.getFragmentHost(), IsEqual.equalTo(fragmentHost));
+
+      fragmentHost = mf.setFragmentHost((String) null);
+      assertThat(mf.getHeader(FRAGMENT_HOST), IsNull.nullValue());
+      assertThat(mf.getFragmentHost(), IsNull.nullValue());
+      assertThat(fragmentHost, IsNull.nullValue());
+      
+      fragmentHost = mf.setFragmentHost("foo");
+      assertThat(mf.getHeaderValue(FRAGMENT_HOST), IsEqual.equalTo("foo"));
+      assertThat(mf.getFragmentHost(), IsEqual.equalTo(fragmentHost));
+      assertThat(fragmentHost.getSymbolicName(), IsEqual.equalTo("foo"));
    }
 
    @Test
@@ -455,7 +483,7 @@ public class BundleManifestTest
       assertThat(mf.getHeaderValue(BUNDLE_ACTIVATIONPOLICY), IsEqual.equalTo("lazy"));
       assertThat(mf.getBundleActivationPolicy(), IsEqual.equalTo(activationPolicy));
 
-      mf.setBundleActivationPolicy(null);
+      mf.setBundleActivationPolicy((BundleActivationPolicy)null);
 
       assertThat(mf.getHeader(BUNDLE_ACTIVATIONPOLICY), IsNull.nullValue());
       assertThat(mf.getBundleActivationPolicy(), IsNull.nullValue());
@@ -469,6 +497,26 @@ public class BundleManifestTest
 
       assertThat(mf.getHeaderValue(BUNDLE_ACTIVATIONPOLICY), IsEqual.equalTo("lazy;version=1.2"));
       assertThat(mf.getBundleActivationPolicy(), IsEqual.equalTo(activationPolicy));
+      
+      mf.setBundleActivationPolicy((ActivationPolicy)null);
+
+      assertThat(mf.getHeader(BUNDLE_ACTIVATIONPOLICY), IsNull.nullValue());
+      assertThat(mf.getBundleActivationPolicy(), IsNull.nullValue());
+      
+      activationPolicy= mf.setBundleActivationPolicy(ActivationPolicy.LAZY);
+      assertThat(mf.getHeaderValue(BUNDLE_ACTIVATIONPOLICY), IsEqual.equalTo("lazy"));
+      assertThat(mf.getBundleActivationPolicy(), IsEqual.equalTo(activationPolicy));
+      assertThat(activationPolicy.getPolicy(), IsEqual.equalTo(ActivationPolicy.LAZY));
+      
+      mf.setBundleActivationPolicy((String)null);
+
+      assertThat(mf.getHeader(BUNDLE_ACTIVATIONPOLICY), IsNull.nullValue());
+      assertThat(mf.getBundleActivationPolicy(), IsNull.nullValue());
+      
+      activationPolicy= mf.setBundleActivationPolicy("lazy");
+      assertThat(mf.getHeaderValue(BUNDLE_ACTIVATIONPOLICY), IsEqual.equalTo("lazy"));
+      assertThat(mf.getBundleActivationPolicy(), IsEqual.equalTo(activationPolicy));
+      assertThat(activationPolicy.getPolicy(), IsEqual.equalTo(ActivationPolicy.LAZY));
    }
 
    @Test
@@ -500,11 +548,11 @@ public class BundleManifestTest
       versionParameter.setParsedValue(Version.parse("1.2"));
 
       mf.setExportPackage(packageExports);
-      
+
       assertThat(mf.getHeaderValue(EXPORT_PACKAGE), IsEqual.equalTo("foo"));
-      
+
       packageExport.getParameters().add(versionParameter);
-      
+
       assertThat(mf.getHeaderValue(EXPORT_PACKAGE), IsEqual.equalTo("foo;version=1.2"));
       assertThat(mf.getExportPackage(), IsEqual.equalTo(packageExports));
    }
@@ -518,7 +566,7 @@ public class BundleManifestTest
 
       final EList<PackageImport> packageImports = mf.getImportPackage(true);
       assertThat(packageImports, IsNull.notNullValue());
-      
+
       assertThat(mf.getHeaderValue(IMPORT_PACKAGE), IsEqual.equalTo(""));
       assertThat(mf.getImportPackage(), IsEqual.equalTo(packageImports));
 
@@ -539,11 +587,11 @@ public class BundleManifestTest
       versionParameter.setParsedValue(VersionRange.parse("1.2"));
 
       mf.setImportPackage(packageImports);
-      
+
       assertThat(mf.getHeaderValue(IMPORT_PACKAGE), IsEqual.equalTo("foo"));
-      
+
       packageImport.getParameters().add(versionParameter);
-      
+
       assertThat(mf.getHeaderValue(IMPORT_PACKAGE), IsEqual.equalTo("foo;version=1.2"));
       assertThat(mf.getImportPackage(), IsEqual.equalTo(packageImports));
    }
@@ -555,12 +603,12 @@ public class BundleManifestTest
       assertThat(mf.getHeader(DYNAMICIMPORT_PACKAGE), IsNull.nullValue());
       assertThat(mf.getDynamicImportPackage(), IsNull.nullValue());
 
-      final EList<PackageImport> packageImports = mf.getDynamicImportPackage(true);
+      final EList<DynamicPackageImport> packageImports = mf.getDynamicImportPackage(true);
 
       assertThat(mf.getHeaderValue(DYNAMICIMPORT_PACKAGE), IsEqual.equalTo(""));
       assertThat(mf.getDynamicImportPackage(), IsEqual.equalTo(packageImports));
 
-      PackageImport packageImport = BundleManifestFactory.eINSTANCE.createPackageImport();
+      DynamicPackageImport packageImport = BundleManifestFactory.eINSTANCE.createDynamicPackageImport();
       packageImport.getPackageNames().add("foo");
       packageImports.add(packageImport);
 
@@ -577,11 +625,11 @@ public class BundleManifestTest
       versionParameter.setParsedValue(VersionRange.parse("1.2"));
 
       mf.setDynamicImportPackage(packageImports);
-      
+
       assertThat(mf.getHeaderValue(DYNAMICIMPORT_PACKAGE), IsEqual.equalTo("foo"));
-      
+
       packageImport.getParameters().add(versionParameter);
-      
+
       assertThat(mf.getHeaderValue(DYNAMICIMPORT_PACKAGE), IsEqual.equalTo("foo;version=1.2"));
       assertThat(mf.getDynamicImportPackage(), IsEqual.equalTo(packageImports));
    }
@@ -615,11 +663,11 @@ public class BundleManifestTest
       versionParameter.setParsedValue(VersionRange.parse("1.2"));
 
       mf.setRequireBundle(bundleRequirements);
-      
+
       assertThat(mf.getHeaderValue(REQUIRE_BUNDLE), IsEqual.equalTo("foo"));
-      
+
       bundleRequirement.getParameters().add(versionParameter);
-      
+
       assertThat(mf.getHeaderValue(REQUIRE_BUNDLE), IsEqual.equalTo("foo;version=1.2"));
       assertThat(mf.getRequireBundle(), IsEqual.equalTo(bundleRequirements));
    }
@@ -653,11 +701,11 @@ public class BundleManifestTest
       versionParameter.setParsedValue(VersionRange.parse("1.2"));
 
       mf.setBundleClassPath(classPathEntries);
-      
+
       assertThat(mf.getHeaderValue(BUNDLE_CLASSPATH), IsEqual.equalTo("foo"));
-      
+
       classPathEntry.getParameters().add(versionParameter);
-      
+
       assertThat(mf.getHeaderValue(BUNDLE_CLASSPATH), IsEqual.equalTo("foo;version=1.2"));
       assertThat(mf.getBundleClassPath(), IsEqual.equalTo(classPathEntries));
    }

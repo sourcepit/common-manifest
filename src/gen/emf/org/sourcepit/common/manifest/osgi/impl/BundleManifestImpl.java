@@ -25,6 +25,7 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.sourcepit.common.manifest.Header;
 import org.sourcepit.common.manifest.impl.ManifestImpl;
+import org.sourcepit.common.manifest.osgi.ActivationPolicy;
 import org.sourcepit.common.manifest.osgi.BundleActivationPolicy;
 import org.sourcepit.common.manifest.osgi.BundleHeaderName;
 import org.sourcepit.common.manifest.osgi.BundleManifest;
@@ -33,12 +34,11 @@ import org.sourcepit.common.manifest.osgi.BundleManifestPackage;
 import org.sourcepit.common.manifest.osgi.BundleRequirement;
 import org.sourcepit.common.manifest.osgi.BundleSymbolicName;
 import org.sourcepit.common.manifest.osgi.ClassPathEntry;
+import org.sourcepit.common.manifest.osgi.DynamicPackageImport;
 import org.sourcepit.common.manifest.osgi.FragmentHost;
 import org.sourcepit.common.manifest.osgi.PackageExport;
 import org.sourcepit.common.manifest.osgi.PackageImport;
 import org.sourcepit.common.manifest.osgi.Version;
-import org.sourcepit.common.manifest.osgi.parser.BundleHeaderParserImpl;
-import org.sourcepit.common.manifest.parser.HeaderParser;
 
 /**
  * <!-- begin-user-doc -->
@@ -51,11 +51,6 @@ import org.sourcepit.common.manifest.parser.HeaderParser;
  */
 public class BundleManifestImpl extends ManifestImpl implements BundleManifest
 {
-   static
-   {
-      HeaderParser.Registry.INSTANCE.addParser(new BundleHeaderParserImpl());
-   }
-
    /**
     * <!-- begin-user-doc -->
     * <!-- end-user-doc -->
@@ -117,6 +112,29 @@ public class BundleManifestImpl extends ManifestImpl implements BundleManifest
          activationPolicy = getBundleActivationPolicy();
       }
       return activationPolicy;
+   }
+
+   /**
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated NOT
+    */
+   public BundleActivationPolicy setBundleActivationPolicy(ActivationPolicy activationPolicy)
+   {
+      return setBundleActivationPolicy(activationPolicy == null ? null : activationPolicy.getLiteral());
+   }
+
+   /**
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated NOT
+    */
+   public BundleActivationPolicy setBundleActivationPolicy(String activationPolicy)
+   {
+      setHeader(BUNDLE_ACTIVATIONPOLICY, activationPolicy);
+      return getBundleActivationPolicy();
    }
 
    /**
@@ -242,7 +260,7 @@ public class BundleManifestImpl extends ManifestImpl implements BundleManifest
     * 
     * @generated NOT
     */
-   public EList<PackageImport> getDynamicImportPackage()
+   public EList<DynamicPackageImport> getDynamicImportPackage()
    {
       return getParsedHeaderValueUnchecked(DYNAMICIMPORT_PACKAGE);
    }
@@ -253,12 +271,12 @@ public class BundleManifestImpl extends ManifestImpl implements BundleManifest
     * 
     * @generated NOT
     */
-   public EList<PackageImport> getDynamicImportPackage(boolean createOnDemand)
+   public EList<DynamicPackageImport> getDynamicImportPackage(boolean createOnDemand)
    {
-      EList<PackageImport> importPackage = getDynamicImportPackage();
+      EList<DynamicPackageImport> importPackage = getDynamicImportPackage();
       if (importPackage == null && createOnDemand)
       {
-         setHeader(DYNAMICIMPORT_PACKAGE, new ArrayList<PackageImport>());
+         setHeader(DYNAMICIMPORT_PACKAGE, new ArrayList<DynamicPackageImport>());
          importPackage = getDynamicImportPackage();
       }
       return importPackage;
@@ -270,7 +288,7 @@ public class BundleManifestImpl extends ManifestImpl implements BundleManifest
     * 
     * @generated NOT
     */
-   public void setDynamicImportPackage(List<PackageImport> dynamicPackageImports)
+   public void setDynamicImportPackage(List<DynamicPackageImport> dynamicPackageImports)
    {
       setHeader(DYNAMICIMPORT_PACKAGE, dynamicPackageImports);
    }
@@ -425,6 +443,18 @@ public class BundleManifestImpl extends ManifestImpl implements BundleManifest
     * 
     * @generated NOT
     */
+   public Version setBundleVersion(String version)
+   {
+      setHeader(BUNDLE_VERSION, version);
+      return getBundleVersion();
+   }
+
+   /**
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated NOT
+    */
    public void setBundleVersion(Version version)
    {
       setHeader(BUNDLE_VERSION, version);
@@ -464,6 +494,18 @@ public class BundleManifestImpl extends ManifestImpl implements BundleManifest
     * 
     * @generated NOT
     */
+   public BundleSymbolicName setBundleSymbolicName(String bundleSymbolicName)
+   {
+      setHeader(BUNDLE_SYMBOLICNAME, bundleSymbolicName);
+      return getBundleSymbolicName();
+   }
+
+   /**
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated NOT
+    */
    public void setBundleSymbolicName(BundleSymbolicName bundleSymbolicName)
    {
       setHeader(BUNDLE_SYMBOLICNAME, bundleSymbolicName);
@@ -495,6 +537,18 @@ public class BundleManifestImpl extends ManifestImpl implements BundleManifest
          fragmentHost = getFragmentHost();
       }
       return fragmentHost;
+   }
+
+   /**
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated NOT
+    */
+   public FragmentHost setFragmentHost(String fragmentHost)
+   {
+      setHeader(FRAGMENT_HOST, fragmentHost);
+      return getFragmentHost();
    }
 
    /**

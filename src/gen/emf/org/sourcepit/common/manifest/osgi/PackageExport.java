@@ -28,4 +28,13 @@ public interface PackageExport extends PackagesDeclaration
     */
    Version getVersion();
 
+   /**
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @model versionDataType="org.sourcepit.common.manifest.osgi.Version"
+    * @generated
+    */
+   void setVersion(Version version);
+
 } // PackageExport

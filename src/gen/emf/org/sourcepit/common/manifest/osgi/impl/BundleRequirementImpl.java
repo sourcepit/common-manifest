@@ -86,9 +86,20 @@ public class BundleRequirementImpl extends ParameterizedImpl implements BundleRe
     * 
     * @generated NOT
     */
-   public VersionRange getVersionRange()
+   public VersionRange getBundleVersion()
    {
       return (VersionRange) getParsedParameterValue("bundle-version");
+   }
+
+   /**
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated NOT
+    */
+   public void setBundleVersion(VersionRange bundleVersion)
+   {
+      PackageImportImpl.setVersionRange(this, bundleVersion, true);
    }
 
    /**

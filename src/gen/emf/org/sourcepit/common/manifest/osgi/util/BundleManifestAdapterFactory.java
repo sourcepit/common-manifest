@@ -19,6 +19,7 @@ import org.sourcepit.common.manifest.osgi.BundleManifestPackage;
 import org.sourcepit.common.manifest.osgi.BundleRequirement;
 import org.sourcepit.common.manifest.osgi.BundleSymbolicName;
 import org.sourcepit.common.manifest.osgi.ClassPathEntry;
+import org.sourcepit.common.manifest.osgi.DynamicPackageImport;
 import org.sourcepit.common.manifest.osgi.FragmentHost;
 import org.sourcepit.common.manifest.osgi.PackageExport;
 import org.sourcepit.common.manifest.osgi.PackageImport;
@@ -158,6 +159,12 @@ public class BundleManifestAdapterFactory extends AdapterFactoryImpl
       public Adapter caseFragmentHost(FragmentHost object)
       {
          return createFragmentHostAdapter();
+      }
+
+      @Override
+      public Adapter caseDynamicPackageImport(DynamicPackageImport object)
+      {
+         return createDynamicPackageImportAdapter();
       }
 
       @Override
@@ -384,6 +391,23 @@ public class BundleManifestAdapterFactory extends AdapterFactoryImpl
     * @generated
     */
    public Adapter createFragmentHostAdapter()
+   {
+      return null;
+   }
+
+   /**
+    * Creates a new adapter for an object of class '{@link org.sourcepit.common.manifest.osgi.DynamicPackageImport
+    * <em>Dynamic Package Import</em>}'.
+    * <!-- begin-user-doc -->
+    * This default implementation returns null so that we can easily ignore cases;
+    * it's useful to ignore a case when inheritance will catch all the cases anyway.
+    * <!-- end-user-doc -->
+    * 
+    * @return the new adapter.
+    * @see org.sourcepit.common.manifest.osgi.DynamicPackageImport
+    * @generated
+    */
+   public Adapter createDynamicPackageImportAdapter()
    {
       return null;
    }

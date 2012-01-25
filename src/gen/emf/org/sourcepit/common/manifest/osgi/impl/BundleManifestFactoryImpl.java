@@ -23,6 +23,7 @@ import org.sourcepit.common.manifest.osgi.BundleManifestPackage;
 import org.sourcepit.common.manifest.osgi.BundleRequirement;
 import org.sourcepit.common.manifest.osgi.BundleSymbolicName;
 import org.sourcepit.common.manifest.osgi.ClassPathEntry;
+import org.sourcepit.common.manifest.osgi.DynamicPackageImport;
 import org.sourcepit.common.manifest.osgi.FragmentHost;
 import org.sourcepit.common.manifest.osgi.PackageExport;
 import org.sourcepit.common.manifest.osgi.PackageImport;
@@ -106,6 +107,8 @@ public class BundleManifestFactoryImpl extends EFactoryImpl implements BundleMan
             return createClassPathEntry();
          case BundleManifestPackage.FRAGMENT_HOST :
             return createFragmentHost();
+         case BundleManifestPackage.DYNAMIC_PACKAGE_IMPORT :
+            return createDynamicPackageImport();
          default :
             throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
       }
@@ -273,6 +276,18 @@ public class BundleManifestFactoryImpl extends EFactoryImpl implements BundleMan
    {
       FragmentHostImpl fragmentHost = new FragmentHostImpl();
       return fragmentHost;
+   }
+
+   /**
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated
+    */
+   public DynamicPackageImport createDynamicPackageImport()
+   {
+      DynamicPackageImportImpl dynamicPackageImport = new DynamicPackageImportImpl();
+      return dynamicPackageImport;
    }
 
    /**

@@ -9,15 +9,15 @@ package org.sourcepit.common.manifest.osgi;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Package Import</b></em>'.
+ * A representation of the model object '<em><b>Dynamic Package Import</b></em>'.
  * <!-- end-user-doc -->
  * 
  * 
- * @see org.sourcepit.common.manifest.osgi.BundleManifestPackage#getPackageImport()
+ * @see org.sourcepit.common.manifest.osgi.BundleManifestPackage#getDynamicPackageImport()
  * @model
  * @generated
  */
-public interface PackageImport extends PackagesDeclaration
+public interface DynamicPackageImport extends PackagesDeclaration
 {
    /**
     * <!-- begin-user-doc -->
@@ -37,4 +37,22 @@ public interface PackageImport extends PackagesDeclaration
     */
    void setVersion(VersionRange version);
 
-} // PackageImport
+   /**
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @model kind="operation" dataType="org.sourcepit.common.manifest.osgi.VersionRange"
+    * @generated
+    */
+   VersionRange getBundleVersion();
+
+   /**
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @model bundleVersionDataType="org.sourcepit.common.manifest.osgi.VersionRange"
+    * @generated
+    */
+   void setBundleVersion(VersionRange bundleVersion);
+
+} // DynamicPackageImport

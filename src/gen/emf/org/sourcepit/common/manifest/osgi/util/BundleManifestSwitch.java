@@ -18,6 +18,7 @@ import org.sourcepit.common.manifest.osgi.BundleManifestPackage;
 import org.sourcepit.common.manifest.osgi.BundleRequirement;
 import org.sourcepit.common.manifest.osgi.BundleSymbolicName;
 import org.sourcepit.common.manifest.osgi.ClassPathEntry;
+import org.sourcepit.common.manifest.osgi.DynamicPackageImport;
 import org.sourcepit.common.manifest.osgi.FragmentHost;
 import org.sourcepit.common.manifest.osgi.PackageExport;
 import org.sourcepit.common.manifest.osgi.PackageImport;
@@ -203,6 +204,18 @@ public class BundleManifestSwitch<T> extends Switch<T>
             T result = caseFragmentHost(fragmentHost);
             if (result == null)
                result = caseParameterized(fragmentHost);
+            if (result == null)
+               result = defaultCase(theEObject);
+            return result;
+         }
+         case BundleManifestPackage.DYNAMIC_PACKAGE_IMPORT :
+         {
+            DynamicPackageImport dynamicPackageImport = (DynamicPackageImport) theEObject;
+            T result = caseDynamicPackageImport(dynamicPackageImport);
+            if (result == null)
+               result = casePackagesDeclaration(dynamicPackageImport);
+            if (result == null)
+               result = caseParameterized(dynamicPackageImport);
             if (result == null)
                result = defaultCase(theEObject);
             return result;
@@ -395,6 +408,23 @@ public class BundleManifestSwitch<T> extends Switch<T>
     * @generated
     */
    public T caseFragmentHost(FragmentHost object)
+   {
+      return null;
+   }
+
+   /**
+    * Returns the result of interpreting the object as an instance of '<em>Dynamic Package Import</em>'.
+    * <!-- begin-user-doc -->
+    * This implementation returns null;
+    * returning a non-null result will terminate the switch.
+    * <!-- end-user-doc -->
+    * 
+    * @param object the target of the switch.
+    * @return the result of interpreting the object as an instance of '<em>Dynamic Package Import</em>'.
+    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+    * @generated
+    */
+   public T caseDynamicPackageImport(DynamicPackageImport object)
    {
       return null;
    }

@@ -11,6 +11,7 @@ import org.sourcepit.common.manifest.osgi.BundleActivationPolicy;
 import org.sourcepit.common.manifest.osgi.BundleRequirement;
 import org.sourcepit.common.manifest.osgi.BundleSymbolicName;
 import org.sourcepit.common.manifest.osgi.ClassPathEntry;
+import org.sourcepit.common.manifest.osgi.DynamicPackageImport;
 import org.sourcepit.common.manifest.osgi.FragmentHost;
 import org.sourcepit.common.manifest.osgi.PackageExport;
 import org.sourcepit.common.manifest.osgi.PackageImport;
@@ -28,7 +29,7 @@ public interface BundleHeaderParser extends HeaderParser
 
    EList<PackageImport> parseImportPackage(String value);
 
-   EList<PackageImport> parseDynamicImportPackage(String value);
+   EList<DynamicPackageImport> parseDynamicImportPackage(String value);
 
    EList<BundleRequirement> parseRequireBundle(String value);
 

@@ -9,6 +9,7 @@ package org.sourcepit.common.manifest.osgi.impl;
 import org.eclipse.emf.ecore.EClass;
 import org.sourcepit.common.manifest.osgi.BundleManifestPackage;
 import org.sourcepit.common.manifest.osgi.PackageExport;
+import org.sourcepit.common.manifest.osgi.Parameter;
 import org.sourcepit.common.manifest.osgi.Version;
 
 /**
@@ -59,6 +60,44 @@ public class PackageExportImpl extends PackagesDeclarationImpl implements Packag
          version = (Version) getParsedParameterValue("specification-version");
       }
       return version;
+   }
+
+   /**
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated NOT
+    */
+   public void setVersion(Version version)
+   {
+      Parameter parameter = getParameter("version");
+      if (parameter == null)
+      {
+         parameter = getParameter("specification-version");
+      }
+      if (parameter == null)
+      {
+         if (version != null)
+         {
+            parameter = BundleManifestFactoryImpl.eINSTANCE.createParameter();
+            parameter.setName("version");
+            parameter.setParsedValue(version);
+            getParameters().add(parameter);
+            // init value
+            parameter.getValue();
+         }
+      }
+      else
+      {
+         if (version == null)
+         {
+            getParameters().remove(parameter);
+         }
+         else
+         {
+            parameter.setParsedValue(version);
+         }
+      }
    }
 
 } // PackageExportImpl

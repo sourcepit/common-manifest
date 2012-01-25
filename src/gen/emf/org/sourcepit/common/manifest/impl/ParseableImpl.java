@@ -20,6 +20,7 @@ import org.eclipse.emf.ecore.util.DelegatingNotifyingInternalEListImpl;
 import org.eclipse.emf.ecore.util.EContentAdapter;
 import org.sourcepit.common.manifest.ManifestPackage;
 import org.sourcepit.common.manifest.Parseable;
+import org.sourcepit.common.manifest.osgi.parser.BundleHeaderParserImpl;
 import org.sourcepit.common.manifest.parser.HeaderParser;
 
 /**
@@ -38,6 +39,11 @@ import org.sourcepit.common.manifest.parser.HeaderParser;
  */
 public abstract class ParseableImpl extends EObjectImpl implements Parseable
 {
+   static
+   {
+      HeaderParser.Registry.INSTANCE.addParser(new BundleHeaderParserImpl());
+   }
+
    /**
     * The default value of the '{@link #getParsedValue() <em>Parsed Value</em>}' attribute.
     * <!-- begin-user-doc -->

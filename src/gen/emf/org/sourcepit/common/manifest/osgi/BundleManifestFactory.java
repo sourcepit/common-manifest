@@ -119,6 +119,16 @@ public interface BundleManifestFactory extends EFactory
    FragmentHost createFragmentHost();
 
    /**
+    * Returns a new object of class '<em>Dynamic Package Import</em>'.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @return a new object of class '<em>Dynamic Package Import</em>'.
+    * @generated
+    */
+   DynamicPackageImport createDynamicPackageImport();
+
+   /**
     * Returns the package supported by this factory.
     * <!-- begin-user-doc -->
     * <!-- end-user-doc -->

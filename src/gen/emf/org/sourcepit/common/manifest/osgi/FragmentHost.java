@@ -61,6 +61,15 @@ public interface FragmentHost extends Parameterized
     * @model kind="operation" dataType="org.sourcepit.common.manifest.osgi.VersionRange"
     * @generated
     */
-   VersionRange getVersionRange();
+   VersionRange getBundleVersion();
+
+   /**
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @model bundleVersionDataType="org.sourcepit.common.manifest.osgi.VersionRange"
+    * @generated
+    */
+   void setBundleVersion(VersionRange bundleVersion);
 
 } // FragmentHost

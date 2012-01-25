@@ -135,6 +135,28 @@ importPackage returns [EList < PackageImport > list]
                             $list.add(p);
                            })* EOF
   ;
+  
+dynamicImportPackage returns [EList < DynamicPackageImport > list]
+  :
+  
+   {
+    list = new BasicEList<DynamicPackageImport>();
+    
+    DynamicPackageImport p = BundleManifestFactory.eINSTANCE.createDynamicPackageImport();
+   }
+  packagesDeclaration[p] 
+                         {
+                          $list.add(p);
+                         }
+  (',' 
+       {
+        p = BundleManifestFactory.eINSTANCE.createDynamicPackageImport();
+       }
+    packagesDeclaration[p] 
+                           {
+                            $list.add(p);
+                           })* EOF
+  ;
 
 packagesDeclaration[PackagesDeclaration p]
   :

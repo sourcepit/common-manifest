@@ -91,6 +91,15 @@ public interface BundleManifest extends Manifest
     * <!-- begin-user-doc -->
     * <!-- end-user-doc -->
     * 
+    * @model dataType="org.sourcepit.common.manifest.osgi.Version"
+    * @generated
+    */
+   Version setBundleVersion(String version);
+
+   /**
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
     * @model versionDataType="org.sourcepit.common.manifest.osgi.Version"
     * @generated
     */
@@ -113,6 +122,15 @@ public interface BundleManifest extends Manifest
     * @generated
     */
    BundleSymbolicName getBundleSymbolicName(boolean createOnDemand);
+
+   /**
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @model
+    * @generated
+    */
+   BundleSymbolicName setBundleSymbolicName(String bundleSymbolicName);
 
    /**
     * <!-- begin-user-doc -->
@@ -148,6 +166,15 @@ public interface BundleManifest extends Manifest
     * @model
     * @generated
     */
+   FragmentHost setFragmentHost(String fragmentHost);
+
+   /**
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @model
+    * @generated
+    */
    void setFragmentHost(FragmentHost fragmentHost);
 
    /**
@@ -167,6 +194,24 @@ public interface BundleManifest extends Manifest
     * @generated
     */
    BundleActivationPolicy getBundleActivationPolicy(boolean createOnDemand);
+
+   /**
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @model
+    * @generated
+    */
+   BundleActivationPolicy setBundleActivationPolicy(ActivationPolicy activationPolicy);
+
+   /**
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @model
+    * @generated
+    */
+   BundleActivationPolicy setBundleActivationPolicy(String activationPolicy);
 
    /**
     * <!-- begin-user-doc -->
@@ -260,7 +305,7 @@ public interface BundleManifest extends Manifest
     * @model kind="operation" many="false"
     * @generated
     */
-   EList<PackageImport> getDynamicImportPackage();
+   EList<DynamicPackageImport> getDynamicImportPackage();
 
    /**
     * <!-- begin-user-doc -->
@@ -269,18 +314,18 @@ public interface BundleManifest extends Manifest
     * @model many="false"
     * @generated
     */
-   EList<PackageImport> getDynamicImportPackage(boolean createOnDemand);
+   EList<DynamicPackageImport> getDynamicImportPackage(boolean createOnDemand);
 
    /**
     * <!-- begin-user-doc -->
     * <!-- end-user-doc -->
     * 
     * @model dynamicPackageImportsDataType=
-    *        "org.sourcepit.common.manifest.osgi.EList<org.sourcepit.common.manifest.osgi.PackageImport>"
+    *        "org.sourcepit.common.manifest.osgi.EList<org.sourcepit.common.manifest.osgi.DynamicPackageImport>"
     *        dynamicPackageImportsMany="false"
     * @generated
     */
-   void setDynamicImportPackage(List<PackageImport> dynamicPackageImports);
+   void setDynamicImportPackage(List<DynamicPackageImport> dynamicPackageImports);
 
    /**
     * <!-- begin-user-doc -->

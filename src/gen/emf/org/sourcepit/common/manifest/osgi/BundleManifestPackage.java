@@ -561,6 +561,48 @@ public interface BundleManifestPackage extends EPackage
    int FRAGMENT_HOST_FEATURE_COUNT = PARAMETERIZED_FEATURE_COUNT + 1;
 
    /**
+    * The meta object id for the '{@link org.sourcepit.common.manifest.osgi.impl.DynamicPackageImportImpl
+    * <em>Dynamic Package Import</em>}' class.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @see org.sourcepit.common.manifest.osgi.impl.DynamicPackageImportImpl
+    * @see org.sourcepit.common.manifest.osgi.impl.BundleManifestPackageImpl#getDynamicPackageImport()
+    * @generated
+    */
+   int DYNAMIC_PACKAGE_IMPORT = 11;
+
+   /**
+    * The feature id for the '<em><b>Parameters</b></em>' containment reference list.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated
+    * @ordered
+    */
+   int DYNAMIC_PACKAGE_IMPORT__PARAMETERS = PACKAGES_DECLARATION__PARAMETERS;
+
+   /**
+    * The feature id for the '<em><b>Package Names</b></em>' attribute list.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated
+    * @ordered
+    */
+   int DYNAMIC_PACKAGE_IMPORT__PACKAGE_NAMES = PACKAGES_DECLARATION__PACKAGE_NAMES;
+
+   /**
+    * The number of structural features of the '<em>Dynamic Package Import</em>' class.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated
+    * @ordered
+    */
+   int DYNAMIC_PACKAGE_IMPORT_FEATURE_COUNT = PACKAGES_DECLARATION_FEATURE_COUNT + 0;
+
+   /**
     * The meta object id for the '{@link org.sourcepit.common.manifest.osgi.BundleHeaderName
     * <em>Bundle Header Name</em>}' enum.
     * <!-- begin-user-doc -->
@@ -570,7 +612,7 @@ public interface BundleManifestPackage extends EPackage
     * @see org.sourcepit.common.manifest.osgi.impl.BundleManifestPackageImpl#getBundleHeaderName()
     * @generated
     */
-   int BUNDLE_HEADER_NAME = 11;
+   int BUNDLE_HEADER_NAME = 12;
 
    /**
     * The meta object id for the '{@link org.sourcepit.common.manifest.osgi.ActivationPolicy <em>Activation Policy</em>}
@@ -582,7 +624,7 @@ public interface BundleManifestPackage extends EPackage
     * @see org.sourcepit.common.manifest.osgi.impl.BundleManifestPackageImpl#getActivationPolicy()
     * @generated
     */
-   int ACTIVATION_POLICY = 12;
+   int ACTIVATION_POLICY = 13;
 
    /**
     * The meta object id for the '{@link org.sourcepit.common.manifest.osgi.ParameterType <em>Parameter Type</em>}'
@@ -594,7 +636,7 @@ public interface BundleManifestPackage extends EPackage
     * @see org.sourcepit.common.manifest.osgi.impl.BundleManifestPackageImpl#getParameterType()
     * @generated
     */
-   int PARAMETER_TYPE = 13;
+   int PARAMETER_TYPE = 14;
 
    /**
     * The meta object id for the '<em>EList</em>' data type.
@@ -605,7 +647,7 @@ public interface BundleManifestPackage extends EPackage
     * @see org.sourcepit.common.manifest.osgi.impl.BundleManifestPackageImpl#getEList()
     * @generated
     */
-   int ELIST = 14;
+   int ELIST = 15;
 
    /**
     * The meta object id for the '<em>Version</em>' data type.
@@ -616,7 +658,7 @@ public interface BundleManifestPackage extends EPackage
     * @see org.sourcepit.common.manifest.osgi.impl.BundleManifestPackageImpl#getVersion()
     * @generated
     */
-   int VERSION = 15;
+   int VERSION = 16;
 
    /**
     * The meta object id for the '<em>Version Range</em>' data type.
@@ -627,7 +669,7 @@ public interface BundleManifestPackage extends EPackage
     * @see org.sourcepit.common.manifest.osgi.impl.BundleManifestPackageImpl#getVersionRange()
     * @generated
     */
-   int VERSION_RANGE = 16;
+   int VERSION_RANGE = 17;
 
 
    /**
@@ -903,6 +945,18 @@ public interface BundleManifestPackage extends EPackage
     * @generated
     */
    EAttribute getFragmentHost_SymbolicName();
+
+   /**
+    * Returns the meta object for class '{@link org.sourcepit.common.manifest.osgi.DynamicPackageImport
+    * <em>Dynamic Package Import</em>}'.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @return the meta object for class '<em>Dynamic Package Import</em>'.
+    * @see org.sourcepit.common.manifest.osgi.DynamicPackageImport
+    * @generated
+    */
+   EClass getDynamicPackageImport();
 
    /**
     * Returns the meta object for enum '{@link org.sourcepit.common.manifest.osgi.BundleHeaderName
@@ -1232,6 +1286,18 @@ public interface BundleManifestPackage extends EPackage
        * @generated
        */
       EAttribute FRAGMENT_HOST__SYMBOLIC_NAME = eINSTANCE.getFragmentHost_SymbolicName();
+
+      /**
+       * The meta object literal for the '{@link org.sourcepit.common.manifest.osgi.impl.DynamicPackageImportImpl
+       * <em>Dynamic Package Import</em>}' class.
+       * <!-- begin-user-doc -->
+       * <!-- end-user-doc -->
+       * 
+       * @see org.sourcepit.common.manifest.osgi.impl.DynamicPackageImportImpl
+       * @see org.sourcepit.common.manifest.osgi.impl.BundleManifestPackageImpl#getDynamicPackageImport()
+       * @generated
+       */
+      EClass DYNAMIC_PACKAGE_IMPORT = eINSTANCE.getDynamicPackageImport();
 
       /**
        * The meta object literal for the '{@link org.sourcepit.common.manifest.osgi.BundleHeaderName

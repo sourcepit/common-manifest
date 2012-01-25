@@ -19,6 +19,7 @@ import org.sourcepit.common.manifest.osgi.BundleHeaderName;
 import org.sourcepit.common.manifest.osgi.BundleRequirement;
 import org.sourcepit.common.manifest.osgi.BundleSymbolicName;
 import org.sourcepit.common.manifest.osgi.ClassPathEntry;
+import org.sourcepit.common.manifest.osgi.DynamicPackageImport;
 import org.sourcepit.common.manifest.osgi.FragmentHost;
 import org.sourcepit.common.manifest.osgi.PackageExport;
 import org.sourcepit.common.manifest.osgi.PackageImport;
@@ -105,7 +106,7 @@ public class BundleHeaderParserImpl implements BundleHeaderParser
    protected Object parseParameterVersion(Parameter parameter)
    {
       final Parameterized parameterized = parameter.getParameterized();
-      if (parameterized instanceof PackageImport)
+      if (parameterized instanceof PackageImport || parameterized instanceof DynamicPackageImport)
       {
          return VersionRange.parse(parameter.getValue());
       }
@@ -129,7 +130,7 @@ public class BundleHeaderParserImpl implements BundleHeaderParser
    protected VersionRange parseParameterBundleVersion(Parameter parameter)
    {
       final Parameterized parameterized = parameter.getParameterized();
-      if (parameterized instanceof FragmentHost || parameterized instanceof PackageImport
+      if (parameterized instanceof FragmentHost || parameterized instanceof DynamicPackageImport
          || parameterized instanceof BundleRequirement)
       {
          return VersionRange.parse(parameter.getValue());
@@ -197,9 +198,16 @@ public class BundleHeaderParserImpl implements BundleHeaderParser
       }.parse();
    }
 
-   public EList<PackageImport> parseDynamicImportPackage(String value)
+   public EList<DynamicPackageImport> parseDynamicImportPackage(String value)
    {
-      return parseImportPackage(value);
+      return new ParseOperation<EList<DynamicPackageImport>>(value)
+      {
+         @Override
+         protected EList<DynamicPackageImport> doParse() throws RecognitionException
+         {
+            return newParser().dynamicImportPackage();
+         }
+      }.parse();
    }
 
    public EList<BundleRequirement> parseRequireBundle(String value)
@@ -317,7 +325,7 @@ public class BundleHeaderParserImpl implements BundleHeaderParser
          case IMPORT_PACKAGE :
             return toValueStringImportPackage((EList<PackageImport>) parsedValue);
          case DYNAMICIMPORT_PACKAGE :
-            return toValueStringDynamicImportPackage((EList<PackageImport>) parsedValue);
+            return toValueStringDynamicImportPackage((EList<DynamicPackageImport>) parsedValue);
          case REQUIRE_BUNDLE :
             return toValueStringRequireBundle((EList<BundleRequirement>) parsedValue);
          case BUNDLE_CLASSPATH :
@@ -403,15 +411,15 @@ public class BundleHeaderParserImpl implements BundleHeaderParser
       }
    }
 
-   protected String toValueStringDynamicImportPackage(EList<PackageImport> packageImports)
+   protected String toValueStringDynamicImportPackage(EList<DynamicPackageImport> packageImports)
    {
       return toValueStringImportPackage(packageImports);
    }
 
-   protected String toValueStringImportPackage(EList<PackageImport> packageImports)
+   protected String toValueStringImportPackage(EList<? extends PackagesDeclaration> packageImports)
    {
       final StringBuilder sb = new StringBuilder();
-      for (PackageImport packageImport : packageImports)
+      for (PackagesDeclaration packageImport : packageImports)
       {
          write(sb, packageImport);
          sb.append(',');
