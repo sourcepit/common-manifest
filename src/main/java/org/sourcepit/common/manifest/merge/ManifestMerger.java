@@ -32,7 +32,7 @@ public class ManifestMerger
       this.headerMergers.addAll(headerMergers);
    }
 
-   @SuppressWarnings({"unchecked", "rawtypes"})
+   @SuppressWarnings({ "unchecked", "rawtypes" })
    public void merge(Manifest target, Manifest source)
    {
       final EMap<String, String> targetHeaders = target.getHeaders();

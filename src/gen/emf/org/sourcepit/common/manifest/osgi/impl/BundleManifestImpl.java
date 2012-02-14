@@ -10,6 +10,7 @@ import static org.sourcepit.common.manifest.osgi.BundleHeaderName.BUNDLE_ACTIVAT
 import static org.sourcepit.common.manifest.osgi.BundleHeaderName.BUNDLE_ACTIVATOR;
 import static org.sourcepit.common.manifest.osgi.BundleHeaderName.BUNDLE_CLASSPATH;
 import static org.sourcepit.common.manifest.osgi.BundleHeaderName.BUNDLE_MANIFESTVERSION;
+import static org.sourcepit.common.manifest.osgi.BundleHeaderName.BUNDLE_REQUIREDEXECUTIONENVIRONMENT;
 import static org.sourcepit.common.manifest.osgi.BundleHeaderName.BUNDLE_SYMBOLICNAME;
 import static org.sourcepit.common.manifest.osgi.BundleHeaderName.BUNDLE_VERSION;
 import static org.sourcepit.common.manifest.osgi.BundleHeaderName.DYNAMICIMPORT_PACKAGE;
@@ -509,6 +510,39 @@ public class BundleManifestImpl extends ManifestImpl implements BundleManifest
    public void setBundleSymbolicName(BundleSymbolicName bundleSymbolicName)
    {
       setHeader(BUNDLE_SYMBOLICNAME, bundleSymbolicName);
+   }
+
+   /**
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated NOT
+    */
+   public EList<String> getBundleRequiredExecutionEnvironment()
+   {
+      return getParsedHeaderValueUnchecked(BundleHeaderName.BUNDLE_REQUIREDEXECUTIONENVIRONMENT);
+   }
+
+   /**
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated NOT
+    */
+   public void setBundleRequiredExecutionEnvironment(String executionEnvironment)
+   {
+      setHeader(BUNDLE_REQUIREDEXECUTIONENVIRONMENT, executionEnvironment);
+   }
+
+   /**
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated NOT
+    */
+   public void setBundleRequiredExecutionEnvironment(List<String> executionEnvironments)
+   {
+      setHeader(BUNDLE_REQUIREDEXECUTIONENVIRONMENT, executionEnvironments);
    }
 
    /**

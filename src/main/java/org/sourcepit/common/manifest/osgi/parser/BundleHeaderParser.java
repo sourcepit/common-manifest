@@ -23,6 +23,8 @@ public interface BundleHeaderParser extends HeaderParser
 
    BundleSymbolicName parseBundleSymbolicName(String value);
 
+   EList<String> parseBundleRequiredExecutionEnvironment(String value);
+
    FragmentHost parseFragmentHost(String value);
 
    EList<PackageExport> parseExportPackage(String value);

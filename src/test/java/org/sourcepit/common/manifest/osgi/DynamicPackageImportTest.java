@@ -6,7 +6,7 @@
 
 package org.sourcepit.common.manifest.osgi;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertThat;
 
 import org.hamcrest.core.Is;
 import org.hamcrest.core.IsEqual;

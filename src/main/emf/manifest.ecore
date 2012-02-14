@@ -140,6 +140,17 @@
       <eOperations name="setBundleSymbolicName">
         <eParameters name="bundleSymbolicName" eType="#//osgi/BundleSymbolicName"/>
       </eOperations>
+      <eOperations name="getBundleRequiredExecutionEnvironment" upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eOperations name="setBundleRequiredExecutionEnvironment">
+        <eParameters name="executionEnvironment" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </eOperations>
+      <eOperations name="setBundleRequiredExecutionEnvironment">
+        <eParameters name="executionEnvironments">
+          <eGenericType eClassifier="#//osgi/EList">
+            <eTypeArguments eClassifier="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+          </eGenericType>
+        </eParameters>
+      </eOperations>
       <eOperations name="getFragmentHost" eType="#//osgi/FragmentHost"/>
       <eOperations name="getFragmentHost" eType="#//osgi/FragmentHost">
         <eParameters name="createOnDemand" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>

@@ -6,7 +6,7 @@
 
 package org.sourcepit.common.manifest.osgi;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertThat;
 
 import org.hamcrest.core.IsEqual;
 import org.hamcrest.core.IsNull;
@@ -24,12 +24,12 @@ public class PackageExportTest
       PackageExport packageExport = BundleManifestFactory.eINSTANCE.createPackageExport();
       assertThat(packageExport.getVersion(), IsNull.nullValue());
       assertThat(packageExport.getParameter("version"), IsNull.nullValue());
-      
+
       packageExport.setVersion(Version.parse("1.2"));
-      
+
       assertThat(packageExport.getVersion(), IsEqual.equalTo(Version.parse("1.2")));
       assertThat(packageExport.getParameter("version"), IsNull.notNullValue());
-      
+
       packageExport.setVersion(null);
       assertThat(packageExport.getVersion(), IsNull.nullValue());
       assertThat(packageExport.getParameter("version"), IsNull.nullValue());

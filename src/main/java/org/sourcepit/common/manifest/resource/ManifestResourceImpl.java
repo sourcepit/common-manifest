@@ -58,7 +58,7 @@ public class ManifestResourceImpl extends ResourceImpl
       Attributes attributes = javaManifest.getMainAttributes();
       doSave(manifest, attributes);
 
-      @SuppressWarnings({"unchecked", "rawtypes"})
+      @SuppressWarnings({ "unchecked", "rawtypes" })
       List<ManifestSection> sections = (List) manifest.getSections();
       for (ManifestSection section : sections)
       {

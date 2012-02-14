@@ -41,7 +41,7 @@ public class ManifestParserTest
       Map<String, String> sectionHeaders = new LinkedHashMap<String, String>();
 
       @SuppressWarnings("unchecked")
-      final Map<String, String>[] headers = new Map[] {mainHeaders, sectionHeaders};
+      final Map<String, String>[] headers = new Map[] { mainHeaders, sectionHeaders };
       new ManifestParser().parse(new ByteArrayInputStream(out.toByteArray()), new AbstractManifestVisitor()
       {
          private int i = -1;

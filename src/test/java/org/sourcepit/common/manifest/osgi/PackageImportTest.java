@@ -6,14 +6,12 @@
 
 package org.sourcepit.common.manifest.osgi;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertThat;
 
 import org.hamcrest.core.Is;
 import org.hamcrest.core.IsEqual;
 import org.hamcrest.core.IsNull;
 import org.junit.Test;
-import org.sourcepit.common.manifest.osgi.parser.BundleHeaderParserImpl;
-import org.sourcepit.common.manifest.parser.HeaderParser;
 
 /**
  * @author Bernd Vogt <bernd.vogt@sourcepit.org>

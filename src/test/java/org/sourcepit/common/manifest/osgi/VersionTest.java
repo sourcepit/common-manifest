@@ -207,7 +207,7 @@ public class VersionTest extends AbstractVersionCompatibilityTest
       version = new Version(1, 2, 3, "foo");
       assertThat(version.toString(false), IsEqual.equalTo(string));
    }
-   
+
    @Test
    public void testToString()
    {
@@ -216,7 +216,7 @@ public class VersionTest extends AbstractVersionCompatibilityTest
          testToString(versionType);
       }
    }
-   
+
    protected <V> void testToString(Class<V> versionType)
    {
       String string = "1";

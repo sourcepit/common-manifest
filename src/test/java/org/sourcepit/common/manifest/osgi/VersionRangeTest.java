@@ -155,7 +155,7 @@ public class VersionRangeTest extends AbstractVersionCompatibilityTest
       assertTrue(includes(range, parse(versionType, "1.2.2")));
       assertTrue(includes(range, parse(versionType, "1.2.3")));
       assertFalse(includes(range, parse(versionType, "1.2.4")));
-      
+
       range = parseRange(rangeType, "[0,1.2.3]"); // [0.0.0,1.2.3]
       assertThat(range, IsNull.notNullValue());
       assertTrue(includes(range, parse(versionType, "0.0.0")));
@@ -163,7 +163,7 @@ public class VersionRangeTest extends AbstractVersionCompatibilityTest
       assertTrue(includes(range, parse(versionType, "1.2.2")));
       assertTrue(includes(range, parse(versionType, "1.2.3")));
       assertFalse(includes(range, parse(versionType, "1.2.4")));
-      
+
       range = parseRange(rangeType, "(,1.2.3]"); // (0.0.0,1.2.3]
       assertThat(range, IsNull.notNullValue());
       assertFalse(includes(range, parse(versionType, "0.0.0")));
@@ -171,7 +171,7 @@ public class VersionRangeTest extends AbstractVersionCompatibilityTest
       assertTrue(includes(range, parse(versionType, "1.2.2")));
       assertTrue(includes(range, parse(versionType, "1.2.3")));
       assertFalse(includes(range, parse(versionType, "1.2.4")));
-      
+
       range = parseRange(rangeType, "(0,1.2.3]"); // (0.0.0,1.2.3]
       assertThat(range, IsNull.notNullValue());
       assertFalse(includes(range, parse(versionType, "0.0.0")));
@@ -220,7 +220,7 @@ public class VersionRangeTest extends AbstractVersionCompatibilityTest
       assertTrue(includes(range, parse(versionType, "1.2.4")));
       assertFalse(includes(range, parse(versionType, "3")));
       assertFalse(includes(range, parse(versionType, "3.0.0")));
-      
+
       range = parseRange(rangeType, "[1.0.0.RC1,2)");
       assertThat(range, IsNull.notNullValue());
       assertFalse(includes(range, parse(versionType, "0.0.0")));
@@ -228,7 +228,7 @@ public class VersionRangeTest extends AbstractVersionCompatibilityTest
       assertTrue(includes(range, parse(versionType, "1.0.0.RC1")));
       assertTrue(includes(range, parse(versionType, "1.0.0.RC2")));
       assertTrue(includes(range, parse(versionType, "1.0.0.Z")));
-      
+
       range = parseRange(rangeType, "[1.0.0.RC1,2)");
       assertThat(range, IsNull.notNullValue());
       assertFalse(includes(range, parse(versionType, "0.0.0")));
@@ -236,19 +236,19 @@ public class VersionRangeTest extends AbstractVersionCompatibilityTest
       assertTrue(includes(range, parse(versionType, "1.0.0.RC1")));
       assertTrue(includes(range, parse(versionType, "1.0.0.RC2")));
       assertTrue(includes(range, parse(versionType, "1.0.0.Z")));
-      
-      assertThat(includes(parseRange(rangeType,"[1,2)"), parse(versionType, "1.0.0")), Is.is(true));
-      assertThat(includes(parseRange(rangeType,"[1.0.0.RC1,2)"), parse(versionType, "1.0.0.RC1")), Is.is(true));
-      assertThat(includes(parseRange(rangeType,"[1.0.0.RC1,2)"), parse(versionType, "1.0.0.RC2")), Is.is(true));
-      assertThat(includes(parseRange(rangeType,"[1,2)"), parse(versionType, "1.0.0")), Is.is(true));
-      assertThat(includes(parseRange(rangeType,"[1,2)"), parse(versionType, "1.0.0.A")), Is.is(true));
-      assertThat(includes(parseRange(rangeType,"[1.0.0.RC1,2)"), parse(versionType, "1.0.0.a")), Is.is(true));
-      assertThat(includes(parseRange(rangeType,"[1.0.0.RC1,2)"), parse(versionType, "1.0.0.fooooooo")), Is.is(true));
-      assertThat(includes(parseRange(rangeType,"[1,2)"), parse(versionType, "1.0.0.AAA")), Is.is(true));
-      assertThat(includes(parseRange(rangeType,"[1,2)"), parse(versionType, "1.0.0.AAAA")), Is.is(true));
-      assertThat(includes(parseRange(rangeType,"[1,2)"), parse(versionType, "1.0.0.Z")), Is.is(true));
-      assertThat(includes(parseRange(rangeType,"[1,2)"), parse(versionType, "1.0.0.SNAPSHOT")), Is.is(true));
-      assertThat(includes(parseRange(rangeType,"[1,2)"), parse(versionType, "1.0.0.121212")), Is.is(true));
+
+      assertThat(includes(parseRange(rangeType, "[1,2)"), parse(versionType, "1.0.0")), Is.is(true));
+      assertThat(includes(parseRange(rangeType, "[1.0.0.RC1,2)"), parse(versionType, "1.0.0.RC1")), Is.is(true));
+      assertThat(includes(parseRange(rangeType, "[1.0.0.RC1,2)"), parse(versionType, "1.0.0.RC2")), Is.is(true));
+      assertThat(includes(parseRange(rangeType, "[1,2)"), parse(versionType, "1.0.0")), Is.is(true));
+      assertThat(includes(parseRange(rangeType, "[1,2)"), parse(versionType, "1.0.0.A")), Is.is(true));
+      assertThat(includes(parseRange(rangeType, "[1.0.0.RC1,2)"), parse(versionType, "1.0.0.a")), Is.is(true));
+      assertThat(includes(parseRange(rangeType, "[1.0.0.RC1,2)"), parse(versionType, "1.0.0.fooooooo")), Is.is(true));
+      assertThat(includes(parseRange(rangeType, "[1,2)"), parse(versionType, "1.0.0.AAA")), Is.is(true));
+      assertThat(includes(parseRange(rangeType, "[1,2)"), parse(versionType, "1.0.0.AAAA")), Is.is(true));
+      assertThat(includes(parseRange(rangeType, "[1,2)"), parse(versionType, "1.0.0.Z")), Is.is(true));
+      assertThat(includes(parseRange(rangeType, "[1,2)"), parse(versionType, "1.0.0.SNAPSHOT")), Is.is(true));
+      assertThat(includes(parseRange(rangeType, "[1,2)"), parse(versionType, "1.0.0.121212")), Is.is(true));
    }
 
    @Test

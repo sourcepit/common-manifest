@@ -164,6 +164,27 @@ public class BundleManifestTest
    }
 
    @Test
+   public void testGetBundleRequiredExecutionEnvironment()
+   {
+      BundleManifest manifest = BundleManifestFactory.eINSTANCE.createBundleManifest();
+
+      List<String> execEnv = manifest.getBundleRequiredExecutionEnvironment();
+      assertThat(execEnv, IsNull.nullValue());
+
+      manifest.setBundleRequiredExecutionEnvironment("foo-bar");
+      execEnv = manifest.getBundleRequiredExecutionEnvironment();
+      assertThat(execEnv.size(), Is.is(1));
+      assertThat(execEnv.get(0), IsEqual.equalTo("foo-bar"));
+
+      manifest.setHeader(BundleHeaderName.BUNDLE_REQUIREDEXECUTIONENVIRONMENT, "murks,lala");
+      execEnv = manifest.getBundleRequiredExecutionEnvironment();
+      assertThat(execEnv, IsNull.notNullValue());
+      assertThat(execEnv.size(), Is.is(2));
+      assertThat(execEnv.get(0), IsEqual.equalTo("murks"));
+      assertThat(execEnv.get(1), IsEqual.equalTo("lala"));
+   }
+
+   @Test
    public void testFragmentHost()
    {
       BundleManifest manifest = BundleManifestFactory.eINSTANCE.createBundleManifest();
@@ -461,7 +482,7 @@ public class BundleManifestTest
       assertThat(mf.getHeader(FRAGMENT_HOST), IsNull.nullValue());
       assertThat(mf.getFragmentHost(), IsNull.nullValue());
       assertThat(fragmentHost, IsNull.nullValue());
-      
+
       fragmentHost = mf.setFragmentHost("foo");
       assertThat(mf.getHeaderValue(FRAGMENT_HOST), IsEqual.equalTo("foo"));
       assertThat(mf.getFragmentHost(), IsEqual.equalTo(fragmentHost));
@@ -483,7 +504,7 @@ public class BundleManifestTest
       assertThat(mf.getHeaderValue(BUNDLE_ACTIVATIONPOLICY), IsEqual.equalTo("lazy"));
       assertThat(mf.getBundleActivationPolicy(), IsEqual.equalTo(activationPolicy));
 
-      mf.setBundleActivationPolicy((BundleActivationPolicy)null);
+      mf.setBundleActivationPolicy((BundleActivationPolicy) null);
 
       assertThat(mf.getHeader(BUNDLE_ACTIVATIONPOLICY), IsNull.nullValue());
       assertThat(mf.getBundleActivationPolicy(), IsNull.nullValue());
@@ -497,23 +518,23 @@ public class BundleManifestTest
 
       assertThat(mf.getHeaderValue(BUNDLE_ACTIVATIONPOLICY), IsEqual.equalTo("lazy;version=1.2"));
       assertThat(mf.getBundleActivationPolicy(), IsEqual.equalTo(activationPolicy));
-      
-      mf.setBundleActivationPolicy((ActivationPolicy)null);
+
+      mf.setBundleActivationPolicy((ActivationPolicy) null);
 
       assertThat(mf.getHeader(BUNDLE_ACTIVATIONPOLICY), IsNull.nullValue());
       assertThat(mf.getBundleActivationPolicy(), IsNull.nullValue());
-      
-      activationPolicy= mf.setBundleActivationPolicy(ActivationPolicy.LAZY);
+
+      activationPolicy = mf.setBundleActivationPolicy(ActivationPolicy.LAZY);
       assertThat(mf.getHeaderValue(BUNDLE_ACTIVATIONPOLICY), IsEqual.equalTo("lazy"));
       assertThat(mf.getBundleActivationPolicy(), IsEqual.equalTo(activationPolicy));
       assertThat(activationPolicy.getPolicy(), IsEqual.equalTo(ActivationPolicy.LAZY));
-      
-      mf.setBundleActivationPolicy((String)null);
+
+      mf.setBundleActivationPolicy((String) null);
 
       assertThat(mf.getHeader(BUNDLE_ACTIVATIONPOLICY), IsNull.nullValue());
       assertThat(mf.getBundleActivationPolicy(), IsNull.nullValue());
-      
-      activationPolicy= mf.setBundleActivationPolicy("lazy");
+
+      activationPolicy = mf.setBundleActivationPolicy("lazy");
       assertThat(mf.getHeaderValue(BUNDLE_ACTIVATIONPOLICY), IsEqual.equalTo("lazy"));
       assertThat(mf.getBundleActivationPolicy(), IsEqual.equalTo(activationPolicy));
       assertThat(activationPolicy.getPolicy(), IsEqual.equalTo(ActivationPolicy.LAZY));

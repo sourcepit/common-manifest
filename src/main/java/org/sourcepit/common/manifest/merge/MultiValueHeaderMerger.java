@@ -90,7 +90,7 @@ public class MultiValueHeaderMerger extends AbstractHeaderMerger
    {
       if (value.equals(separator))
       {
-         return new String[] {"", ""};
+         return new String[] { "", "" };
       }
       return value.split(separator);
    }

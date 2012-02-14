@@ -763,6 +763,20 @@ public class BundleManifestPackageImpl extends EPackageImpl implements BundleMan
       op = addEOperation(bundleManifestEClass, null, "setBundleSymbolicName", 0, 1, IS_UNIQUE, IS_ORDERED);
       addEParameter(op, this.getBundleSymbolicName(), "bundleSymbolicName", 0, 1, IS_UNIQUE, IS_ORDERED);
 
+      addEOperation(bundleManifestEClass, ecorePackage.getEString(), "getBundleRequiredExecutionEnvironment", 0, -1,
+         IS_UNIQUE, IS_ORDERED);
+
+      op = addEOperation(bundleManifestEClass, null, "setBundleRequiredExecutionEnvironment", 0, 1, IS_UNIQUE,
+         IS_ORDERED);
+      addEParameter(op, ecorePackage.getEString(), "executionEnvironment", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+      op = addEOperation(bundleManifestEClass, null, "setBundleRequiredExecutionEnvironment", 0, 1, IS_UNIQUE,
+         IS_ORDERED);
+      EGenericType g1 = createEGenericType(this.getEList());
+      EGenericType g2 = createEGenericType(ecorePackage.getEString());
+      g1.getETypeArguments().add(g2);
+      addEParameter(op, g1, "executionEnvironments", 0, 1, IS_UNIQUE, IS_ORDERED);
+
       addEOperation(bundleManifestEClass, this.getFragmentHost(), "getFragmentHost", 0, 1, IS_UNIQUE, IS_ORDERED);
 
       op = addEOperation(bundleManifestEClass, this.getFragmentHost(), "getFragmentHost", 0, 1, IS_UNIQUE, IS_ORDERED);
@@ -798,8 +812,8 @@ public class BundleManifestPackageImpl extends EPackageImpl implements BundleMan
       addEParameter(op, ecorePackage.getEString(), "bundleActivator", 0, 1, IS_UNIQUE, IS_ORDERED);
 
       op = addEOperation(bundleManifestEClass, null, "getExportPackage", 0, 1, IS_UNIQUE, IS_ORDERED);
-      EGenericType g1 = createEGenericType(ecorePackage.getEEList());
-      EGenericType g2 = createEGenericType(this.getPackageExport());
+      g1 = createEGenericType(ecorePackage.getEEList());
+      g2 = createEGenericType(this.getPackageExport());
       g1.getETypeArguments().add(g2);
       initEOperation(op, g1);
 

@@ -40,7 +40,7 @@ public class GenericManifestResourceImplTest
 
       assertThat(resource.getContents().get(0), IsInstanceOf.instanceOf(BundleManifest.class));
    }
-   
+
    @Test
    public void testManifest() throws Exception
    {

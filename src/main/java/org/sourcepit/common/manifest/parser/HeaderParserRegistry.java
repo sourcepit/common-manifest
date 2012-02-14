@@ -43,7 +43,7 @@ public class HeaderParserRegistry implements HeaderParser.Registry
       }
       return null;
    }
-   
+
    public String toValueString(Parseable parseable)
    {
       for (HeaderParser parser : parsers)

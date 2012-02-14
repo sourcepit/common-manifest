@@ -10,6 +10,7 @@ import org.antlr.runtime.ANTLRStringStream;
 import org.antlr.runtime.CommonTokenStream;
 import org.antlr.runtime.RecognitionException;
 import org.apache.commons.lang.StringEscapeUtils;
+import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
 import org.sourcepit.common.manifest.Header;
 import org.sourcepit.common.manifest.Parseable;
@@ -80,9 +81,22 @@ public class BundleHeaderParserImpl implements BundleHeaderParser
             return parseBundleClassPath(value);
          case FRAGMENT_HOST :
             return parseFragmentHost(value);
+         case BUNDLE_REQUIREDEXECUTIONENVIRONMENT :
+            return parseBundleRequiredExecutionEnvironment(value);
          default :
             return null;
       }
+   }
+
+   public EList<String> parseBundleRequiredExecutionEnvironment(String value)
+   {
+      final String[] execEnvs = value.split(",");
+      final BasicEList<String> result = new BasicEList<String>(execEnvs.length);
+      for (String execEnv : execEnvs)
+      {
+         result.add(execEnv.trim());
+      }
+      return result;
    }
 
    protected Object parseParameter(Parameter parameter)
@@ -332,9 +346,27 @@ public class BundleHeaderParserImpl implements BundleHeaderParser
             return toValueStringBundleClassPath((EList<ClassPathEntry>) parsedValue);
          case FRAGMENT_HOST :
             return toValueString((FragmentHost) parsedValue);
+         case BUNDLE_REQUIREDEXECUTIONENVIRONMENT :
+            return toBundleRequiredExecutionEnvironmentValueString((EList<String>) parsedValue);
          default :
             return null;
       }
+   }
+
+   protected String toBundleRequiredExecutionEnvironmentValueString(EList<String> parsedValue)
+   {
+      final StringBuilder sb = new StringBuilder();
+      for (String string : parsedValue)
+      {
+         sb.append(string);
+         sb.append(", ");
+      }
+      if (sb.length() > 0)
+      {
+         sb.deleteCharAt(sb.length() - 1);
+         sb.deleteCharAt(sb.length() - 1);
+      }
+      return sb.toString();
    }
 
    protected String toValueString(FragmentHost fragmentHost)
@@ -367,7 +399,7 @@ public class BundleHeaderParserImpl implements BundleHeaderParser
       }
       return sb.toString();
    }
-   
+
    protected void write(StringBuilder sb, ClassPathEntry classPathEntry)
    {
       final EList<String> paths = classPathEntry.getPaths();
@@ -396,7 +428,7 @@ public class BundleHeaderParserImpl implements BundleHeaderParser
       }
       return sb.toString();
    }
-   
+
    protected void write(StringBuilder sb, BundleRequirement bundleRequirement)
    {
       final EList<String> symbolicNames = bundleRequirement.getSymbolicNames();

@@ -148,6 +148,34 @@ public interface BundleManifest extends Manifest
     * @model kind="operation"
     * @generated
     */
+   EList<String> getBundleRequiredExecutionEnvironment();
+
+   /**
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @model
+    * @generated
+    */
+   void setBundleRequiredExecutionEnvironment(String executionEnvironment);
+
+   /**
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @model executionEnvironmentsDataType="org.sourcepit.common.manifest.osgi.EList<org.eclipse.emf.ecore.EString>"
+    *        executionEnvironmentsMany="false"
+    * @generated
+    */
+   void setBundleRequiredExecutionEnvironment(List<String> executionEnvironments);
+
+   /**
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @model kind="operation"
+    * @generated
+    */
    FragmentHost getFragmentHost();
 
    /**

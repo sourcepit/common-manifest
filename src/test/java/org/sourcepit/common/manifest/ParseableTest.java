@@ -6,8 +6,8 @@
 
 package org.sourcepit.common.manifest;
 
-import static org.junit.Assert.*;
-import static org.sourcepit.common.manifest.osgi.BundleHeaderName.*;
+import static org.junit.Assert.assertThat;
+import static org.sourcepit.common.manifest.osgi.BundleHeaderName.EXPORT_PACKAGE;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,7 +23,6 @@ import org.sourcepit.common.manifest.osgi.BundleManifest;
 import org.sourcepit.common.manifest.osgi.BundleManifestFactory;
 import org.sourcepit.common.manifest.osgi.PackageExport;
 import org.sourcepit.common.manifest.osgi.Parameter;
-import org.sourcepit.common.manifest.parser.ManifestBuilder;
 
 /**
  * @author Bernd Vogt <bernd.vogt@sourcepit.org>
@@ -149,7 +148,7 @@ public class ParseableTest
 
       export.getParameters().add(versionParam);
       assertThat(header.getValue(), IsEqual.equalTo("foo,bar,murks;hans;version=1.2"));
-      
+
       // test remove adapters
       ((List<PackageExport>) header.getParsedValue()).clear();
       assertThat(export.eAdapters().size(), Is.is(0));

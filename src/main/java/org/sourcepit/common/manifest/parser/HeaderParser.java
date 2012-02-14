@@ -15,7 +15,7 @@ public interface HeaderParser
    String toString(Parseable parseable);
 
    String toValueString(Parseable parseable);
-   
+
    interface Registry extends HeaderParser
    {
       void addParser(HeaderParser parser);
