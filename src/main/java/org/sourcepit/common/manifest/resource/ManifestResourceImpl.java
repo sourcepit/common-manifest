@@ -9,23 +9,50 @@ package org.sourcepit.common.manifest.resource;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.lang.reflect.Field;
-import java.util.LinkedHashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
-import java.util.jar.Attributes;
 
+import org.eclipse.emf.common.util.EMap;
+import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.impl.ResourceImpl;
-import org.sourcepit.common.manifest.AbstractSection;
+import org.sourcepit.common.manifest.HeaderName;
 import org.sourcepit.common.manifest.Manifest;
-import org.sourcepit.common.manifest.ManifestSection;
+import org.sourcepit.common.manifest.merge.ManifestWriter;
 import org.sourcepit.common.manifest.parser.ManifestBuilder;
 import org.sourcepit.common.manifest.parser.ManifestParser;
 
 public class ManifestResourceImpl extends ResourceImpl
 {
+   private final boolean make72Safe;
+
+   public ManifestResourceImpl()
+   {
+      this(true);
+   }
+
+   public ManifestResourceImpl(boolean make72Safe)
+   {
+      super();
+      this.make72Safe = make72Safe;
+   }
+
+   public ManifestResourceImpl(URI uri)
+   {
+      this(uri, true);
+   }
+
+   public ManifestResourceImpl(URI uri, boolean make72Safe)
+   {
+      super(uri);
+      this.make72Safe = make72Safe;
+   }
+
+   public boolean isMake72Safe()
+   {
+      return make72Safe;
+   }
+
    @Override
    protected void doLoad(InputStream inputStream, Map<?, ?> options) throws IOException
    {
@@ -54,99 +81,28 @@ public class ManifestResourceImpl extends ResourceImpl
 
    protected void doSave(Manifest manifest, OutputStream outputStream) throws IOException
    {
-      java.util.jar.Manifest javaManifest = createOrderedManifest();
-      Attributes attributes = javaManifest.getMainAttributes();
-      doSave(manifest, attributes);
+      final String versionHeaderName = HeaderName.MANIFEST_VERSION.getLiteral();
 
-      @SuppressWarnings({ "unchecked", "rawtypes" })
-      List<ManifestSection> sections = (List) manifest.getSections();
-      for (ManifestSection section : sections)
+      final ManifestWriter writer = new ManifestWriter(outputStream, isMake72Safe());
+      writer.startMain(manifest.getHeaderValue(versionHeaderName));
+      for (Entry<String, String> header : manifest.getHeaders())
       {
-         attributes = new OrderedAttributes();
-         doSave(section, attributes);
-         javaManifest.getEntries().put(section.getName(), attributes);
-      }
-      javaManifest.write(outputStream);
-   }
-
-   private void doSave(AbstractSection section, Attributes attributes)
-   {
-      for (Entry<String, String> header : section.getHeaders())
-      {
-         attributes.putValue(header.getKey(), header.getValue());
-      }
-   }
-
-   public static java.util.jar.Manifest createOrderedManifest()
-   {
-      final java.util.jar.Manifest mf = new java.util.jar.Manifest();
-      final Class<? extends java.util.jar.Manifest> mfClass = mf.getClass();
-
-      try
-      {
-         setField(mfClass, "attr", mf, new OrderedAttributes());
-         setField(mfClass, "entries", mf, new LinkedHashMap<Object, Object>());
-      }
-      catch (NoSuchFieldException e)
-      {
-         throw new IllegalStateException(e);
-      }
-      catch (IllegalAccessException e)
-      {
-         throw new IllegalStateException(e);
-      }
-
-      return mf;
-   }
-
-   private static void setField(Class<?> clazz, String name, Object obj, Object value) throws NoSuchFieldException,
-      IllegalAccessException
-   {
-      final Field field = clazz.getDeclaredField(name);
-      boolean accessible = field.isAccessible();
-      try
-      {
-         field.setAccessible(true);
-      }
-      catch (SecurityException e)
-      { // swallow
-      }
-      try
-      {
-         field.set(obj, value);
-      }
-      finally
-      {
-         try
+         final String name = header.getKey();
+         if (!versionHeaderName.equals(name))
          {
-            field.setAccessible(accessible);
-         }
-         catch (SecurityException e)
-         { // swallow
+            writer.attribute(name, header.getValue());
          }
       }
-   }
+      writer.endMain();
 
-   private static class OrderedAttributes extends Attributes
-   {
-      public OrderedAttributes()
+      for (Entry<String, EMap<String, String>> section : manifest.getSections())
       {
-         this(11);
-      }
-
-      public OrderedAttributes(int size)
-      {
-         map = new LinkedHashMap<Object, Object>(size);
-      }
-
-      public OrderedAttributes(Attributes attr)
-      {
-         map = new LinkedHashMap<Object, Object>(attr);
-      }
-
-      public Object clone()
-      {
-         return new OrderedAttributes(this);
+         writer.startSection(section.getKey());
+         for (Entry<String, String> entry : section.getValue())
+         {
+            writer.attribute(entry.getKey(), entry.getValue());
+         }
+         writer.endSection();
       }
    }
 }

@@ -95,12 +95,12 @@ public class HeaderEntryImpl extends HeaderImpl implements BasicEMap.Entry<Strin
     * <!-- begin-user-doc -->
     * <!-- end-user-doc -->
     * 
-    * @generated
+    * @generated NOT
     */
    public void setTypedKey(String newKey)
    {
       String oldKey = key;
-      key = newKey;
+      key = new java.util.jar.Attributes.Name(newKey).toString();
       if (eNotificationRequired())
          eNotify(new ENotificationImpl(this, Notification.SET, ManifestPackage.HEADER_ENTRY__KEY, oldKey, key));
    }

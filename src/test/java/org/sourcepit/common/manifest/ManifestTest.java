@@ -7,6 +7,7 @@
 package org.sourcepit.common.manifest;
 
 import static org.junit.Assert.assertThat;
+import static org.junit.Assert.fail;
 import static org.sourcepit.common.manifest.HeaderName.MAIN_CLASS;
 import static org.sourcepit.common.manifest.HeaderName.MANIFEST_VERSION;
 
@@ -65,5 +66,23 @@ public class ManifestTest
       assertThat(manifest.getParsedHeaderValue(MAIN_CLASS.getLiteral()), IsNull.nullValue());
       assertThat(manifest.getParsedHeaderValue(MAIN_CLASS), IsNull.nullValue());
    }
+
+   @Test
+   public void testNames() throws Exception
+   {
+      Manifest manifest = ManifestFactory.eINSTANCE.createManifest();
+      
+      manifest.getHeaders().put("good", "name");
+      
+      try
+      {
+         manifest.getHeaders().put("bäd", "name");
+         fail();
+      }
+      catch (IllegalArgumentException e)
+      {
+      }
+   }
+
 
 }

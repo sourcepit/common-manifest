@@ -6,6 +6,7 @@
 
 package org.sourcepit.common.manifest.osgi.resource;
 
+import org.eclipse.emf.common.util.URI;
 import org.sourcepit.common.manifest.osgi.parser.GenericManifestBuilder;
 import org.sourcepit.common.manifest.parser.ManifestBuilder;
 import org.sourcepit.common.manifest.resource.ManifestResourceImpl;
@@ -15,6 +16,26 @@ import org.sourcepit.common.manifest.resource.ManifestResourceImpl;
  */
 public class GenericManifestResourceImpl extends ManifestResourceImpl
 {
+   public GenericManifestResourceImpl()
+   {
+      super();
+   }
+
+   public GenericManifestResourceImpl(boolean make72Safe)
+   {
+      super(make72Safe);
+   }
+
+   public GenericManifestResourceImpl(URI uri)
+   {
+      super(uri);
+   }
+
+   public GenericManifestResourceImpl(URI uri, boolean make72Safe)
+   {
+      super(uri, make72Safe);
+   }
+
    @Override
    protected ManifestBuilder createManifestBuilder()
    {
