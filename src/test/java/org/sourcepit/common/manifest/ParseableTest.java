@@ -30,6 +30,7 @@ import org.sourcepit.common.manifest.osgi.Parameter;
 public class ParseableTest
 {
 
+   @SuppressWarnings("unchecked")
    @Test
    public void testSetValue()
    {
@@ -82,6 +83,7 @@ public class ParseableTest
       assertThat(packageExports.get(1).getPackageNames().get(0), IsEqual.equalTo("bar"));
    }
 
+   @SuppressWarnings("unchecked")
    @Test
    public void testSetParsedValue()
    {

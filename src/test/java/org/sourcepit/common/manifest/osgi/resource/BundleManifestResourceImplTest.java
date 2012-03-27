@@ -6,12 +6,17 @@
 
 package org.sourcepit.common.manifest.osgi.resource;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertThat;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.net.URL;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Map.Entry;
 
 import org.eclipse.emf.common.util.URI;
@@ -23,7 +28,9 @@ import org.junit.Test;
 import org.sourcepit.common.manifest.osgi.BundleHeaderName;
 import org.sourcepit.common.manifest.osgi.BundleManifest;
 import org.sourcepit.common.manifest.osgi.BundleManifestFactory;
+import org.sourcepit.common.manifest.osgi.PackageExport;
 import org.sourcepit.common.manifest.osgi.Version;
+import org.sourcepit.common.manifest.resource.ManifestResource;
 
 /**
  * @author Bernd
@@ -88,6 +95,103 @@ public class BundleManifestResourceImplTest
 
       BundleManifest manifest = (BundleManifest) resource.getContents().get(0);
       assertThat(manifest, IsNull.notNullValue());
+   }
+
+   @Test
+   public void testPrettyPrinting() throws Exception
+   {
+      BundleManifest manifest = BundleManifestFactory.eINSTANCE.createBundleManifest();
+
+      PackageExport export = BundleManifestFactory.eINSTANCE.createPackageExport();
+      export.getPackageNames().add("a");
+      export.getPackageNames().add("b");
+      export.getPackageNames().add("c");
+      export.setVersion(Version.parse("1"));
+      manifest.getExportPackage(true).add(export);
+
+      export = BundleManifestFactory.eINSTANCE.createPackageExport();
+      export.getPackageNames().add("foo");
+      manifest.getExportPackage(true).add(export);
+
+      ManifestResource resource = new BundleManifestResourceImpl();
+      resource.getContents().add(manifest);
+      
+      assertFalse(resource.isMake72Safe());
+      
+      ByteArrayOutputStream out = new ByteArrayOutputStream();
+      resource.save(out, null);
+
+      String content = out.toString("UTF-8");
+
+      StringBuilder expectedContent = new StringBuilder();
+      expectedContent.append("Manifest-Version: 1.0");
+      expectedContent.append("\r\n");
+      expectedContent.append("Bundle-ManifestVersion: 2");
+      expectedContent.append("\r\n");
+      expectedContent.append("Export-Package: a;b;c;version=1,");
+      expectedContent.append("\r\n");
+      expectedContent.append(" foo");
+      expectedContent.append("\r\n");
+      expectedContent.append("\r\n");
+
+      assertEquals(expectedContent.toString(), content);
+
+      // test re-parse
+      resource = new BundleManifestResourceImpl();
+      resource.load(new ByteArrayInputStream(out.toByteArray()), null);
+
+      BundleManifest manifest2 = (BundleManifest) resource.getContents().get(0);
+      assertNotNull(manifest2);
+
+      out = new ByteArrayOutputStream();
+      resource.save(out, null);
+
+      content = out.toString("UTF-8");
+
+      assertEquals(expectedContent.toString(), content);
+   }
+
+   @Test
+   public void testOptionMake72Safe() throws Exception
+   {
+      BundleManifest manifest = BundleManifestFactory.eINSTANCE.createBundleManifest();
+
+      PackageExport export = BundleManifestFactory.eINSTANCE.createPackageExport();
+      export.getPackageNames().add("a");
+      export.getPackageNames().add("b");
+      export.getPackageNames().add("c");
+      export.setVersion(Version.parse("1"));
+      manifest.getExportPackage(true).add(export);
+
+      export = BundleManifestFactory.eINSTANCE.createPackageExport();
+      export.getPackageNames().add("foooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo");
+      manifest.getExportPackage(true).add(export);
+
+      ManifestResource resource = new BundleManifestResourceImpl();
+      resource.getContents().add(manifest);
+
+      assertFalse(resource.isMake72Safe());
+      
+      Map<String, String> options = new HashMap<String, String>();
+      options.put(ManifestResource.OPTION_MAKE72SAFE, "true");
+
+      ByteArrayOutputStream out = new ByteArrayOutputStream();
+      resource.save(out, options);
+
+      String content = out.toString("UTF-8");
+      
+      StringBuilder expectedContent = new StringBuilder();
+      expectedContent.append("Manifest-Version: 1.0");
+      expectedContent.append("\r\n");
+      expectedContent.append("Bundle-ManifestVersion: 2");
+      expectedContent.append("\r\n");
+      expectedContent.append("Export-Package: a;b;c;version=1,fooooooooooooooooooooooooooooooooooooo");
+      expectedContent.append("\r\n");
+      expectedContent.append(" ooooooooooooooooooooooooooooooooooooo");
+      expectedContent.append("\r\n");
+      expectedContent.append("\r\n");
+
+      assertEquals(expectedContent.toString(), content);
    }
 
 }

@@ -18,17 +18,19 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.impl.ResourceImpl;
 import org.sourcepit.common.manifest.HeaderName;
 import org.sourcepit.common.manifest.Manifest;
+import org.sourcepit.common.manifest.Parseable;
 import org.sourcepit.common.manifest.merge.ManifestWriter;
+import org.sourcepit.common.manifest.parser.HeaderParser;
 import org.sourcepit.common.manifest.parser.ManifestBuilder;
 import org.sourcepit.common.manifest.parser.ManifestParser;
 
-public class ManifestResourceImpl extends ResourceImpl
+public class ManifestResourceImpl extends ResourceImpl implements ManifestResource
 {
    private final boolean make72Safe;
 
    public ManifestResourceImpl()
    {
-      this(true);
+      this(false);
    }
 
    public ManifestResourceImpl(boolean make72Safe)
@@ -39,7 +41,7 @@ public class ManifestResourceImpl extends ResourceImpl
 
    public ManifestResourceImpl(URI uri)
    {
-      this(uri, true);
+      this(uri, false);
    }
 
    public ManifestResourceImpl(URI uri, boolean make72Safe)
@@ -48,6 +50,9 @@ public class ManifestResourceImpl extends ResourceImpl
       this.make72Safe = make72Safe;
    }
 
+   /**
+    * {@inheritDoc}
+    */
    public boolean isMake72Safe()
    {
       return make72Safe;
@@ -73,24 +78,34 @@ public class ManifestResourceImpl extends ResourceImpl
    @Override
    protected void doSave(OutputStream outputStream, Map<?, ?> options) throws IOException
    {
+      boolean make72Safe = isMake72Safe();
+      if (options != null)
+      {
+         final Object object = options.get(OPTION_MAKE72SAFE);
+         if (object != null)
+         {
+            make72Safe = Boolean.valueOf(object.toString());
+         }
+      }
+
       for (EObject eObject : getContents())
       {
-         doSave((Manifest) eObject, outputStream);
+         doSave((Manifest) eObject, outputStream, make72Safe);
       }
    }
 
-   protected void doSave(Manifest manifest, OutputStream outputStream) throws IOException
+   protected void doSave(Manifest manifest, OutputStream outputStream, boolean make72Safe) throws IOException
    {
       final String versionHeaderName = HeaderName.MANIFEST_VERSION.getLiteral();
 
-      final ManifestWriter writer = new ManifestWriter(outputStream, isMake72Safe());
+      final ManifestWriter writer = new ManifestWriter(outputStream, make72Safe);
       writer.startMain(manifest.getHeaderValue(versionHeaderName));
       for (Entry<String, String> header : manifest.getHeaders())
       {
          final String name = header.getKey();
          if (!versionHeaderName.equals(name))
          {
-            writer.attribute(name, header.getValue());
+            writer.attribute(name, getValueString(header, make72Safe));
          }
       }
       writer.endMain();
@@ -100,9 +115,21 @@ public class ManifestResourceImpl extends ResourceImpl
          writer.startSection(section.getKey());
          for (Entry<String, String> entry : section.getValue())
          {
-            writer.attribute(entry.getKey(), entry.getValue());
+            writer.attribute(entry.getKey(), getValueString(entry, make72Safe));
          }
          writer.endSection();
+      }
+   }
+
+   private String getValueString(Entry<String, String> header, boolean make72Safe)
+   {
+      if (make72Safe)
+      {
+         return header.getValue();
+      }
+      else
+      {
+         return HeaderParser.INSTANCE.toValueString((Parseable) header, true);
       }
    }
 }

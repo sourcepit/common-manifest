@@ -300,7 +300,7 @@ public class HeaderEntryImpl extends HeaderImpl implements BasicEMap.Entry<Strin
    @Override
    public String toString()
    {
-      final String string = HeaderParser.INSTANCE.toString(this);
+      final String string = HeaderParser.INSTANCE.toString(this, true);
       if (string != null)
       {
          return string;

@@ -250,28 +250,33 @@ public class BundleHeaderParserImpl implements BundleHeaderParser
 
    public String toString(Parseable parseable)
    {
+      return toString(parseable, false);
+   }
+
+   public String toString(Parseable parseable, boolean prettyPrinting)
+   {
       if (parseable instanceof Header)
       {
-         return toString((Header) parseable);
+         return toString((Header) parseable, prettyPrinting);
       }
       if (parseable instanceof Parameter)
       {
-         return toString((Parameter) parseable);
+         return toString((Parameter) parseable, prettyPrinting);
       }
       return null;
    }
 
-   protected String toString(Header header)
+   protected String toString(Header header, boolean prettyPrinting)
    {
       final StringBuilder sb = new StringBuilder();
       sb.append(header.getName());
       sb.append(':');
       sb.append(' ');
-      sb.append(header.getValue());
+      sb.append(toValueString(header, prettyPrinting));
       return sb.toString();
    }
 
-   protected String toString(Parameter parameter)
+   protected String toString(Parameter parameter, boolean prettyPrinting)
    {
       final StringBuilder sb = new StringBuilder();
       sb.append(parameter.getName());
@@ -300,31 +305,36 @@ public class BundleHeaderParserImpl implements BundleHeaderParser
 
    public String toValueString(Parseable parseable)
    {
+      return toValueString(parseable, false);
+   }
+
+   public String toValueString(Parseable parseable, boolean prettyPrinting)
+   {
       if (parseable instanceof Header)
       {
-         return toValueString((Header) parseable);
+         return toValueString((Header) parseable, prettyPrinting);
       }
       if (parseable instanceof Parameter)
       {
-         return toValueString((Parameter) parseable);
+         return toValueString((Parameter) parseable, prettyPrinting);
       }
       return null;
    }
 
-   protected String toValueString(Header header)
+   protected String toValueString(Header header, boolean prettyPrinting)
    {
       final String name = header.getName();
       final Object parsedValue = header.getParsedValue();
       final BundleHeaderName headerName = BundleHeaderName.get(name);
-      if (headerName == null)
+      if (headerName == null || parsedValue == null)
       {
-         return null;
+         return header.getValue();
       }
-      return toValueString(headerName, parsedValue);
+      return toValueString(headerName, parsedValue, prettyPrinting);
    }
 
    @SuppressWarnings("unchecked")
-   protected String toValueString(BundleHeaderName headerName, Object parsedValue)
+   protected String toValueString(BundleHeaderName headerName, Object parsedValue, boolean prettyPrinting)
    {
       switch (headerName)
       {
@@ -335,15 +345,15 @@ public class BundleHeaderParserImpl implements BundleHeaderParser
          case BUNDLE_SYMBOLICNAME :
             return toValueString((BundleSymbolicName) parsedValue);
          case EXPORT_PACKAGE :
-            return toValueString((EList<PackageExport>) parsedValue);
+            return toValueString((EList<PackageExport>) parsedValue, prettyPrinting);
          case IMPORT_PACKAGE :
-            return toValueStringImportPackage((EList<PackageImport>) parsedValue);
+            return toValueStringImportPackage((EList<PackageImport>) parsedValue, prettyPrinting);
          case DYNAMICIMPORT_PACKAGE :
-            return toValueStringDynamicImportPackage((EList<DynamicPackageImport>) parsedValue);
+            return toValueStringDynamicImportPackage((EList<DynamicPackageImport>) parsedValue, prettyPrinting);
          case REQUIRE_BUNDLE :
-            return toValueStringRequireBundle((EList<BundleRequirement>) parsedValue);
+            return toValueStringRequireBundle((EList<BundleRequirement>) parsedValue, prettyPrinting);
          case BUNDLE_CLASSPATH :
-            return toValueStringBundleClassPath((EList<ClassPathEntry>) parsedValue);
+            return toValueStringBundleClassPath((EList<ClassPathEntry>) parsedValue, prettyPrinting);
          case FRAGMENT_HOST :
             return toValueString((FragmentHost) parsedValue);
          case BUNDLE_REQUIREDEXECUTIONENVIRONMENT :
@@ -385,17 +395,19 @@ public class BundleHeaderParserImpl implements BundleHeaderParser
       return sb.toString();
    }
 
-   protected String toValueStringBundleClassPath(EList<ClassPathEntry> classPathEntries)
+   protected String toValueStringBundleClassPath(EList<ClassPathEntry> classPathEntries, boolean prettyPrinting)
    {
+      final String separator = getSeparator(prettyPrinting);
+
       final StringBuilder sb = new StringBuilder();
       for (ClassPathEntry classPathEntry : classPathEntries)
       {
          write(sb, classPathEntry);
-         sb.append(',');
+         sb.append(separator);
       }
       if (!classPathEntries.isEmpty())
       {
-         sb.deleteCharAt(sb.length() - 1);
+         sb.delete(sb.length() - separator.length(), sb.length());
       }
       return sb.toString();
    }
@@ -414,17 +426,18 @@ public class BundleHeaderParserImpl implements BundleHeaderParser
       }
    }
 
-   protected String toValueStringRequireBundle(EList<BundleRequirement> bundleRequirements)
+   protected String toValueStringRequireBundle(EList<BundleRequirement> bundleRequirements, boolean prettyPrinting)
    {
+      final String separator = getSeparator(prettyPrinting);
       final StringBuilder sb = new StringBuilder();
       for (BundleRequirement bundleRequirement : bundleRequirements)
       {
          write(sb, bundleRequirement);
-         sb.append(',');
+         sb.append(separator);
       }
       if (!bundleRequirements.isEmpty())
       {
-         sb.deleteCharAt(sb.length() - 1);
+         sb.delete(sb.length() - separator.length(), sb.length());
       }
       return sb.toString();
    }
@@ -443,39 +456,48 @@ public class BundleHeaderParserImpl implements BundleHeaderParser
       }
    }
 
-   protected String toValueStringDynamicImportPackage(EList<DynamicPackageImport> packageImports)
+   protected String toValueStringDynamicImportPackage(EList<DynamicPackageImport> packageImports, boolean prettyPrinting)
    {
-      return toValueStringImportPackage(packageImports);
+      return toValueStringImportPackage(packageImports, prettyPrinting);
    }
 
-   protected String toValueStringImportPackage(EList<? extends PackagesDeclaration> packageImports)
+   protected String toValueStringImportPackage(EList<? extends PackagesDeclaration> packageImports,
+      boolean prettyPrinting)
    {
+      final String separator = getSeparator(prettyPrinting);
       final StringBuilder sb = new StringBuilder();
       for (PackagesDeclaration packageImport : packageImports)
       {
          write(sb, packageImport);
-         sb.append(',');
+         sb.append(separator);
       }
       if (!packageImports.isEmpty())
       {
-         sb.deleteCharAt(sb.length() - 1);
+         sb.delete(sb.length() - separator.length(), sb.length());
       }
       return sb.toString();
    }
 
-   protected String toValueString(EList<PackageExport> packageExports)
+   protected String toValueString(EList<PackageExport> packageExports, boolean prettyPrinting)
    {
+      final String separator = getSeparator(prettyPrinting);
+
       final StringBuilder sb = new StringBuilder();
       for (PackageExport packageExport : packageExports)
       {
          write(sb, packageExport);
-         sb.append(',');
+         sb.append(separator);
       }
       if (!packageExports.isEmpty())
       {
-         sb.deleteCharAt(sb.length() - 1);
+         sb.delete(sb.length() - separator.length(), sb.length());
       }
       return sb.toString();
+   }
+
+   private String getSeparator(boolean prettyPrinting)
+   {
+      return prettyPrinting ? ",\r\n " : ",";
    }
 
    protected void write(StringBuilder sb, PackagesDeclaration packagesDeclaration)
@@ -540,7 +562,7 @@ public class BundleHeaderParserImpl implements BundleHeaderParser
       return sb.toString();
    }
 
-   protected String toValueString(Parameter parameter)
+   protected String toValueString(Parameter parameter, boolean prettyPrinting)
    {
       final Object parsedValue = parameter.getParsedValue();
       if (parsedValue instanceof Version)

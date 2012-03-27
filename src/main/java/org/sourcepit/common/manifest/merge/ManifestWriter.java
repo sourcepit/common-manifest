@@ -91,7 +91,7 @@ public class ManifestWriter
       {
          throw new IllegalStateException("Neither main nor indivisual section started");
       }
-
+      
       final StringBuilder line = new StringBuilder(new Name(name).toString()); // validate name
       line.append(": ");
 

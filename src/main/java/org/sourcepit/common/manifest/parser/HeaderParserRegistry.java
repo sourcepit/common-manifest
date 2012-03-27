@@ -44,11 +44,37 @@ public class HeaderParserRegistry implements HeaderParser.Registry
       return null;
    }
 
+   public String toString(Parseable parseable, boolean prettyPrinting)
+   {
+      for (HeaderParser parser : parsers)
+      {
+         final String result = parser.toString(parseable, prettyPrinting);
+         if (result != null)
+         {
+            return result;
+         }
+      }
+      return null;
+   }
+
    public String toValueString(Parseable parseable)
    {
       for (HeaderParser parser : parsers)
       {
          final String result = parser.toValueString(parseable);
+         if (result != null)
+         {
+            return result;
+         }
+      }
+      return null;
+   }
+
+   public String toValueString(Parseable parseable, boolean prettyPrinting)
+   {
+      for (HeaderParser parser : parsers)
+      {
+         final String result = parser.toValueString(parseable, prettyPrinting);
          if (result != null)
          {
             return result;

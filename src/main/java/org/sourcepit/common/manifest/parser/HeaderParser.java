@@ -13,8 +13,12 @@ public interface HeaderParser
    Object parse(Parseable parseable);
 
    String toString(Parseable parseable);
+   
+   String toString(Parseable parseable, boolean prettyPrinting);
 
    String toValueString(Parseable parseable);
+
+   String toValueString(Parseable parseable, boolean prettyPrinting);
 
    interface Registry extends HeaderParser
    {
