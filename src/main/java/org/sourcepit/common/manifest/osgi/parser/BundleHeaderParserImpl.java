@@ -324,13 +324,17 @@ public class BundleHeaderParserImpl implements BundleHeaderParser
    protected String toValueString(Header header, boolean prettyPrinting)
    {
       final String name = header.getName();
-      final Object parsedValue = header.getParsedValue();
-      final BundleHeaderName headerName = BundleHeaderName.get(name);
-      if (headerName == null || parsedValue == null)
+      if (name != null)
       {
-         return header.getValue();
+         final Object parsedValue = header.getParsedValue();
+         final BundleHeaderName headerName = BundleHeaderName.get(name);
+         if (headerName == null || parsedValue == null)
+         {
+            return header.getValue();
+         }
+         return toValueString(headerName, parsedValue, prettyPrinting);
       }
-      return toValueString(headerName, parsedValue, prettyPrinting);
+      return null;
    }
 
    @SuppressWarnings("unchecked")

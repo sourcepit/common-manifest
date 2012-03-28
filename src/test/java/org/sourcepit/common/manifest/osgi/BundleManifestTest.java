@@ -6,6 +6,7 @@
 
 package org.sourcepit.common.manifest.osgi;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
 import static org.sourcepit.common.manifest.osgi.BundleHeaderName.BUNDLE_ACTIVATIONPOLICY;
 import static org.sourcepit.common.manifest.osgi.BundleHeaderName.BUNDLE_CLASSPATH;
@@ -21,6 +22,7 @@ import static org.sourcepit.common.manifest.osgi.BundleHeaderName.REQUIRE_BUNDLE
 import java.util.List;
 
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.hamcrest.core.Is;
 import org.hamcrest.core.IsEqual;
 import org.hamcrest.core.IsNull;
@@ -729,6 +731,22 @@ public class BundleManifestTest
 
       assertThat(mf.getHeaderValue(BUNDLE_CLASSPATH), IsEqual.equalTo("foo;version=1.2"));
       assertThat(mf.getBundleClassPath(), IsEqual.equalTo(classPathEntries));
+   }
+
+   @Test
+   public void testCopy() throws Exception
+   {
+      BundleManifest manifest = BundleManifestFactory.eINSTANCE.createBundleManifest();
+
+      PackageExport packageExport = BundleManifestFactory.eINSTANCE.createPackageExport();
+      packageExport.getPackageNames().add("foo");
+
+      manifest.getExportPackage(true).add(packageExport);
+
+      BundleManifest copy = EcoreUtil.copy(manifest);
+      
+      assertEquals("foo", manifest.getHeaderValue(EXPORT_PACKAGE));
+      assertEquals(manifest.getHeaderValue(EXPORT_PACKAGE), copy.getHeaderValue(EXPORT_PACKAGE));
    }
 
 }
