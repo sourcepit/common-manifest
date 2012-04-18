@@ -6,14 +6,20 @@
 
 package org.sourcepit.common.manifest.impl;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 import java.util.Map.Entry;
+import java.util.Set;
 
+import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.BasicEMap;
 import org.eclipse.emf.common.util.EMap;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
+import org.eclipse.emf.ecore.util.EContentAdapter;
 import org.eclipse.emf.ecore.util.EcoreEMap;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.sourcepit.common.manifest.Header;
@@ -88,14 +94,104 @@ public class ManifestImpl extends AbstractSectionImpl implements Manifest
     * <!-- begin-user-doc -->
     * <!-- end-user-doc -->
     * 
-    * @generated
+    * @generated NOT
     */
    public EMap<String, String> getHeaders()
    {
       if (headers == null)
       {
          headers = new EcoreEMap<String, String>(ManifestPackage.Literals.HEADER_ENTRY, HeaderEntryImpl.class, this,
-            ManifestPackage.MANIFEST__HEADERS, ManifestPackage.HEADER_ENTRY__MANIFEST);
+            ManifestPackage.MANIFEST__HEADERS, ManifestPackage.HEADER_ENTRY__MANIFEST)
+         {
+            private static final long serialVersionUID = 1L;
+
+            @Override
+            public boolean add(java.util.Map.Entry<String, String> object)
+            {
+               final Header header = getHeader(object.getKey());
+               if (header == null)
+               {
+                  return super.add(object);
+               }
+               header.setValue(object.getValue());
+               return true;
+            }
+
+            @Override
+            public void add(int index, java.util.Map.Entry<String, String> object)
+            {
+               throw new UnsupportedOperationException();
+            }
+
+            @Override
+            public boolean addAll(int index, Collection<? extends java.util.Map.Entry<String, String>> collection)
+            {
+               throw new UnsupportedOperationException();
+            }
+
+            @Override
+            public boolean addAllUnique(int index, Collection<? extends java.util.Map.Entry<String, String>> collection)
+            {
+               throw new UnsupportedOperationException();
+            }
+
+            @Override
+            public boolean addAll(Collection<? extends java.util.Map.Entry<String, String>> collection)
+            {
+               boolean changed = false;
+               final List<java.util.Map.Entry<String, String>> uniques = new ArrayList<java.util.Map.Entry<String, String>>();
+               for (java.util.Map.Entry<String, String> entry : collection)
+               {
+                  final Header header = getHeader(entry.getKey());
+                  if (header != null)
+                  {
+                     header.setValue(entry.getValue());
+                     changed = true;
+                  }
+                  else
+                  {
+                     uniques.add(entry);
+                  }
+               }
+               if (!uniques.isEmpty())
+               {
+                  if (super.addAll(uniques))
+                  {
+                     changed = true;
+                  }
+               }
+               return changed;
+            }
+
+            @Override
+            public boolean addAllUnique(Collection<? extends java.util.Map.Entry<String, String>> collection)
+            {
+               boolean changed = false;
+               final List<java.util.Map.Entry<String, String>> uniques = new ArrayList<java.util.Map.Entry<String, String>>();
+               for (java.util.Map.Entry<String, String> entry : collection)
+               {
+                  final Header header = getHeader(entry.getKey());
+                  if (header != null)
+                  {
+                     header.setValue(entry.getValue());
+                     changed = true;
+                  }
+                  else
+                  {
+                     uniques.add(entry);
+                  }
+               }
+               if (!uniques.isEmpty())
+               {
+                  if (super.addAllUnique(uniques))
+                  {
+                     changed = true;
+                  }
+               }
+               return changed;
+            }
+
+         };
       }
       return headers;
    }

@@ -21,6 +21,7 @@ import java.util.Map.Entry;
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.hamcrest.core.Is;
 import org.hamcrest.core.IsEqual;
 import org.hamcrest.core.IsNull;
@@ -115,9 +116,9 @@ public class BundleManifestResourceImplTest
 
       ManifestResource resource = new BundleManifestResourceImpl();
       resource.getContents().add(manifest);
-      
+
       assertFalse(resource.isMake72Safe());
-      
+
       ByteArrayOutputStream out = new ByteArrayOutputStream();
       resource.save(out, null);
 
@@ -171,7 +172,7 @@ public class BundleManifestResourceImplTest
       resource.getContents().add(manifest);
 
       assertFalse(resource.isMake72Safe());
-      
+
       Map<String, String> options = new HashMap<String, String>();
       options.put(ManifestResource.OPTION_MAKE72SAFE, "true");
 
@@ -179,7 +180,7 @@ public class BundleManifestResourceImplTest
       resource.save(out, options);
 
       String content = out.toString("UTF-8");
-      
+
       StringBuilder expectedContent = new StringBuilder();
       expectedContent.append("Manifest-Version: 1.0");
       expectedContent.append("\r\n");
@@ -194,4 +195,17 @@ public class BundleManifestResourceImplTest
       assertEquals(expectedContent.toString(), content);
    }
 
+   @Test
+   public void testDuplicatedBundleManifestVersion() throws Exception
+   {
+      BundleManifest manifest = BundleManifestFactory.eINSTANCE.createBundleManifest();
+      manifest.setBundleSymbolicName("foo");
+      
+      assertEquals(3, manifest.getHeaders().size());
+      assertEquals("2", manifest.getBundleManifestVersion());
+
+      manifest = EcoreUtil.copy(manifest);
+      assertEquals(3, manifest.getHeaders().size());
+      assertEquals("2", manifest.getBundleManifestVersion());
+   }
 }
