@@ -271,8 +271,36 @@ public class VersionRangeTest extends AbstractVersionCompatibilityTest
 
       r1 = VersionRange.parse("[1,2]"); // conflict
       r2 = VersionRange.parse("[3,4]");
-      r3 = VersionRange.intersect(r1, r2);
-      assertThat(r3.toString(), IsEqual.equalTo("[3,2]"));
+      try
+      {
+         VersionRange.intersect(r1, r2);
+         fail();
+      }
+      catch (IllegalArgumentException e)
+      { // as expected
+      }
+      
+      r1 = VersionRange.parse("[1,2)"); // conflict
+      r2 = VersionRange.parse("[2,3]");
+      try
+      {
+         VersionRange.intersect(r1, r2);
+         fail();
+      }
+      catch (IllegalArgumentException e)
+      { // as expected
+      }
+      
+      r1 = VersionRange.parse("[1,1]"); // conflict
+      r2 = VersionRange.parse("(1,2]");
+      try
+      {
+         VersionRange.intersect(r1, r2);
+         fail();
+      }
+      catch (IllegalArgumentException e)
+      { // as expected
+      }
    }
 
    @Test

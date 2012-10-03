@@ -114,6 +114,28 @@ public class VersionRange
          }
       }
 
+      if (lowVersion != null && highVersion != null)
+      {
+         boolean invalid = false;
+         final int compare = lowVersion.compareTo(highVersion);
+         if (compare > 0)
+         {
+            invalid = true;
+         }
+         else if (compare == 0 && !highInclusive)
+         {
+            invalid = true;
+         }
+         else if (compare == 0 && !lowInclusive)
+         {
+            invalid = true;
+         }
+         if (invalid)
+         {
+            throw new IllegalArgumentException("Cannot intersect version ranges " + rangeOne + " and " + rangeTwo + ".");
+         }
+      }
+
       return new VersionRange(lowVersion, lowInclusive, highVersion, highInclusive);
    }
 
