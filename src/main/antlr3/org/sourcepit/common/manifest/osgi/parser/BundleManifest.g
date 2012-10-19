@@ -30,6 +30,26 @@ public Object recoverFromMismatchedSet(IntStream input, RecognitionException e,
 		BitSet follow) throws RecognitionException {
 	throw e;
 }
+
+   static String trimQuotes(String text)
+   {
+      if (text == null)
+      {
+         return text;
+      }
+      final int length = text.length();
+      if (length == 0)
+      {
+         return text;
+      }
+      final int start = text.startsWith("\"") ? 1 : 0;
+      final int end = text.endsWith("\"") ? text.length() - 1 : text.length();
+      if (start <= length && start > end)
+      {
+         return text.substring(start);
+      }
+      return text.substring(start, end);
+   }
 }
 
 @rulecatch {
@@ -324,8 +344,7 @@ value[Parameter p]
   | QUOTED_STRING 
                   {
                    $p.setQuoted(true);
-                   String text = $QUOTED_STRING.text;
-                   text = text.substring(1, text.length() - 1);
+                   String text = trimQuotes($QUOTED_STRING.text);
                    $p.setValue(StringEscapeUtils.unescapeJava(text));
                   }
   ;
@@ -362,7 +381,7 @@ QUOTED_STRING
       | '\"'
      )
   )*
-  '"'
+  '"'?
   ;
 
 WS

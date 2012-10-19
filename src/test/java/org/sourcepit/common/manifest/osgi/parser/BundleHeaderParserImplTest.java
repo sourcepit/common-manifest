@@ -104,6 +104,26 @@ public class BundleHeaderParserImplTest
       assertThat(parsedValue, IsEqual.equalTo(range));
    }
 
+   @Test
+   public void testSupportBrokenVersionRange() throws Exception
+   {
+      // MANIFEST.MF of org.eclipse.birt.core_2.6.2.r262_v20110209.jar has a broken Require-Bundle header :-(
+      VersionRange range = VersionRange.parse("[1,2)");
+      PackageImport export = parser.parseImportPackage("a.b.c;version=\"" + range.toString()).get(0);
+      Parameter parameter = export.getParameter("version");
+      assertThat(parameter.getValue(), IsEqual.equalTo("[1,2)"));
+
+      EList<PackageImport> importPackages = parser.parseImportPackage("foo;version=\"[1,2)\",a.b.c;version=\"[1,3)");
+      assertThat(importPackages.size(), Is.is(2));
+      assertThat(importPackages.get(0).getParameterValue("version"), IsEqual.equalTo("[1,2)"));
+      assertThat(importPackages.get(1).getParameterValue("version"), IsEqual.equalTo("[1,3)"));
+      
+      importPackages = parser.parseImportPackage("foo;version=\"[1,2)\",a.b.c;version=\"[1,3)\"");
+      assertThat(importPackages.size(), Is.is(2));
+      assertThat(importPackages.get(0).getParameterValue("version"), IsEqual.equalTo("[1,2)"));
+      assertThat(importPackages.get(1).getParameterValue("version"), IsEqual.equalTo("[1,3)"));
+   }
+
    protected Parameter parseParameter(String parameter)
    {
       PackageExport export = parser.parseExportPackage("a.b.bc;" + parameter).get(0);
