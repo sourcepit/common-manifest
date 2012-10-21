@@ -7,6 +7,7 @@
 package org.sourcepit.common.manifest.osgi;
 
 import static junit.framework.Assert.fail;
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
 
 import org.hamcrest.core.Is;
@@ -292,5 +293,21 @@ public class VersionTest extends AbstractVersionCompatibilityTest
          assertThat(v1.compareTo(v2), Is.is(-2));
          assertThat(v2.compareTo(v1), Is.is(2));
       }
+   }
+
+   @Test
+   public void testTrimQualifier() throws Exception
+   {
+      Version version = Version.parse("1");
+      assertEquals("1", version.trimQualifier().toMinimalString());
+      
+      version = Version.parse("1.2.3");
+      assertEquals("1.2.3", version.trimQualifier().toMinimalString());
+
+      version = Version.parse("1.2.3.qualifier");
+      assertEquals("1.2.3", version.trimQualifier().toMinimalString());
+      
+      version = Version.parse("1.2.3.2012");
+      assertEquals("1.2.3", version.trimQualifier().toMinimalString());
    }
 }

@@ -28,7 +28,7 @@ import org.sourcepit.common.manifest.osgi.parser.BundleVersionParser;
  * {@code Version} objects are immutable.
  */
 
-public class Version implements Comparable<Version>
+public final class Version implements Comparable<Version>
 {
    private final boolean isMinorSet;
    private final boolean isMicroSet;
@@ -248,6 +248,15 @@ public class Version implements Comparable<Version>
    public String getQualifier()
    {
       return qualifier;
+   }
+
+   public Version trimQualifier()
+   {
+      if (qualifier.length() == 0)
+      {
+         return this;
+      }
+      return new Version(major, minor, micro);
    }
 
    /**
