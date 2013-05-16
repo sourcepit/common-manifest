@@ -41,7 +41,7 @@ public class ManifestFactoryImpl extends EFactoryImpl implements ManifestFactory
       try
       {
          ManifestFactory theManifestFactory = (ManifestFactory) EPackage.Registry.INSTANCE
-            .getEFactory("http://www.sourcepit.org/common/manifest/0.1");
+            .getEFactory(ManifestPackage.eNS_URI);
          if (theManifestFactory != null)
          {
             return theManifestFactory;

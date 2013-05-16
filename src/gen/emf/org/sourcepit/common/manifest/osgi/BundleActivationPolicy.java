@@ -27,7 +27,7 @@ public interface BundleActivationPolicy extends Parameterized
 {
    /**
     * Returns the value of the '<em><b>Policy</b></em>' attribute.
-    * The default value is <code>"EAGER"</code>.
+    * The default value is <code>"eager"</code>.
     * The literals are from the enumeration {@link org.sourcepit.common.manifest.osgi.ActivationPolicy}.
     * <!-- begin-user-doc -->
     * <p>
@@ -40,7 +40,7 @@ public interface BundleActivationPolicy extends Parameterized
     * @see org.sourcepit.common.manifest.osgi.ActivationPolicy
     * @see #setPolicy(ActivationPolicy)
     * @see org.sourcepit.common.manifest.osgi.BundleManifestPackage#getBundleActivationPolicy_Policy()
-    * @model default="EAGER" required="true"
+    * @model default="eager" required="true"
     * @generated
     */
    ActivationPolicy getPolicy();

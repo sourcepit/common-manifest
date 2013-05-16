@@ -212,7 +212,7 @@ public class ParameterImpl extends ParseableImpl implements Parameter
    {
       if (eContainerFeatureID() != BundleManifestPackage.PARAMETER__PARAMETERIZED)
          return null;
-      return (Parameterized) eContainer();
+      return (Parameterized) eInternalContainer();
    }
 
    /**

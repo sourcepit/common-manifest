@@ -115,7 +115,7 @@ public class HeaderEntryImpl extends HeaderImpl implements BasicEMap.Entry<Strin
    {
       if (eContainerFeatureID() != ManifestPackage.HEADER_ENTRY__MANIFEST)
          return null;
-      return (Manifest) eContainer();
+      return (Manifest) eInternalContainer();
    }
 
    /**

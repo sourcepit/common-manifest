@@ -53,7 +53,7 @@ public class BundleManifestFactoryImpl extends EFactoryImpl implements BundleMan
       try
       {
          BundleManifestFactory theBundleManifestFactory = (BundleManifestFactory) EPackage.Registry.INSTANCE
-            .getEFactory("http://www.sourcepit.org/common/manifest/osgi/0.1");
+            .getEFactory(BundleManifestPackage.eNS_URI);
          if (theBundleManifestFactory != null)
          {
             return theBundleManifestFactory;

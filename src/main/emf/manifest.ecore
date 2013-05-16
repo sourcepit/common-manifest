@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ecore:EPackage xmi:version="2.0"
-    xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="manifest"
-    nsURI="http://www.sourcepit.org/common/manifest/0.1" nsPrefix="manifest">
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="manifest" nsURI="http://www.sourcepit.org/common/manifest/0.1"
+    nsPrefix="manifest">
   <eClassifiers xsi:type="ecore:EClass" name="Manifest" eSuperTypes="#//AbstractSection">
     <eOperations name="getSection" eType="#//ManifestSection">
       <eParameters name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -293,7 +292,7 @@
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="BundleActivationPolicy" eSuperTypes="#//osgi/Parameterized">
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="policy" lowerBound="1"
-          eType="#//osgi/ActivationPolicy" defaultValueLiteral="EAGER"/>
+          eType="#//osgi/ActivationPolicy" defaultValueLiteral="eager"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="PackagesDeclaration" abstract="true"
         eSuperTypes="#//osgi/Parameterized">

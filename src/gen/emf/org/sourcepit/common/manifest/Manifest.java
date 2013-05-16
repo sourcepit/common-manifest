@@ -48,7 +48,7 @@ public interface Manifest extends AbstractSection
    /**
     * Returns the value of the '<em><b>Sections</b></em>' map.
     * The key is of type {@link java.lang.String},
-    * and the value is of type list of {@link java.util.Map.Entry},
+    * and the value is of type list of {@link java.util.Map.Entry<java.lang.String, java.lang.String>},
     * <!-- begin-user-doc -->
     * <p>
     * If the meaning of the '<em>Sections</em>' map isn't clear, there really should be more of a description here...

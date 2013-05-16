@@ -937,7 +937,7 @@ public class BundleManifestPackageImpl extends EPackageImpl implements BundleMan
 
       initEClass(bundleActivationPolicyEClass, BundleActivationPolicy.class, "BundleActivationPolicy", !IS_ABSTRACT,
          !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-      initEAttribute(getBundleActivationPolicy_Policy(), this.getActivationPolicy(), "policy", "EAGER", 1, 1,
+      initEAttribute(getBundleActivationPolicy_Policy(), this.getActivationPolicy(), "policy", "eager", 1, 1,
          BundleActivationPolicy.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
          !IS_DERIVED, IS_ORDERED);
 
