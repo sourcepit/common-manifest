@@ -509,14 +509,14 @@ public enum HeaderName implements Enumerator
     * <!-- begin-user-doc -->
     * <!-- end-user-doc -->
     * 
-    * @generated
+    * @generated NOT
     */
    public static HeaderName get(String literal)
    {
       for (int i = 0; i < VALUES_ARRAY.length; ++i)
       {
          HeaderName result = VALUES_ARRAY[i];
-         if (result.toString().equals(literal))
+         if (equals(result.toString(), literal))
          {
             return result;
          }
@@ -542,6 +542,24 @@ public enum HeaderName implements Enumerator
          }
       }
       return null;
+   }
+
+   private static boolean equals(Object key, Object key2)
+   {
+      if (key == null)
+      {
+         return key2 == null;
+      }
+      if (key2 == null)
+      {
+         return false;
+      }
+      return normalize(key).equals(normalize(key2));
+   }
+
+   private static String normalize(Object key)
+   {
+      return key.toString().toLowerCase();
    }
 
    /**

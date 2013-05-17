@@ -7,7 +7,10 @@
 package org.sourcepit.common.manifest.osgi;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertTrue;
 import static org.sourcepit.common.manifest.osgi.BundleHeaderName.BUNDLE_ACTIVATIONPOLICY;
 import static org.sourcepit.common.manifest.osgi.BundleHeaderName.BUNDLE_CLASSPATH;
 import static org.sourcepit.common.manifest.osgi.BundleHeaderName.BUNDLE_MANIFESTVERSION;
@@ -22,6 +25,7 @@ import static org.sourcepit.common.manifest.osgi.BundleHeaderName.REQUIRE_BUNDLE
 import java.util.List;
 
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.util.EMap;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.hamcrest.core.Is;
 import org.hamcrest.core.IsEqual;
@@ -747,6 +751,49 @@ public class BundleManifestTest
       
       assertEquals("foo", manifest.getHeaderValue(EXPORT_PACKAGE));
       assertEquals(manifest.getHeaderValue(EXPORT_PACKAGE), copy.getHeaderValue(EXPORT_PACKAGE));
+   }
+   
+   @Test
+   public void testHeadersCaseInsensitive() throws Exception
+   {
+      BundleManifest manifest = BundleManifestFactory.eINSTANCE.createBundleManifest();
+
+      EMap<String, String> headers = manifest.getHeaders();
+      headers.put("Case", "foo");
+      assertEquals(3, headers.size());
+      assertTrue(headers.containsValue("foo"));
+      assertFalse(headers.containsValue("bar"));
+
+      assertTrue(headers.containsKey("Case"));
+      assertEquals("foo", headers.get("Case"));
+      assertTrue(headers.containsKey("case"));
+      assertEquals("foo", headers.get("case"));
+      assertEquals("Case", manifest.getHeader("Case").getName());
+      assertEquals("foo", manifest.getHeader("Case").getValue());
+      assertEquals("Case", manifest.getHeader("case").getName());
+      assertEquals("foo", manifest.getHeader("case").getValue());
+
+      headers.put("case", "bar");
+      assertEquals(3, headers.size());
+      assertTrue(headers.containsValue("bar"));
+      assertFalse(headers.containsValue("foo"));
+
+      assertTrue(headers.containsKey("Case"));
+      assertEquals("bar", headers.get("Case"));
+      assertTrue(headers.containsKey("case"));
+      assertEquals("bar", headers.get("case"));
+      assertEquals("Case", manifest.getHeader("Case").getName());
+      assertEquals("bar", manifest.getHeader("Case").getValue());
+      assertEquals("Case", manifest.getHeader("case").getName());
+      assertEquals("bar", manifest.getHeader("case").getValue());
+      
+      manifest.setHeader("case", null);
+      assertEquals(2, headers.size());
+      
+      manifest.setHeader("Bundle-Symbolicname", "joda");
+      
+      BundleSymbolicName bundleSymbolicName = manifest.getBundleSymbolicName();
+      assertNotNull(bundleSymbolicName);
    }
 
 }

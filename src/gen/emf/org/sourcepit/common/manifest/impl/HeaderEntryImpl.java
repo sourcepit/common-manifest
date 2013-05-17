@@ -330,14 +330,14 @@ public class HeaderEntryImpl extends HeaderImpl implements BasicEMap.Entry<Strin
     * <!-- begin-user-doc -->
     * <!-- end-user-doc -->
     * 
-    * @generated
+    * @generated NOT
     */
    public int getHash()
    {
       if (hash == -1)
       {
-         Object theKey = getKey();
-         hash = (theKey == null ? 0 : theKey.hashCode());
+         String theKey = getKey();
+         hash = (theKey == null ? 0 : theKey.toLowerCase().hashCode());
       }
       return hash;
    }

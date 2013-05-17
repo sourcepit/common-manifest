@@ -12,6 +12,7 @@ import java.util.List;
 import java.util.Map.Entry;
 
 import org.eclipse.emf.common.notify.NotificationChain;
+import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.BasicEMap;
 import org.eclipse.emf.common.util.EMap;
 import org.eclipse.emf.ecore.EClass;
@@ -101,6 +102,109 @@ public class ManifestImpl extends AbstractSectionImpl implements Manifest
             ManifestPackage.MANIFEST__HEADERS, ManifestPackage.HEADER_ENTRY__MANIFEST)
          {
             private static final long serialVersionUID = 1L;
+
+            @Override
+            protected boolean useEqualsForKey()
+            {
+               return true;
+            }
+
+            @Override
+            protected boolean useEqualsForValue()
+            {
+               return true;
+            }
+
+            @Override
+            protected int hashOf(Object key)
+            {
+               return key == null ? 0 : normalize(key).hashCode();
+            }
+
+            @Override
+            protected int entryIndexForKey(int index, int hash, Object key)
+            {
+               if (useEqualsForKey())
+               {
+                  BasicEList<Entry<String, String>> eList = entryData[index];
+                  if (eList != null)
+                  {
+                     Object[] entries = eList.data();
+                     int size = eList.size();
+                     for (int j = 0; j < size; ++j)
+                     {
+                        @SuppressWarnings("unchecked")
+                        Entry<String, String> entry = (Entry<String, String>) entries[j];
+                        if (entry.getHash() == hash && keyEquals(key, entry.getKey()))
+                        {
+                           return j;
+                        }
+                     }
+                  }
+                  return -1;
+               }
+               throw new IllegalStateException();
+            }
+
+            @Override
+            protected Entry<String, String> entryForKey(int index, int hash, Object key)
+            {
+               if (useEqualsForKey())
+               {
+                  BasicEList<Entry<String, String>> eList = entryData[index];
+                  if (eList != null)
+                  {
+                     Object[] entries = eList.data();
+                     int size = eList.size();
+                     for (int j = 0; j < size; ++j)
+                     {
+                        @SuppressWarnings("unchecked")
+                        Entry<String, String> entry = (Entry<String, String>) entries[j];
+                        if (entry.getHash() == hash && keyEquals(key, entry.getKey()))
+                        {
+                           return entry;
+                        }
+                     }
+                  }
+                  return null;
+               }
+               throw new IllegalStateException();
+            }
+
+            public int indexOfKey(Object key)
+            {
+               if (useEqualsForKey())
+               {
+                  for (int i = 0, size = delegateEList.size(); i < size; ++i)
+                  {
+                     Entry<String, String> entry = delegateEList.get(i);
+                     if (keyEquals(key, entry.getKey()))
+                     {
+                        return i;
+                     }
+                  }
+                  return -1;
+               }
+               throw new IllegalStateException();
+            }
+
+            private boolean keyEquals(Object key, Object key2)
+            {
+               if (key == null)
+               {
+                  return key2 == null;
+               }
+               if (key2 == null)
+               {
+                  return false;
+               }
+               return normalize(key).equals(normalize(key2));
+            }
+
+            private String normalize(Object key)
+            {
+               return key.toString().toLowerCase();
+            }
 
             @Override
             public boolean add(java.util.Map.Entry<String, String> object)
