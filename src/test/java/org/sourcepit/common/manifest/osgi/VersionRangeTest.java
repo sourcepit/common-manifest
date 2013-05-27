@@ -6,8 +6,8 @@
 
 package org.sourcepit.common.manifest.osgi;
 
-import static junit.framework.Assert.assertFalse;
-import static junit.framework.Assert.fail;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.fail;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 
@@ -392,7 +392,7 @@ public class VersionRangeTest extends AbstractVersionCompatibilityTest
       }
       else if (range instanceof org.eclipse.osgi.service.resolver.VersionRange)
       {
-         return (V) ((org.eclipse.osgi.service.resolver.VersionRange) range).getMaximum();
+         return (V) ((org.eclipse.osgi.service.resolver.VersionRange) range).getRight();
       }
       throw new IllegalArgumentException();
    }
