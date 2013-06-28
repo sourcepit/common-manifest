@@ -6,6 +6,8 @@
 
 package org.sourcepit.common.manifest.osgi.parser;
 
+import java.util.Map;
+
 import org.sourcepit.common.manifest.Manifest;
 import org.sourcepit.common.manifest.osgi.BundleManifestFactory;
 import org.sourcepit.common.manifest.parser.ManifestBuilder;
@@ -15,6 +17,16 @@ import org.sourcepit.common.manifest.parser.ManifestBuilder;
  */
 public class BundleManifestBuilder extends ManifestBuilder
 {
+   public BundleManifestBuilder()
+   {
+      super();
+   }
+   
+   public BundleManifestBuilder(Map<?, ?> options)
+   {
+      super(options);
+   }
+   
    @Override
    protected Manifest createManifest()
    {

@@ -6,6 +6,8 @@
 
 package org.sourcepit.common.manifest.osgi.parser;
 
+import java.util.Map;
+
 import org.sourcepit.common.manifest.Manifest;
 import org.sourcepit.common.manifest.osgi.BundleHeaderName;
 import org.sourcepit.common.manifest.osgi.BundleManifest;
@@ -17,6 +19,16 @@ import org.sourcepit.common.manifest.parser.ManifestBuilder;
  */
 public class GenericManifestBuilder extends ManifestBuilder
 {
+   public GenericManifestBuilder()
+   {
+      super();
+   }
+
+   public GenericManifestBuilder(Map<?, ?> options)
+   {
+      super(options);
+   }
+
    public Manifest getManifest()
    {
       if (hasBundleManifestHeaders())

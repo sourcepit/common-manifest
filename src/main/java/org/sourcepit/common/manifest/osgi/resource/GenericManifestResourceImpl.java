@@ -6,6 +6,8 @@
 
 package org.sourcepit.common.manifest.osgi.resource;
 
+import java.util.Map;
+
 import org.eclipse.emf.common.util.URI;
 import org.sourcepit.common.manifest.osgi.parser.GenericManifestBuilder;
 import org.sourcepit.common.manifest.parser.ManifestBuilder;
@@ -37,8 +39,8 @@ public class GenericManifestResourceImpl extends ManifestResourceImpl
    }
 
    @Override
-   protected ManifestBuilder createManifestBuilder()
+   protected ManifestBuilder createManifestBuilder(Map<?, ?> options)
    {
-      return new GenericManifestBuilder();
+      return new GenericManifestBuilder(options);
    }
 }

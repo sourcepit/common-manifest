@@ -61,7 +61,7 @@ public class ManifestResourceImpl extends ResourceImpl implements ManifestResour
    @Override
    protected void doLoad(InputStream inputStream, Map<?, ?> options) throws IOException
    {
-      final ManifestBuilder builder = createManifestBuilder();
+      final ManifestBuilder builder = createManifestBuilder(options);
       new ManifestParser().parse(inputStream, builder);
       final Manifest manifest = builder.getManifest();
       if (manifest != null)
@@ -70,9 +70,9 @@ public class ManifestResourceImpl extends ResourceImpl implements ManifestResour
       }
    }
 
-   protected ManifestBuilder createManifestBuilder()
+   protected ManifestBuilder createManifestBuilder(Map<?, ?> options)
    {
-      return new ManifestBuilder();
+      return new ManifestBuilder(options);
    }
 
    @Override

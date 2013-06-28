@@ -6,6 +6,8 @@
 
 package org.sourcepit.common.manifest.parser;
 
+import java.util.Map;
+
 import org.sourcepit.common.manifest.AbstractSection;
 import org.sourcepit.common.manifest.Manifest;
 import org.sourcepit.common.manifest.ManifestFactory;
@@ -19,6 +21,18 @@ public class ManifestBuilder extends AbstractManifestVisitor
    protected Manifest manifest;
 
    protected AbstractSection current;
+
+   protected Map<?, ?> options;
+
+   public ManifestBuilder()
+   {
+      this(null);
+   }
+
+   public ManifestBuilder(Map<?, ?> options)
+   {
+      this.options = options;
+   }
 
    public Manifest getManifest()
    {
@@ -46,7 +60,16 @@ public class ManifestBuilder extends AbstractManifestVisitor
    @Override
    public void visitHeader(String name, String value)
    {
-      current.getHeaders().put(name, value);
+      final Map<?, ?> oldOptions = HeaderParserRegistry.getCurrentOptions();
+      try
+      {
+         HeaderParserRegistry.setCurrentOptions(options);
+         current.getHeaders().put(name, value);
+      }
+      finally
+      {
+         HeaderParserRegistry.setCurrentOptions(oldOptions);
+      }
    }
 
    protected Manifest createManifest()

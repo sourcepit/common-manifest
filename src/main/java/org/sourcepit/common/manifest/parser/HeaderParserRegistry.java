@@ -7,6 +7,7 @@
 package org.sourcepit.common.manifest.parser;
 
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 import org.sourcepit.common.manifest.Parseable;
@@ -18,14 +19,37 @@ public class HeaderParserRegistry implements HeaderParser.Registry
 {
    private List<HeaderParser> parsers = new CopyOnWriteArrayList<HeaderParser>();
 
+   private static final ThreadLocal<Map<?, ?>> CURRENT_OPTIONS = new ThreadLocal<Map<?, ?>>();
+
+   public static Map<?, ?> getCurrentOptions()
+   {
+      return CURRENT_OPTIONS.get();
+   }
+
+   public static void setCurrentOptions(Map<?, ?> options)
+   {
+      CURRENT_OPTIONS.set(options);
+   }
+
    public Object parse(Parseable parseable)
    {
       for (HeaderParser parser : parsers)
       {
-         final Object result = parser.parse(parseable);
-         if (result != null)
+         try
          {
-            return result;
+            final Object result = parser.parse(parseable);
+            if (result != null)
+            {
+               return result;
+            }
+         }
+         catch (IllegalArgumentException e)
+         {
+            final Map<?, ?> options = getCurrentOptions();
+            if (options == null || !Boolean.FALSE.equals(options.get("strict")))
+            {
+               throw e;
+            }
          }
       }
       return null;
