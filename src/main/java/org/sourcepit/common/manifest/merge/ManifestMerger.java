@@ -19,22 +19,25 @@ import org.sourcepit.common.manifest.ManifestSection;
 
 public class ManifestMerger
 {
-   private final List<AbstractHeaderMerger> headerMergers = new ArrayList<AbstractHeaderMerger>();
+   private final List<HeaderMerger> customerHeaderMergers;
+   private HeaderMerger defaultHeaderMerger;
 
-   public List<AbstractHeaderMerger> getHeaderMergers()
+   public ManifestMerger()
    {
-      return headerMergers;
+      this.customerHeaderMergers = new ArrayList<HeaderMerger>();
    }
 
-   // adder for maven mojo configuration injection
-   public void addHeaderMergers(List<AbstractHeaderMerger> headerMergers)
-   {
-      this.headerMergers.addAll(headerMergers);
-   }
-
-   @SuppressWarnings({ "unchecked", "rawtypes" })
    public void merge(Manifest target, Manifest source)
    {
+      merge(target, source, true);
+   }
+
+
+   @SuppressWarnings({ "unchecked", "rawtypes" })
+   public void merge(Manifest target, Manifest source, boolean sourceDominant)
+   {
+      this.defaultHeaderMerger = new DefaultHeaderMerger(sourceDominant);
+
       final EMap<String, String> targetHeaders = target.getHeaders();
       final EMap<String, String> sourceHeaders = source.getHeaders();
       mergeHeaders(null, targetHeaders, sourceHeaders);
@@ -52,21 +55,29 @@ public class ManifestMerger
       {
          targetSectionMap.put(targetSection.getName(), targetSection);
       }
+
       for (ManifestSection sourceSection : sourceSections)
       {
          final String sectionName = sourceSection.getName();
 
          ManifestSection targetSection = targetSectionMap.get(sectionName);
-         if (targetSection == null)
+         if (targetSection != null)
          {
+            // merge section headers
+            final EMap<String, String> targetHeaders = targetSection.getHeaders();
+            final EMap<String, String> sourceHeaders = sourceSection.getHeaders();
+            mergeHeaders(sectionName, targetHeaders, sourceHeaders);
+         }
+         else
+         {
+            // add section if not existent
             targetSection = target.getSection(sectionName, true);
+            targetSection.getHeaders().addAll(sourceSection.getHeaders());
             targetSectionMap.put(sectionName, targetSection);
          }
 
+         // delete empty sections
          final EMap<String, String> targetHeaders = targetSection.getHeaders();
-         final EMap<String, String> sourceHeaders = sourceSection.getHeaders();
-         mergeHeaders(sectionName, targetHeaders, sourceHeaders);
-
          if (targetHeaders.isEmpty())
          {
             targetSectionMap.remove(sectionName);
@@ -81,30 +92,51 @@ public class ManifestMerger
       for (Entry<String, String> header : sourceHeaders)
       {
          final String headerName = header.getKey();
-         final String targetValue = targetHeaders.get(headerName);
          final String sourceValue = header.getValue();
-         final String newValue = getHeaderMerger(sectionName, headerName).computeNewValue(headerName, targetValue,
-            sourceValue);
+         if (targetHeaders.containsKey(headerName))
+         {
+            // merge header value
+            final String targetValue = targetHeaders.get(headerName);
+            final String newValue = getHeaderMerger(sectionName, headerName, targetValue, sourceValue).computeNewValue(
+               headerName, targetValue, sourceValue);
+            targetHeaders.put(headerName, newValue);
+         }
+         else
+         {
+            // add header if not existent
+            targetHeaders.put(headerName, sourceValue);
+         }
+
+         // delete empty headers
+         final String newValue = targetHeaders.get(headerName);
          if (newValue == null)
          {
             targetHeaders.removeKey(headerName);
          }
-         else
-         {
-            targetHeaders.put(headerName, newValue);
-         }
       }
    }
 
-   private AbstractHeaderMerger getHeaderMerger(String sectionName, String headerName)
+   private HeaderMerger getHeaderMerger(String sectionName, String headerName, String targetValue, String sourceValue)
    {
-      for (AbstractHeaderMerger merger : this.headerMergers)
+      for (HeaderMerger merger : this.customerHeaderMergers)
       {
-         if (merger.isHeaderMergerFor(headerName))
+         if (merger.isResponsibleFor(sectionName, headerName, targetValue, sourceValue))
          {
             return merger;
          }
       }
-      return new DefaultHeaderMerger();
+      return defaultHeaderMerger;
    }
+
+   public List<HeaderMerger> getCustomHeaderMergers()
+   {
+      return customerHeaderMergers;
+   }
+
+   public void addCustomHeaderMergers(List<HeaderMerger> headerMergers)
+   {
+      this.customerHeaderMergers.addAll(headerMergers);
+   }
+
+
 }

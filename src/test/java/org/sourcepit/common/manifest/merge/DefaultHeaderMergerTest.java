@@ -20,4 +20,15 @@ public class DefaultHeaderMergerTest extends TestCase
       assertNull(merger.computeNewValue("", "hallo", null));
       assertNull(merger.computeNewValue("", null, null));
    }
+
+   public void testSourceDominantFlag() throws Exception
+   {
+      DefaultHeaderMerger merger = new DefaultHeaderMerger(false);
+      assertEquals("", merger.computeNewValue("", "", ""));
+      assertEquals("hallo", merger.computeNewValue("", "hallo", ""));
+      assertEquals("hallo", merger.computeNewValue("", "hallo", null));
+      assertEquals("", merger.computeNewValue("", "", "hallo"));
+      assertNull(merger.computeNewValue("", null, "hallo"));
+      assertNull(merger.computeNewValue("", null, null));
+   }
 }

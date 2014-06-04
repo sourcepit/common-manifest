@@ -10,16 +10,19 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.LinkedHashSet;
-import java.util.List;
 
 /**
  * @author Bernd
  */
-public class MultiValueHeaderMerger extends AbstractHeaderMerger
+public class MultiValueHeaderMerger implements HeaderMerger
 {
    private String separator = ",";
-
    private boolean unique = true;
+
+   public MultiValueHeaderMerger()
+   {
+      super();
+   }
 
    public void setSeparator(String separator)
    {
@@ -42,46 +45,21 @@ public class MultiValueHeaderMerger extends AbstractHeaderMerger
    }
 
    @Override
-   public String computeNewValue(String headerName, String leftValue, String rightValue)
+   public String computeNewValue(String headerName, String targetValue, String sourceValue)
    {
-      Collection<String> leftValues = parse(leftValue);
-      if (unique)
-      {
-         leftValues = new LinkedHashSet<String>(leftValues);
-      }
-      leftValues.addAll(parse(rightValue));
-      if (leftValues.isEmpty())
-      {
-         return null;
-      }
-      final StringBuilder sb = new StringBuilder();
-      for (String value : leftValues)
-      {
-         sb.append(value);
-         sb.append(separator);
-      }
-      if (sb.length() > 0)
-      {
-         sb.delete(sb.length() - separator.length(), sb.length());
-      }
-      return sb.toString();
+      Collection<String> targetValues = parse(targetValue);
+      Collection<String> sourceValues = parse(sourceValue);
+
+      targetValues.addAll(sourceValues);
+      return buildValue(targetValues);
    }
 
-   private List<String> parse(String value)
+   private Collection<String> parse(String value)
    {
-      final List<String> values = new ArrayList<String>();
+      final Collection<String> values = unique ? new LinkedHashSet<String>() : new ArrayList<String>();
       if (value != null)
       {
-         if (unique)
-         {
-            final LinkedHashSet<String> set = new LinkedHashSet<String>();
-            Collections.addAll(set, split(value));
-            values.addAll(set);
-         }
-         else
-         {
-            Collections.addAll(values, split(value));
-         }
+         Collections.addAll(values, split(value));
       }
       return values;
    }
@@ -93,6 +71,28 @@ public class MultiValueHeaderMerger extends AbstractHeaderMerger
          return new String[] { "", "" };
       }
       return value.split(separator);
+   }
+
+   private String buildValue(Collection<String> values)
+   {
+      final StringBuilder sb = new StringBuilder();
+      for (String value : values)
+      {
+         sb.append(value);
+         sb.append(separator);
+      }
+      if (sb.length() > 0)
+      {
+         sb.delete(sb.length() - separator.length(), sb.length());
+         return sb.toString();
+      }
+      return null;
+   }
+
+   @Override
+   public boolean isResponsibleFor(String sectionName, String headerName, String targetValue, String sourceValue)
+   {
+      return true;
    }
 
 }

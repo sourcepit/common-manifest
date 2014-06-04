@@ -188,4 +188,120 @@ public class ManifestMergerTest extends TestCase
       assertEquals(1, targetHeaders.size());
       assertEquals("value2", targetHeaders.get("key2"));
    }
+
+   public void testSourceDominant1() throws Exception
+   {
+      Manifest target = ManifestFactory.eINSTANCE.createManifest();
+
+      Manifest source = ManifestFactory.eINSTANCE.createManifest();
+      source.getHeaders().put("key", "value");
+
+      new ManifestMerger().merge(target, source, true);
+
+      EMap<String, String> targetHeaders = target.getHeaders();
+      assertEquals(2, targetHeaders.size());
+      assertEquals("value", targetHeaders.get("key"));
+   }
+
+   public void testSourceDominant2() throws Exception
+   {
+      Manifest target = ManifestFactory.eINSTANCE.createManifest();
+      target.getHeaders().put("key", "targetValue");
+      Manifest source = ManifestFactory.eINSTANCE.createManifest();
+      source.getHeaders().put("key", "sourceValue");
+
+      new ManifestMerger().merge(target, source, false);
+
+      EMap<String, String> targetHeaders = target.getHeaders();
+      assertEquals(2, targetHeaders.size());
+      assertEquals("targetValue", targetHeaders.get("key"));
+   }
+
+   public void testSourceDominant3() throws Exception
+   {
+      Manifest target = ManifestFactory.eINSTANCE.createManifest();
+
+      Manifest source = ManifestFactory.eINSTANCE.createManifest();
+      source.getHeaders().put("key", "sourceValue");
+
+      new ManifestMerger().merge(target, source, false);
+
+      EMap<String, String> targetHeaders = target.getHeaders();
+      assertEquals(2, targetHeaders.size());
+      assertEquals("sourceValue", targetHeaders.get("key"));
+   }
+
+   public void testSectionSourceDominant1() throws Exception
+   {
+      Manifest target = ManifestFactory.eINSTANCE.createManifest();
+
+      Manifest source = ManifestFactory.eINSTANCE.createManifest();
+      ManifestSection sourceSection = source.getSection("section", true);
+      sourceSection.getHeaders().put("key", "value");
+
+      new ManifestMerger().merge(target, source, true);
+
+      assertEquals(1, target.getSections().size());
+
+      EMap<String, String> targetHeaders = target.getSection("section", false).getHeaders();
+      assertEquals(1, targetHeaders.size());
+      assertEquals("value", targetHeaders.get("key"));
+   }
+
+   public void testSectionSourceDominant2() throws Exception
+   {
+      Manifest target = ManifestFactory.eINSTANCE.createManifest();
+
+      Manifest source = ManifestFactory.eINSTANCE.createManifest();
+      ManifestSection sourceSection = source.getSection("section", true);
+      sourceSection.getHeaders().put("key", "value");
+
+      new ManifestMerger().merge(target, source,false);
+
+      assertEquals(1, target.getSections().size());
+
+      EMap<String, String> targetHeaders = target.getSection("section", false).getHeaders();
+      assertEquals(1, targetHeaders.size());
+      assertEquals("value", targetHeaders.get("key"));
+   }
+
+   public void testSectionSourceDominant3() throws Exception
+   {
+      Manifest target = ManifestFactory.eINSTANCE.createManifest();
+      ManifestSection targetSection = target.getSection("section", true);
+      targetSection.getHeaders().put("key", "targetValue");
+
+      Manifest source = ManifestFactory.eINSTANCE.createManifest();
+      ManifestSection sourceSection = source.getSection("section", true);
+      sourceSection.getHeaders().put("key", "sourceValue");
+
+      new ManifestMerger().merge(target, source, false);
+
+      assertEquals(1, target.getSections().size());
+
+      EMap<String, String> targetHeaders = target.getSection("section", false).getHeaders();
+      assertEquals(1, targetHeaders.size());
+      assertEquals("targetValue", targetHeaders.get("key"));
+   }
+
+   public void testSectionSourceDominant4() throws Exception
+   {
+      Manifest target = ManifestFactory.eINSTANCE.createManifest();
+      ManifestSection targetSection = target.getSection("section", true);
+      targetSection.getHeaders().put("key", "targetValue");
+
+      Manifest source = ManifestFactory.eINSTANCE.createManifest();
+      ManifestSection sourceSection = source.getSection("section", true);
+      sourceSection.getHeaders().put("key", "sourceValue");
+      sourceSection.getHeaders().put("sourceOnlyKey", "sourceValue");
+
+      new ManifestMerger().merge(target, source, false);
+
+      assertEquals(1, target.getSections().size());
+
+      EMap<String, String> targetHeaders = target.getSection("section", false).getHeaders();
+      assertEquals(2, targetHeaders.size());
+      assertEquals("targetValue", targetHeaders.get("key"));
+      assertEquals("sourceValue", targetHeaders.get("sourceOnlyKey"));
+   }
 }
