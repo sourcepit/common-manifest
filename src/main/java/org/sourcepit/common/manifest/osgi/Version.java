@@ -42,7 +42,7 @@ public final class Version implements Comparable<Version>
    /**
     * The empty version "0.0.0".
     */
-   public static final Version EMPTY_VERSION = new Version(0, 0, 0);
+   public static final Version EMPTY_VERSION = new Version(0, -1, -1);
 
    /**
     * Created a version identifier from the specified string.

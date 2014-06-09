@@ -6,10 +6,7 @@
 
 package org.sourcepit.common.manifest.osgi;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.fail;
-import static org.junit.Assert.assertThat;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 import org.hamcrest.core.Is;
 import org.hamcrest.core.IsEqual;
@@ -75,7 +72,14 @@ public class VersionRangeTest extends AbstractVersionCompatibilityTest
    private <R, V> void testInviniteRange(Class<R> rangeType, Class<V> versionType)
    {
       R invinite = newInviniteRange(rangeType);
-      assertThat("0.0.0", IsEqual.equalTo(toParseString(invinite)));
+      if (VersionRange.class == rangeType)
+      {
+         assertThat("0", IsEqual.equalTo(toParseString(invinite)));
+      }
+      else
+      {
+         assertThat("0.0.0", IsEqual.equalTo(toParseString(invinite)));
+      }
    }
 
    @SuppressWarnings("unchecked")
@@ -280,7 +284,7 @@ public class VersionRangeTest extends AbstractVersionCompatibilityTest
       catch (IllegalArgumentException e)
       { // as expected
       }
-      
+
       r1 = VersionRange.parse("[1,2)"); // conflict
       r2 = VersionRange.parse("[2,3]");
       try
@@ -291,7 +295,7 @@ public class VersionRangeTest extends AbstractVersionCompatibilityTest
       catch (IllegalArgumentException e)
       { // as expected
       }
-      
+
       r1 = VersionRange.parse("[1,1]"); // conflict
       r2 = VersionRange.parse("(1,2]");
       try
@@ -444,6 +448,19 @@ public class VersionRangeTest extends AbstractVersionCompatibilityTest
          return (V) new com.springsource.util.osgi.VersionRange(range);
       }
       throw new IllegalArgumentException();
+   }
+
+   @Test
+   public void testInfiniteEquals() throws Exception
+   {
+      VersionRange range = VersionRange.parse("0");
+      assertEquals(VersionRange.INFINITE_RANGE, range);
+
+      range = VersionRange.parse("0.0");
+      assertEquals(VersionRange.INFINITE_RANGE, range);
+
+      range = VersionRange.parse("0.0.0");
+      assertEquals(VersionRange.INFINITE_RANGE, range);
    }
 
 }
