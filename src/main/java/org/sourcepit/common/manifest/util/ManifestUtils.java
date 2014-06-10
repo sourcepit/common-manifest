@@ -9,6 +9,8 @@ package org.sourcepit.common.manifest.util;
 import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.IOException;
+import java.util.Map;
+import java.util.jar.Attributes;
 import java.util.jar.JarFile;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
@@ -17,6 +19,7 @@ import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
 import org.eclipse.emf.common.util.URI;
 import org.sourcepit.common.manifest.Manifest;
+import org.sourcepit.common.manifest.osgi.parser.GenericManifestBuilder;
 import org.sourcepit.common.manifest.osgi.resource.GenericManifestResourceImpl;
 import org.sourcepit.common.manifest.resource.ManifestResource;
 
@@ -59,5 +62,29 @@ public final class ManifestUtils
 
       return (Manifest) resource.getContents().get(0);
 
+   }
+
+   public static Manifest toManifest(java.util.jar.Manifest manifest)
+   {
+      GenericManifestBuilder builder = new GenericManifestBuilder();
+
+      // map main section
+      builder.visitSection(true, null);
+      for (Map.Entry<Object, Object> header : manifest.getMainAttributes().entrySet())
+      {
+         builder.visitHeader(header.getKey().toString(), header.getValue().toString());
+      }
+
+      // map other section
+      for (Map.Entry<String, Attributes> entry : manifest.getEntries().entrySet())
+      {
+         builder.visitSection(false, entry.getKey());
+         Attributes attributes = entry.getValue();
+         for (Map.Entry<Object, Object> header : attributes.entrySet())
+         {
+            builder.visitHeader(header.getKey().toString(), header.getValue().toString());
+         }
+      }
+      return builder.getManifest();
    }
 }
