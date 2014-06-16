@@ -18,7 +18,7 @@ public class ManifestWriter
 {
    private final DataOutputStream outputStream;
 
-   private final boolean make72Safe;
+   private final BytesByLine bytesByLine;
 
    private int main = -1;
 
@@ -26,13 +26,13 @@ public class ManifestWriter
 
    public ManifestWriter(OutputStream outputStream) throws IOException
    {
-      this(outputStream, true);
+      this(outputStream, BytesByLine._72);
    }
 
-   public ManifestWriter(OutputStream outputStream, boolean make72Safe) throws IOException
+   public ManifestWriter(OutputStream outputStream, BytesByLine bytesByLine) throws IOException
    {
       this.outputStream = new DataOutputStream(outputStream);
-      this.make72Safe = make72Safe;
+      this.bytesByLine = bytesByLine;
    }
 
    public void startMain(String version) throws IOException
@@ -91,36 +91,60 @@ public class ManifestWriter
       {
          throw new IllegalStateException("Neither main nor indivisual section started");
       }
-      
-      final StringBuilder line = new StringBuilder(new Name(name).toString()); // validate name
+
+      StringBuilder line = new StringBuilder(new Name(name).toString()); // validate name
       line.append(": ");
 
-      if (value != null)
+      if (value == null)
       {
-         byte[] vb = value.getBytes("UTF8");
-         value = new String(vb, 0, 0, vb.length);
-      }
-      line.append(value);
-      line.append("\r\n");
-
-      if (make72Safe)
-      {
-         make72Safe(line);
+         line.append(value);
+         line.append("\r\n");
+         return;
       }
 
-      outputStream.writeBytes(line.toString());
+      final String[] lines = value.split("\r\n "); // preformated lines
+      for (int i = 0; i < lines.length; i++)
+      {
+         String v = lines[i];
+         if (i > 0)
+         {
+            line.append(" ");
+         }
+         byte[] vb = v.getBytes("UTF8");
+         v = new String(vb, 0, 0, vb.length);
+         line.append(v);
+         line.append("\r\n");
+
+         switch (bytesByLine)
+         {
+            case UNLIMITED :
+               break;
+            case _512 :
+               makeSafe(line, 512);
+               break;
+            case _72 :
+               makeSafe(line, 72);
+               break;
+            default :
+               throw new IllegalStateException();
+         }
+
+         outputStream.writeBytes(line.toString());
+
+         line = new StringBuilder();
+      }
    }
 
-   private static void make72Safe(StringBuilder line)
+   private static void makeSafe(StringBuilder line, int maxBytes)
    {
       int length = line.length();
-      if (length > 72)
+      if (length > maxBytes)
       {
-         int index = 70;
+         int index = maxBytes - 2;
          while (index < length - 2)
          {
             line.insert(index, "\r\n ");
-            index += 72;
+            index += maxBytes;
             length += 3;
          }
       }

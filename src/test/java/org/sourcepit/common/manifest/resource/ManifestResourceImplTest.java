@@ -6,7 +6,7 @@
 
 package org.sourcepit.common.manifest.resource;
 
-import static org.junit.Assert.assertThat;
+import static org.junit.Assert.*;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -25,6 +25,7 @@ import org.junit.Test;
 import org.sourcepit.common.manifest.HeaderName;
 import org.sourcepit.common.manifest.Manifest;
 import org.sourcepit.common.manifest.ManifestFactory;
+import org.sourcepit.common.manifest.merge.BytesByLine;
 
 /**
  * @author Bernd
@@ -106,4 +107,18 @@ public class ManifestResourceImplTest
          IOUtils.closeQuietly(inputStream);
       }
    }
+
+   @Test
+   public void testGetBytesByLine() throws Exception
+   {
+      ManifestResource resource = new ManifestResourceImpl();
+      assertEquals(BytesByLine._512, resource.getBytesByLine());
+      
+      resource = new ManifestResourceImpl(BytesByLine._72);
+      assertEquals(BytesByLine._72, resource.getBytesByLine());
+      
+      resource = new ManifestResourceImpl(BytesByLine.UNLIMITED);
+      assertEquals(BytesByLine.UNLIMITED, resource.getBytesByLine());
+   }
+
 }

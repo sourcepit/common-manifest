@@ -7,7 +7,6 @@
 package org.sourcepit.common.manifest.osgi.resource;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertThat;
 
@@ -26,6 +25,7 @@ import org.hamcrest.core.Is;
 import org.hamcrest.core.IsEqual;
 import org.hamcrest.core.IsNull;
 import org.junit.Test;
+import org.sourcepit.common.manifest.merge.BytesByLine;
 import org.sourcepit.common.manifest.osgi.BundleHeaderName;
 import org.sourcepit.common.manifest.osgi.BundleManifest;
 import org.sourcepit.common.manifest.osgi.BundleManifestFactory;
@@ -117,7 +117,7 @@ public class BundleManifestResourceImplTest
       ManifestResource resource = new BundleManifestResourceImpl();
       resource.getContents().add(manifest);
 
-      assertFalse(resource.isMake72Safe());
+      assertEquals(BytesByLine._512, resource.getBytesByLine());
 
       ByteArrayOutputStream out = new ByteArrayOutputStream();
       resource.save(out, null);
@@ -170,11 +170,11 @@ public class BundleManifestResourceImplTest
 
       ManifestResource resource = new BundleManifestResourceImpl();
       resource.getContents().add(manifest);
-
-      assertFalse(resource.isMake72Safe());
+      
+      assertEquals(BytesByLine._512, resource.getBytesByLine());
 
       Map<String, String> options = new HashMap<String, String>();
-      options.put(ManifestResource.OPTION_MAKE72SAFE, "true");
+      options.put(ManifestResource.OPTION_BYTES_BY_LINE, "72");
 
       ByteArrayOutputStream out = new ByteArrayOutputStream();
       resource.save(out, options);
@@ -186,9 +186,11 @@ public class BundleManifestResourceImplTest
       expectedContent.append("\r\n");
       expectedContent.append("Bundle-ManifestVersion: 2");
       expectedContent.append("\r\n");
-      expectedContent.append("Export-Package: a;b;c;version=1,fooooooooooooooooooooooooooooooooooooo");
+      expectedContent.append("Export-Package: a;b;c;version=1,");
       expectedContent.append("\r\n");
-      expectedContent.append(" ooooooooooooooooooooooooooooooooooooo");
+      expectedContent.append(" foooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo");
+      expectedContent.append("\r\n");
+      expectedContent.append(" oooooo");
       expectedContent.append("\r\n");
       expectedContent.append("\r\n");
 

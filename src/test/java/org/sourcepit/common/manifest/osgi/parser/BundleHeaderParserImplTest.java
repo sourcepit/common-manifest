@@ -6,6 +6,7 @@
 
 package org.sourcepit.common.manifest.osgi.parser;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
 import static org.sourcepit.common.manifest.osgi.ParameterType.ATTRIBUTE;
 import static org.sourcepit.common.manifest.osgi.ParameterType.DIRECTIVE;
@@ -117,7 +118,7 @@ public class BundleHeaderParserImplTest
       assertThat(importPackages.size(), Is.is(2));
       assertThat(importPackages.get(0).getParameterValue("version"), IsEqual.equalTo("[1,2)"));
       assertThat(importPackages.get(1).getParameterValue("version"), IsEqual.equalTo("[1,3)"));
-      
+
       importPackages = parser.parseImportPackage("foo;version=\"[1,2)\",a.b.c;version=\"[1,3)\"");
       assertThat(importPackages.size(), Is.is(2));
       assertThat(importPackages.get(0).getParameterValue("version"), IsEqual.equalTo("[1,2)"));
@@ -160,6 +161,7 @@ public class BundleHeaderParserImplTest
       manifest.setHeader(BundleHeaderName.EXPORT_PACKAGE, "a.b.c;d.e.f;version=1.0,g.h.i");
 
       Header header = manifest.getHeader(BundleHeaderName.EXPORT_PACKAGE);
-      assertThat(parser.toValueString((Parseable) header), IsEqual.equalTo("a.b.c;d.e.f;version=1.0,g.h.i"));
+      assertEquals("a.b.c;d.e.f;version=1.0,g.h.i", parser.toValueString((Parseable) header));
+      assertEquals("a.b.c;d.e.f;version=1.0,\r\n g.h.i", parser.toValueString((Parseable) header, true));
    }
 }

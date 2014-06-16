@@ -7,10 +7,11 @@
 package org.sourcepit.common.manifest.resource;
 
 import org.eclipse.emf.ecore.resource.Resource;
+import org.sourcepit.common.manifest.merge.BytesByLine;
 
 public interface ManifestResource extends Resource
 {
-   String OPTION_MAKE72SAFE = "make72Safe";
+   String OPTION_BYTES_BY_LINE = "bytesByLine";
 
-   boolean isMake72Safe();
+   BytesByLine getBytesByLine();
 }

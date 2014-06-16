@@ -19,6 +19,7 @@ import org.eclipse.emf.ecore.resource.impl.ResourceImpl;
 import org.sourcepit.common.manifest.HeaderName;
 import org.sourcepit.common.manifest.Manifest;
 import org.sourcepit.common.manifest.Parseable;
+import org.sourcepit.common.manifest.merge.BytesByLine;
 import org.sourcepit.common.manifest.merge.ManifestWriter;
 import org.sourcepit.common.manifest.parser.HeaderParser;
 import org.sourcepit.common.manifest.parser.ManifestBuilder;
@@ -26,36 +27,34 @@ import org.sourcepit.common.manifest.parser.ManifestParser;
 
 public class ManifestResourceImpl extends ResourceImpl implements ManifestResource
 {
-   private final boolean make72Safe;
+   private final BytesByLine bytesByLine;
 
    public ManifestResourceImpl()
    {
-      this(false);
+      this(BytesByLine._512);
    }
 
-   public ManifestResourceImpl(boolean make72Safe)
+   public ManifestResourceImpl(BytesByLine bytesByLine)
    {
       super();
-      this.make72Safe = make72Safe;
+      this.bytesByLine = bytesByLine;
    }
 
    public ManifestResourceImpl(URI uri)
    {
-      this(uri, false);
+      this(uri, BytesByLine._512);
    }
 
-   public ManifestResourceImpl(URI uri, boolean make72Safe)
+   public ManifestResourceImpl(URI uri, BytesByLine bytesByLine)
    {
       super(uri);
-      this.make72Safe = make72Safe;
+      this.bytesByLine = bytesByLine;
    }
 
-   /**
-    * {@inheritDoc}
-    */
-   public boolean isMake72Safe()
+   @Override
+   public BytesByLine getBytesByLine()
    {
-      return make72Safe;
+      return bytesByLine;
    }
 
    @Override
@@ -78,34 +77,34 @@ public class ManifestResourceImpl extends ResourceImpl implements ManifestResour
    @Override
    protected void doSave(OutputStream outputStream, Map<?, ?> options) throws IOException
    {
-      boolean make72Safe = isMake72Safe();
+      BytesByLine bytesByLine = getBytesByLine();
       if (options != null)
       {
-         final Object object = options.get(OPTION_MAKE72SAFE);
+         final Object object = options.get(OPTION_BYTES_BY_LINE);
          if (object != null)
          {
-            make72Safe = Boolean.valueOf(object.toString());
+            bytesByLine = BytesByLine.parse(object.toString());
          }
       }
 
       for (EObject eObject : getContents())
       {
-         doSave((Manifest) eObject, outputStream, make72Safe);
+         doSave((Manifest) eObject, outputStream, bytesByLine);
       }
    }
 
-   protected void doSave(Manifest manifest, OutputStream outputStream, boolean make72Safe) throws IOException
+   protected void doSave(Manifest manifest, OutputStream outputStream, BytesByLine bytesByLine) throws IOException
    {
       final String versionHeaderName = HeaderName.MANIFEST_VERSION.getLiteral();
 
-      final ManifestWriter writer = new ManifestWriter(outputStream, make72Safe);
+      final ManifestWriter writer = new ManifestWriter(outputStream, bytesByLine);
       writer.startMain(manifest.getHeaderValue(versionHeaderName));
       for (Entry<String, String> header : manifest.getHeaders())
       {
          final String name = header.getKey();
          if (!versionHeaderName.equals(name))
          {
-            writer.attribute(name, getValueString(header, make72Safe));
+            writer.attribute(name, getValueString(header, bytesByLine));
          }
       }
       writer.endMain();
@@ -115,21 +114,14 @@ public class ManifestResourceImpl extends ResourceImpl implements ManifestResour
          writer.startSection(section.getKey());
          for (Entry<String, String> entry : section.getValue())
          {
-            writer.attribute(entry.getKey(), getValueString(entry, make72Safe));
+            writer.attribute(entry.getKey(), getValueString(entry, bytesByLine));
          }
          writer.endSection();
       }
    }
 
-   private String getValueString(Entry<String, String> header, boolean make72Safe)
+   private String getValueString(Entry<String, String> header, BytesByLine bytesByLine)
    {
-      if (make72Safe)
-      {
-         return header.getValue();
-      }
-      else
-      {
-         return HeaderParser.INSTANCE.toValueString((Parseable) header, true);
-      }
+      return HeaderParser.INSTANCE.toValueString((Parseable) header, true);
    }
 }

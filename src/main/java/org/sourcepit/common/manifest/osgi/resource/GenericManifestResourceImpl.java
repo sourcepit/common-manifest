@@ -9,6 +9,7 @@ package org.sourcepit.common.manifest.osgi.resource;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.URI;
+import org.sourcepit.common.manifest.merge.BytesByLine;
 import org.sourcepit.common.manifest.osgi.parser.GenericManifestBuilder;
 import org.sourcepit.common.manifest.parser.ManifestBuilder;
 import org.sourcepit.common.manifest.resource.ManifestResourceImpl;
@@ -23,9 +24,9 @@ public class GenericManifestResourceImpl extends ManifestResourceImpl
       super();
    }
 
-   public GenericManifestResourceImpl(boolean make72Safe)
+   public GenericManifestResourceImpl(BytesByLine bytesByLine)
    {
-      super(make72Safe);
+      super(bytesByLine);
    }
 
    public GenericManifestResourceImpl(URI uri)
@@ -33,9 +34,9 @@ public class GenericManifestResourceImpl extends ManifestResourceImpl
       super(uri);
    }
 
-   public GenericManifestResourceImpl(URI uri, boolean make72Safe)
+   public GenericManifestResourceImpl(URI uri, BytesByLine bytesByLine)
    {
-      super(uri, make72Safe);
+      super(uri, bytesByLine);
    }
 
    @Override
