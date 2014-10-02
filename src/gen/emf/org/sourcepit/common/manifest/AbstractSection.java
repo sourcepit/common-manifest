@@ -36,7 +36,8 @@ public interface AbstractSection extends EObject
     * <!-- end-user-doc -->
     * 
     * @model kind="operation"
-    *        dataType="org.sourcepit.common.manifest.EEMap<org.eclipse.emf.ecore.EString, org.eclipse.emf.ecore.EString>"
+    *        dataType=
+    *        "org.sourcepit.common.manifest.EEMap<org.eclipse.emf.ecore.EString, org.eclipse.emf.ecore.EString>"
     *        required="true"
     * @generated
     */

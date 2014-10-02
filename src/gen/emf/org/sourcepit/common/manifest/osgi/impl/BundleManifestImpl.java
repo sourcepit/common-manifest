@@ -19,6 +19,7 @@ package org.sourcepit.common.manifest.osgi.impl;
 import static org.sourcepit.common.manifest.osgi.BundleHeaderName.BUNDLE_ACTIVATIONPOLICY;
 import static org.sourcepit.common.manifest.osgi.BundleHeaderName.BUNDLE_ACTIVATOR;
 import static org.sourcepit.common.manifest.osgi.BundleHeaderName.BUNDLE_CLASSPATH;
+import static org.sourcepit.common.manifest.osgi.BundleHeaderName.BUNDLE_LICENSE;
 import static org.sourcepit.common.manifest.osgi.BundleHeaderName.BUNDLE_MANIFESTVERSION;
 import static org.sourcepit.common.manifest.osgi.BundleHeaderName.BUNDLE_REQUIREDEXECUTIONENVIRONMENT;
 import static org.sourcepit.common.manifest.osgi.BundleHeaderName.BUNDLE_SYMBOLICNAME;
@@ -39,6 +40,7 @@ import org.sourcepit.common.manifest.impl.ManifestImpl;
 import org.sourcepit.common.manifest.osgi.ActivationPolicy;
 import org.sourcepit.common.manifest.osgi.BundleActivationPolicy;
 import org.sourcepit.common.manifest.osgi.BundleHeaderName;
+import org.sourcepit.common.manifest.osgi.BundleLicense;
 import org.sourcepit.common.manifest.osgi.BundleManifest;
 import org.sourcepit.common.manifest.osgi.BundleManifestFactory;
 import org.sourcepit.common.manifest.osgi.BundleManifestPackage;
@@ -380,6 +382,45 @@ public class BundleManifestImpl extends ManifestImpl implements BundleManifest
    public void setBundleClassPath(List<ClassPathEntry> classPathEntries)
    {
       setHeader(BUNDLE_CLASSPATH, classPathEntries);
+   }
+
+   /**
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated NOT
+    */
+   public EList<BundleLicense> getBundleLicense()
+   {
+      return getParsedHeaderValueUnchecked(BUNDLE_LICENSE);
+   }
+
+   /**
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated NOT
+    */
+   public EList<BundleLicense> getBundleLicense(boolean createOnDemand)
+   {
+      EList<BundleLicense> licenses = getBundleLicense();
+      if (licenses == null && createOnDemand)
+      {
+         setHeader(BUNDLE_LICENSE, new ArrayList<ClassPathEntry>());
+         licenses = getBundleLicense();
+      }
+      return licenses;
+   }
+
+   /**
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated NOT
+    */
+   public void setBundleLicense(List<BundleLicense> bundleLicenses)
+   {
+      setHeader(BUNDLE_LICENSE, bundleLicenses);
    }
 
    /**

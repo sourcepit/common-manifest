@@ -19,10 +19,12 @@ package org.sourcepit.common.manifest.osgi;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 import static org.sourcepit.common.manifest.osgi.BundleHeaderName.BUNDLE_ACTIVATIONPOLICY;
 import static org.sourcepit.common.manifest.osgi.BundleHeaderName.BUNDLE_CLASSPATH;
+import static org.sourcepit.common.manifest.osgi.BundleHeaderName.BUNDLE_LICENSE;
 import static org.sourcepit.common.manifest.osgi.BundleHeaderName.BUNDLE_MANIFESTVERSION;
 import static org.sourcepit.common.manifest.osgi.BundleHeaderName.BUNDLE_SYMBOLICNAME;
 import static org.sourcepit.common.manifest.osgi.BundleHeaderName.BUNDLE_VERSION;
@@ -32,6 +34,9 @@ import static org.sourcepit.common.manifest.osgi.BundleHeaderName.FRAGMENT_HOST;
 import static org.sourcepit.common.manifest.osgi.BundleHeaderName.IMPORT_PACKAGE;
 import static org.sourcepit.common.manifest.osgi.BundleHeaderName.REQUIRE_BUNDLE;
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.emf.common.util.EList;
@@ -43,6 +48,7 @@ import org.hamcrest.core.IsNull;
 import org.junit.Test;
 import org.sourcepit.common.manifest.Header;
 import org.sourcepit.common.manifest.HeaderName;
+import org.sourcepit.common.manifest.osgi.resource.BundleManifestResourceImpl;
 
 /**
  * @author Bernd
@@ -748,6 +754,44 @@ public class BundleManifestTest
    }
 
    @Test
+   public void testSetBundleLicense()
+   {
+      BundleManifest mf = BundleManifestFactory.eINSTANCE.createBundleManifest();
+      assertThat(mf.getHeader(BUNDLE_LICENSE), IsNull.nullValue());
+      assertThat(mf.getBundleLicense(), IsNull.nullValue());
+
+      final EList<BundleLicense> licenses = mf.getBundleLicense(true);
+
+      assertThat(mf.getHeaderValue(BUNDLE_LICENSE), IsEqual.equalTo(""));
+      assertThat(mf.getBundleLicense(), IsEqual.equalTo(licenses));
+
+      BundleLicense license = BundleManifestFactory.eINSTANCE.createBundleLicense();
+      license.setName("foo");
+      licenses.add(license);
+
+      assertThat(mf.getHeaderValue(BUNDLE_LICENSE), IsEqual.equalTo("foo"));
+      assertThat(mf.getBundleLicense(), IsEqual.equalTo(licenses));
+
+      mf.setBundleLicense(null);
+
+      assertThat(mf.getHeader(BUNDLE_LICENSE), IsNull.nullValue());
+      assertThat(mf.getBundleLicense(), IsNull.nullValue());
+
+      Parameter linkParameter = BundleManifestFactory.eINSTANCE.createParameter();
+      linkParameter.setName("link");
+      linkParameter.setValue("http://foo.bar");
+
+      mf.setBundleLicense(licenses);
+
+      assertThat(mf.getHeaderValue(BUNDLE_LICENSE), IsEqual.equalTo("foo"));
+
+      license.getParameters().add(linkParameter);
+
+      assertThat(mf.getHeaderValue(BUNDLE_LICENSE), IsEqual.equalTo("foo;link=http://foo.bar"));
+      assertThat(mf.getBundleLicense(), IsEqual.equalTo(licenses));
+   }
+
+   @Test
    public void testCopy() throws Exception
    {
       BundleManifest manifest = BundleManifestFactory.eINSTANCE.createBundleManifest();
@@ -804,6 +848,55 @@ public class BundleManifestTest
 
       BundleSymbolicName bundleSymbolicName = manifest.getBundleSymbolicName();
       assertNotNull(bundleSymbolicName);
+   }
+
+   @Test
+   public void testBundleLicense() throws Exception
+   {
+      List<BundleLicense> licenses = new ArrayList<BundleLicense>();
+
+      BundleLicense license = BundleManifestFactory.eINSTANCE.createBundleLicense();
+      license.setName("Apache License Version 2.0");
+      license
+         .setDescription("Licensed under the Apache License, Version 2.0 (the \"License\");\n * you may not use this file except in compliance with the License.\n * You may obtain a copy of the License at");
+      license.setLink("http://www.apache.org/licenses/LICENSE-2.0");
+
+      licenses.add(license);
+
+      license = BundleManifestFactory.eINSTANCE.createBundleLicense();
+      license.setName("http://www.eclipse.org/legal/epl-v10.html");
+
+      licenses.add(license);
+
+      BundleManifest manifest = BundleManifestFactory.eINSTANCE.createBundleManifest();
+
+      manifest.setBundleLicense(licenses);
+
+      BundleManifestResourceImpl resource = new BundleManifestResourceImpl();
+      resource.getContents().add(manifest);
+      ByteArrayOutputStream out = new ByteArrayOutputStream();
+      resource.save(out, null);
+
+      System.out.println(new String(out.toByteArray()));
+
+      resource = new BundleManifestResourceImpl();
+      resource.load(new ByteArrayInputStream(out.toByteArray()), null);
+      manifest = (BundleManifest) resource.getContents().get(0);
+
+      EList<BundleLicense> bundleLicenses = manifest.getBundleLicense();
+      assertEquals(2, bundleLicenses.size());
+
+      BundleLicense bundleLicense = bundleLicenses.get(0);
+      assertEquals("Apache License Version 2.0", bundleLicense.getName());
+      assertEquals("http://www.apache.org/licenses/LICENSE-2.0", bundleLicense.getLink());
+      assertEquals(
+         "Licensed under the Apache License, Version 2.0 (the \"License\");\n * you may not use this file except in compliance with the License.\n * You may obtain a copy of the License at",
+         bundleLicense.getDescription());
+
+      bundleLicense = bundleLicenses.get(1);
+      assertEquals("http://www.eclipse.org/legal/epl-v10.html", bundleLicense.getName());
+      assertNull(bundleLicense.getLink());
+      assertNull(bundleLicense.getDescription());
    }
 
 }

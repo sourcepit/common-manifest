@@ -18,6 +18,7 @@ package org.sourcepit.common.manifest.osgi.parser;
 
 import org.eclipse.emf.common.util.EList;
 import org.sourcepit.common.manifest.osgi.BundleActivationPolicy;
+import org.sourcepit.common.manifest.osgi.BundleLicense;
 import org.sourcepit.common.manifest.osgi.BundleRequirement;
 import org.sourcepit.common.manifest.osgi.BundleSymbolicName;
 import org.sourcepit.common.manifest.osgi.ClassPathEntry;
@@ -46,4 +47,6 @@ public interface BundleHeaderParser extends HeaderParser
    EList<BundleRequirement> parseRequireBundle(String value);
 
    EList<ClassPathEntry> parseBundleClassPath(String value);
+
+   EList<BundleLicense> parseBundleLicense(String value);
 }

@@ -243,6 +243,13 @@
         <genOperations ecoreOperation="manifest.ecore#//osgi/BundleManifest/setBundleClassPath">
           <genParameters ecoreParameter="manifest.ecore#//osgi/BundleManifest/setBundleClassPath/classPathEntries"/>
         </genOperations>
+        <genOperations ecoreOperation="manifest.ecore#//osgi/BundleManifest/getBundleLicense"/>
+        <genOperations ecoreOperation="manifest.ecore#//osgi/BundleManifest/getBundleLicense.1">
+          <genParameters ecoreParameter="manifest.ecore#//osgi/BundleManifest/getBundleLicense.1/createOnDemand"/>
+        </genOperations>
+        <genOperations ecoreOperation="manifest.ecore#//osgi/BundleManifest/setBundleLicense">
+          <genParameters ecoreParameter="manifest.ecore#//osgi/BundleManifest/setBundleLicense/bundleLicenses"/>
+        </genOperations>
       </genClasses>
       <genClasses image="false" ecoreClass="manifest.ecore#//osgi/Parameterized">
         <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference manifest.ecore#//osgi/Parameterized/parameters"/>
@@ -309,6 +316,17 @@
         <genOperations ecoreOperation="manifest.ecore#//osgi/DynamicPackageImport/getBundleVersion"/>
         <genOperations ecoreOperation="manifest.ecore#//osgi/DynamicPackageImport/setBundleVersion">
           <genParameters ecoreParameter="manifest.ecore#//osgi/DynamicPackageImport/setBundleVersion/bundleVersion"/>
+        </genOperations>
+      </genClasses>
+      <genClasses ecoreClass="manifest.ecore#//osgi/BundleLicense">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute manifest.ecore#//osgi/BundleLicense/name"/>
+        <genOperations ecoreOperation="manifest.ecore#//osgi/BundleLicense/getDescription"/>
+        <genOperations ecoreOperation="manifest.ecore#//osgi/BundleLicense/setDescription">
+          <genParameters ecoreParameter="manifest.ecore#//osgi/BundleLicense/setDescription/description"/>
+        </genOperations>
+        <genOperations ecoreOperation="manifest.ecore#//osgi/BundleLicense/getLink"/>
+        <genOperations ecoreOperation="manifest.ecore#//osgi/BundleLicense/setLink">
+          <genParameters ecoreParameter="manifest.ecore#//osgi/BundleLicense/setLink/link"/>
         </genOperations>
       </genClasses>
     </nestedGenPackages>

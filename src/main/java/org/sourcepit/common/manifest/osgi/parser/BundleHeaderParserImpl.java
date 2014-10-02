@@ -17,7 +17,6 @@
 package org.sourcepit.common.manifest.osgi.parser;
 
 import org.antlr.runtime.ANTLRStringStream;
-import org.antlr.runtime.CommonTokenStream;
 import org.antlr.runtime.RecognitionException;
 import org.apache.commons.lang.StringEscapeUtils;
 import org.eclipse.emf.common.util.BasicEList;
@@ -27,6 +26,7 @@ import org.sourcepit.common.manifest.Parseable;
 import org.sourcepit.common.manifest.osgi.ActivationPolicy;
 import org.sourcepit.common.manifest.osgi.BundleActivationPolicy;
 import org.sourcepit.common.manifest.osgi.BundleHeaderName;
+import org.sourcepit.common.manifest.osgi.BundleLicense;
 import org.sourcepit.common.manifest.osgi.BundleRequirement;
 import org.sourcepit.common.manifest.osgi.BundleSymbolicName;
 import org.sourcepit.common.manifest.osgi.ClassPathEntry;
@@ -89,6 +89,8 @@ public class BundleHeaderParserImpl implements BundleHeaderParser
             return parseRequireBundle(value);
          case BUNDLE_CLASSPATH :
             return parseBundleClassPath(value);
+         case BUNDLE_LICENSE :
+            return parseBundleLicense(value);
          case FRAGMENT_HOST :
             return parseFragmentHost(value);
          case BUNDLE_REQUIREDEXECUTIONENVIRONMENT :
@@ -258,6 +260,18 @@ public class BundleHeaderParserImpl implements BundleHeaderParser
       }.parse();
    }
 
+   public EList<BundleLicense> parseBundleLicense(String value)
+   {
+      return new ParseOperation<EList<BundleLicense>>(value)
+      {
+         @Override
+         protected EList<BundleLicense> doParse() throws RecognitionException
+         {
+            return newParser().bundleLicense();
+         }
+      }.parse();
+   }
+
    public String toString(Parseable parseable)
    {
       return toString(parseable, false);
@@ -368,6 +382,8 @@ public class BundleHeaderParserImpl implements BundleHeaderParser
             return toValueStringRequireBundle((EList<BundleRequirement>) parsedValue, prettyPrinting);
          case BUNDLE_CLASSPATH :
             return toValueStringBundleClassPath((EList<ClassPathEntry>) parsedValue, prettyPrinting);
+         case BUNDLE_LICENSE :
+            return toValueStringBundleLicense((EList<BundleLicense>) parsedValue, prettyPrinting);
          case FRAGMENT_HOST :
             return toValueString((FragmentHost) parsedValue);
          case BUNDLE_REQUIREDEXECUTIONENVIRONMENT :
@@ -438,6 +454,32 @@ public class BundleHeaderParserImpl implements BundleHeaderParser
       {
          sb.deleteCharAt(sb.length() - 1);
       }
+   }
+
+   protected String toValueStringBundleLicense(EList<BundleLicense> licenses, boolean prettyPrinting)
+   {
+      final String separator = getSeparator(prettyPrinting);
+
+      final StringBuilder sb = new StringBuilder();
+
+      for (BundleLicense license : licenses)
+      {
+         final String name = license.getName();
+         sb.append(name);
+         sb.append(';');
+         if (!appendParameterized(sb, license))
+         {
+            sb.deleteCharAt(sb.length() - 1);
+         }
+         sb.append(separator);
+      }
+
+      if (!licenses.isEmpty())
+      {
+         sb.delete(sb.length() - separator.length(), sb.length());
+      }
+
+      return sb.toString();
    }
 
    protected String toValueStringRequireBundle(EList<BundleRequirement> bundleRequirements, boolean prettyPrinting)
@@ -623,7 +665,8 @@ public class BundleHeaderParserImpl implements BundleHeaderParser
 
       protected BundleManifestParser newParser()
       {
-         parser = new BundleManifestParser(new CommonTokenStream(new BundleManifestLexer(new ANTLRStringStream(value))));
+         parser = new BundleManifestParser(
+            new CommenTokenStream2(new BundleManifestLexer(new ANTLRStringStream(value))));
          return parser;
       }
    }

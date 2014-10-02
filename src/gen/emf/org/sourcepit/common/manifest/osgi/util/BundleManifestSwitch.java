@@ -23,6 +23,7 @@ import org.sourcepit.common.manifest.AbstractSection;
 import org.sourcepit.common.manifest.Manifest;
 import org.sourcepit.common.manifest.Parseable;
 import org.sourcepit.common.manifest.osgi.BundleActivationPolicy;
+import org.sourcepit.common.manifest.osgi.BundleLicense;
 import org.sourcepit.common.manifest.osgi.BundleManifest;
 import org.sourcepit.common.manifest.osgi.BundleManifestPackage;
 import org.sourcepit.common.manifest.osgi.BundleRequirement;
@@ -226,6 +227,16 @@ public class BundleManifestSwitch<T> extends Switch<T>
                result = casePackagesDeclaration(dynamicPackageImport);
             if (result == null)
                result = caseParameterized(dynamicPackageImport);
+            if (result == null)
+               result = defaultCase(theEObject);
+            return result;
+         }
+         case BundleManifestPackage.BUNDLE_LICENSE :
+         {
+            BundleLicense bundleLicense = (BundleLicense) theEObject;
+            T result = caseBundleLicense(bundleLicense);
+            if (result == null)
+               result = caseParameterized(bundleLicense);
             if (result == null)
                result = defaultCase(theEObject);
             return result;
@@ -435,6 +446,23 @@ public class BundleManifestSwitch<T> extends Switch<T>
     * @generated
     */
    public T caseDynamicPackageImport(DynamicPackageImport object)
+   {
+      return null;
+   }
+
+   /**
+    * Returns the result of interpreting the object as an instance of '<em>Bundle License</em>'.
+    * <!-- begin-user-doc -->
+    * This implementation returns null;
+    * returning a non-null result will terminate the switch.
+    * <!-- end-user-doc -->
+    * 
+    * @param object the target of the switch.
+    * @return the result of interpreting the object as an instance of '<em>Bundle License</em>'.
+    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+    * @generated
+    */
+   public T caseBundleLicense(BundleLicense object)
    {
       return null;
    }

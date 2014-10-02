@@ -267,6 +267,17 @@
           </eGenericType>
         </eParameters>
       </eOperations>
+      <eOperations name="getBundleLicense" upperBound="-1" eType="#//osgi/BundleLicense"/>
+      <eOperations name="getBundleLicense" upperBound="-1" eType="#//osgi/BundleLicense">
+        <eParameters name="createOnDemand" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+      </eOperations>
+      <eOperations name="setBundleLicense">
+        <eParameters name="bundleLicenses">
+          <eGenericType eClassifier="#//osgi/EList">
+            <eTypeArguments eClassifier="#//osgi/BundleLicense"/>
+          </eGenericType>
+        </eParameters>
+      </eOperations>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="Parameterized" abstract="true">
       <eOperations name="getParameter" eType="#//osgi/Parameter">
@@ -388,6 +399,17 @@
       <eOperations name="setBundleVersion">
         <eParameters name="bundleVersion" eType="#//osgi/VersionRange"/>
       </eOperations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="BundleLicense" eSuperTypes="#//osgi/Parameterized">
+      <eOperations name="getDescription" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eOperations name="setDescription">
+        <eParameters name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </eOperations>
+      <eOperations name="getLink" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eOperations name="setLink">
+        <eParameters name="link" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </eOperations>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eClassifiers>
   </eSubpackages>
 </ecore:EPackage>

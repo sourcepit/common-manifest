@@ -174,4 +174,28 @@ public class BundleHeaderParserImplTest
       assertEquals("a.b.c;d.e.f;version=1.0,g.h.i", parser.toValueString((Parseable) header));
       assertEquals("a.b.c;d.e.f;version=1.0,\r\n g.h.i", parser.toValueString((Parseable) header, true));
    }
+
+   @Test
+   public void testBundleLicenseToString() throws Exception
+   {
+      BundleManifest manifest = BundleManifestFactory.eINSTANCE.createBundleManifest();
+      manifest.setHeader(BundleHeaderName.BUNDLE_LICENSE,
+         "Apache License Version 2.0;link=\"http://www.apache.org/licenses/LICENSE-2.0\"");
+
+      Header header = manifest.getHeader(BundleHeaderName.BUNDLE_LICENSE);
+      assertEquals("Apache License Version 2.0;link=\"http://www.apache.org/licenses/LICENSE-2.0\"",
+         parser.toValueString((Parseable) header));
+      assertEquals("Apache License Version 2.0;link=\"http://www.apache.org/licenses/LICENSE-2.0\"",
+         parser.toValueString((Parseable) header, true));
+   }
+
+   @Test
+   public void testBundleLicenseWithSOmeSpecialChars() throws Exception
+   {
+      BundleManifest manifest = BundleManifestFactory.eINSTANCE.createBundleManifest();
+      manifest.setHeader(BundleHeaderName.BUNDLE_LICENSE, "\"The License\"");
+
+      Header header = manifest.getHeader(BundleHeaderName.BUNDLE_LICENSE);
+      assertEquals("\"The License\"", parser.toValueString((Parseable) header));
+   }
 }

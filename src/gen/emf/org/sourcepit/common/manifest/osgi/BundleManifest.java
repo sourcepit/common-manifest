@@ -423,4 +423,33 @@ public interface BundleManifest extends Manifest
     */
    void setBundleClassPath(List<ClassPathEntry> classPathEntries);
 
+   /**
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @model kind="operation"
+    * @generated
+    */
+   EList<BundleLicense> getBundleLicense();
+
+   /**
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @model
+    * @generated
+    */
+   EList<BundleLicense> getBundleLicense(boolean createOnDemand);
+
+   /**
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @model bundleLicensesDataType=
+    *        "org.sourcepit.common.manifest.osgi.EList<org.sourcepit.common.manifest.osgi.BundleLicense>"
+    *        bundleLicensesMany="false"
+    * @generated
+    */
+   void setBundleLicense(List<BundleLicense> bundleLicenses);
+
 } // BundleManifest

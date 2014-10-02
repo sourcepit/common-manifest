@@ -301,6 +301,56 @@ classPathEntry returns [ClassPathEntry e]
                                            })*
   ;
 
+bundleLicense returns [EList < BundleLicense > licenses]
+  :
+  
+   {
+    licenses = new BasicEList<BundleLicense>();
+   }
+  e=license 
+            {
+             licenses.add(e);
+            }
+  (',' e2=license 
+                  {
+                   licenses.add(e2);
+                  })* EOF
+  ;
+
+license returns [BundleLicense license]
+  :
+  
+   {
+    license = BundleManifestFactory.eINSTANCE.createBundleLicense();
+    StringBuilder n = new StringBuilder();
+    ((CommenTokenStream2) input).setSkip(false);
+   }
+  (
+    t=
+    (
+      ':'
+      |
+      ~(
+        ','
+        | ';'
+       )
+    )
+    
+     {
+      n.append($t.text);
+     }
+  )*
+  
+   {
+    license.setName(n.toString());
+    ((CommenTokenStream2) input).setSkip(true);
+   }
+  (';' p=parameter 
+                   {
+                    license.getParameters().add(p);
+                   })*
+  ;
+
 parameter returns [Parameter p]
   :
   (

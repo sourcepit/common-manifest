@@ -32,6 +32,7 @@ import org.sourcepit.common.manifest.impl.ManifestPackageImpl;
 import org.sourcepit.common.manifest.osgi.ActivationPolicy;
 import org.sourcepit.common.manifest.osgi.BundleActivationPolicy;
 import org.sourcepit.common.manifest.osgi.BundleHeaderName;
+import org.sourcepit.common.manifest.osgi.BundleLicense;
 import org.sourcepit.common.manifest.osgi.BundleManifest;
 import org.sourcepit.common.manifest.osgi.BundleManifestFactory;
 import org.sourcepit.common.manifest.osgi.BundleManifestPackage;
@@ -153,6 +154,14 @@ public class BundleManifestPackageImpl extends EPackageImpl implements BundleMan
     * @generated
     */
    private EClass dynamicPackageImportEClass = null;
+
+   /**
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated
+    */
+   private EClass bundleLicenseEClass = null;
 
    /**
     * <!-- begin-user-doc -->
@@ -536,6 +545,28 @@ public class BundleManifestPackageImpl extends EPackageImpl implements BundleMan
     * 
     * @generated
     */
+   public EClass getBundleLicense()
+   {
+      return bundleLicenseEClass;
+   }
+
+   /**
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated
+    */
+   public EAttribute getBundleLicense_Name()
+   {
+      return (EAttribute) bundleLicenseEClass.getEStructuralFeatures().get(0);
+   }
+
+   /**
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated
+    */
    public EEnum getBundleHeaderName()
    {
       return bundleHeaderNameEEnum;
@@ -665,6 +696,9 @@ public class BundleManifestPackageImpl extends EPackageImpl implements BundleMan
 
       dynamicPackageImportEClass = createEClass(DYNAMIC_PACKAGE_IMPORT);
 
+      bundleLicenseEClass = createEClass(BUNDLE_LICENSE);
+      createEAttribute(bundleLicenseEClass, BUNDLE_LICENSE__NAME);
+
       // Create enums
       bundleHeaderNameEEnum = createEEnum(BUNDLE_HEADER_NAME);
       activationPolicyEEnum = createEEnum(ACTIVATION_POLICY);
@@ -724,6 +758,7 @@ public class BundleManifestPackageImpl extends EPackageImpl implements BundleMan
       classPathEntryEClass.getESuperTypes().add(this.getParameterized());
       fragmentHostEClass.getESuperTypes().add(this.getParameterized());
       dynamicPackageImportEClass.getESuperTypes().add(this.getPackagesDeclaration());
+      bundleLicenseEClass.getESuperTypes().add(this.getParameterized());
 
       // Initialize classes and features; add operations and parameters
       initEClass(bundleManifestEClass, BundleManifest.class, "BundleManifest", !IS_ABSTRACT, !IS_INTERFACE,
@@ -916,6 +951,18 @@ public class BundleManifestPackageImpl extends EPackageImpl implements BundleMan
       g1.getETypeArguments().add(g2);
       addEParameter(op, g1, "classPathEntries", 0, 1, IS_UNIQUE, IS_ORDERED);
 
+      addEOperation(bundleManifestEClass, this.getBundleLicense(), "getBundleLicense", 0, -1, IS_UNIQUE, IS_ORDERED);
+
+      op = addEOperation(bundleManifestEClass, this.getBundleLicense(), "getBundleLicense", 0, -1, IS_UNIQUE,
+         IS_ORDERED);
+      addEParameter(op, ecorePackage.getEBoolean(), "createOnDemand", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+      op = addEOperation(bundleManifestEClass, null, "setBundleLicense", 0, 1, IS_UNIQUE, IS_ORDERED);
+      g1 = createEGenericType(this.getEList());
+      g2 = createEGenericType(this.getBundleLicense());
+      g1.getETypeArguments().add(g2);
+      addEParameter(op, g1, "bundleLicenses", 0, 1, IS_UNIQUE, IS_ORDERED);
+
       initEClass(parameterizedEClass, Parameterized.class, "Parameterized", IS_ABSTRACT, !IS_INTERFACE,
          IS_GENERATED_INSTANCE_CLASS);
       initEReference(getParameterized_Parameters(), this.getParameter(), this.getParameter_Parameterized(),
@@ -1020,6 +1067,21 @@ public class BundleManifestPackageImpl extends EPackageImpl implements BundleMan
 
       op = addEOperation(dynamicPackageImportEClass, null, "setBundleVersion", 0, 1, IS_UNIQUE, IS_ORDERED);
       addEParameter(op, this.getVersionRange(), "bundleVersion", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+      initEClass(bundleLicenseEClass, BundleLicense.class, "BundleLicense", !IS_ABSTRACT, !IS_INTERFACE,
+         IS_GENERATED_INSTANCE_CLASS);
+      initEAttribute(getBundleLicense_Name(), ecorePackage.getEString(), "name", null, 0, 1, BundleLicense.class,
+         !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+      addEOperation(bundleLicenseEClass, ecorePackage.getEString(), "getDescription", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+      op = addEOperation(bundleLicenseEClass, null, "setDescription", 0, 1, IS_UNIQUE, IS_ORDERED);
+      addEParameter(op, ecorePackage.getEString(), "description", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+      addEOperation(bundleLicenseEClass, ecorePackage.getEString(), "getLink", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+      op = addEOperation(bundleLicenseEClass, null, "setLink", 0, 1, IS_UNIQUE, IS_ORDERED);
+      addEParameter(op, ecorePackage.getEString(), "link", 0, 1, IS_UNIQUE, IS_ORDERED);
 
       // Initialize enums and add enum literals
       initEEnum(bundleHeaderNameEEnum, BundleHeaderName.class, "BundleHeaderName");

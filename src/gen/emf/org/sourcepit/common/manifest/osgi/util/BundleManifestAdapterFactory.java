@@ -24,6 +24,7 @@ import org.sourcepit.common.manifest.AbstractSection;
 import org.sourcepit.common.manifest.Manifest;
 import org.sourcepit.common.manifest.Parseable;
 import org.sourcepit.common.manifest.osgi.BundleActivationPolicy;
+import org.sourcepit.common.manifest.osgi.BundleLicense;
 import org.sourcepit.common.manifest.osgi.BundleManifest;
 import org.sourcepit.common.manifest.osgi.BundleManifestPackage;
 import org.sourcepit.common.manifest.osgi.BundleRequirement;
@@ -175,6 +176,12 @@ public class BundleManifestAdapterFactory extends AdapterFactoryImpl
       public Adapter caseDynamicPackageImport(DynamicPackageImport object)
       {
          return createDynamicPackageImportAdapter();
+      }
+
+      @Override
+      public Adapter caseBundleLicense(BundleLicense object)
+      {
+         return createBundleLicenseAdapter();
       }
 
       @Override
@@ -418,6 +425,23 @@ public class BundleManifestAdapterFactory extends AdapterFactoryImpl
     * @generated
     */
    public Adapter createDynamicPackageImportAdapter()
+   {
+      return null;
+   }
+
+   /**
+    * Creates a new adapter for an object of class '{@link org.sourcepit.common.manifest.osgi.BundleLicense
+    * <em>Bundle License</em>}'.
+    * <!-- begin-user-doc -->
+    * This default implementation returns null so that we can easily ignore cases;
+    * it's useful to ignore a case when inheritance will catch all the cases anyway.
+    * <!-- end-user-doc -->
+    * 
+    * @return the new adapter.
+    * @see org.sourcepit.common.manifest.osgi.BundleLicense
+    * @generated
+    */
+   public Adapter createBundleLicenseAdapter()
    {
       return null;
    }

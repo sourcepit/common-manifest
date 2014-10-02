@@ -613,6 +613,48 @@ public interface BundleManifestPackage extends EPackage
    int DYNAMIC_PACKAGE_IMPORT_FEATURE_COUNT = PACKAGES_DECLARATION_FEATURE_COUNT + 0;
 
    /**
+    * The meta object id for the '{@link org.sourcepit.common.manifest.osgi.impl.BundleLicenseImpl
+    * <em>Bundle License</em>}' class.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @see org.sourcepit.common.manifest.osgi.impl.BundleLicenseImpl
+    * @see org.sourcepit.common.manifest.osgi.impl.BundleManifestPackageImpl#getBundleLicense()
+    * @generated
+    */
+   int BUNDLE_LICENSE = 12;
+
+   /**
+    * The feature id for the '<em><b>Parameters</b></em>' containment reference list.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated
+    * @ordered
+    */
+   int BUNDLE_LICENSE__PARAMETERS = PARAMETERIZED__PARAMETERS;
+
+   /**
+    * The feature id for the '<em><b>Name</b></em>' attribute.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated
+    * @ordered
+    */
+   int BUNDLE_LICENSE__NAME = PARAMETERIZED_FEATURE_COUNT + 0;
+
+   /**
+    * The number of structural features of the '<em>Bundle License</em>' class.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated
+    * @ordered
+    */
+   int BUNDLE_LICENSE_FEATURE_COUNT = PARAMETERIZED_FEATURE_COUNT + 1;
+
+   /**
     * The meta object id for the '{@link org.sourcepit.common.manifest.osgi.BundleHeaderName
     * <em>Bundle Header Name</em>}' enum.
     * <!-- begin-user-doc -->
@@ -622,7 +664,7 @@ public interface BundleManifestPackage extends EPackage
     * @see org.sourcepit.common.manifest.osgi.impl.BundleManifestPackageImpl#getBundleHeaderName()
     * @generated
     */
-   int BUNDLE_HEADER_NAME = 12;
+   int BUNDLE_HEADER_NAME = 13;
 
    /**
     * The meta object id for the '{@link org.sourcepit.common.manifest.osgi.ActivationPolicy <em>Activation Policy</em>}
@@ -634,7 +676,7 @@ public interface BundleManifestPackage extends EPackage
     * @see org.sourcepit.common.manifest.osgi.impl.BundleManifestPackageImpl#getActivationPolicy()
     * @generated
     */
-   int ACTIVATION_POLICY = 13;
+   int ACTIVATION_POLICY = 14;
 
    /**
     * The meta object id for the '{@link org.sourcepit.common.manifest.osgi.ParameterType <em>Parameter Type</em>}'
@@ -646,7 +688,7 @@ public interface BundleManifestPackage extends EPackage
     * @see org.sourcepit.common.manifest.osgi.impl.BundleManifestPackageImpl#getParameterType()
     * @generated
     */
-   int PARAMETER_TYPE = 14;
+   int PARAMETER_TYPE = 15;
 
    /**
     * The meta object id for the '<em>EList</em>' data type.
@@ -657,7 +699,7 @@ public interface BundleManifestPackage extends EPackage
     * @see org.sourcepit.common.manifest.osgi.impl.BundleManifestPackageImpl#getEList()
     * @generated
     */
-   int ELIST = 15;
+   int ELIST = 16;
 
    /**
     * The meta object id for the '<em>Version</em>' data type.
@@ -668,7 +710,7 @@ public interface BundleManifestPackage extends EPackage
     * @see org.sourcepit.common.manifest.osgi.impl.BundleManifestPackageImpl#getVersion()
     * @generated
     */
-   int VERSION = 16;
+   int VERSION = 17;
 
    /**
     * The meta object id for the '<em>Version Range</em>' data type.
@@ -679,7 +721,7 @@ public interface BundleManifestPackage extends EPackage
     * @see org.sourcepit.common.manifest.osgi.impl.BundleManifestPackageImpl#getVersionRange()
     * @generated
     */
-   int VERSION_RANGE = 17;
+   int VERSION_RANGE = 18;
 
 
    /**
@@ -967,6 +1009,31 @@ public interface BundleManifestPackage extends EPackage
     * @generated
     */
    EClass getDynamicPackageImport();
+
+   /**
+    * Returns the meta object for class '{@link org.sourcepit.common.manifest.osgi.BundleLicense
+    * <em>Bundle License</em>}'.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @return the meta object for class '<em>Bundle License</em>'.
+    * @see org.sourcepit.common.manifest.osgi.BundleLicense
+    * @generated
+    */
+   EClass getBundleLicense();
+
+   /**
+    * Returns the meta object for the attribute '{@link org.sourcepit.common.manifest.osgi.BundleLicense#getName
+    * <em>Name</em>}'.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @return the meta object for the attribute '<em>Name</em>'.
+    * @see org.sourcepit.common.manifest.osgi.BundleLicense#getName()
+    * @see #getBundleLicense()
+    * @generated
+    */
+   EAttribute getBundleLicense_Name();
 
    /**
     * Returns the meta object for enum '{@link org.sourcepit.common.manifest.osgi.BundleHeaderName
@@ -1308,6 +1375,27 @@ public interface BundleManifestPackage extends EPackage
        * @generated
        */
       EClass DYNAMIC_PACKAGE_IMPORT = eINSTANCE.getDynamicPackageImport();
+
+      /**
+       * The meta object literal for the '{@link org.sourcepit.common.manifest.osgi.impl.BundleLicenseImpl
+       * <em>Bundle License</em>}' class.
+       * <!-- begin-user-doc -->
+       * <!-- end-user-doc -->
+       * 
+       * @see org.sourcepit.common.manifest.osgi.impl.BundleLicenseImpl
+       * @see org.sourcepit.common.manifest.osgi.impl.BundleManifestPackageImpl#getBundleLicense()
+       * @generated
+       */
+      EClass BUNDLE_LICENSE = eINSTANCE.getBundleLicense();
+
+      /**
+       * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+       * <!-- begin-user-doc -->
+       * <!-- end-user-doc -->
+       * 
+       * @generated
+       */
+      EAttribute BUNDLE_LICENSE__NAME = eINSTANCE.getBundleLicense_Name();
 
       /**
        * The meta object literal for the '{@link org.sourcepit.common.manifest.osgi.BundleHeaderName

@@ -27,6 +27,7 @@ import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.sourcepit.common.manifest.osgi.ActivationPolicy;
 import org.sourcepit.common.manifest.osgi.BundleActivationPolicy;
 import org.sourcepit.common.manifest.osgi.BundleHeaderName;
+import org.sourcepit.common.manifest.osgi.BundleLicense;
 import org.sourcepit.common.manifest.osgi.BundleManifest;
 import org.sourcepit.common.manifest.osgi.BundleManifestFactory;
 import org.sourcepit.common.manifest.osgi.BundleManifestPackage;
@@ -119,6 +120,8 @@ public class BundleManifestFactoryImpl extends EFactoryImpl implements BundleMan
             return createFragmentHost();
          case BundleManifestPackage.DYNAMIC_PACKAGE_IMPORT :
             return createDynamicPackageImport();
+         case BundleManifestPackage.BUNDLE_LICENSE :
+            return createBundleLicense();
          default :
             throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
       }
@@ -298,6 +301,18 @@ public class BundleManifestFactoryImpl extends EFactoryImpl implements BundleMan
    {
       DynamicPackageImportImpl dynamicPackageImport = new DynamicPackageImportImpl();
       return dynamicPackageImport;
+   }
+
+   /**
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated
+    */
+   public BundleLicense createBundleLicense()
+   {
+      BundleLicenseImpl bundleLicense = new BundleLicenseImpl();
+      return bundleLicense;
    }
 
    /**
