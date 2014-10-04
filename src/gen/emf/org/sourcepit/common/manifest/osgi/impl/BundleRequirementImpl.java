@@ -35,7 +35,7 @@ import org.sourcepit.common.manifest.osgi.VersionRange;
  * <li>{@link org.sourcepit.common.manifest.osgi.impl.BundleRequirementImpl#getSymbolicNames <em>Symbolic Names</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class BundleRequirementImpl extends ParameterizedImpl implements BundleRequirement

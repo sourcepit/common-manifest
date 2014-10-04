@@ -33,7 +33,7 @@ import org.sourcepit.common.manifest.osgi.BundleManifestPackage;
  * <li>{@link org.sourcepit.common.manifest.osgi.impl.BundleActivationPolicyImpl#getPolicy <em>Policy</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class BundleActivationPolicyImpl extends ParameterizedImpl implements BundleActivationPolicy

@@ -26,8 +26,8 @@ import org.sourcepit.common.manifest.Manifest;
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Bundle Manifest</b></em>'.
  * <!-- end-user-doc -->
- * 
- * 
+ *
+ *
  * @see org.sourcepit.common.manifest.osgi.BundleManifestPackage#getBundleManifest()
  * @model
  * @generated

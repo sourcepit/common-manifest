@@ -28,7 +28,7 @@ import org.sourcepit.common.manifest.osgi.Version;
  * <!-- end-user-doc -->
  * <p>
  * </p>
- * 
+ *
  * @generated
  */
 public class PackageExportImpl extends PackagesDeclarationImpl implements PackageExport

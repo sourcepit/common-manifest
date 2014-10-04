@@ -34,7 +34,7 @@ import org.sourcepit.common.manifest.osgi.PackagesDeclaration;
  * <li>{@link org.sourcepit.common.manifest.osgi.impl.PackagesDeclarationImpl#getPackageNames <em>Package Names</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public abstract class PackagesDeclarationImpl extends ParameterizedImpl implements PackagesDeclaration

@@ -40,7 +40,7 @@ import org.sourcepit.common.manifest.ManifestPackage;
  * <li>{@link org.sourcepit.common.manifest.impl.SectionEntryImpl#getTypedValue <em>Value</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class SectionEntryImpl extends ManifestSectionImpl implements BasicEMap.Entry<String, EMap<String, String>>

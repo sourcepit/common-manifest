@@ -29,7 +29,7 @@ import org.sourcepit.common.manifest.ManifestPackage;
  * <!-- end-user-doc -->
  * <p>
  * </p>
- * 
+ *
  * @generated
  */
 public abstract class AbstractSectionImpl extends EObjectImpl implements AbstractSection

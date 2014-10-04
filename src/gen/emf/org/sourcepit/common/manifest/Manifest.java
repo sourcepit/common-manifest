@@ -22,7 +22,7 @@ import org.eclipse.emf.common.util.EMap;
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Manifest</b></em>'.
  * <!-- end-user-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -30,7 +30,7 @@ import org.eclipse.emf.common.util.EMap;
  * <li>{@link org.sourcepit.common.manifest.Manifest#getSections <em>Sections</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.sourcepit.common.manifest.ManifestPackage#getManifest()
  * @model
  * @generated
@@ -49,9 +49,8 @@ public interface Manifest extends AbstractSection
     * 
     * @return the value of the '<em>Headers</em>' map.
     * @see org.sourcepit.common.manifest.ManifestPackage#getManifest_Headers()
-    * @model
-    *        mapType=
-    *        "org.sourcepit.common.manifest.HeaderEntry<org.eclipse.emf.ecore.EString, org.eclipse.emf.ecore.EString>"
+    * @model 
+    *        mapType="org.sourcepit.common.manifest.HeaderEntry<org.eclipse.emf.ecore.EString, org.eclipse.emf.ecore.EString>"
     * @generated
     */
    EMap<String, String> getHeaders();

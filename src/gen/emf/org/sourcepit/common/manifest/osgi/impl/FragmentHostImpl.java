@@ -33,7 +33,7 @@ import org.sourcepit.common.manifest.osgi.VersionRange;
  * <li>{@link org.sourcepit.common.manifest.osgi.impl.FragmentHostImpl#getSymbolicName <em>Symbolic Name</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class FragmentHostImpl extends ParameterizedImpl implements FragmentHost

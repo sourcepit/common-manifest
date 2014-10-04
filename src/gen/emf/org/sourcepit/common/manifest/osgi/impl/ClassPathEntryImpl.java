@@ -34,7 +34,7 @@ import org.sourcepit.common.manifest.osgi.ClassPathEntry;
  * <li>{@link org.sourcepit.common.manifest.osgi.impl.ClassPathEntryImpl#getPaths <em>Paths</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class ClassPathEntryImpl extends ParameterizedImpl implements ClassPathEntry

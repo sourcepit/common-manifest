@@ -32,7 +32,7 @@ import org.sourcepit.common.manifest.osgi.BundleSymbolicName;
  * <li>{@link org.sourcepit.common.manifest.osgi.impl.BundleSymbolicNameImpl#getSymbolicName <em>Symbolic Name</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class BundleSymbolicNameImpl extends ParameterizedImpl implements BundleSymbolicName

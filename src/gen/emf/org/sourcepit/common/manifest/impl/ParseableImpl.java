@@ -44,7 +44,7 @@ import org.sourcepit.common.manifest.parser.HeaderParser;
  * <li>{@link org.sourcepit.common.manifest.impl.ParseableImpl#getValue <em>Value</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public abstract class ParseableImpl extends EObjectImpl implements Parseable

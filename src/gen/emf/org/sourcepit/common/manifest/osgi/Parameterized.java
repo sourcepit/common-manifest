@@ -23,14 +23,14 @@ import org.eclipse.emf.ecore.EObject;
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Parameterized</b></em>'.
  * <!-- end-user-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
  * <li>{@link org.sourcepit.common.manifest.osgi.Parameterized#getParameters <em>Parameters</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.sourcepit.common.manifest.osgi.BundleManifestPackage#getParameterized()
  * @model abstract="true"
  * @generated

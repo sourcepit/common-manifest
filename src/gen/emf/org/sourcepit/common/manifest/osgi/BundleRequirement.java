@@ -22,14 +22,14 @@ import org.eclipse.emf.common.util.EList;
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Bundle Requirement</b></em>'.
  * <!-- end-user-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
  * <li>{@link org.sourcepit.common.manifest.osgi.BundleRequirement#getSymbolicNames <em>Symbolic Names</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.sourcepit.common.manifest.osgi.BundleManifestPackage#getBundleRequirement()
  * @model
  * @generated

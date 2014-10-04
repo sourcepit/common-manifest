@@ -21,8 +21,8 @@ package org.sourcepit.common.manifest.osgi;
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Package Export</b></em>'.
  * <!-- end-user-doc -->
- * 
- * 
+ *
+ *
  * @see org.sourcepit.common.manifest.osgi.BundleManifestPackage#getPackageExport()
  * @model
  * @generated

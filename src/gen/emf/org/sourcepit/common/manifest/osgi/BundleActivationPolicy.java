@@ -21,14 +21,14 @@ package org.sourcepit.common.manifest.osgi;
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Bundle Activation Policy</b></em>'.
  * <!-- end-user-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
  * <li>{@link org.sourcepit.common.manifest.osgi.BundleActivationPolicy#getPolicy <em>Policy</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.sourcepit.common.manifest.osgi.BundleManifestPackage#getBundleActivationPolicy()
  * @model
  * @generated

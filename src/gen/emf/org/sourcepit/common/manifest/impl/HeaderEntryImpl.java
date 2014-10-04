@@ -40,7 +40,7 @@ import org.sourcepit.common.manifest.parser.HeaderParser;
  * <li>{@link org.sourcepit.common.manifest.impl.HeaderEntryImpl#getManifest <em>Manifest</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class HeaderEntryImpl extends HeaderImpl implements BasicEMap.Entry<String, String>

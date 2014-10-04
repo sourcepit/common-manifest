@@ -23,8 +23,8 @@ import org.eclipse.emf.ecore.EObject;
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Abstract Section</b></em>'.
  * <!-- end-user-doc -->
- * 
- * 
+ *
+ *
  * @see org.sourcepit.common.manifest.ManifestPackage#getAbstractSection()
  * @model abstract="true"
  * @generated
@@ -36,8 +36,7 @@ public interface AbstractSection extends EObject
     * <!-- end-user-doc -->
     * 
     * @model kind="operation"
-    *        dataType=
-    *        "org.sourcepit.common.manifest.EEMap<org.eclipse.emf.ecore.EString, org.eclipse.emf.ecore.EString>"
+    *        dataType="org.sourcepit.common.manifest.EEMap<org.eclipse.emf.ecore.EString, org.eclipse.emf.ecore.EString>"
     *        required="true"
     * @generated
     */

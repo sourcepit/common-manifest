@@ -29,7 +29,7 @@ import org.sourcepit.common.manifest.osgi.VersionRange;
  * <!-- end-user-doc -->
  * <p>
  * </p>
- * 
+ *
  * @generated
  */
 public class PackageImportImpl extends PackagesDeclarationImpl implements PackageImport

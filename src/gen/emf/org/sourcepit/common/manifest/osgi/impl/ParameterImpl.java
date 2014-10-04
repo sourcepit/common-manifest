@@ -42,7 +42,7 @@ import org.sourcepit.common.manifest.parser.HeaderParser;
  * <li>{@link org.sourcepit.common.manifest.osgi.impl.ParameterImpl#getParameterized <em>Parameterized</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class ParameterImpl extends ParseableImpl implements Parameter

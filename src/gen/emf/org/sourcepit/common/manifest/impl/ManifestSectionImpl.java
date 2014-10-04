@@ -26,7 +26,7 @@ import org.sourcepit.common.manifest.ManifestSection;
  * <!-- end-user-doc -->
  * <p>
  * </p>
- * 
+ *
  * @generated
  */
 public abstract class ManifestSectionImpl extends AbstractSectionImpl implements ManifestSection

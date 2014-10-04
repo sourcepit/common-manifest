@@ -16,7 +16,8 @@
 
 package org.sourcepit.common.manifest.osgi.parser;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertThat;
 import static org.sourcepit.common.manifest.osgi.parser.BundleManifestParser.trimQuotes;
 
 import org.hamcrest.core.IsEqual;

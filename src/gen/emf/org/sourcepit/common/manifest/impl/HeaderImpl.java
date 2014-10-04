@@ -27,7 +27,7 @@ import org.sourcepit.common.manifest.ManifestPackage;
  * <!-- end-user-doc -->
  * <p>
  * </p>
- * 
+ *
  * @generated
  */
 public abstract class HeaderImpl extends ParseableImpl implements Header

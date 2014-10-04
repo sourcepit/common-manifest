@@ -39,7 +39,7 @@ import org.sourcepit.common.manifest.osgi.Parameterized;
  * <li>{@link org.sourcepit.common.manifest.osgi.impl.ParameterizedImpl#getParameters <em>Parameters</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public abstract class ParameterizedImpl extends EObjectImpl implements Parameterized

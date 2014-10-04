@@ -22,7 +22,7 @@ import org.sourcepit.common.manifest.Parseable;
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Parameter</b></em>'.
  * <!-- end-user-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -32,7 +32,7 @@ import org.sourcepit.common.manifest.Parseable;
  * <li>{@link org.sourcepit.common.manifest.osgi.Parameter#getParameterized <em>Parameterized</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.sourcepit.common.manifest.osgi.BundleManifestPackage#getParameter()
  * @model
  * @generated

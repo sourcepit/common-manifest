@@ -27,7 +27,7 @@ import org.sourcepit.common.manifest.osgi.VersionRange;
  * <!-- end-user-doc -->
  * <p>
  * </p>
- * 
+ *
  * @generated
  */
 public class DynamicPackageImportImpl extends PackagesDeclarationImpl implements DynamicPackageImport

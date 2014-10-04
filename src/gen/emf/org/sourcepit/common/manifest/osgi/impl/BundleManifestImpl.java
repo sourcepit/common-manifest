@@ -57,7 +57,7 @@ import org.sourcepit.common.manifest.osgi.Version;
  * <!-- end-user-doc -->
  * <p>
  * </p>
- * 
+ *
  * @generated
  */
 public class BundleManifestImpl extends ManifestImpl implements BundleManifest

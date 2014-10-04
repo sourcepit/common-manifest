@@ -47,7 +47,7 @@ import org.sourcepit.common.manifest.ManifestSection;
  * <li>{@link org.sourcepit.common.manifest.impl.ManifestImpl#getSections <em>Sections</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class ManifestImpl extends AbstractSectionImpl implements Manifest
