@@ -45,8 +45,6 @@ public class ManifestParserTest
       ByteArrayOutputStream out = new ByteArrayOutputStream();
       manifest.write(out);
 
-      // System.out.println(new String(out.toByteArray(), "UTF-8"));
-
       Map<String, String> mainHeaders = new LinkedHashMap<String, String>();
       Map<String, String> sectionHeaders = new LinkedHashMap<String, String>();
 

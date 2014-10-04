@@ -40,8 +40,13 @@ import org.sourcepit.common.manifest.osgi.Parameterized;
 import org.sourcepit.common.manifest.osgi.Version;
 import org.sourcepit.common.manifest.osgi.VersionRange;
 
+/**
+ * @author Bernd Vogt <bernd.vogt@sourcepit.org>
+ */
 public class BundleHeaderParserImpl implements BundleHeaderParser
 {
+   private static final String PRETTY_SEPARATOR = "," + System.getProperty("line.separator") + " ";
+   
    public Object parse(Parseable parseable)
    {
       if (parseable instanceof Header)
@@ -553,7 +558,7 @@ public class BundleHeaderParserImpl implements BundleHeaderParser
 
    private String getSeparator(boolean prettyPrinting)
    {
-      return prettyPrinting ? ",\r\n " : ",";
+      return prettyPrinting ? PRETTY_SEPARATOR : ",";
    }
 
    protected void write(StringBuilder sb, PackagesDeclaration packagesDeclaration)

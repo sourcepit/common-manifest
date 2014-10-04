@@ -16,6 +16,9 @@
 
 package org.sourcepit.common.manifest.merge;
 
+import static org.apache.commons.lang.Validate.isTrue;
+import static org.sourcepit.common.manifest.util.EOL.EOL;
+
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
@@ -30,6 +33,8 @@ public class ManifestWriter
 
    private final BytesByLine bytesByLine;
 
+   private final String eol;
+
    private int main = -1;
 
    private int section = -1;
@@ -41,8 +46,15 @@ public class ManifestWriter
 
    public ManifestWriter(OutputStream outputStream, BytesByLine bytesByLine) throws IOException
    {
+      this(outputStream, bytesByLine, EOL);
+   }
+
+   public ManifestWriter(OutputStream outputStream, BytesByLine bytesByLine, String eol) throws IOException
+   {
+      isTrue("\r\n".equals(eol) || "\n".equals(eol) || "\r".equals(eol));
       this.outputStream = new DataOutputStream(outputStream);
       this.bytesByLine = bytesByLine;
+      this.eol = eol;
    }
 
    public void startMain(String version) throws IOException
@@ -61,7 +73,7 @@ public class ManifestWriter
       {
          throw new IllegalStateException("Main not started");
       }
-      outputStream.writeBytes("\r\n");
+      outputStream.writeBytes(eol);
       outputStream.flush();
       main = 1;
    }
@@ -89,7 +101,7 @@ public class ManifestWriter
       {
          throw new IllegalStateException("Section not started");
       }
-      outputStream.writeBytes("\r\n");
+      outputStream.writeBytes(eol);
       outputStream.flush();
       section = -1;
    }
@@ -108,11 +120,11 @@ public class ManifestWriter
       if (value == null)
       {
          line.append(value);
-         line.append("\r\n");
+         line.append(eol);
          return;
       }
 
-      final String[] lines = value.split("\r\n "); // preformated lines
+      final String[] lines = value.split(eol + " "); // preformated lines
       for (int i = 0; i < lines.length; i++)
       {
          String v = lines[i];
@@ -123,7 +135,7 @@ public class ManifestWriter
          byte[] vb = v.getBytes("UTF8");
          v = new String(vb, 0, 0, vb.length);
          line.append(v);
-         line.append("\r\n");
+         line.append(eol);
 
          switch (bytesByLine)
          {
@@ -145,17 +157,18 @@ public class ManifestWriter
       }
    }
 
-   private static void makeSafe(StringBuilder line, int maxBytes)
+   private void makeSafe(StringBuilder line, int maxBytes)
    {
       int length = line.length();
       if (length > maxBytes)
       {
-         int index = maxBytes - 2;
+         int index = maxBytes - 2; // always reserve two bytes for EOL. This allows external tools to convert line
+                                   // endings without to break the max bytes per line rule
          while (index < length - 2)
          {
-            line.insert(index, "\r\n ");
+            line.insert(index, eol + " ");
             index += maxBytes;
-            length += 3;
+            length += 2 + 1;
          }
       }
       return;

@@ -18,6 +18,7 @@ package org.sourcepit.common.manifest.resource;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
+import static org.sourcepit.common.manifest.util.EOL.EOL;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -62,14 +63,14 @@ public class ManifestResourceImplTest
 
       StringBuilder sb = new StringBuilder();
       sb.append("Manifest-Version: 1.0");
-      sb.append("\r\n");
+      sb.append(EOL);
       sb.append("Main-Class: foo");
-      sb.append("\r\n");
+      sb.append(EOL);
       sb.append("foo: bar");
-      sb.append("\r\n");
+      sb.append(EOL);
       sb.append("fu: bä");
-      sb.append("\r\n");
-      sb.append("\r\n");
+      sb.append(EOL);
+      sb.append(EOL);
 
       String expectedContent = sb.toString();
       assertThat(content, IsEqual.equalTo(expectedContent));

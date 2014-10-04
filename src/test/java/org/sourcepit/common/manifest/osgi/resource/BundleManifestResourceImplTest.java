@@ -19,6 +19,7 @@ package org.sourcepit.common.manifest.osgi.resource;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertThat;
+import static org.sourcepit.common.manifest.util.EOL.EOL;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -44,7 +45,7 @@ import org.sourcepit.common.manifest.osgi.Version;
 import org.sourcepit.common.manifest.resource.ManifestResource;
 
 /**
- * @author Bernd
+ * @author Bernd Vogt <bernd.vogt@sourcepit.org>
  */
 public class BundleManifestResourceImplTest
 {
@@ -67,16 +68,16 @@ public class BundleManifestResourceImplTest
 
       StringBuilder sb = new StringBuilder();
       sb.append("Manifest-Version: 1.0");
-      sb.append("\r\n");
+      sb.append(EOL);
       sb.append("Bundle-ManifestVersion: 2");
-      sb.append("\r\n");
+      sb.append(EOL);
       sb.append("Bundle-Version: 1.2.3");
-      sb.append("\r\n");
+      sb.append(EOL);
       sb.append("foo: bar");
-      sb.append("\r\n");
+      sb.append(EOL);
       sb.append("fu: bä");
-      sb.append("\r\n");
-      sb.append("\r\n");
+      sb.append(EOL);
+      sb.append(EOL);
 
       String expectedContent = sb.toString();
       assertThat(content, IsEqual.equalTo(expectedContent));
@@ -136,14 +137,14 @@ public class BundleManifestResourceImplTest
 
       StringBuilder expectedContent = new StringBuilder();
       expectedContent.append("Manifest-Version: 1.0");
-      expectedContent.append("\r\n");
+      expectedContent.append(EOL);
       expectedContent.append("Bundle-ManifestVersion: 2");
-      expectedContent.append("\r\n");
+      expectedContent.append(EOL);
       expectedContent.append("Export-Package: a;b;c;version=1,");
-      expectedContent.append("\r\n");
+      expectedContent.append(EOL);
       expectedContent.append(" foo");
-      expectedContent.append("\r\n");
-      expectedContent.append("\r\n");
+      expectedContent.append(EOL);
+      expectedContent.append(EOL);
 
       assertEquals(expectedContent.toString(), content);
 
@@ -191,20 +192,20 @@ public class BundleManifestResourceImplTest
 
       String content = out.toString("UTF-8");
 
-      StringBuilder expectedContent = new StringBuilder();
-      expectedContent.append("Manifest-Version: 1.0");
-      expectedContent.append("\r\n");
-      expectedContent.append("Bundle-ManifestVersion: 2");
-      expectedContent.append("\r\n");
-      expectedContent.append("Export-Package: a;b;c;version=1,");
-      expectedContent.append("\r\n");
-      expectedContent.append(" foooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo");
-      expectedContent.append("\r\n");
-      expectedContent.append(" oooooo");
-      expectedContent.append("\r\n");
-      expectedContent.append("\r\n");
+      StringBuilder expected = new StringBuilder();
+      expected.append("Manifest-Version: 1.0");
+      expected.append(EOL);
+      expected.append("Bundle-ManifestVersion: 2");
+      expected.append(EOL);
+      expected.append("Export-Package: a;b;c;version=1,");
+      expected.append(EOL);
+      expected.append(" foooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo");
+      expected.append(EOL);
+      expected.append(" oooooo");
+      expected.append(EOL);
+      expected.append(EOL);
 
-      assertEquals(expectedContent.toString(), content);
+      assertEquals(expected.toString(), content);
    }
 
    @Test

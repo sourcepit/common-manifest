@@ -20,6 +20,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
 import static org.sourcepit.common.manifest.osgi.ParameterType.ATTRIBUTE;
 import static org.sourcepit.common.manifest.osgi.ParameterType.DIRECTIVE;
+import static org.sourcepit.common.manifest.util.EOL.EOL;
 
 import org.eclipse.emf.common.util.EList;
 import org.hamcrest.core.Is;
@@ -172,7 +173,7 @@ public class BundleHeaderParserImplTest
 
       Header header = manifest.getHeader(BundleHeaderName.EXPORT_PACKAGE);
       assertEquals("a.b.c;d.e.f;version=1.0,g.h.i", parser.toValueString((Parseable) header));
-      assertEquals("a.b.c;d.e.f;version=1.0,\r\n g.h.i", parser.toValueString((Parseable) header, true));
+      assertEquals("a.b.c;d.e.f;version=1.0," + EOL + " g.h.i", parser.toValueString((Parseable) header, true));
    }
 
    @Test

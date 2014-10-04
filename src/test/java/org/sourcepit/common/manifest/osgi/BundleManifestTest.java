@@ -33,6 +33,7 @@ import static org.sourcepit.common.manifest.osgi.BundleHeaderName.EXPORT_PACKAGE
 import static org.sourcepit.common.manifest.osgi.BundleHeaderName.FRAGMENT_HOST;
 import static org.sourcepit.common.manifest.osgi.BundleHeaderName.IMPORT_PACKAGE;
 import static org.sourcepit.common.manifest.osgi.BundleHeaderName.REQUIRE_BUNDLE;
+import static org.sourcepit.common.manifest.util.EOL.EOL;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -122,10 +123,8 @@ public class BundleManifestTest
       Header header = manifest.getHeader(IMPORT_PACKAGE);
       assertThat(header.toString(), IsEqual.equalTo("Import-Package: a.b.c;d.e.f.g;version=\"[1.2,3)\""));
 
-      assertThat(
-         manifest.toString(),
-         IsEqual
-            .equalTo("Manifest-Version: 1.0\nBundle-ManifestVersion: 2\nImport-Package: a.b.c;d.e.f.g;version=\"[1.2,3)\"\n"));
+      assertEquals("Manifest-Version: 1.0" + EOL + "Bundle-ManifestVersion: 2" + EOL
+         + "Import-Package: a.b.c;d.e.f.g;version=\"[1.2,3)\"" + EOL, manifest.toString());
    }
 
    @Test
@@ -876,8 +875,6 @@ public class BundleManifestTest
       resource.getContents().add(manifest);
       ByteArrayOutputStream out = new ByteArrayOutputStream();
       resource.save(out, null);
-
-      System.out.println(new String(out.toByteArray()));
 
       resource = new BundleManifestResourceImpl();
       resource.load(new ByteArrayInputStream(out.toByteArray()), null);

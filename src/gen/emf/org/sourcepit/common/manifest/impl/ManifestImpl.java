@@ -16,6 +16,8 @@
 
 package org.sourcepit.common.manifest.impl;
 
+import static org.sourcepit.common.manifest.util.EOL.EOL;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -525,7 +527,7 @@ public class ManifestImpl extends AbstractSectionImpl implements Manifest
       for (Entry<String, String> entry : headers)
       {
          sb.append(entry);
-         sb.append('\n');
+         sb.append(EOL);
       }
       return sb.toString();
    }

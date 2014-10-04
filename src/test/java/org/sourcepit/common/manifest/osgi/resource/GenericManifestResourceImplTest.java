@@ -17,6 +17,7 @@
 package org.sourcepit.common.manifest.osgi.resource;
 
 import static org.junit.Assert.assertThat;
+import static org.sourcepit.common.manifest.util.EOL.EOL;
 
 import java.io.ByteArrayInputStream;
 
@@ -36,14 +37,14 @@ public class GenericManifestResourceImplTest
    {
       StringBuilder sb = new StringBuilder();
       sb.append("Manifest-Version: 1.0");
-      sb.append("\r\n");
+      sb.append(EOL);
       sb.append("Bundle-ManifestVersion: 2");
-      sb.append("\r\n");
+      sb.append(EOL);
       sb.append("Bundle-Version: 1.2.3");
-      sb.append("\r\n");
+      sb.append(EOL);
       sb.append("Main-Class: foo.Bar");
-      sb.append("\r\n");
-      sb.append("\r\n");
+      sb.append(EOL);
+      sb.append(EOL);
 
       Resource resource = new GenericManifestResourceImpl();
       resource.load(new ByteArrayInputStream(sb.toString().getBytes("UTF-8")), null);
@@ -56,10 +57,10 @@ public class GenericManifestResourceImplTest
    {
       StringBuilder sb = new StringBuilder();
       sb.append("Manifest-Version: 1.0");
-      sb.append("\r\n");
+      sb.append(EOL);
       sb.append("Main-Class: foo.Bar");
-      sb.append("\r\n");
-      sb.append("\r\n");
+      sb.append(EOL);
+      sb.append(EOL);
 
       Resource resource = new GenericManifestResourceImpl();
       resource.load(new ByteArrayInputStream(sb.toString().getBytes("UTF-8")), null);
