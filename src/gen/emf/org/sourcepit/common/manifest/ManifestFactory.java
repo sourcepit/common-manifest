@@ -27,8 +27,7 @@ import org.eclipse.emf.ecore.EFactory;
  * @see org.sourcepit.common.manifest.ManifestPackage
  * @generated
  */
-public interface ManifestFactory extends EFactory
-{
+public interface ManifestFactory extends EFactory {
    /**
     * The singleton instance of the factory.
     * <!-- begin-user-doc -->

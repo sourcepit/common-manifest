@@ -32,16 +32,14 @@ import org.sourcepit.common.manifest.osgi.VersionRange;
  *
  * @generated
  */
-public class PackageImportImpl extends PackagesDeclarationImpl implements PackageImport
-{
+public class PackageImportImpl extends PackagesDeclarationImpl implements PackageImport {
    /**
     * <!-- begin-user-doc -->
     * <!-- end-user-doc -->
     * 
     * @generated
     */
-   protected PackageImportImpl()
-   {
+   protected PackageImportImpl() {
       super();
    }
 
@@ -52,8 +50,7 @@ public class PackageImportImpl extends PackagesDeclarationImpl implements Packag
     * @generated
     */
    @Override
-   protected EClass eStaticClass()
-   {
+   protected EClass eStaticClass() {
       return BundleManifestPackage.Literals.PACKAGE_IMPORT;
    }
 
@@ -63,11 +60,9 @@ public class PackageImportImpl extends PackagesDeclarationImpl implements Packag
     * 
     * @generated NOT
     */
-   public VersionRange getVersion()
-   {
+   public VersionRange getVersion() {
       VersionRange range = (VersionRange) getParsedParameterValue("version");
-      if (range == null)
-      {
+      if (range == null) {
          range = (VersionRange) getParsedParameterValue("specification-version");
       }
       return range;
@@ -79,25 +74,20 @@ public class PackageImportImpl extends PackagesDeclarationImpl implements Packag
     * 
     * @generated NOT
     */
-   public void setVersion(VersionRange version)
-   {
+   public void setVersion(VersionRange version) {
       setVersionRange(this, version, false);
    }
 
-   static void setVersionRange(final Parameterized parameterized, VersionRange versionRange, boolean isBundleVersion)
-   {
+   static void setVersionRange(final Parameterized parameterized, VersionRange versionRange, boolean isBundleVersion) {
       final String versionKey = isBundleVersion ? "bundle-version" : "version";
 
       Parameter parameter = parameterized.getParameter(versionKey);
-      if (parameter == null && !isBundleVersion)
-      {
+      if (parameter == null && !isBundleVersion) {
          parameter = parameterized.getParameter("specification-version");
       }
 
-      if (parameter == null)
-      {
-         if (versionRange != null)
-         {
+      if (parameter == null) {
+         if (versionRange != null) {
             parameter = BundleManifestFactoryImpl.eINSTANCE.createParameter();
             parameter.setName(isBundleVersion ? "bundle-version" : "version");
             parameter.setParsedValue(versionRange);
@@ -107,14 +97,11 @@ public class PackageImportImpl extends PackagesDeclarationImpl implements Packag
             parameter.getValue();
          }
       }
-      else
-      {
-         if (versionRange == null)
-         {
+      else {
+         if (versionRange == null) {
             parameterized.getParameters().remove(parameter);
          }
-         else
-         {
+         else {
             parameter.setParsedValue(versionRange);
          }
       }

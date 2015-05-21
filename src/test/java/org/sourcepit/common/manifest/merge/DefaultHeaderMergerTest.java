@@ -18,10 +18,8 @@ package org.sourcepit.common.manifest.merge;
 
 import junit.framework.TestCase;
 
-public class DefaultHeaderMergerTest extends TestCase
-{
-   public void testComputeNewValue() throws Exception
-   {
+public class DefaultHeaderMergerTest extends TestCase {
+   public void testComputeNewValue() throws Exception {
       DefaultHeaderMerger merger = new DefaultHeaderMerger();
       assertEquals("", merger.computeNewValue("", "", ""));
       assertEquals("hallo", merger.computeNewValue("", "", "hallo"));
@@ -31,8 +29,7 @@ public class DefaultHeaderMergerTest extends TestCase
       assertNull(merger.computeNewValue("", null, null));
    }
 
-   public void testSourceDominantFlag() throws Exception
-   {
+   public void testSourceDominantFlag() throws Exception {
       DefaultHeaderMerger merger = new DefaultHeaderMerger(false);
       assertEquals("", merger.computeNewValue("", "", ""));
       assertEquals("hallo", merger.computeNewValue("", "hallo", ""));

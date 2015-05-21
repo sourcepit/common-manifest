@@ -34,8 +34,7 @@ import org.eclipse.emf.common.util.EList;
  * @model
  * @generated
  */
-public interface ClassPathEntry extends Parameterized
-{
+public interface ClassPathEntry extends Parameterized {
    /**
     * Returns the value of the '<em><b>Paths</b></em>' attribute list.
     * The list contents are of type {@link java.lang.String}.

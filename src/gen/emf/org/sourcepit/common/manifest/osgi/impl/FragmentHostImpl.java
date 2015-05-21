@@ -36,8 +36,7 @@ import org.sourcepit.common.manifest.osgi.VersionRange;
  *
  * @generated
  */
-public class FragmentHostImpl extends ParameterizedImpl implements FragmentHost
-{
+public class FragmentHostImpl extends ParameterizedImpl implements FragmentHost {
    /**
     * The default value of the '{@link #getSymbolicName() <em>Symbolic Name</em>}' attribute.
     * <!-- begin-user-doc -->
@@ -66,8 +65,7 @@ public class FragmentHostImpl extends ParameterizedImpl implements FragmentHost
     * 
     * @generated
     */
-   protected FragmentHostImpl()
-   {
+   protected FragmentHostImpl() {
       super();
    }
 
@@ -78,8 +76,7 @@ public class FragmentHostImpl extends ParameterizedImpl implements FragmentHost
     * @generated
     */
    @Override
-   protected EClass eStaticClass()
-   {
+   protected EClass eStaticClass() {
       return BundleManifestPackage.Literals.FRAGMENT_HOST;
    }
 
@@ -89,8 +86,7 @@ public class FragmentHostImpl extends ParameterizedImpl implements FragmentHost
     * 
     * @generated
     */
-   public String getSymbolicName()
-   {
+   public String getSymbolicName() {
       return symbolicName;
    }
 
@@ -100,8 +96,7 @@ public class FragmentHostImpl extends ParameterizedImpl implements FragmentHost
     * 
     * @generated
     */
-   public void setSymbolicName(String newSymbolicName)
-   {
+   public void setSymbolicName(String newSymbolicName) {
       String oldSymbolicName = symbolicName;
       symbolicName = newSymbolicName;
       if (eNotificationRequired())
@@ -115,8 +110,7 @@ public class FragmentHostImpl extends ParameterizedImpl implements FragmentHost
     * 
     * @generated NOT
     */
-   public VersionRange getBundleVersion()
-   {
+   public VersionRange getBundleVersion() {
       return (VersionRange) getParsedParameterValue("bundle-version");
    }
 
@@ -126,8 +120,7 @@ public class FragmentHostImpl extends ParameterizedImpl implements FragmentHost
     * 
     * @generated NOT
     */
-   public void setBundleVersion(VersionRange bundleVersion)
-   {
+   public void setBundleVersion(VersionRange bundleVersion) {
       PackageImportImpl.setVersionRange(this, bundleVersion, true);
    }
 
@@ -138,10 +131,8 @@ public class FragmentHostImpl extends ParameterizedImpl implements FragmentHost
     * @generated
     */
    @Override
-   public Object eGet(int featureID, boolean resolve, boolean coreType)
-   {
-      switch (featureID)
-      {
+   public Object eGet(int featureID, boolean resolve, boolean coreType) {
+      switch (featureID) {
          case BundleManifestPackage.FRAGMENT_HOST__SYMBOLIC_NAME :
             return getSymbolicName();
       }
@@ -155,10 +146,8 @@ public class FragmentHostImpl extends ParameterizedImpl implements FragmentHost
     * @generated
     */
    @Override
-   public void eSet(int featureID, Object newValue)
-   {
-      switch (featureID)
-      {
+   public void eSet(int featureID, Object newValue) {
+      switch (featureID) {
          case BundleManifestPackage.FRAGMENT_HOST__SYMBOLIC_NAME :
             setSymbolicName((String) newValue);
             return;
@@ -173,10 +162,8 @@ public class FragmentHostImpl extends ParameterizedImpl implements FragmentHost
     * @generated
     */
    @Override
-   public void eUnset(int featureID)
-   {
-      switch (featureID)
-      {
+   public void eUnset(int featureID) {
+      switch (featureID) {
          case BundleManifestPackage.FRAGMENT_HOST__SYMBOLIC_NAME :
             setSymbolicName(SYMBOLIC_NAME_EDEFAULT);
             return;
@@ -191,10 +178,8 @@ public class FragmentHostImpl extends ParameterizedImpl implements FragmentHost
     * @generated
     */
    @Override
-   public boolean eIsSet(int featureID)
-   {
-      switch (featureID)
-      {
+   public boolean eIsSet(int featureID) {
+      switch (featureID) {
          case BundleManifestPackage.FRAGMENT_HOST__SYMBOLIC_NAME :
             return SYMBOLIC_NAME_EDEFAULT == null ? symbolicName != null : !SYMBOLIC_NAME_EDEFAULT.equals(symbolicName);
       }
@@ -208,8 +193,7 @@ public class FragmentHostImpl extends ParameterizedImpl implements FragmentHost
     * @generated
     */
    @Override
-   public String toString()
-   {
+   public String toString() {
       if (eIsProxy())
          return super.toString();
 

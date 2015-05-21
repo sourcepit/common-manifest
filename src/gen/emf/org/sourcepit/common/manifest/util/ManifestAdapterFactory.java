@@ -39,8 +39,7 @@ import org.sourcepit.common.manifest.Parseable;
  * @see org.sourcepit.common.manifest.ManifestPackage
  * @generated
  */
-public class ManifestAdapterFactory extends AdapterFactoryImpl
-{
+public class ManifestAdapterFactory extends AdapterFactoryImpl {
    /**
     * The cached model package.
     * <!-- begin-user-doc -->
@@ -57,10 +56,8 @@ public class ManifestAdapterFactory extends AdapterFactoryImpl
     * 
     * @generated
     */
-   public ManifestAdapterFactory()
-   {
-      if (modelPackage == null)
-      {
+   public ManifestAdapterFactory() {
+      if (modelPackage == null) {
          modelPackage = ManifestPackage.eINSTANCE;
       }
    }
@@ -76,14 +73,11 @@ public class ManifestAdapterFactory extends AdapterFactoryImpl
     * @generated
     */
    @Override
-   public boolean isFactoryForType(Object object)
-   {
-      if (object == modelPackage)
-      {
+   public boolean isFactoryForType(Object object) {
+      if (object == modelPackage) {
          return true;
       }
-      if (object instanceof EObject)
-      {
+      if (object instanceof EObject) {
          return ((EObject) object).eClass().getEPackage() == modelPackage;
       }
       return false;
@@ -96,53 +90,44 @@ public class ManifestAdapterFactory extends AdapterFactoryImpl
     * 
     * @generated
     */
-   protected ManifestSwitch<Adapter> modelSwitch = new ManifestSwitch<Adapter>()
-   {
+   protected ManifestSwitch<Adapter> modelSwitch = new ManifestSwitch<Adapter>() {
       @Override
-      public Adapter caseManifest(Manifest object)
-      {
+      public Adapter caseManifest(Manifest object) {
          return createManifestAdapter();
       }
 
       @Override
-      public Adapter caseManifestSection(ManifestSection object)
-      {
+      public Adapter caseManifestSection(ManifestSection object) {
          return createManifestSectionAdapter();
       }
 
       @Override
-      public Adapter caseHeader(Header object)
-      {
+      public Adapter caseHeader(Header object) {
          return createHeaderAdapter();
       }
 
       @Override
-      public Adapter caseSectionEntry(Entry<String, EMap<String, String>> object)
-      {
+      public Adapter caseSectionEntry(Entry<String, EMap<String, String>> object) {
          return createSectionEntryAdapter();
       }
 
       @Override
-      public Adapter caseHeaderEntry(Entry<String, String> object)
-      {
+      public Adapter caseHeaderEntry(Entry<String, String> object) {
          return createHeaderEntryAdapter();
       }
 
       @Override
-      public Adapter caseAbstractSection(AbstractSection object)
-      {
+      public Adapter caseAbstractSection(AbstractSection object) {
          return createAbstractSectionAdapter();
       }
 
       @Override
-      public Adapter caseParseable(Parseable object)
-      {
+      public Adapter caseParseable(Parseable object) {
          return createParseableAdapter();
       }
 
       @Override
-      public Adapter defaultCase(EObject object)
-      {
+      public Adapter defaultCase(EObject object) {
          return createEObjectAdapter();
       }
    };
@@ -157,8 +142,7 @@ public class ManifestAdapterFactory extends AdapterFactoryImpl
     * @generated
     */
    @Override
-   public Adapter createAdapter(Notifier target)
-   {
+   public Adapter createAdapter(Notifier target) {
       return modelSwitch.doSwitch((EObject) target);
    }
 
@@ -174,8 +158,7 @@ public class ManifestAdapterFactory extends AdapterFactoryImpl
     * @see org.sourcepit.common.manifest.Manifest
     * @generated
     */
-   public Adapter createManifestAdapter()
-   {
+   public Adapter createManifestAdapter() {
       return null;
    }
 
@@ -191,8 +174,7 @@ public class ManifestAdapterFactory extends AdapterFactoryImpl
     * @see org.sourcepit.common.manifest.ManifestSection
     * @generated
     */
-   public Adapter createManifestSectionAdapter()
-   {
+   public Adapter createManifestSectionAdapter() {
       return null;
    }
 
@@ -207,8 +189,7 @@ public class ManifestAdapterFactory extends AdapterFactoryImpl
     * @see org.sourcepit.common.manifest.Header
     * @generated
     */
-   public Adapter createHeaderAdapter()
-   {
+   public Adapter createHeaderAdapter() {
       return null;
    }
 
@@ -223,8 +204,7 @@ public class ManifestAdapterFactory extends AdapterFactoryImpl
     * @see java.util.Map.Entry
     * @generated
     */
-   public Adapter createSectionEntryAdapter()
-   {
+   public Adapter createSectionEntryAdapter() {
       return null;
    }
 
@@ -239,8 +219,7 @@ public class ManifestAdapterFactory extends AdapterFactoryImpl
     * @see java.util.Map.Entry
     * @generated
     */
-   public Adapter createHeaderEntryAdapter()
-   {
+   public Adapter createHeaderEntryAdapter() {
       return null;
    }
 
@@ -256,8 +235,7 @@ public class ManifestAdapterFactory extends AdapterFactoryImpl
     * @see org.sourcepit.common.manifest.AbstractSection
     * @generated
     */
-   public Adapter createAbstractSectionAdapter()
-   {
+   public Adapter createAbstractSectionAdapter() {
       return null;
    }
 
@@ -272,8 +250,7 @@ public class ManifestAdapterFactory extends AdapterFactoryImpl
     * @see org.sourcepit.common.manifest.Parseable
     * @generated
     */
-   public Adapter createParseableAdapter()
-   {
+   public Adapter createParseableAdapter() {
       return null;
    }
 
@@ -286,8 +263,7 @@ public class ManifestAdapterFactory extends AdapterFactoryImpl
     * @return the new adapter.
     * @generated
     */
-   public Adapter createEObjectAdapter()
-   {
+   public Adapter createEObjectAdapter() {
       return null;
    }
 

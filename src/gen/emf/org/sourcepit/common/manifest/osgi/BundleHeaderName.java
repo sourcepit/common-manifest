@@ -32,8 +32,7 @@ import org.eclipse.emf.common.util.Enumerator;
  * @model
  * @generated
  */
-public enum BundleHeaderName implements Enumerator
-{
+public enum BundleHeaderName implements Enumerator {
    /**
     * The '<em><b>BUNDLE ACTIVATIONPOLICY</b></em>' literal object.
     * <!-- begin-user-doc -->
@@ -820,13 +819,10 @@ public enum BundleHeaderName implements Enumerator
     * 
     * @generated NOT
     */
-   public static BundleHeaderName get(String literal)
-   {
-      for (int i = 0; i < VALUES_ARRAY.length; ++i)
-      {
+   public static BundleHeaderName get(String literal) {
+      for (int i = 0; i < VALUES_ARRAY.length; ++i) {
          BundleHeaderName result = VALUES_ARRAY[i];
-         if (equals(result.toString(), literal))
-         {
+         if (equals(result.toString(), literal)) {
             return result;
          }
       }
@@ -840,34 +836,27 @@ public enum BundleHeaderName implements Enumerator
     * 
     * @generated
     */
-   public static BundleHeaderName getByName(String name)
-   {
-      for (int i = 0; i < VALUES_ARRAY.length; ++i)
-      {
+   public static BundleHeaderName getByName(String name) {
+      for (int i = 0; i < VALUES_ARRAY.length; ++i) {
          BundleHeaderName result = VALUES_ARRAY[i];
-         if (result.getName().equals(name))
-         {
+         if (result.getName().equals(name)) {
             return result;
          }
       }
       return null;
    }
 
-   private static boolean equals(Object key, Object key2)
-   {
-      if (key == null)
-      {
+   private static boolean equals(Object key, Object key2) {
+      if (key == null) {
          return key2 == null;
       }
-      if (key2 == null)
-      {
+      if (key2 == null) {
          return false;
       }
       return normalize(key).equals(normalize(key2));
    }
 
-   private static String normalize(Object key)
-   {
+   private static String normalize(Object key) {
       return key.toString().toLowerCase();
    }
 
@@ -878,10 +867,8 @@ public enum BundleHeaderName implements Enumerator
     * 
     * @generated
     */
-   public static BundleHeaderName get(int value)
-   {
-      switch (value)
-      {
+   public static BundleHeaderName get(int value) {
+      switch (value) {
          case BUNDLE_ACTIVATIONPOLICY_VALUE :
             return BUNDLE_ACTIVATIONPOLICY;
          case BUNDLE_ACTIVATOR_VALUE :
@@ -973,8 +960,7 @@ public enum BundleHeaderName implements Enumerator
     * 
     * @generated
     */
-   private BundleHeaderName(int value, String name, String literal)
-   {
+   private BundleHeaderName(int value, String name, String literal) {
       this.value = value;
       this.name = name;
       this.literal = literal;
@@ -986,8 +972,7 @@ public enum BundleHeaderName implements Enumerator
     * 
     * @generated
     */
-   public int getValue()
-   {
+   public int getValue() {
       return value;
    }
 
@@ -997,8 +982,7 @@ public enum BundleHeaderName implements Enumerator
     * 
     * @generated
     */
-   public String getName()
-   {
+   public String getName() {
       return name;
    }
 
@@ -1008,8 +992,7 @@ public enum BundleHeaderName implements Enumerator
     * 
     * @generated
     */
-   public String getLiteral()
-   {
+   public String getLiteral() {
       return literal;
    }
 
@@ -1021,8 +1004,7 @@ public enum BundleHeaderName implements Enumerator
     * @generated
     */
    @Override
-   public String toString()
-   {
+   public String toString() {
       return literal;
    }
 

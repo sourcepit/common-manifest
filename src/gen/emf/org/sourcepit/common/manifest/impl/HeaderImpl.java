@@ -30,16 +30,14 @@ import org.sourcepit.common.manifest.ManifestPackage;
  *
  * @generated
  */
-public abstract class HeaderImpl extends ParseableImpl implements Header
-{
+public abstract class HeaderImpl extends ParseableImpl implements Header {
    /**
     * <!-- begin-user-doc -->
     * <!-- end-user-doc -->
     * 
     * @generated
     */
-   protected HeaderImpl()
-   {
+   protected HeaderImpl() {
       super();
    }
 
@@ -50,8 +48,7 @@ public abstract class HeaderImpl extends ParseableImpl implements Header
     * @generated
     */
    @Override
-   protected EClass eStaticClass()
-   {
+   protected EClass eStaticClass() {
       return ManifestPackage.Literals.HEADER;
    }
 
@@ -70,8 +67,7 @@ public abstract class HeaderImpl extends ParseableImpl implements Header
     * 
     * @generated
     */
-   public Manifest getManifest()
-   {
+   public Manifest getManifest() {
       // TODO: implement this method
       // Ensure that you remove @generated or mark it @generated NOT
       throw new UnsupportedOperationException();

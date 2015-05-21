@@ -33,8 +33,7 @@ package org.sourcepit.common.manifest.osgi;
  * @model
  * @generated
  */
-public interface BundleSymbolicName extends Parameterized
-{
+public interface BundleSymbolicName extends Parameterized {
    /**
     * Returns the value of the '<em><b>Symbolic Name</b></em>' attribute.
     * <!-- begin-user-doc -->

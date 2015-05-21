@@ -18,8 +18,7 @@ package org.sourcepit.common.manifest.parser;
 
 import org.sourcepit.common.manifest.Parseable;
 
-public interface HeaderParser
-{
+public interface HeaderParser {
    Object parse(Parseable parseable);
 
    String toString(Parseable parseable);
@@ -30,8 +29,7 @@ public interface HeaderParser
 
    String toValueString(Parseable parseable, boolean prettyPrinting);
 
-   interface Registry extends HeaderParser
-   {
+   interface Registry extends HeaderParser {
       void addParser(HeaderParser parser);
 
       void removeParser(HeaderParser parser);

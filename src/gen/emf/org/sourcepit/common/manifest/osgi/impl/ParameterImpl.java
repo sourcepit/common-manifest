@@ -45,8 +45,7 @@ import org.sourcepit.common.manifest.parser.HeaderParser;
  *
  * @generated
  */
-public class ParameterImpl extends ParseableImpl implements Parameter
-{
+public class ParameterImpl extends ParseableImpl implements Parameter {
    /**
     * The default value of the '{@link #getName() <em>Name</em>}' attribute.
     * <!-- begin-user-doc -->
@@ -119,8 +118,7 @@ public class ParameterImpl extends ParseableImpl implements Parameter
     * 
     * @generated
     */
-   protected ParameterImpl()
-   {
+   protected ParameterImpl() {
       super();
    }
 
@@ -131,8 +129,7 @@ public class ParameterImpl extends ParseableImpl implements Parameter
     * @generated
     */
    @Override
-   protected EClass eStaticClass()
-   {
+   protected EClass eStaticClass() {
       return BundleManifestPackage.Literals.PARAMETER;
    }
 
@@ -142,8 +139,7 @@ public class ParameterImpl extends ParseableImpl implements Parameter
     * 
     * @generated
     */
-   public String getName()
-   {
+   public String getName() {
       return name;
    }
 
@@ -153,8 +149,7 @@ public class ParameterImpl extends ParseableImpl implements Parameter
     * 
     * @generated
     */
-   public void setName(String newName)
-   {
+   public void setName(String newName) {
       String oldName = name;
       name = newName;
       if (eNotificationRequired())
@@ -167,8 +162,7 @@ public class ParameterImpl extends ParseableImpl implements Parameter
     * 
     * @generated
     */
-   public boolean isQuoted()
-   {
+   public boolean isQuoted() {
       return quoted;
    }
 
@@ -178,8 +172,7 @@ public class ParameterImpl extends ParseableImpl implements Parameter
     * 
     * @generated
     */
-   public void setQuoted(boolean newQuoted)
-   {
+   public void setQuoted(boolean newQuoted) {
       boolean oldQuoted = quoted;
       quoted = newQuoted;
       if (eNotificationRequired())
@@ -193,8 +186,7 @@ public class ParameterImpl extends ParseableImpl implements Parameter
     * 
     * @generated
     */
-   public ParameterType getType()
-   {
+   public ParameterType getType() {
       return type;
    }
 
@@ -204,8 +196,7 @@ public class ParameterImpl extends ParseableImpl implements Parameter
     * 
     * @generated
     */
-   public void setType(ParameterType newType)
-   {
+   public void setType(ParameterType newType) {
       ParameterType oldType = type;
       type = newType == null ? TYPE_EDEFAULT : newType;
       if (eNotificationRequired())
@@ -218,8 +209,7 @@ public class ParameterImpl extends ParseableImpl implements Parameter
     * 
     * @generated
     */
-   public Parameterized getParameterized()
-   {
+   public Parameterized getParameterized() {
       if (eContainerFeatureID() != BundleManifestPackage.PARAMETER__PARAMETERIZED)
          return null;
       return (Parameterized) eInternalContainer();
@@ -231,8 +221,7 @@ public class ParameterImpl extends ParseableImpl implements Parameter
     * 
     * @generated
     */
-   public NotificationChain basicSetParameterized(Parameterized newParameterized, NotificationChain msgs)
-   {
+   public NotificationChain basicSetParameterized(Parameterized newParameterized, NotificationChain msgs) {
       msgs = eBasicSetContainer((InternalEObject) newParameterized, BundleManifestPackage.PARAMETER__PARAMETERIZED,
          msgs);
       return msgs;
@@ -244,11 +233,9 @@ public class ParameterImpl extends ParseableImpl implements Parameter
     * 
     * @generated
     */
-   public void setParameterized(Parameterized newParameterized)
-   {
+   public void setParameterized(Parameterized newParameterized) {
       if (newParameterized != eInternalContainer()
-         || (eContainerFeatureID() != BundleManifestPackage.PARAMETER__PARAMETERIZED && newParameterized != null))
-      {
+         || (eContainerFeatureID() != BundleManifestPackage.PARAMETER__PARAMETERIZED && newParameterized != null)) {
          if (EcoreUtil.isAncestor(this, newParameterized))
             throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
          NotificationChain msgs = null;
@@ -273,10 +260,8 @@ public class ParameterImpl extends ParseableImpl implements Parameter
     * @generated
     */
    @Override
-   public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs)
-   {
-      switch (featureID)
-      {
+   public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+      switch (featureID) {
          case BundleManifestPackage.PARAMETER__PARAMETERIZED :
             if (eInternalContainer() != null)
                msgs = eBasicRemoveFromContainer(msgs);
@@ -292,10 +277,8 @@ public class ParameterImpl extends ParseableImpl implements Parameter
     * @generated
     */
    @Override
-   public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
-   {
-      switch (featureID)
-      {
+   public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+      switch (featureID) {
          case BundleManifestPackage.PARAMETER__PARAMETERIZED :
             return basicSetParameterized(null, msgs);
       }
@@ -309,10 +292,8 @@ public class ParameterImpl extends ParseableImpl implements Parameter
     * @generated
     */
    @Override
-   public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs)
-   {
-      switch (eContainerFeatureID())
-      {
+   public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
+      switch (eContainerFeatureID()) {
          case BundleManifestPackage.PARAMETER__PARAMETERIZED :
             return eInternalContainer().eInverseRemove(this, BundleManifestPackage.PARAMETERIZED__PARAMETERS,
                Parameterized.class, msgs);
@@ -327,10 +308,8 @@ public class ParameterImpl extends ParseableImpl implements Parameter
     * @generated
     */
    @Override
-   public Object eGet(int featureID, boolean resolve, boolean coreType)
-   {
-      switch (featureID)
-      {
+   public Object eGet(int featureID, boolean resolve, boolean coreType) {
+      switch (featureID) {
          case BundleManifestPackage.PARAMETER__NAME :
             return getName();
          case BundleManifestPackage.PARAMETER__QUOTED :
@@ -350,10 +329,8 @@ public class ParameterImpl extends ParseableImpl implements Parameter
     * @generated
     */
    @Override
-   public void eSet(int featureID, Object newValue)
-   {
-      switch (featureID)
-      {
+   public void eSet(int featureID, Object newValue) {
+      switch (featureID) {
          case BundleManifestPackage.PARAMETER__NAME :
             setName((String) newValue);
             return;
@@ -377,10 +354,8 @@ public class ParameterImpl extends ParseableImpl implements Parameter
     * @generated
     */
    @Override
-   public void eUnset(int featureID)
-   {
-      switch (featureID)
-      {
+   public void eUnset(int featureID) {
+      switch (featureID) {
          case BundleManifestPackage.PARAMETER__NAME :
             setName(NAME_EDEFAULT);
             return;
@@ -404,10 +379,8 @@ public class ParameterImpl extends ParseableImpl implements Parameter
     * @generated
     */
    @Override
-   public boolean eIsSet(int featureID)
-   {
-      switch (featureID)
-      {
+   public boolean eIsSet(int featureID) {
+      switch (featureID) {
          case BundleManifestPackage.PARAMETER__NAME :
             return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
          case BundleManifestPackage.PARAMETER__QUOTED :
@@ -427,11 +400,9 @@ public class ParameterImpl extends ParseableImpl implements Parameter
     * @generated NOT
     */
    @Override
-   public String toString()
-   {
+   public String toString() {
       final String string = HeaderParser.INSTANCE.toString(this);
-      if (string != null)
-      {
+      if (string != null) {
          return string;
       }
 

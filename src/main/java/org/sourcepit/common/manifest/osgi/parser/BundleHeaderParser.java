@@ -28,8 +28,7 @@ import org.sourcepit.common.manifest.osgi.PackageExport;
 import org.sourcepit.common.manifest.osgi.PackageImport;
 import org.sourcepit.common.manifest.parser.HeaderParser;
 
-public interface BundleHeaderParser extends HeaderParser
-{
+public interface BundleHeaderParser extends HeaderParser {
    BundleActivationPolicy parseBundleActivationPolicy(String value);
 
    BundleSymbolicName parseBundleSymbolicName(String value);

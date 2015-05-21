@@ -29,8 +29,7 @@ import org.sourcepit.common.manifest.osgi.Parameter;
  *
  * @generated
  */
-public class BundleLicenseImpl extends ParameterizedImpl implements BundleLicense
-{
+public class BundleLicenseImpl extends ParameterizedImpl implements BundleLicense {
    /**
     * The default value of the '{@link #getName() <em>Name</em>}' attribute.
     * <!-- begin-user-doc -->
@@ -59,8 +58,7 @@ public class BundleLicenseImpl extends ParameterizedImpl implements BundleLicens
     * 
     * @generated
     */
-   protected BundleLicenseImpl()
-   {
+   protected BundleLicenseImpl() {
       super();
    }
 
@@ -71,8 +69,7 @@ public class BundleLicenseImpl extends ParameterizedImpl implements BundleLicens
     * @generated
     */
    @Override
-   protected EClass eStaticClass()
-   {
+   protected EClass eStaticClass() {
       return BundleManifestPackage.Literals.BUNDLE_LICENSE;
    }
 
@@ -82,8 +79,7 @@ public class BundleLicenseImpl extends ParameterizedImpl implements BundleLicens
     * 
     * @generated
     */
-   public String getName()
-   {
+   public String getName() {
       return name;
    }
 
@@ -93,8 +89,7 @@ public class BundleLicenseImpl extends ParameterizedImpl implements BundleLicens
     * 
     * @generated
     */
-   public void setName(String newName)
-   {
+   public void setName(String newName) {
       String oldName = name;
       name = newName;
       if (eNotificationRequired())
@@ -108,8 +103,7 @@ public class BundleLicenseImpl extends ParameterizedImpl implements BundleLicens
     * 
     * @generated NOT
     */
-   public String getDescription()
-   {
+   public String getDescription() {
       final Parameter description = getParameter("description");
       return description == null ? null : description.getValue();
    }
@@ -120,26 +114,20 @@ public class BundleLicenseImpl extends ParameterizedImpl implements BundleLicens
     * 
     * @generated NOT
     */
-   public void setDescription(String description)
-   {
+   public void setDescription(String description) {
       setAttribute("description", description);
    }
 
-   private void setAttribute(final String name, String value)
-   {
+   private void setAttribute(final String name, String value) {
       Parameter param = getParameter(name);
-      if (value == null)
-      {
-         if (param != null)
-         {
+      if (value == null) {
+         if (param != null) {
             getParameters().remove(param);
          }
       }
-      else
-      {
+      else {
          final boolean create = param == null;
-         if (create)
-         {
+         if (create) {
             param = BundleManifestFactory.eINSTANCE.createParameter();
             param.setType(ATTRIBUTE);
             param.setName(name);
@@ -148,8 +136,7 @@ public class BundleLicenseImpl extends ParameterizedImpl implements BundleLicens
          param.setQuoted(true);
          param.setValue(value);
 
-         if (create)
-         {
+         if (create) {
             getParameters().add(param);
          }
       }
@@ -161,8 +148,7 @@ public class BundleLicenseImpl extends ParameterizedImpl implements BundleLicens
     * 
     * @generated NOT
     */
-   public String getLink()
-   {
+   public String getLink() {
       final Parameter link = getParameter("link");
       return link == null ? null : link.getValue();
    }
@@ -173,8 +159,7 @@ public class BundleLicenseImpl extends ParameterizedImpl implements BundleLicens
     * 
     * @generated NOT
     */
-   public void setLink(String link)
-   {
+   public void setLink(String link) {
       setAttribute("link", link);
    }
 
@@ -185,10 +170,8 @@ public class BundleLicenseImpl extends ParameterizedImpl implements BundleLicens
     * @generated
     */
    @Override
-   public Object eGet(int featureID, boolean resolve, boolean coreType)
-   {
-      switch (featureID)
-      {
+   public Object eGet(int featureID, boolean resolve, boolean coreType) {
+      switch (featureID) {
          case BundleManifestPackage.BUNDLE_LICENSE__NAME :
             return getName();
       }
@@ -202,10 +185,8 @@ public class BundleLicenseImpl extends ParameterizedImpl implements BundleLicens
     * @generated
     */
    @Override
-   public void eSet(int featureID, Object newValue)
-   {
-      switch (featureID)
-      {
+   public void eSet(int featureID, Object newValue) {
+      switch (featureID) {
          case BundleManifestPackage.BUNDLE_LICENSE__NAME :
             setName((String) newValue);
             return;
@@ -220,10 +201,8 @@ public class BundleLicenseImpl extends ParameterizedImpl implements BundleLicens
     * @generated
     */
    @Override
-   public void eUnset(int featureID)
-   {
-      switch (featureID)
-      {
+   public void eUnset(int featureID) {
+      switch (featureID) {
          case BundleManifestPackage.BUNDLE_LICENSE__NAME :
             setName(NAME_EDEFAULT);
             return;
@@ -238,10 +217,8 @@ public class BundleLicenseImpl extends ParameterizedImpl implements BundleLicens
     * @generated
     */
    @Override
-   public boolean eIsSet(int featureID)
-   {
-      switch (featureID)
-      {
+   public boolean eIsSet(int featureID) {
+      switch (featureID) {
          case BundleManifestPackage.BUNDLE_LICENSE__NAME :
             return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
       }
@@ -255,8 +232,7 @@ public class BundleLicenseImpl extends ParameterizedImpl implements BundleLicens
     * @generated
     */
    @Override
-   public String toString()
-   {
+   public String toString() {
       if (eIsProxy())
          return super.toString();
 

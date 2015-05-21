@@ -20,8 +20,7 @@ package org.sourcepit.common.manifest.merge;
 /**
  * @author Bernd
  */
-public interface HeaderMerger
-{
+public interface HeaderMerger {
    String computeNewValue(String headerName, String targetValue, String sourceValue);
 
    boolean isResponsibleFor(String sectionName, String headerName, String targetValue, String sourceValue);

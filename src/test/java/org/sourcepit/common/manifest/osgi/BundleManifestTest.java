@@ -54,18 +54,15 @@ import org.sourcepit.common.manifest.osgi.resource.BundleManifestResourceImpl;
 /**
  * @author Bernd
  */
-public class BundleManifestTest
-{
+public class BundleManifestTest {
    @Test
-   public void testNew()
-   {
+   public void testNew() {
       BundleManifest manifest = BundleManifestFactory.eINSTANCE.createBundleManifest();
       assertThat(manifest.getHeaderValue(HeaderName.MANIFEST_VERSION), IsEqual.equalTo("1.0"));
    }
 
    @Test
-   public void testHeaderOperations()
-   {
+   public void testHeaderOperations() {
       BundleManifest manifest = BundleManifestFactory.eINSTANCE.createBundleManifest();
       assertThat(manifest.getHeader(BUNDLE_VERSION.getLiteral()), IsNull.nullValue());
       assertThat(manifest.getHeader(BUNDLE_VERSION), IsNull.nullValue());
@@ -103,8 +100,7 @@ public class BundleManifestTest
    }
 
    @Test
-   public void testToString()
-   {
+   public void testToString() {
       BundleManifest manifest = BundleManifestFactory.eINSTANCE.createBundleManifest();
       manifest.setHeader(IMPORT_PACKAGE, "a.b.c;d.e.f.g;version=\"[1.2,3)\"");
 
@@ -128,8 +124,7 @@ public class BundleManifestTest
    }
 
    @Test
-   public void testBundleManifestVersion()
-   {
+   public void testBundleManifestVersion() {
       BundleManifest manifest = BundleManifestFactory.eINSTANCE.createBundleManifest();
       assertThat(manifest.getBundleManifestVersion(), IsEqual.equalTo("2"));
 
@@ -139,8 +134,7 @@ public class BundleManifestTest
    }
 
    @Test
-   public void testBundleVersion()
-   {
+   public void testBundleVersion() {
       BundleManifest manifest = BundleManifestFactory.eINSTANCE.createBundleManifest();
       assertThat(manifest.getBundleVersion(), IsNull.nullValue());
       manifest.setHeader(BUNDLE_VERSION, "1.2.3");
@@ -159,8 +153,7 @@ public class BundleManifestTest
    }
 
    @Test
-   public void testBundleSymbolicName()
-   {
+   public void testBundleSymbolicName() {
       BundleManifest manifest = BundleManifestFactory.eINSTANCE.createBundleManifest();
 
       BundleSymbolicName symbolicName = manifest.getBundleSymbolicName();
@@ -185,8 +178,7 @@ public class BundleManifestTest
    }
 
    @Test
-   public void testGetBundleRequiredExecutionEnvironment()
-   {
+   public void testGetBundleRequiredExecutionEnvironment() {
       BundleManifest manifest = BundleManifestFactory.eINSTANCE.createBundleManifest();
 
       List<String> execEnv = manifest.getBundleRequiredExecutionEnvironment();
@@ -206,8 +198,7 @@ public class BundleManifestTest
    }
 
    @Test
-   public void testFragmentHost()
-   {
+   public void testFragmentHost() {
       BundleManifest manifest = BundleManifestFactory.eINSTANCE.createBundleManifest();
 
       FragmentHost fragmentHost = manifest.getFragmentHost();
@@ -228,8 +219,7 @@ public class BundleManifestTest
    }
 
    @Test
-   public void testBundleActivationPolicy()
-   {
+   public void testBundleActivationPolicy() {
       BundleManifest manifest = BundleManifestFactory.eINSTANCE.createBundleManifest();
 
       BundleActivationPolicy activationPolicy = manifest.getBundleActivationPolicy();
@@ -254,8 +244,7 @@ public class BundleManifestTest
    }
 
    @Test
-   public void testBundleActivator()
-   {
+   public void testBundleActivator() {
       BundleManifest manifest = BundleManifestFactory.eINSTANCE.createBundleManifest();
 
       String activator = manifest.getBundleActivator();
@@ -275,8 +264,7 @@ public class BundleManifestTest
    }
 
    @Test
-   public void testExportPackage()
-   {
+   public void testExportPackage() {
       BundleManifest manifest = BundleManifestFactory.eINSTANCE.createBundleManifest();
       assertThat(manifest.getExportPackage(), IsNull.nullValue());
 
@@ -298,8 +286,7 @@ public class BundleManifestTest
    }
 
    @Test
-   public void testImportPackage()
-   {
+   public void testImportPackage() {
       BundleManifest manifest = BundleManifestFactory.eINSTANCE.createBundleManifest();
       assertThat(manifest.getImportPackage(), IsNull.nullValue());
 
@@ -327,8 +314,7 @@ public class BundleManifestTest
    }
 
    @Test
-   public void testDynamicImportPackage()
-   {
+   public void testDynamicImportPackage() {
       BundleManifest manifest = BundleManifestFactory.eINSTANCE.createBundleManifest();
       assertThat(manifest.getDynamicImportPackage(), IsNull.nullValue());
 
@@ -350,8 +336,7 @@ public class BundleManifestTest
    }
 
    @Test
-   public void testRequireBundle()
-   {
+   public void testRequireBundle() {
       BundleManifest manifest = BundleManifestFactory.eINSTANCE.createBundleManifest();
       assertThat(manifest.getRequireBundle(), IsNull.nullValue());
 
@@ -373,8 +358,7 @@ public class BundleManifestTest
    }
 
    @Test
-   public void testBundleClassPath()
-   {
+   public void testBundleClassPath() {
       BundleManifest manifest = BundleManifestFactory.eINSTANCE.createBundleManifest();
 
       EList<ClassPathEntry> classPath = manifest.getBundleClassPath();
@@ -405,8 +389,7 @@ public class BundleManifestTest
    }
 
    @Test
-   public void testSetBundleVersion()
-   {
+   public void testSetBundleVersion() {
       BundleManifest mf = BundleManifestFactory.eINSTANCE.createBundleManifest();
       assertThat(mf.getHeader(BUNDLE_VERSION), IsNull.nullValue());
       assertThat(mf.getBundleVersion(), IsNull.nullValue());
@@ -432,8 +415,7 @@ public class BundleManifestTest
    }
 
    @Test
-   public void testSetBundleSymbolicName()
-   {
+   public void testSetBundleSymbolicName() {
       BundleManifest mf = BundleManifestFactory.eINSTANCE.createBundleManifest();
       assertThat(mf.getHeader(BUNDLE_SYMBOLICNAME), IsNull.nullValue());
       assertThat(mf.getBundleSymbolicName(), IsNull.nullValue());
@@ -470,8 +452,7 @@ public class BundleManifestTest
    }
 
    @Test
-   public void testSetFragmentHost()
-   {
+   public void testSetFragmentHost() {
       BundleManifest mf = BundleManifestFactory.eINSTANCE.createBundleManifest();
       assertThat(mf.getHeader(FRAGMENT_HOST), IsNull.nullValue());
       assertThat(mf.getFragmentHost(), IsNull.nullValue());
@@ -511,8 +492,7 @@ public class BundleManifestTest
    }
 
    @Test
-   public void testSetBundleActivationPolicy()
-   {
+   public void testSetBundleActivationPolicy() {
       BundleManifest mf = BundleManifestFactory.eINSTANCE.createBundleManifest();
       assertThat(mf.getHeader(BUNDLE_ACTIVATIONPOLICY), IsNull.nullValue());
       assertThat(mf.getBundleActivationPolicy(), IsNull.nullValue());
@@ -562,8 +542,7 @@ public class BundleManifestTest
    }
 
    @Test
-   public void testSetExportPackage()
-   {
+   public void testSetExportPackage() {
       BundleManifest mf = BundleManifestFactory.eINSTANCE.createBundleManifest();
       assertThat(mf.getHeader(EXPORT_PACKAGE), IsNull.nullValue());
       assertThat(mf.getExportPackage(), IsNull.nullValue());
@@ -600,8 +579,7 @@ public class BundleManifestTest
    }
 
    @Test
-   public void testSetImportPackage()
-   {
+   public void testSetImportPackage() {
       BundleManifest mf = BundleManifestFactory.eINSTANCE.createBundleManifest();
       assertThat(mf.getHeader(IMPORT_PACKAGE), IsNull.nullValue());
       assertThat(mf.getImportPackage(), IsNull.nullValue());
@@ -639,8 +617,7 @@ public class BundleManifestTest
    }
 
    @Test
-   public void testSetDynamicImportPackage()
-   {
+   public void testSetDynamicImportPackage() {
       BundleManifest mf = BundleManifestFactory.eINSTANCE.createBundleManifest();
       assertThat(mf.getHeader(DYNAMICIMPORT_PACKAGE), IsNull.nullValue());
       assertThat(mf.getDynamicImportPackage(), IsNull.nullValue());
@@ -677,8 +654,7 @@ public class BundleManifestTest
    }
 
    @Test
-   public void testSetRequireBundle()
-   {
+   public void testSetRequireBundle() {
       BundleManifest mf = BundleManifestFactory.eINSTANCE.createBundleManifest();
       assertThat(mf.getHeader(REQUIRE_BUNDLE), IsNull.nullValue());
       assertThat(mf.getRequireBundle(), IsNull.nullValue());
@@ -715,8 +691,7 @@ public class BundleManifestTest
    }
 
    @Test
-   public void testSetBundleClassPath()
-   {
+   public void testSetBundleClassPath() {
       BundleManifest mf = BundleManifestFactory.eINSTANCE.createBundleManifest();
       assertThat(mf.getHeader(BUNDLE_CLASSPATH), IsNull.nullValue());
       assertThat(mf.getBundleClassPath(), IsNull.nullValue());
@@ -753,8 +728,7 @@ public class BundleManifestTest
    }
 
    @Test
-   public void testSetBundleLicense()
-   {
+   public void testSetBundleLicense() {
       BundleManifest mf = BundleManifestFactory.eINSTANCE.createBundleManifest();
       assertThat(mf.getHeader(BUNDLE_LICENSE), IsNull.nullValue());
       assertThat(mf.getBundleLicense(), IsNull.nullValue());
@@ -791,8 +765,7 @@ public class BundleManifestTest
    }
 
    @Test
-   public void testCopy() throws Exception
-   {
+   public void testCopy() throws Exception {
       BundleManifest manifest = BundleManifestFactory.eINSTANCE.createBundleManifest();
 
       PackageExport packageExport = BundleManifestFactory.eINSTANCE.createPackageExport();
@@ -807,8 +780,7 @@ public class BundleManifestTest
    }
 
    @Test
-   public void testHeadersCaseInsensitive() throws Exception
-   {
+   public void testHeadersCaseInsensitive() throws Exception {
       BundleManifest manifest = BundleManifestFactory.eINSTANCE.createBundleManifest();
 
       EMap<String, String> headers = manifest.getHeaders();
@@ -850,14 +822,12 @@ public class BundleManifestTest
    }
 
    @Test
-   public void testBundleLicense() throws Exception
-   {
+   public void testBundleLicense() throws Exception {
       List<BundleLicense> licenses = new ArrayList<BundleLicense>();
 
       BundleLicense license = BundleManifestFactory.eINSTANCE.createBundleLicense();
       license.setName("Apache License Version 2.0");
-      license
-         .setDescription("Licensed under the Apache License, Version 2.0 (the \"License\");\n * you may not use this file except in compliance with the License.\n * You may obtain a copy of the License at");
+      license.setDescription("Licensed under the Apache License, Version 2.0 (the \"License\");\n * you may not use this file except in compliance with the License.\n * You may obtain a copy of the License at");
       license.setLink("http://www.apache.org/licenses/LICENSE-2.0");
 
       licenses.add(license);

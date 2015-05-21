@@ -37,8 +37,7 @@ import org.sourcepit.common.manifest.ManifestPackage;
  * 
  * @generated
  */
-public class ManifestFactoryImpl extends EFactoryImpl implements ManifestFactory
-{
+public class ManifestFactoryImpl extends EFactoryImpl implements ManifestFactory {
    /**
     * Creates the default factory implementation.
     * <!-- begin-user-doc -->
@@ -46,19 +45,14 @@ public class ManifestFactoryImpl extends EFactoryImpl implements ManifestFactory
     * 
     * @generated
     */
-   public static ManifestFactory init()
-   {
-      try
-      {
-         ManifestFactory theManifestFactory = (ManifestFactory) EPackage.Registry.INSTANCE
-            .getEFactory(ManifestPackage.eNS_URI);
-         if (theManifestFactory != null)
-         {
+   public static ManifestFactory init() {
+      try {
+         ManifestFactory theManifestFactory = (ManifestFactory) EPackage.Registry.INSTANCE.getEFactory(ManifestPackage.eNS_URI);
+         if (theManifestFactory != null) {
             return theManifestFactory;
          }
       }
-      catch (Exception exception)
-      {
+      catch (Exception exception) {
          EcorePlugin.INSTANCE.log(exception);
       }
       return new ManifestFactoryImpl();
@@ -71,8 +65,7 @@ public class ManifestFactoryImpl extends EFactoryImpl implements ManifestFactory
     * 
     * @generated
     */
-   public ManifestFactoryImpl()
-   {
+   public ManifestFactoryImpl() {
       super();
    }
 
@@ -83,10 +76,8 @@ public class ManifestFactoryImpl extends EFactoryImpl implements ManifestFactory
     * @generated
     */
    @Override
-   public EObject create(EClass eClass)
-   {
-      switch (eClass.getClassifierID())
-      {
+   public EObject create(EClass eClass) {
+      switch (eClass.getClassifierID()) {
          case ManifestPackage.MANIFEST :
             return createManifest();
          case ManifestPackage.SECTION_ENTRY :
@@ -105,10 +96,8 @@ public class ManifestFactoryImpl extends EFactoryImpl implements ManifestFactory
     * @generated
     */
    @Override
-   public Object createFromString(EDataType eDataType, String initialValue)
-   {
-      switch (eDataType.getClassifierID())
-      {
+   public Object createFromString(EDataType eDataType, String initialValue) {
+      switch (eDataType.getClassifierID()) {
          case ManifestPackage.HEADER_NAME :
             return createHeaderNameFromString(eDataType, initialValue);
          case ManifestPackage.EE_MAP :
@@ -125,10 +114,8 @@ public class ManifestFactoryImpl extends EFactoryImpl implements ManifestFactory
     * @generated
     */
    @Override
-   public String convertToString(EDataType eDataType, Object instanceValue)
-   {
-      switch (eDataType.getClassifierID())
-      {
+   public String convertToString(EDataType eDataType, Object instanceValue) {
+      switch (eDataType.getClassifierID()) {
          case ManifestPackage.HEADER_NAME :
             return convertHeaderNameToString(eDataType, instanceValue);
          case ManifestPackage.EE_MAP :
@@ -144,8 +131,7 @@ public class ManifestFactoryImpl extends EFactoryImpl implements ManifestFactory
     * 
     * @generated
     */
-   public Manifest createManifest()
-   {
+   public Manifest createManifest() {
       ManifestImpl manifest = new ManifestImpl();
       return manifest;
    }
@@ -156,8 +142,7 @@ public class ManifestFactoryImpl extends EFactoryImpl implements ManifestFactory
     * 
     * @generated
     */
-   public Entry<String, EMap<String, String>> createSectionEntry()
-   {
+   public Entry<String, EMap<String, String>> createSectionEntry() {
       SectionEntryImpl sectionEntry = new SectionEntryImpl();
       return sectionEntry;
    }
@@ -168,8 +153,7 @@ public class ManifestFactoryImpl extends EFactoryImpl implements ManifestFactory
     * 
     * @generated
     */
-   public Entry<String, String> createHeaderEntry()
-   {
+   public Entry<String, String> createHeaderEntry() {
       HeaderEntryImpl headerEntry = new HeaderEntryImpl();
       return headerEntry;
    }
@@ -180,8 +164,7 @@ public class ManifestFactoryImpl extends EFactoryImpl implements ManifestFactory
     * 
     * @generated
     */
-   public HeaderName createHeaderNameFromString(EDataType eDataType, String initialValue)
-   {
+   public HeaderName createHeaderNameFromString(EDataType eDataType, String initialValue) {
       HeaderName result = HeaderName.get(initialValue);
       if (result == null)
          throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '"
@@ -195,8 +178,7 @@ public class ManifestFactoryImpl extends EFactoryImpl implements ManifestFactory
     * 
     * @generated
     */
-   public String convertHeaderNameToString(EDataType eDataType, Object instanceValue)
-   {
+   public String convertHeaderNameToString(EDataType eDataType, Object instanceValue) {
       return instanceValue == null ? null : instanceValue.toString();
    }
 
@@ -206,8 +188,7 @@ public class ManifestFactoryImpl extends EFactoryImpl implements ManifestFactory
     * 
     * @generated
     */
-   public EMap<?, ?> createEEMapFromString(EDataType eDataType, String initialValue)
-   {
+   public EMap<?, ?> createEEMapFromString(EDataType eDataType, String initialValue) {
       return (EMap<?, ?>) super.createFromString(initialValue);
    }
 
@@ -217,8 +198,7 @@ public class ManifestFactoryImpl extends EFactoryImpl implements ManifestFactory
     * 
     * @generated
     */
-   public String convertEEMapToString(EDataType eDataType, Object instanceValue)
-   {
+   public String convertEEMapToString(EDataType eDataType, Object instanceValue) {
       return super.convertToString(instanceValue);
    }
 
@@ -228,8 +208,7 @@ public class ManifestFactoryImpl extends EFactoryImpl implements ManifestFactory
     * 
     * @generated
     */
-   public ManifestPackage getManifestPackage()
-   {
+   public ManifestPackage getManifestPackage() {
       return (ManifestPackage) getEPackage();
    }
 
@@ -241,8 +220,7 @@ public class ManifestFactoryImpl extends EFactoryImpl implements ManifestFactory
     * @generated
     */
    @Deprecated
-   public static ManifestPackage getPackage()
-   {
+   public static ManifestPackage getPackage() {
       return ManifestPackage.eINSTANCE;
    }
 

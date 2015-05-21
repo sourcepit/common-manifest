@@ -52,8 +52,7 @@ import org.sourcepit.common.manifest.ManifestSection;
  *
  * @generated
  */
-public class ManifestImpl extends AbstractSectionImpl implements Manifest
-{
+public class ManifestImpl extends AbstractSectionImpl implements Manifest {
    /**
     * The cached value of the '{@link #getHeaders() <em>Headers</em>}' map.
     * <!-- begin-user-doc -->
@@ -82,8 +81,7 @@ public class ManifestImpl extends AbstractSectionImpl implements Manifest
     * 
     * @generated NOT
     */
-   protected ManifestImpl()
-   {
+   protected ManifestImpl() {
       super();
       setHeader(HeaderName.MANIFEST_VERSION, "1.0");
    }
@@ -95,8 +93,7 @@ public class ManifestImpl extends AbstractSectionImpl implements Manifest
     * @generated
     */
    @Override
-   protected EClass eStaticClass()
-   {
+   protected EClass eStaticClass() {
       return ManifestPackage.Literals.MANIFEST;
    }
 
@@ -106,49 +103,38 @@ public class ManifestImpl extends AbstractSectionImpl implements Manifest
     * 
     * @generated NOT
     */
-   public EMap<String, String> getHeaders()
-   {
-      if (headers == null)
-      {
+   public EMap<String, String> getHeaders() {
+      if (headers == null) {
          headers = new EcoreEMap<String, String>(ManifestPackage.Literals.HEADER_ENTRY, HeaderEntryImpl.class, this,
-            ManifestPackage.MANIFEST__HEADERS, ManifestPackage.HEADER_ENTRY__MANIFEST)
-         {
+            ManifestPackage.MANIFEST__HEADERS, ManifestPackage.HEADER_ENTRY__MANIFEST) {
             private static final long serialVersionUID = 1L;
 
             @Override
-            protected boolean useEqualsForKey()
-            {
+            protected boolean useEqualsForKey() {
                return true;
             }
 
             @Override
-            protected boolean useEqualsForValue()
-            {
+            protected boolean useEqualsForValue() {
                return true;
             }
 
             @Override
-            protected int hashOf(Object key)
-            {
+            protected int hashOf(Object key) {
                return key == null ? 0 : normalize(key).hashCode();
             }
 
             @Override
-            protected int entryIndexForKey(int index, int hash, Object key)
-            {
-               if (useEqualsForKey())
-               {
+            protected int entryIndexForKey(int index, int hash, Object key) {
+               if (useEqualsForKey()) {
                   BasicEList<Entry<String, String>> eList = entryData[index];
-                  if (eList != null)
-                  {
+                  if (eList != null) {
                      Object[] entries = eList.data();
                      int size = eList.size();
-                     for (int j = 0; j < size; ++j)
-                     {
+                     for (int j = 0; j < size; ++j) {
                         @SuppressWarnings("unchecked")
                         Entry<String, String> entry = (Entry<String, String>) entries[j];
-                        if (entry.getHash() == hash && keyEquals(key, entry.getKey()))
-                        {
+                        if (entry.getHash() == hash && keyEquals(key, entry.getKey())) {
                            return j;
                         }
                      }
@@ -159,21 +145,16 @@ public class ManifestImpl extends AbstractSectionImpl implements Manifest
             }
 
             @Override
-            protected Entry<String, String> entryForKey(int index, int hash, Object key)
-            {
-               if (useEqualsForKey())
-               {
+            protected Entry<String, String> entryForKey(int index, int hash, Object key) {
+               if (useEqualsForKey()) {
                   BasicEList<Entry<String, String>> eList = entryData[index];
-                  if (eList != null)
-                  {
+                  if (eList != null) {
                      Object[] entries = eList.data();
                      int size = eList.size();
-                     for (int j = 0; j < size; ++j)
-                     {
+                     for (int j = 0; j < size; ++j) {
                         @SuppressWarnings("unchecked")
                         Entry<String, String> entry = (Entry<String, String>) entries[j];
-                        if (entry.getHash() == hash && keyEquals(key, entry.getKey()))
-                        {
+                        if (entry.getHash() == hash && keyEquals(key, entry.getKey())) {
                            return entry;
                         }
                      }
@@ -183,15 +164,11 @@ public class ManifestImpl extends AbstractSectionImpl implements Manifest
                throw new IllegalStateException();
             }
 
-            public int indexOfKey(Object key)
-            {
-               if (useEqualsForKey())
-               {
-                  for (int i = 0, size = delegateEList.size(); i < size; ++i)
-                  {
+            public int indexOfKey(Object key) {
+               if (useEqualsForKey()) {
+                  for (int i = 0, size = delegateEList.size(); i < size; ++i) {
                      Entry<String, String> entry = delegateEList.get(i);
-                     if (keyEquals(key, entry.getKey()))
-                     {
+                     if (keyEquals(key, entry.getKey())) {
                         return i;
                      }
                   }
@@ -200,30 +177,24 @@ public class ManifestImpl extends AbstractSectionImpl implements Manifest
                throw new IllegalStateException();
             }
 
-            private boolean keyEquals(Object key, Object key2)
-            {
-               if (key == null)
-               {
+            private boolean keyEquals(Object key, Object key2) {
+               if (key == null) {
                   return key2 == null;
                }
-               if (key2 == null)
-               {
+               if (key2 == null) {
                   return false;
                }
                return normalize(key).equals(normalize(key2));
             }
 
-            private String normalize(Object key)
-            {
+            private String normalize(Object key) {
                return key.toString().toLowerCase();
             }
 
             @Override
-            public boolean add(java.util.Map.Entry<String, String> object)
-            {
+            public boolean add(java.util.Map.Entry<String, String> object) {
                final Header header = getHeader(object.getKey());
-               if (header == null)
-               {
+               if (header == null) {
                   return super.add(object);
                }
                header.setValue(object.getValue());
@@ -231,45 +202,36 @@ public class ManifestImpl extends AbstractSectionImpl implements Manifest
             }
 
             @Override
-            public void add(int index, java.util.Map.Entry<String, String> object)
-            {
+            public void add(int index, java.util.Map.Entry<String, String> object) {
                throw new UnsupportedOperationException();
             }
 
             @Override
-            public boolean addAll(int index, Collection<? extends java.util.Map.Entry<String, String>> collection)
-            {
+            public boolean addAll(int index, Collection<? extends java.util.Map.Entry<String, String>> collection) {
                throw new UnsupportedOperationException();
             }
 
             @Override
-            public boolean addAllUnique(int index, Collection<? extends java.util.Map.Entry<String, String>> collection)
-            {
+            public boolean addAllUnique(int index, Collection<? extends java.util.Map.Entry<String, String>> collection) {
                throw new UnsupportedOperationException();
             }
 
             @Override
-            public boolean addAll(Collection<? extends java.util.Map.Entry<String, String>> collection)
-            {
+            public boolean addAll(Collection<? extends java.util.Map.Entry<String, String>> collection) {
                boolean changed = false;
                final List<java.util.Map.Entry<String, String>> uniques = new ArrayList<java.util.Map.Entry<String, String>>();
-               for (java.util.Map.Entry<String, String> entry : collection)
-               {
+               for (java.util.Map.Entry<String, String> entry : collection) {
                   final Header header = getHeader(entry.getKey());
-                  if (header != null)
-                  {
+                  if (header != null) {
                      header.setValue(entry.getValue());
                      changed = true;
                   }
-                  else
-                  {
+                  else {
                      uniques.add(entry);
                   }
                }
-               if (!uniques.isEmpty())
-               {
-                  if (super.addAll(uniques))
-                  {
+               if (!uniques.isEmpty()) {
+                  if (super.addAll(uniques)) {
                      changed = true;
                   }
                }
@@ -277,27 +239,21 @@ public class ManifestImpl extends AbstractSectionImpl implements Manifest
             }
 
             @Override
-            public boolean addAllUnique(Collection<? extends java.util.Map.Entry<String, String>> collection)
-            {
+            public boolean addAllUnique(Collection<? extends java.util.Map.Entry<String, String>> collection) {
                boolean changed = false;
                final List<java.util.Map.Entry<String, String>> uniques = new ArrayList<java.util.Map.Entry<String, String>>();
-               for (java.util.Map.Entry<String, String> entry : collection)
-               {
+               for (java.util.Map.Entry<String, String> entry : collection) {
                   final Header header = getHeader(entry.getKey());
-                  if (header != null)
-                  {
+                  if (header != null) {
                      header.setValue(entry.getValue());
                      changed = true;
                   }
-                  else
-                  {
+                  else {
                      uniques.add(entry);
                   }
                }
-               if (!uniques.isEmpty())
-               {
-                  if (super.addAllUnique(uniques))
-                  {
+               if (!uniques.isEmpty()) {
+                  if (super.addAllUnique(uniques)) {
                      changed = true;
                   }
                }
@@ -315,10 +271,8 @@ public class ManifestImpl extends AbstractSectionImpl implements Manifest
     * 
     * @generated
     */
-   public EMap<String, EMap<String, String>> getSections()
-   {
-      if (sections == null)
-      {
+   public EMap<String, EMap<String, String>> getSections() {
+      if (sections == null) {
          sections = new EcoreEMap<String, EMap<String, String>>(ManifestPackage.Literals.SECTION_ENTRY,
             SectionEntryImpl.class, this, ManifestPackage.MANIFEST__SECTIONS);
       }
@@ -331,11 +285,9 @@ public class ManifestImpl extends AbstractSectionImpl implements Manifest
     * 
     * @generated NOT
     */
-   public ManifestSection getSection(String name, boolean createOnDemand)
-   {
+   public ManifestSection getSection(String name, boolean createOnDemand) {
       int idx = getSections().indexOfKey(name);
-      if (idx < 0 && createOnDemand)
-      {
+      if (idx < 0 && createOnDemand) {
          getSections().put(name, new BasicEMap<String, String>());
          idx = getSections().indexOfKey(name);
       }
@@ -348,8 +300,7 @@ public class ManifestImpl extends AbstractSectionImpl implements Manifest
     * 
     * @generated NOT
     */
-   public void setHeader(HeaderName name, String value)
-   {
+   public void setHeader(HeaderName name, String value) {
       setHeader(name.getLiteral(), value);
    }
 
@@ -359,8 +310,7 @@ public class ManifestImpl extends AbstractSectionImpl implements Manifest
     * 
     * @generated NOT
     */
-   public void setHeader(HeaderName name, Object parsedValue)
-   {
+   public void setHeader(HeaderName name, Object parsedValue) {
       setHeader(name.getLiteral(), parsedValue);
    }
 
@@ -370,8 +320,7 @@ public class ManifestImpl extends AbstractSectionImpl implements Manifest
     * 
     * @generated NOT
     */
-   public Header getHeader(HeaderName name)
-   {
+   public Header getHeader(HeaderName name) {
       return getHeader(name.getLiteral());
    }
 
@@ -381,8 +330,7 @@ public class ManifestImpl extends AbstractSectionImpl implements Manifest
     * 
     * @generated NOT
     */
-   public String getHeaderValue(HeaderName name)
-   {
+   public String getHeaderValue(HeaderName name) {
       return getHeaderValue(name.getLiteral());
    }
 
@@ -392,8 +340,7 @@ public class ManifestImpl extends AbstractSectionImpl implements Manifest
     * 
     * @generated NOT
     */
-   public Object getParsedHeaderValue(HeaderName name)
-   {
+   public Object getParsedHeaderValue(HeaderName name) {
       return getParsedHeaderValue(name.getLiteral());
    }
 
@@ -405,10 +352,8 @@ public class ManifestImpl extends AbstractSectionImpl implements Manifest
     */
    @SuppressWarnings("unchecked")
    @Override
-   public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs)
-   {
-      switch (featureID)
-      {
+   public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+      switch (featureID) {
          case ManifestPackage.MANIFEST__HEADERS :
             return ((InternalEList<InternalEObject>) (InternalEList<?>) getHeaders()).basicAdd(otherEnd, msgs);
       }
@@ -422,10 +367,8 @@ public class ManifestImpl extends AbstractSectionImpl implements Manifest
     * @generated
     */
    @Override
-   public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
-   {
-      switch (featureID)
-      {
+   public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+      switch (featureID) {
          case ManifestPackage.MANIFEST__HEADERS :
             return ((InternalEList<?>) getHeaders()).basicRemove(otherEnd, msgs);
          case ManifestPackage.MANIFEST__SECTIONS :
@@ -441,10 +384,8 @@ public class ManifestImpl extends AbstractSectionImpl implements Manifest
     * @generated
     */
    @Override
-   public Object eGet(int featureID, boolean resolve, boolean coreType)
-   {
-      switch (featureID)
-      {
+   public Object eGet(int featureID, boolean resolve, boolean coreType) {
+      switch (featureID) {
          case ManifestPackage.MANIFEST__HEADERS :
             if (coreType)
                return getHeaders();
@@ -466,10 +407,8 @@ public class ManifestImpl extends AbstractSectionImpl implements Manifest
     * @generated
     */
    @Override
-   public void eSet(int featureID, Object newValue)
-   {
-      switch (featureID)
-      {
+   public void eSet(int featureID, Object newValue) {
+      switch (featureID) {
          case ManifestPackage.MANIFEST__HEADERS :
             ((EStructuralFeature.Setting) getHeaders()).set(newValue);
             return;
@@ -487,10 +426,8 @@ public class ManifestImpl extends AbstractSectionImpl implements Manifest
     * @generated
     */
    @Override
-   public void eUnset(int featureID)
-   {
-      switch (featureID)
-      {
+   public void eUnset(int featureID) {
+      switch (featureID) {
          case ManifestPackage.MANIFEST__HEADERS :
             getHeaders().clear();
             return;
@@ -508,10 +445,8 @@ public class ManifestImpl extends AbstractSectionImpl implements Manifest
     * @generated
     */
    @Override
-   public boolean eIsSet(int featureID)
-   {
-      switch (featureID)
-      {
+   public boolean eIsSet(int featureID) {
+      switch (featureID) {
          case ManifestPackage.MANIFEST__HEADERS :
             return headers != null && !headers.isEmpty();
          case ManifestPackage.MANIFEST__SECTIONS :
@@ -521,11 +456,9 @@ public class ManifestImpl extends AbstractSectionImpl implements Manifest
    }
 
    @Override
-   public String toString()
-   {
+   public String toString() {
       StringBuilder sb = new StringBuilder();
-      for (Entry<String, String> entry : headers)
-      {
+      for (Entry<String, String> entry : headers) {
          sb.append(entry);
          sb.append(EOL);
       }

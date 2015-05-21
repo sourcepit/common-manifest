@@ -25,12 +25,10 @@ import org.junit.Test;
 /**
  * @author Bernd Vogt <bernd.vogt@sourcepit.org>
  */
-public class BundleRequirementTest
-{
+public class BundleRequirementTest {
 
    @Test
-   public void testSetVersionRange()
-   {
+   public void testSetVersionRange() {
       BundleRequirement packageExport = BundleManifestFactory.eINSTANCE.createBundleRequirement();
       assertThat(packageExport.getBundleVersion(), IsNull.nullValue());
       assertThat(packageExport.getParameter("bundle-version"), IsNull.nullValue());

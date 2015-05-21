@@ -23,8 +23,7 @@ package org.sourcepit.common.manifest.osgi;
  * @model
  * @generated
  */
-public interface BundleLicense extends Parameterized
-{
+public interface BundleLicense extends Parameterized {
    /**
     * Returns the value of the '<em><b>Name</b></em>' attribute.
     * <!-- begin-user-doc -->

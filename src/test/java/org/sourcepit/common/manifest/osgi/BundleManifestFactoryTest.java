@@ -24,14 +24,12 @@ import org.junit.Test;
 /**
  * @author Bernd Vogt <bernd.vogt@sourcepit.org>
  */
-public class BundleManifestFactoryTest
-{
+public class BundleManifestFactoryTest {
    private BundleManifestFactory efactory = BundleManifestFactory.eINSTANCE;
    private BundleManifestPackage ePackage = BundleManifestPackage.eINSTANCE;
 
    @Test
-   public void testCreateFromString()
-   {
+   public void testCreateFromString() {
       Version version = (Version) efactory.createFromString(ePackage.getVersion(), "0.1.0.SNAPSHOT");
       assertThat(version, IsEqual.equalTo(Version.parse("0.1.0.SNAPSHOT")));
 
@@ -40,8 +38,7 @@ public class BundleManifestFactoryTest
    }
 
    @Test
-   public void testConvertToString()
-   {
+   public void testConvertToString() {
       assertThat(efactory.convertToString(ePackage.getVersion(), Version.parse("1.0")), IsEqual.equalTo("1.0"));
 
       assertThat(efactory.convertToString(ePackage.getVersionRange(), VersionRange.parse("[1,2)")),

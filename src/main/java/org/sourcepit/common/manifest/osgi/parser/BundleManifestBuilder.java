@@ -25,21 +25,17 @@ import org.sourcepit.common.manifest.parser.ManifestBuilder;
 /**
  * @author Bernd
  */
-public class BundleManifestBuilder extends ManifestBuilder
-{
-   public BundleManifestBuilder()
-   {
+public class BundleManifestBuilder extends ManifestBuilder {
+   public BundleManifestBuilder() {
       super();
    }
 
-   public BundleManifestBuilder(Map<?, ?> options)
-   {
+   public BundleManifestBuilder(Map<?, ?> options) {
       super(options);
    }
 
    @Override
-   protected Manifest createManifest()
-   {
+   protected Manifest createManifest() {
       return BundleManifestFactory.eINSTANCE.createBundleManifest();
    }
 }

@@ -30,119 +30,93 @@ import org.junit.Test;
 /**
  * @author Bernd
  */
-public class VersionRangeTest extends AbstractVersionCompatibilityTest
-{
+public class VersionRangeTest extends AbstractVersionCompatibilityTest {
    private final Class<?>[] rangeTypes = new Class[] { com.springsource.util.osgi.VersionRange.class,
       org.eclipse.osgi.service.resolver.VersionRange.class, VersionRange.class };
 
    @Test
-   public void testInvalidRange()
-   {
-      for (int i = 0; i < rangeTypes.length; i++)
-      {
+   public void testInvalidRange() {
+      for (int i = 0; i < rangeTypes.length; i++) {
          testInvalidRange(rangeTypes[i], versionTypes[i]);
       }
    }
 
-   protected <R, V> void testInvalidRange(Class<R> rangeType, Class<V> versionType)
-   {
-      try
-      {
+   protected <R, V> void testInvalidRange(Class<R> rangeType, Class<V> versionType) {
+      try {
          parseRange(rangeType, "[1.2.3]");
          fail();
       }
-      catch (IllegalArgumentException e)
-      { // noop
+      catch (IllegalArgumentException e) { // noop
       }
 
-      try
-      {
+      try {
          parseRange(rangeType, "<1.2.3]");
          fail();
       }
-      catch (IllegalArgumentException e)
-      { // noop
+      catch (IllegalArgumentException e) { // noop
       }
 
-      try
-      {
+      try {
          parseRange(rangeType, "[a,b]");
          fail();
       }
-      catch (IllegalArgumentException e)
-      { // noop
+      catch (IllegalArgumentException e) { // noop
       }
    }
 
    @Test
-   public void testInviniteRange()
-   {
-      for (int i = 0; i < rangeTypes.length; i++)
-      {
+   public void testInviniteRange() {
+      for (int i = 0; i < rangeTypes.length; i++) {
          testInviniteRange(rangeTypes[i], versionTypes[i]);
       }
    }
 
-   private <R, V> void testInviniteRange(Class<R> rangeType, Class<V> versionType)
-   {
+   private <R, V> void testInviniteRange(Class<R> rangeType, Class<V> versionType) {
       R invinite = newInviniteRange(rangeType);
-      if (VersionRange.class == rangeType)
-      {
+      if (VersionRange.class == rangeType) {
          assertThat("0", IsEqual.equalTo(toParseString(invinite)));
       }
-      else
-      {
+      else {
          assertThat("0.0.0", IsEqual.equalTo(toParseString(invinite)));
       }
    }
 
    @SuppressWarnings("unchecked")
-   private <R> R newInviniteRange(Class<R> rangeType)
-   {
-      if (VersionRange.class == rangeType)
-      {
+   private <R> R newInviniteRange(Class<R> rangeType) {
+      if (VersionRange.class == rangeType) {
          return (R) VersionRange.INFINITE_RANGE;
       }
-      if (org.eclipse.osgi.service.resolver.VersionRange.class == rangeType)
-      {
+      if (org.eclipse.osgi.service.resolver.VersionRange.class == rangeType) {
          return (R) new org.eclipse.osgi.service.resolver.VersionRange(org.osgi.framework.Version.emptyVersion, true,
             null, false);
       }
-      if (com.springsource.util.osgi.VersionRange.class == rangeType)
-      {
+      if (com.springsource.util.osgi.VersionRange.class == rangeType) {
          return (R) new com.springsource.util.osgi.VersionRange(null);
       }
       throw new IllegalArgumentException();
    }
 
-   private <R> String toParseString(R range)
-   {
-      if (range instanceof VersionRange)
-      {
+   private <R> String toParseString(R range) {
+      if (range instanceof VersionRange) {
          return ((VersionRange) range).toString();
       }
-      if (range instanceof org.eclipse.osgi.service.resolver.VersionRange)
-      {
+      if (range instanceof org.eclipse.osgi.service.resolver.VersionRange) {
          return ((org.eclipse.osgi.service.resolver.VersionRange) range).toString();
       }
-      if (range instanceof com.springsource.util.osgi.VersionRange)
-      {
+      if (range instanceof com.springsource.util.osgi.VersionRange) {
          return ((com.springsource.util.osgi.VersionRange) range).toParseString();
       }
       throw new IllegalArgumentException();
    }
 
    @Test
-   public void testRange()
-   {
-      for (int i = 0; i < rangeTypes.length; i++)
-      {
+   public void testRange() {
+      for (int i = 0; i < rangeTypes.length; i++) {
          testRange(rangeTypes[i], versionTypes[i]);
       }
    }
 
-   protected <R, V> void testRange(Class<R> rangeType, Class<V> versionType)
-   {
+   protected <R, V> void testRange(Class<R> rangeType, Class<V> versionType) {
       R range = parseRange(rangeType, null);
       assertInfinite(versionType, range);
 
@@ -271,8 +245,7 @@ public class VersionRangeTest extends AbstractVersionCompatibilityTest
    }
 
    @Test
-   public void testIntersect()
-   {
+   public void testIntersect() {
       VersionRange r1 = VersionRange.parse("[1,3]");
       VersionRange r2 = VersionRange.parse("[2,4]");
       VersionRange r3 = VersionRange.intersect(r1, r2);
@@ -290,41 +263,34 @@ public class VersionRangeTest extends AbstractVersionCompatibilityTest
 
       r1 = VersionRange.parse("[1,2]"); // conflict
       r2 = VersionRange.parse("[3,4]");
-      try
-      {
+      try {
          VersionRange.intersect(r1, r2);
          fail();
       }
-      catch (IllegalArgumentException e)
-      { // as expected
+      catch (IllegalArgumentException e) { // as expected
       }
 
       r1 = VersionRange.parse("[1,2)"); // conflict
       r2 = VersionRange.parse("[2,3]");
-      try
-      {
+      try {
          VersionRange.intersect(r1, r2);
          fail();
       }
-      catch (IllegalArgumentException e)
-      { // as expected
+      catch (IllegalArgumentException e) { // as expected
       }
 
       r1 = VersionRange.parse("[1,1]"); // conflict
       r2 = VersionRange.parse("(1,2]");
-      try
-      {
+      try {
          VersionRange.intersect(r1, r2);
          fail();
       }
-      catch (IllegalArgumentException e)
-      { // as expected
+      catch (IllegalArgumentException e) { // as expected
       }
    }
 
    @Test
-   public void testToString()
-   {
+   public void testToString() {
       String string = "1";
       VersionRange version = VersionRange.parse(string);
       assertThat(toParseString(version), IsEqual.equalTo(string));
@@ -366,8 +332,7 @@ public class VersionRangeTest extends AbstractVersionCompatibilityTest
       assertThat(toParseString(version), IsEqual.equalTo(string));
    }
 
-   protected <R, V> void assertInfinite(Class<V> versionType, R range)
-   {
+   protected <R, V> void assertInfinite(Class<V> versionType, R range) {
       // INFINITE_RANGE
       assertThat(range, IsNull.notNullValue());
       assertTrue(includes(range, parse(versionType, "0.0.0")));
@@ -375,98 +340,76 @@ public class VersionRangeTest extends AbstractVersionCompatibilityTest
    }
 
    @SuppressWarnings("unchecked")
-   protected <V> V getLowVersion(Object range, Class<V> versionType)
-   {
-      if (range instanceof VersionRange)
-      {
+   protected <V> V getLowVersion(Object range, Class<V> versionType) {
+      if (range instanceof VersionRange) {
          return (V) ((VersionRange) range).getLowVersion();
       }
-      else if (range instanceof org.eclipse.osgi.service.resolver.VersionRange)
-      {
+      else if (range instanceof org.eclipse.osgi.service.resolver.VersionRange) {
          return (V) ((org.eclipse.osgi.service.resolver.VersionRange) range).getMinimum();
       }
       throw new IllegalArgumentException();
    }
 
-   protected boolean isLowInclusive(Object range)
-   {
-      if (range instanceof VersionRange)
-      {
+   protected boolean isLowInclusive(Object range) {
+      if (range instanceof VersionRange) {
          return ((VersionRange) range).isLowInclusive();
       }
-      else if (range instanceof org.eclipse.osgi.service.resolver.VersionRange)
-      {
+      else if (range instanceof org.eclipse.osgi.service.resolver.VersionRange) {
          return ((org.eclipse.osgi.service.resolver.VersionRange) range).getIncludeMinimum();
       }
       throw new IllegalArgumentException();
    }
 
    @SuppressWarnings("unchecked")
-   protected <V> V getHighVersion(Object range, Class<V> versionType)
-   {
-      if (range instanceof VersionRange)
-      {
+   protected <V> V getHighVersion(Object range, Class<V> versionType) {
+      if (range instanceof VersionRange) {
          return (V) ((VersionRange) range).getHighVersion();
       }
-      else if (range instanceof org.eclipse.osgi.service.resolver.VersionRange)
-      {
+      else if (range instanceof org.eclipse.osgi.service.resolver.VersionRange) {
          return (V) ((org.eclipse.osgi.service.resolver.VersionRange) range).getRight();
       }
       throw new IllegalArgumentException();
    }
 
-   protected boolean isHighInclusive(Object range)
-   {
-      if (range instanceof VersionRange)
-      {
+   protected boolean isHighInclusive(Object range) {
+      if (range instanceof VersionRange) {
          return ((VersionRange) range).isHighInclusive();
       }
-      else if (range instanceof org.eclipse.osgi.service.resolver.VersionRange)
-      {
+      else if (range instanceof org.eclipse.osgi.service.resolver.VersionRange) {
          return ((org.eclipse.osgi.service.resolver.VersionRange) range).getIncludeMinimum();
       }
       throw new IllegalArgumentException();
    }
 
-   protected boolean includes(Object range, Object version)
-   {
-      if (range instanceof VersionRange)
-      {
+   protected boolean includes(Object range, Object version) {
+      if (range instanceof VersionRange) {
          return ((VersionRange) range).includes((Version) version);
       }
-      else if (range instanceof org.eclipse.osgi.service.resolver.VersionRange)
-      {
-         return ((org.eclipse.osgi.service.resolver.VersionRange) range)
-            .isIncluded((org.osgi.framework.Version) version);
+      else if (range instanceof org.eclipse.osgi.service.resolver.VersionRange) {
+         return ((org.eclipse.osgi.service.resolver.VersionRange) range).isIncluded((org.osgi.framework.Version) version);
       }
-      else if (range instanceof com.springsource.util.osgi.VersionRange)
-      {
+      else if (range instanceof com.springsource.util.osgi.VersionRange) {
          return ((com.springsource.util.osgi.VersionRange) range).includes((org.osgi.framework.Version) version);
       }
       throw new IllegalArgumentException();
    }
 
    @SuppressWarnings("unchecked")
-   protected <V> V parseRange(Class<V> rangeType, String range)
-   {
-      if (VersionRange.class == rangeType)
-      {
+   protected <V> V parseRange(Class<V> rangeType, String range) {
+      if (VersionRange.class == rangeType) {
          return (V) VersionRange.parse(range);
       }
-      if (org.eclipse.osgi.service.resolver.VersionRange.class == rangeType)
-      {
+      if (org.eclipse.osgi.service.resolver.VersionRange.class == rangeType) {
          return (V) new org.eclipse.osgi.service.resolver.VersionRange(range);
       }
-      if (com.springsource.util.osgi.VersionRange.class == rangeType)
-      {
+      if (com.springsource.util.osgi.VersionRange.class == rangeType) {
          return (V) new com.springsource.util.osgi.VersionRange(range);
       }
       throw new IllegalArgumentException();
    }
 
    @Test
-   public void testInfiniteEquals() throws Exception
-   {
+   public void testInfiniteEquals() throws Exception {
       VersionRange range = VersionRange.parse("0");
       assertEquals(VersionRange.INFINITE_RANGE, range);
 

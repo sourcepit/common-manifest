@@ -26,41 +26,33 @@ import org.sourcepit.common.manifest.ManifestSection;
 /**
  * @author Bernd
  */
-public class ManifestBuilder extends AbstractManifestVisitor
-{
+public class ManifestBuilder extends AbstractManifestVisitor {
    protected Manifest manifest;
 
    protected AbstractSection current;
 
    protected Map<?, ?> options;
 
-   public ManifestBuilder()
-   {
+   public ManifestBuilder() {
       this(null);
    }
 
-   public ManifestBuilder(Map<?, ?> options)
-   {
+   public ManifestBuilder(Map<?, ?> options) {
       this.options = options;
    }
 
-   public Manifest getManifest()
-   {
+   public Manifest getManifest() {
       return manifest;
    }
 
    @Override
-   public void visitSection(boolean isMainSection, String name)
-   {
-      if (isMainSection)
-      {
+   public void visitSection(boolean isMainSection, String name) {
+      if (isMainSection) {
          manifest = createManifest();
          current = manifest;
       }
-      else
-      {
-         if (manifest == null)
-         {
+      else {
+         if (manifest == null) {
             manifest = createManifest();
          }
          current = createSection(name);
@@ -68,27 +60,22 @@ public class ManifestBuilder extends AbstractManifestVisitor
    }
 
    @Override
-   public void visitHeader(String name, String value)
-   {
+   public void visitHeader(String name, String value) {
       final Map<?, ?> oldOptions = HeaderParserRegistry.getCurrentOptions();
-      try
-      {
+      try {
          HeaderParserRegistry.setCurrentOptions(options);
          current.getHeaders().put(name, value);
       }
-      finally
-      {
+      finally {
          HeaderParserRegistry.setCurrentOptions(oldOptions);
       }
    }
 
-   protected Manifest createManifest()
-   {
+   protected Manifest createManifest() {
       return ManifestFactory.eINSTANCE.createManifest();
    }
 
-   protected ManifestSection createSection(String name)
-   {
+   protected ManifestSection createSection(String name) {
       return manifest.getSection(name, true);
    }
 }

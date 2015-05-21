@@ -47,10 +47,8 @@ import org.sourcepit.common.manifest.parser.HeaderParser;
  *
  * @generated
  */
-public abstract class ParseableImpl extends EObjectImpl implements Parseable
-{
-   static
-   {
+public abstract class ParseableImpl extends EObjectImpl implements Parseable {
+   static {
       HeaderParser.Registry.INSTANCE.addParser(new BundleHeaderParserImpl());
    }
 
@@ -104,98 +102,77 @@ public abstract class ParseableImpl extends EObjectImpl implements Parseable
     * 
     * @generated NOT
     */
-   protected ParseableImpl()
-   {
+   protected ParseableImpl() {
       super();
-      eAdapters().add(new EContentAdapter()
-      {
+      eAdapters().add(new EContentAdapter() {
          private boolean on = true;
 
-         public void notifyChanged(Notification notification)
-         {
+         public void notifyChanged(Notification notification) {
             super.notifyChanged(notification);
-            if (on)
-            {
-               try
-               {
+            if (on) {
+               try {
                   on = false;
                   final Object feature = notification.getFeature();
-                  if (ManifestPackage.eINSTANCE.getParseable_Value().equals(feature))
-                  {
-                     setParsedValue(notification.getNewStringValue() == null ? null : HeaderParser.INSTANCE
-                        .parse(ParseableImpl.this));
+                  if (ManifestPackage.eINSTANCE.getParseable_Value().equals(feature)) {
+                     setParsedValue(notification.getNewStringValue() == null
+                        ? null
+                        : HeaderParser.INSTANCE.parse(ParseableImpl.this));
                   }
                   else if (ManifestPackage.eINSTANCE.getParseable_ParsedValue().equals(feature)
-                     || isFeatureFromParsedValue(notification))
-                  {
-                     setValue(notification.getNewValue() == null ? null : HeaderParser.INSTANCE
-                        .toValueString(ParseableImpl.this));
+                     || isFeatureFromParsedValue(notification)) {
+                     setValue(notification.getNewValue() == null
+                        ? null
+                        : HeaderParser.INSTANCE.toValueString(ParseableImpl.this));
                   }
                }
-               finally
-               {
+               finally {
                   on = true;
                }
             }
          }
 
-         protected boolean isFeatureFromParsedValue(Notification notification)
-         {
+         protected boolean isFeatureFromParsedValue(Notification notification) {
             return notification.getFeature() != null && ParseableImpl.this != notification.getNotifier()
                && !eClass().getEAllStructuralFeatures().contains(notification.getFeature());
          };
 
          @Override
-         protected void selfAdapt(Notification notification)
-         {
+         protected void selfAdapt(Notification notification) {
             final Object notifier = notification.getNotifier();
-            if (notifier instanceof EObject)
-            {
+            if (notifier instanceof EObject) {
                final Object feature = notification.getFeature();
-               if (ManifestPackage.eINSTANCE.getParseable_ParsedValue().equals(feature))
-               {
+               if (ManifestPackage.eINSTANCE.getParseable_ParsedValue().equals(feature)) {
                   if (notification.getEventType() == Notification.SET
                      || notification.getEventType() == Notification.REMOVE
                      || notification.getEventType() == Notification.ADD
                      || notification.getEventType() == Notification.REMOVE_MANY
-                     || notification.getEventType() == Notification.ADD_MANY)
-                  {
+                     || notification.getEventType() == Notification.ADD_MANY) {
                      final Object oldValue = notification.getOldValue();
-                     if (oldValue != null)
-                     {
-                        if (oldValue instanceof Collection)
-                        {
+                     if (oldValue != null) {
+                        if (oldValue instanceof Collection) {
                            Collection<?> oldCollection = (Collection<?>) oldValue;
-                           for (Object oldElement : oldCollection)
-                           {
-                              if (oldElement instanceof Notifier)
-                              {
+                           for (Object oldElement : oldCollection) {
+                              if (oldElement instanceof Notifier) {
                                  removeAdapter((Notifier) oldElement);
                               }
                            }
                         }
-                        else if (oldValue instanceof Notifier)
-                        {
+                        else if (oldValue instanceof Notifier) {
                            removeAdapter((Notifier) oldValue);
                         }
                      }
 
                      final Object newValue = notification.getNewValue();
-                     if (newValue != null)
-                     {
-                        if (newValue instanceof Collection)
-                        {
+                     if (newValue != null) {
+                        if (newValue instanceof Collection) {
                            Collection<?> newCollection = (Collection<?>) newValue;
-                           for (Object newElement : newCollection)
-                           {
-                              if (newElement instanceof Notifier)
-                              {
+                           for (Object newElement : newCollection) {
+                              if (newElement instanceof Notifier) {
                                  addAdapter((Notifier) newElement);
                               }
                            }
                         }
-                        else if (newValue instanceof Notifier)
-                        {
+                        else if (newValue instanceof Notifier) {
                            addAdapter((Notifier) newValue);
                         }
                      }
@@ -214,8 +191,7 @@ public abstract class ParseableImpl extends EObjectImpl implements Parseable
     * @generated
     */
    @Override
-   protected EClass eStaticClass()
-   {
+   protected EClass eStaticClass() {
       return ManifestPackage.Literals.PARSEABLE;
    }
 
@@ -225,10 +201,8 @@ public abstract class ParseableImpl extends EObjectImpl implements Parseable
     * 
     * @generated NOT
     */
-   public Object getParsedValue()
-   {
-      if (parsedValue == null && value != null)
-      {
+   public Object getParsedValue() {
+      if (parsedValue == null && value != null) {
          parsedValue = HeaderParser.INSTANCE.parse(this);
       }
       return parsedValue;
@@ -240,8 +214,7 @@ public abstract class ParseableImpl extends EObjectImpl implements Parseable
     * 
     * @generated NOT
     */
-   public void setParsedValue(Object newParsedValue)
-   {
+   public void setParsedValue(Object newParsedValue) {
       Object oldParsedValue = parsedValue;
       parsedValue = wrapParsedValue(newParsedValue);
       if (eNotificationRequired())
@@ -250,47 +223,38 @@ public abstract class ParseableImpl extends EObjectImpl implements Parseable
    }
 
 
-   protected Object wrapParsedValue(final Object value)
-   {
-      if (value instanceof List)
-      {
+   protected Object wrapParsedValue(final Object value) {
+      if (value instanceof List) {
          if (value instanceof NotifyingList && ParseableImpl.this.equals(((NotifyingList<?>) value).getNotifier())
-            && ManifestPackage.eINSTANCE.getParseable_ParsedValue().equals(((NotifyingList<?>) value).getFeature()))
-         {
+            && ManifestPackage.eINSTANCE.getParseable_ParsedValue().equals(((NotifyingList<?>) value).getFeature())) {
             return value;
          }
-         return new DelegatingNotifyingInternalEListImpl<Object>()
-         {
+         return new DelegatingNotifyingInternalEListImpl<Object>() {
             private static final long serialVersionUID = 1L;
 
             @Override
-            public Object getNotifier()
-            {
+            public Object getNotifier() {
                return ParseableImpl.this;
             }
 
             @Override
-            public int getFeatureID()
-            {
+            public int getFeatureID() {
                return ManifestPackage.PARSEABLE__PARSED_VALUE;
             }
 
             @Override
-            public Object getFeature()
-            {
+            public Object getFeature() {
                return ManifestPackage.eINSTANCE.getParseable_ParsedValue();
             }
 
             @Override
-            protected boolean isNotificationRequired()
-            {
+            protected boolean isNotificationRequired() {
                return ParseableImpl.this.eNotificationRequired();
             }
 
             @SuppressWarnings("unchecked")
             @Override
-            protected List<Object> delegateList()
-            {
+            protected List<Object> delegateList() {
                return (List<Object>) value;
             }
          };
@@ -304,10 +268,8 @@ public abstract class ParseableImpl extends EObjectImpl implements Parseable
     * 
     * @generated NOT
     */
-   public String getValue()
-   {
-      if (value == null && parsedValue != null)
-      {
+   public String getValue() {
+      if (value == null && parsedValue != null) {
          value = HeaderParser.INSTANCE.toValueString(this);
       }
       return value;
@@ -319,8 +281,7 @@ public abstract class ParseableImpl extends EObjectImpl implements Parseable
     * 
     * @generated NOT
     */
-   public String setValue(String newValue)
-   {
+   public String setValue(String newValue) {
       String oldValue = value;
       value = newValue;
       if (eNotificationRequired())
@@ -335,10 +296,8 @@ public abstract class ParseableImpl extends EObjectImpl implements Parseable
     * @generated
     */
    @Override
-   public Object eGet(int featureID, boolean resolve, boolean coreType)
-   {
-      switch (featureID)
-      {
+   public Object eGet(int featureID, boolean resolve, boolean coreType) {
+      switch (featureID) {
          case ManifestPackage.PARSEABLE__PARSED_VALUE :
             return getParsedValue();
          case ManifestPackage.PARSEABLE__VALUE :
@@ -354,10 +313,8 @@ public abstract class ParseableImpl extends EObjectImpl implements Parseable
     * @generated
     */
    @Override
-   public void eSet(int featureID, Object newValue)
-   {
-      switch (featureID)
-      {
+   public void eSet(int featureID, Object newValue) {
+      switch (featureID) {
          case ManifestPackage.PARSEABLE__PARSED_VALUE :
             setParsedValue(newValue);
             return;
@@ -375,10 +332,8 @@ public abstract class ParseableImpl extends EObjectImpl implements Parseable
     * @generated
     */
    @Override
-   public void eUnset(int featureID)
-   {
-      switch (featureID)
-      {
+   public void eUnset(int featureID) {
+      switch (featureID) {
          case ManifestPackage.PARSEABLE__PARSED_VALUE :
             setParsedValue(PARSED_VALUE_EDEFAULT);
             return;
@@ -396,10 +351,8 @@ public abstract class ParseableImpl extends EObjectImpl implements Parseable
     * @generated
     */
    @Override
-   public boolean eIsSet(int featureID)
-   {
-      switch (featureID)
-      {
+   public boolean eIsSet(int featureID) {
+      switch (featureID) {
          case ManifestPackage.PARSEABLE__PARSED_VALUE :
             return PARSED_VALUE_EDEFAULT == null ? parsedValue != null : !PARSED_VALUE_EDEFAULT.equals(parsedValue);
          case ManifestPackage.PARSEABLE__VALUE :
@@ -415,8 +368,7 @@ public abstract class ParseableImpl extends EObjectImpl implements Parseable
     * @generated
     */
    @Override
-   public String toString()
-   {
+   public String toString() {
       if (eIsProxy())
          return super.toString();
 

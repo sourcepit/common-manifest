@@ -21,19 +21,16 @@ import static org.junit.Assert.assertSame;
 
 import org.junit.Test;
 
-public class BundleHeaderNameTest
-{
+public class BundleHeaderNameTest {
    @Test
-   public void testGet()
-   {
+   public void testGet() {
       assertNull(BundleHeaderName.get("foo"));
       assertSame(BundleHeaderName.BUNDLE_SYMBOLICNAME, BundleHeaderName.get("Bundle-SymbolicName"));
       assertSame(BundleHeaderName.BUNDLE_SYMBOLICNAME, BundleHeaderName.get("Bundle-Symbolicname"));
    }
 
    @Test
-   public void testGetByName()
-   {
+   public void testGetByName() {
       assertNull(BundleHeaderName.get("foo"));
       assertNull(BundleHeaderName.getByName("Bundle-SymbolicName"));
       assertSame(BundleHeaderName.BUNDLE_SYMBOLICNAME, BundleHeaderName.getByName("BUNDLE_SYMBOLICNAME"));

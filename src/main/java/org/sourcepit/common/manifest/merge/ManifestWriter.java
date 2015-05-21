@@ -27,8 +27,7 @@ import java.util.jar.Attributes.Name;
 /**
  * @author Bernd Vogt <bernd.vogt@sourcepit.org>
  */
-public class ManifestWriter
-{
+public class ManifestWriter {
    private final DataOutputStream outputStream;
 
    private final BytesByLine bytesByLine;
@@ -39,38 +38,31 @@ public class ManifestWriter
 
    private int section = -1;
 
-   public ManifestWriter(OutputStream outputStream) throws IOException
-   {
+   public ManifestWriter(OutputStream outputStream) throws IOException {
       this(outputStream, BytesByLine._72);
    }
 
-   public ManifestWriter(OutputStream outputStream, BytesByLine bytesByLine) throws IOException
-   {
+   public ManifestWriter(OutputStream outputStream, BytesByLine bytesByLine) throws IOException {
       this(outputStream, bytesByLine, EOL);
    }
 
-   public ManifestWriter(OutputStream outputStream, BytesByLine bytesByLine, String eol) throws IOException
-   {
+   public ManifestWriter(OutputStream outputStream, BytesByLine bytesByLine, String eol) throws IOException {
       isTrue("\r\n".equals(eol) || "\n".equals(eol) || "\r".equals(eol));
       this.outputStream = new DataOutputStream(outputStream);
       this.bytesByLine = bytesByLine;
       this.eol = eol;
    }
 
-   public void startMain(String version) throws IOException
-   {
-      if (main != -1)
-      {
+   public void startMain(String version) throws IOException {
+      if (main != -1) {
          throw new IllegalStateException("Main section already started");
       }
       main = 0;
       attribute(Name.MANIFEST_VERSION.toString(), version);
    }
 
-   public void endMain() throws IOException
-   {
-      if (main != 0)
-      {
+   public void endMain() throws IOException {
+      if (main != 0) {
          throw new IllegalStateException("Main not started");
       }
       outputStream.writeBytes(eol);
@@ -78,15 +70,12 @@ public class ManifestWriter
       main = 1;
    }
 
-   public void startSection(String name) throws IOException
-   {
-      if (main != 1)
-      {
+   public void startSection(String name) throws IOException {
+      if (main != 1) {
          throw new IllegalStateException("Main section not written or closed");
       }
 
-      if (section != -1)
-      {
+      if (section != -1) {
          throw new IllegalStateException("Already started to write a section");
       }
 
@@ -95,10 +84,8 @@ public class ManifestWriter
       attribute("Name", name);
    }
 
-   public void endSection() throws IOException
-   {
-      if (section != 0)
-      {
+   public void endSection() throws IOException {
+      if (section != 0) {
          throw new IllegalStateException("Section not started");
       }
       outputStream.writeBytes(eol);
@@ -107,29 +94,24 @@ public class ManifestWriter
    }
 
    @SuppressWarnings("deprecation")
-   public void attribute(String name, String value) throws IOException
-   {
-      if (main != 0 && section != 0)
-      {
+   public void attribute(String name, String value) throws IOException {
+      if (main != 0 && section != 0) {
          throw new IllegalStateException("Neither main nor indivisual section started");
       }
 
       StringBuilder line = new StringBuilder(new Name(name).toString()); // validate name
       line.append(": ");
 
-      if (value == null)
-      {
+      if (value == null) {
          line.append(value);
          line.append(eol);
          return;
       }
 
       final String[] lines = value.split(eol + " "); // preformated lines
-      for (int i = 0; i < lines.length; i++)
-      {
+      for (int i = 0; i < lines.length; i++) {
          String v = lines[i];
-         if (i > 0)
-         {
+         if (i > 0) {
             line.append(" ");
          }
          byte[] vb = v.getBytes("UTF8");
@@ -137,8 +119,7 @@ public class ManifestWriter
          line.append(v);
          line.append(eol);
 
-         switch (bytesByLine)
-         {
+         switch (bytesByLine) {
             case UNLIMITED :
                break;
             case _512 :
@@ -157,15 +138,12 @@ public class ManifestWriter
       }
    }
 
-   private void makeSafe(StringBuilder line, int maxBytes)
-   {
+   private void makeSafe(StringBuilder line, int maxBytes) {
       int length = line.length();
-      if (length > maxBytes)
-      {
+      if (length > maxBytes) {
          int index = maxBytes - 2; // always reserve two bytes for EOL. This allows external tools to convert line
                                    // endings without to break the max bytes per line rule
-         while (index < length - 2)
-         {
+         while (index < length - 2) {
             line.insert(index, eol + " ");
             index += maxBytes;
             length += 2 + 1;

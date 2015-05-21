@@ -27,31 +27,25 @@ import org.sourcepit.common.manifest.resource.ManifestResourceImpl;
 /**
  * @author Bernd
  */
-public class GenericManifestResourceImpl extends ManifestResourceImpl
-{
-   public GenericManifestResourceImpl()
-   {
+public class GenericManifestResourceImpl extends ManifestResourceImpl {
+   public GenericManifestResourceImpl() {
       super();
    }
 
-   public GenericManifestResourceImpl(BytesByLine bytesByLine)
-   {
+   public GenericManifestResourceImpl(BytesByLine bytesByLine) {
       super(bytesByLine);
    }
 
-   public GenericManifestResourceImpl(URI uri)
-   {
+   public GenericManifestResourceImpl(URI uri) {
       super(uri);
    }
 
-   public GenericManifestResourceImpl(URI uri, BytesByLine bytesByLine)
-   {
+   public GenericManifestResourceImpl(URI uri, BytesByLine bytesByLine) {
       super(uri, bytesByLine);
    }
 
    @Override
-   protected ManifestBuilder createManifestBuilder(Map<?, ?> options)
-   {
+   protected ManifestBuilder createManifestBuilder(Map<?, ?> options) {
       return new GenericManifestBuilder(options);
    }
 }

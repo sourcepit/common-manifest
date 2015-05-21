@@ -18,12 +18,10 @@ package org.sourcepit.common.manifest.util;
 /**
  * @author Bernd Vogt <bernd.vogt@sourcepit.org>
  */
-public final class EOL
-{
+public final class EOL {
    public static final String EOL = System.getProperty("line.separator");
 
-   private EOL()
-   {
+   private EOL() {
       super();
    }
 }

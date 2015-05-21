@@ -25,12 +25,10 @@ import org.junit.Test;
 /**
  * @author Bernd Vogt <bernd.vogt@sourcepit.org>
  */
-public class FragmentHostTest
-{
+public class FragmentHostTest {
 
    @Test
-   public void testSetBundleVersion()
-   {
+   public void testSetBundleVersion() {
       FragmentHost fragmentHost = BundleManifestFactory.eINSTANCE.createFragmentHost();
       assertThat(fragmentHost.getBundleVersion(), IsNull.nullValue());
       assertThat(fragmentHost.getParameter("bundle-version"), IsNull.nullValue());

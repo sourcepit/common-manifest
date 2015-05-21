@@ -31,16 +31,14 @@ import org.sourcepit.common.manifest.osgi.Version;
  *
  * @generated
  */
-public class PackageExportImpl extends PackagesDeclarationImpl implements PackageExport
-{
+public class PackageExportImpl extends PackagesDeclarationImpl implements PackageExport {
    /**
     * <!-- begin-user-doc -->
     * <!-- end-user-doc -->
     * 
     * @generated
     */
-   protected PackageExportImpl()
-   {
+   protected PackageExportImpl() {
       super();
    }
 
@@ -51,8 +49,7 @@ public class PackageExportImpl extends PackagesDeclarationImpl implements Packag
     * @generated
     */
    @Override
-   protected EClass eStaticClass()
-   {
+   protected EClass eStaticClass() {
       return BundleManifestPackage.Literals.PACKAGE_EXPORT;
    }
 
@@ -62,11 +59,9 @@ public class PackageExportImpl extends PackagesDeclarationImpl implements Packag
     * 
     * @generated NOT
     */
-   public Version getVersion()
-   {
+   public Version getVersion() {
       Version version = (Version) getParsedParameterValue("version");
-      if (version == null)
-      {
+      if (version == null) {
          version = (Version) getParsedParameterValue("specification-version");
       }
       return version;
@@ -78,17 +73,13 @@ public class PackageExportImpl extends PackagesDeclarationImpl implements Packag
     * 
     * @generated NOT
     */
-   public void setVersion(Version version)
-   {
+   public void setVersion(Version version) {
       Parameter parameter = getParameter("version");
-      if (parameter == null)
-      {
+      if (parameter == null) {
          parameter = getParameter("specification-version");
       }
-      if (parameter == null)
-      {
-         if (version != null)
-         {
+      if (parameter == null) {
+         if (version != null) {
             parameter = BundleManifestFactoryImpl.eINSTANCE.createParameter();
             parameter.setName("version");
             parameter.setParsedValue(version);
@@ -97,14 +88,11 @@ public class PackageExportImpl extends PackagesDeclarationImpl implements Packag
             parameter.getValue();
          }
       }
-      else
-      {
-         if (version == null)
-         {
+      else {
+         if (version == null) {
             getParameters().remove(parameter);
          }
-         else
-         {
+         else {
             parameter.setParsedValue(version);
          }
       }

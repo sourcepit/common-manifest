@@ -30,11 +30,9 @@ import org.sourcepit.common.manifest.osgi.BundleManifest;
 /**
  * @author Bernd
  */
-public class GenericManifestResourceImplTest
-{
+public class GenericManifestResourceImplTest {
    @Test
-   public void testBundleManifest() throws Exception
-   {
+   public void testBundleManifest() throws Exception {
       StringBuilder sb = new StringBuilder();
       sb.append("Manifest-Version: 1.0");
       sb.append(EOL);
@@ -53,8 +51,7 @@ public class GenericManifestResourceImplTest
    }
 
    @Test
-   public void testManifest() throws Exception
-   {
+   public void testManifest() throws Exception {
       StringBuilder sb = new StringBuilder();
       sb.append("Manifest-Version: 1.0");
       sb.append(EOL);

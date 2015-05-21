@@ -15,22 +15,17 @@
  */
 
 package org.sourcepit.common.manifest.merge;
-public enum BytesByLine
-{
+public enum BytesByLine {
    UNLIMITED, _72, _512;
 
-   public static BytesByLine parse(String string)
-   {
-      if ("unlimited".equalsIgnoreCase(string) || "-1".equals(string))
-      {
+   public static BytesByLine parse(String string) {
+      if ("unlimited".equalsIgnoreCase(string) || "-1".equals(string)) {
          return UNLIMITED;
       }
-      if ("72".equals(string))
-      {
+      if ("72".equals(string)) {
          return _72;
       }
-      if ("512".equals(string))
-      {
+      if ("512".equals(string)) {
          return _512;
       }
       throw new IllegalArgumentException("Invalid bytes by line literal: " + string);

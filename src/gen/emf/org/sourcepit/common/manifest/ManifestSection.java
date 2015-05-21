@@ -27,8 +27,7 @@ package org.sourcepit.common.manifest;
  * @model abstract="true"
  * @generated
  */
-public interface ManifestSection extends AbstractSection
-{
+public interface ManifestSection extends AbstractSection {
    /**
     * <!-- begin-user-doc -->
     * <!-- end-user-doc -->

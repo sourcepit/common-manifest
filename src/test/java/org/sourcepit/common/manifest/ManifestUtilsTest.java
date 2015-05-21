@@ -27,22 +27,19 @@ import org.junit.Test;
 import org.sourcepit.common.manifest.osgi.BundleManifest;
 import org.sourcepit.common.manifest.util.ManifestUtils;
 
-public class ManifestUtilsTest
-{
+public class ManifestUtilsTest {
 
    private java.util.jar.Manifest javaManifest;
 
    @Before
-   public void init() throws IOException
-   {
+   public void init() throws IOException {
       InputStream is = getClass().getResourceAsStream("/MANIFEST.MF");
       javaManifest = new java.util.jar.Manifest(is);
       assertNotNull(javaManifest);
    }
 
    @Test
-   public void test()
-   {
+   public void test() {
       Manifest manifest = ManifestUtils.toManifest(javaManifest);
       assertNotNull(manifest);
       Header vendorHeader = manifest.getHeader("Bundle-Vendor");
@@ -51,8 +48,7 @@ public class ManifestUtilsTest
    }
 
    @Test
-   public void testBundleManifest()
-   {
+   public void testBundleManifest() {
       Manifest manifest = ManifestUtils.toManifest(javaManifest);
       assertNotNull(manifest);
       assertEquals(Boolean.TRUE, Boolean.valueOf(manifest instanceof BundleManifest));

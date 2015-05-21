@@ -43,8 +43,7 @@ import org.sourcepit.common.manifest.Parseable;
  * @see org.sourcepit.common.manifest.ManifestPackage
  * @generated
  */
-public class ManifestSwitch<T> extends Switch<T>
-{
+public class ManifestSwitch<T> extends Switch<T> {
    /**
     * The cached model package
     * <!-- begin-user-doc -->
@@ -61,10 +60,8 @@ public class ManifestSwitch<T> extends Switch<T>
     * 
     * @generated
     */
-   public ManifestSwitch()
-   {
-      if (modelPackage == null)
-      {
+   public ManifestSwitch() {
+      if (modelPackage == null) {
          modelPackage = ManifestPackage.eINSTANCE;
       }
    }
@@ -79,8 +76,7 @@ public class ManifestSwitch<T> extends Switch<T>
     * @generated
     */
    @Override
-   protected boolean isSwitchFor(EPackage ePackage)
-   {
+   protected boolean isSwitchFor(EPackage ePackage) {
       return ePackage == modelPackage;
    }
 
@@ -93,12 +89,9 @@ public class ManifestSwitch<T> extends Switch<T>
     * @generated
     */
    @Override
-   protected T doSwitch(int classifierID, EObject theEObject)
-   {
-      switch (classifierID)
-      {
-         case ManifestPackage.MANIFEST :
-         {
+   protected T doSwitch(int classifierID, EObject theEObject) {
+      switch (classifierID) {
+         case ManifestPackage.MANIFEST : {
             Manifest manifest = (Manifest) theEObject;
             T result = caseManifest(manifest);
             if (result == null)
@@ -107,8 +100,7 @@ public class ManifestSwitch<T> extends Switch<T>
                result = defaultCase(theEObject);
             return result;
          }
-         case ManifestPackage.MANIFEST_SECTION :
-         {
+         case ManifestPackage.MANIFEST_SECTION : {
             ManifestSection manifestSection = (ManifestSection) theEObject;
             T result = caseManifestSection(manifestSection);
             if (result == null)
@@ -117,8 +109,7 @@ public class ManifestSwitch<T> extends Switch<T>
                result = defaultCase(theEObject);
             return result;
          }
-         case ManifestPackage.HEADER :
-         {
+         case ManifestPackage.HEADER : {
             Header header = (Header) theEObject;
             T result = caseHeader(header);
             if (result == null)
@@ -127,8 +118,7 @@ public class ManifestSwitch<T> extends Switch<T>
                result = defaultCase(theEObject);
             return result;
          }
-         case ManifestPackage.SECTION_ENTRY :
-         {
+         case ManifestPackage.SECTION_ENTRY : {
             @SuppressWarnings("unchecked")
             Entry<String, EMap<String, String>> sectionEntry = (Entry<String, EMap<String, String>>) theEObject;
             T result = caseSectionEntry(sectionEntry);
@@ -140,8 +130,7 @@ public class ManifestSwitch<T> extends Switch<T>
                result = defaultCase(theEObject);
             return result;
          }
-         case ManifestPackage.HEADER_ENTRY :
-         {
+         case ManifestPackage.HEADER_ENTRY : {
             @SuppressWarnings("unchecked")
             Entry<String, String> headerEntry = (Entry<String, String>) theEObject;
             T result = caseHeaderEntry(headerEntry);
@@ -153,16 +142,14 @@ public class ManifestSwitch<T> extends Switch<T>
                result = defaultCase(theEObject);
             return result;
          }
-         case ManifestPackage.ABSTRACT_SECTION :
-         {
+         case ManifestPackage.ABSTRACT_SECTION : {
             AbstractSection abstractSection = (AbstractSection) theEObject;
             T result = caseAbstractSection(abstractSection);
             if (result == null)
                result = defaultCase(theEObject);
             return result;
          }
-         case ManifestPackage.PARSEABLE :
-         {
+         case ManifestPackage.PARSEABLE : {
             Parseable parseable = (Parseable) theEObject;
             T result = caseParseable(parseable);
             if (result == null)
@@ -186,8 +173,7 @@ public class ManifestSwitch<T> extends Switch<T>
     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
     * @generated
     */
-   public T caseManifest(Manifest object)
-   {
+   public T caseManifest(Manifest object) {
       return null;
    }
 
@@ -203,8 +189,7 @@ public class ManifestSwitch<T> extends Switch<T>
     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
     * @generated
     */
-   public T caseManifestSection(ManifestSection object)
-   {
+   public T caseManifestSection(ManifestSection object) {
       return null;
    }
 
@@ -220,8 +205,7 @@ public class ManifestSwitch<T> extends Switch<T>
     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
     * @generated
     */
-   public T caseHeader(Header object)
-   {
+   public T caseHeader(Header object) {
       return null;
    }
 
@@ -237,8 +221,7 @@ public class ManifestSwitch<T> extends Switch<T>
     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
     * @generated
     */
-   public T caseSectionEntry(Entry<String, EMap<String, String>> object)
-   {
+   public T caseSectionEntry(Entry<String, EMap<String, String>> object) {
       return null;
    }
 
@@ -254,8 +237,7 @@ public class ManifestSwitch<T> extends Switch<T>
     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
     * @generated
     */
-   public T caseHeaderEntry(Entry<String, String> object)
-   {
+   public T caseHeaderEntry(Entry<String, String> object) {
       return null;
    }
 
@@ -271,8 +253,7 @@ public class ManifestSwitch<T> extends Switch<T>
     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
     * @generated
     */
-   public T caseAbstractSection(AbstractSection object)
-   {
+   public T caseAbstractSection(AbstractSection object) {
       return null;
    }
 
@@ -288,8 +269,7 @@ public class ManifestSwitch<T> extends Switch<T>
     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
     * @generated
     */
-   public T caseParseable(Parseable object)
-   {
+   public T caseParseable(Parseable object) {
       return null;
    }
 
@@ -306,8 +286,7 @@ public class ManifestSwitch<T> extends Switch<T>
     * @generated
     */
    @Override
-   public T defaultCase(EObject object)
-   {
+   public T defaultCase(EObject object) {
       return null;
    }
 

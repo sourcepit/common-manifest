@@ -26,11 +26,9 @@ import org.junit.Test;
 /**
  * @author Bernd Vogt <bernd.vogt@sourcepit.org>
  */
-public class PackageImportTest
-{
+public class PackageImportTest {
    @Test
-   public void testSetVersionRange()
-   {
+   public void testSetVersionRange() {
       PackageImport packageExport = BundleManifestFactory.eINSTANCE.createPackageImport();
       assertThat(packageExport.getVersion(), IsNull.nullValue());
       assertThat(packageExport.getParameter("version"), IsNull.nullValue());

@@ -47,11 +47,9 @@ import org.sourcepit.common.manifest.resource.ManifestResource;
 /**
  * @author Bernd Vogt <bernd.vogt@sourcepit.org>
  */
-public class BundleManifestResourceImplTest
-{
+public class BundleManifestResourceImplTest {
    @Test
-   public void test() throws IOException
-   {
+   public void test() throws IOException {
       BundleManifest manifest = BundleManifestFactory.eINSTANCE.createBundleManifest();
       manifest.setHeader(BundleHeaderName.BUNDLE_VERSION, "1.2.3");
       manifest.setHeader("foo", "bar");
@@ -88,15 +86,13 @@ public class BundleManifestResourceImplTest
       BundleManifest newManifest = (BundleManifest) resource.getContents().get(0);
       assertThat(newManifest.getHeaders().size(), Is.is(5));
       assertThat(newManifest.getBundleVersion(), IsEqual.equalTo(Version.parse("1.2.3")));
-      for (Entry<String, String> header : manifest.getHeaders().entrySet())
-      {
+      for (Entry<String, String> header : manifest.getHeaders().entrySet()) {
          assertThat(newManifest.getHeaderValue(header.getKey()), IsEqual.equalTo(header.getValue()));
       }
    }
 
    @Test
-   public void testLoadFromUri() throws Exception
-   {
+   public void testLoadFromUri() throws Exception {
       URL url = getClass().getClassLoader().getResource("MANIFEST.MF");
       assertThat(url, IsNull.notNullValue());
       URI uri = URI.createURI(url.toString());
@@ -110,8 +106,7 @@ public class BundleManifestResourceImplTest
    }
 
    @Test
-   public void testPrettyPrinting() throws Exception
-   {
+   public void testPrettyPrinting() throws Exception {
       BundleManifest manifest = BundleManifestFactory.eINSTANCE.createBundleManifest();
 
       PackageExport export = BundleManifestFactory.eINSTANCE.createPackageExport();
@@ -164,8 +159,7 @@ public class BundleManifestResourceImplTest
    }
 
    @Test
-   public void testOptionMake72Safe() throws Exception
-   {
+   public void testOptionMake72Safe() throws Exception {
       BundleManifest manifest = BundleManifestFactory.eINSTANCE.createBundleManifest();
 
       PackageExport export = BundleManifestFactory.eINSTANCE.createPackageExport();
@@ -209,8 +203,7 @@ public class BundleManifestResourceImplTest
    }
 
    @Test
-   public void testDuplicatedBundleManifestVersion() throws Exception
-   {
+   public void testDuplicatedBundleManifestVersion() throws Exception {
       BundleManifest manifest = BundleManifestFactory.eINSTANCE.createBundleManifest();
       manifest.setBundleSymbolicName("foo");
 

@@ -27,8 +27,7 @@ package org.sourcepit.common.manifest.osgi;
  * @model
  * @generated
  */
-public interface PackageExport extends PackagesDeclaration
-{
+public interface PackageExport extends PackagesDeclaration {
    /**
     * <!-- begin-user-doc -->
     * <!-- end-user-doc -->

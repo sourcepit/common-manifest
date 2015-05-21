@@ -57,8 +57,7 @@ import org.sourcepit.common.manifest.osgi.VersionRange;
  * 
  * @generated
  */
-public class BundleManifestPackageImpl extends EPackageImpl implements BundleManifestPackage
-{
+public class BundleManifestPackageImpl extends EPackageImpl implements BundleManifestPackage {
    /**
     * <!-- begin-user-doc -->
     * <!-- end-user-doc -->
@@ -225,8 +224,7 @@ public class BundleManifestPackageImpl extends EPackageImpl implements BundleMan
     * @see #init()
     * @generated
     */
-   private BundleManifestPackageImpl()
-   {
+   private BundleManifestPackageImpl() {
       super(eNS_URI, BundleManifestFactory.eINSTANCE);
    }
 
@@ -251,23 +249,21 @@ public class BundleManifestPackageImpl extends EPackageImpl implements BundleMan
     * @see #initializePackageContents()
     * @generated
     */
-   public static BundleManifestPackage init()
-   {
+   public static BundleManifestPackage init() {
       if (isInited)
          return (BundleManifestPackage) EPackage.Registry.INSTANCE.getEPackage(BundleManifestPackage.eNS_URI);
 
       // Obtain or create and register package
-      BundleManifestPackageImpl theBundleManifestPackage = (BundleManifestPackageImpl) (EPackage.Registry.INSTANCE
-         .get(eNS_URI) instanceof BundleManifestPackageImpl
+      BundleManifestPackageImpl theBundleManifestPackage = (BundleManifestPackageImpl) (EPackage.Registry.INSTANCE.get(eNS_URI) instanceof BundleManifestPackageImpl
          ? EPackage.Registry.INSTANCE.get(eNS_URI)
          : new BundleManifestPackageImpl());
 
       isInited = true;
 
       // Obtain or create and register interdependencies
-      ManifestPackageImpl theManifestPackage = (ManifestPackageImpl) (EPackage.Registry.INSTANCE
-         .getEPackage(ManifestPackage.eNS_URI) instanceof ManifestPackageImpl ? EPackage.Registry.INSTANCE
-         .getEPackage(ManifestPackage.eNS_URI) : ManifestPackage.eINSTANCE);
+      ManifestPackageImpl theManifestPackage = (ManifestPackageImpl) (EPackage.Registry.INSTANCE.getEPackage(ManifestPackage.eNS_URI) instanceof ManifestPackageImpl
+         ? EPackage.Registry.INSTANCE.getEPackage(ManifestPackage.eNS_URI)
+         : ManifestPackage.eINSTANCE);
 
       // Create package meta-data objects
       theBundleManifestPackage.createPackageContents();
@@ -292,8 +288,7 @@ public class BundleManifestPackageImpl extends EPackageImpl implements BundleMan
     * 
     * @generated
     */
-   public EClass getParameter()
-   {
+   public EClass getParameter() {
       return parameterEClass;
    }
 
@@ -303,8 +298,7 @@ public class BundleManifestPackageImpl extends EPackageImpl implements BundleMan
     * 
     * @generated
     */
-   public EAttribute getParameter_Name()
-   {
+   public EAttribute getParameter_Name() {
       return (EAttribute) parameterEClass.getEStructuralFeatures().get(0);
    }
 
@@ -314,8 +308,7 @@ public class BundleManifestPackageImpl extends EPackageImpl implements BundleMan
     * 
     * @generated
     */
-   public EAttribute getParameter_Quoted()
-   {
+   public EAttribute getParameter_Quoted() {
       return (EAttribute) parameterEClass.getEStructuralFeatures().get(1);
    }
 
@@ -325,8 +318,7 @@ public class BundleManifestPackageImpl extends EPackageImpl implements BundleMan
     * 
     * @generated
     */
-   public EAttribute getParameter_Type()
-   {
+   public EAttribute getParameter_Type() {
       return (EAttribute) parameterEClass.getEStructuralFeatures().get(2);
    }
 
@@ -336,8 +328,7 @@ public class BundleManifestPackageImpl extends EPackageImpl implements BundleMan
     * 
     * @generated
     */
-   public EReference getParameter_Parameterized()
-   {
+   public EReference getParameter_Parameterized() {
       return (EReference) parameterEClass.getEStructuralFeatures().get(3);
    }
 
@@ -347,8 +338,7 @@ public class BundleManifestPackageImpl extends EPackageImpl implements BundleMan
     * 
     * @generated
     */
-   public EClass getParameterized()
-   {
+   public EClass getParameterized() {
       return parameterizedEClass;
    }
 
@@ -358,8 +348,7 @@ public class BundleManifestPackageImpl extends EPackageImpl implements BundleMan
     * 
     * @generated
     */
-   public EReference getParameterized_Parameters()
-   {
+   public EReference getParameterized_Parameters() {
       return (EReference) parameterizedEClass.getEStructuralFeatures().get(0);
    }
 
@@ -369,8 +358,7 @@ public class BundleManifestPackageImpl extends EPackageImpl implements BundleMan
     * 
     * @generated
     */
-   public EClass getBundleActivationPolicy()
-   {
+   public EClass getBundleActivationPolicy() {
       return bundleActivationPolicyEClass;
    }
 
@@ -380,8 +368,7 @@ public class BundleManifestPackageImpl extends EPackageImpl implements BundleMan
     * 
     * @generated
     */
-   public EAttribute getBundleActivationPolicy_Policy()
-   {
+   public EAttribute getBundleActivationPolicy_Policy() {
       return (EAttribute) bundleActivationPolicyEClass.getEStructuralFeatures().get(0);
    }
 
@@ -391,8 +378,7 @@ public class BundleManifestPackageImpl extends EPackageImpl implements BundleMan
     * 
     * @generated
     */
-   public EClass getBundleManifest()
-   {
+   public EClass getBundleManifest() {
       return bundleManifestEClass;
    }
 
@@ -402,8 +388,7 @@ public class BundleManifestPackageImpl extends EPackageImpl implements BundleMan
     * 
     * @generated
     */
-   public EClass getPackagesDeclaration()
-   {
+   public EClass getPackagesDeclaration() {
       return packagesDeclarationEClass;
    }
 
@@ -413,8 +398,7 @@ public class BundleManifestPackageImpl extends EPackageImpl implements BundleMan
     * 
     * @generated
     */
-   public EAttribute getPackagesDeclaration_PackageNames()
-   {
+   public EAttribute getPackagesDeclaration_PackageNames() {
       return (EAttribute) packagesDeclarationEClass.getEStructuralFeatures().get(0);
    }
 
@@ -424,8 +408,7 @@ public class BundleManifestPackageImpl extends EPackageImpl implements BundleMan
     * 
     * @generated
     */
-   public EClass getPackageExport()
-   {
+   public EClass getPackageExport() {
       return packageExportEClass;
    }
 
@@ -435,8 +418,7 @@ public class BundleManifestPackageImpl extends EPackageImpl implements BundleMan
     * 
     * @generated
     */
-   public EClass getPackageImport()
-   {
+   public EClass getPackageImport() {
       return packageImportEClass;
    }
 
@@ -446,8 +428,7 @@ public class BundleManifestPackageImpl extends EPackageImpl implements BundleMan
     * 
     * @generated
     */
-   public EClass getBundleRequirement()
-   {
+   public EClass getBundleRequirement() {
       return bundleRequirementEClass;
    }
 
@@ -457,8 +438,7 @@ public class BundleManifestPackageImpl extends EPackageImpl implements BundleMan
     * 
     * @generated
     */
-   public EAttribute getBundleRequirement_SymbolicNames()
-   {
+   public EAttribute getBundleRequirement_SymbolicNames() {
       return (EAttribute) bundleRequirementEClass.getEStructuralFeatures().get(0);
    }
 
@@ -468,8 +448,7 @@ public class BundleManifestPackageImpl extends EPackageImpl implements BundleMan
     * 
     * @generated
     */
-   public EClass getBundleSymbolicName()
-   {
+   public EClass getBundleSymbolicName() {
       return bundleSymbolicNameEClass;
    }
 
@@ -479,8 +458,7 @@ public class BundleManifestPackageImpl extends EPackageImpl implements BundleMan
     * 
     * @generated
     */
-   public EAttribute getBundleSymbolicName_SymbolicName()
-   {
+   public EAttribute getBundleSymbolicName_SymbolicName() {
       return (EAttribute) bundleSymbolicNameEClass.getEStructuralFeatures().get(0);
    }
 
@@ -490,8 +468,7 @@ public class BundleManifestPackageImpl extends EPackageImpl implements BundleMan
     * 
     * @generated
     */
-   public EClass getClassPathEntry()
-   {
+   public EClass getClassPathEntry() {
       return classPathEntryEClass;
    }
 
@@ -501,8 +478,7 @@ public class BundleManifestPackageImpl extends EPackageImpl implements BundleMan
     * 
     * @generated
     */
-   public EAttribute getClassPathEntry_Paths()
-   {
+   public EAttribute getClassPathEntry_Paths() {
       return (EAttribute) classPathEntryEClass.getEStructuralFeatures().get(0);
    }
 
@@ -512,8 +488,7 @@ public class BundleManifestPackageImpl extends EPackageImpl implements BundleMan
     * 
     * @generated
     */
-   public EClass getFragmentHost()
-   {
+   public EClass getFragmentHost() {
       return fragmentHostEClass;
    }
 
@@ -523,8 +498,7 @@ public class BundleManifestPackageImpl extends EPackageImpl implements BundleMan
     * 
     * @generated
     */
-   public EAttribute getFragmentHost_SymbolicName()
-   {
+   public EAttribute getFragmentHost_SymbolicName() {
       return (EAttribute) fragmentHostEClass.getEStructuralFeatures().get(0);
    }
 
@@ -534,8 +508,7 @@ public class BundleManifestPackageImpl extends EPackageImpl implements BundleMan
     * 
     * @generated
     */
-   public EClass getDynamicPackageImport()
-   {
+   public EClass getDynamicPackageImport() {
       return dynamicPackageImportEClass;
    }
 
@@ -545,8 +518,7 @@ public class BundleManifestPackageImpl extends EPackageImpl implements BundleMan
     * 
     * @generated
     */
-   public EClass getBundleLicense()
-   {
+   public EClass getBundleLicense() {
       return bundleLicenseEClass;
    }
 
@@ -556,8 +528,7 @@ public class BundleManifestPackageImpl extends EPackageImpl implements BundleMan
     * 
     * @generated
     */
-   public EAttribute getBundleLicense_Name()
-   {
+   public EAttribute getBundleLicense_Name() {
       return (EAttribute) bundleLicenseEClass.getEStructuralFeatures().get(0);
    }
 
@@ -567,8 +538,7 @@ public class BundleManifestPackageImpl extends EPackageImpl implements BundleMan
     * 
     * @generated
     */
-   public EEnum getBundleHeaderName()
-   {
+   public EEnum getBundleHeaderName() {
       return bundleHeaderNameEEnum;
    }
 
@@ -578,8 +548,7 @@ public class BundleManifestPackageImpl extends EPackageImpl implements BundleMan
     * 
     * @generated
     */
-   public EEnum getParameterType()
-   {
+   public EEnum getParameterType() {
       return parameterTypeEEnum;
    }
 
@@ -589,8 +558,7 @@ public class BundleManifestPackageImpl extends EPackageImpl implements BundleMan
     * 
     * @generated
     */
-   public EEnum getActivationPolicy()
-   {
+   public EEnum getActivationPolicy() {
       return activationPolicyEEnum;
    }
 
@@ -600,8 +568,7 @@ public class BundleManifestPackageImpl extends EPackageImpl implements BundleMan
     * 
     * @generated
     */
-   public EDataType getEList()
-   {
+   public EDataType getEList() {
       return eListEDataType;
    }
 
@@ -611,8 +578,7 @@ public class BundleManifestPackageImpl extends EPackageImpl implements BundleMan
     * 
     * @generated
     */
-   public EDataType getVersion()
-   {
+   public EDataType getVersion() {
       return versionEDataType;
    }
 
@@ -622,8 +588,7 @@ public class BundleManifestPackageImpl extends EPackageImpl implements BundleMan
     * 
     * @generated
     */
-   public EDataType getVersionRange()
-   {
+   public EDataType getVersionRange() {
       return versionRangeEDataType;
    }
 
@@ -633,8 +598,7 @@ public class BundleManifestPackageImpl extends EPackageImpl implements BundleMan
     * 
     * @generated
     */
-   public BundleManifestFactory getBundleManifestFactory()
-   {
+   public BundleManifestFactory getBundleManifestFactory() {
       return (BundleManifestFactory) getEFactoryInstance();
    }
 
@@ -654,8 +618,7 @@ public class BundleManifestPackageImpl extends EPackageImpl implements BundleMan
     * 
     * @generated
     */
-   public void createPackageContents()
-   {
+   public void createPackageContents() {
       if (isCreated)
          return;
       isCreated = true;
@@ -726,8 +689,7 @@ public class BundleManifestPackageImpl extends EPackageImpl implements BundleMan
     * 
     * @generated
     */
-   public void initializePackageContents()
-   {
+   public void initializePackageContents() {
       if (isInitialized)
          return;
       isInitialized = true;
@@ -738,8 +700,7 @@ public class BundleManifestPackageImpl extends EPackageImpl implements BundleMan
       setNsURI(eNS_URI);
 
       // Obtain other dependent packages
-      ManifestPackage theManifestPackage = (ManifestPackage) EPackage.Registry.INSTANCE
-         .getEPackage(ManifestPackage.eNS_URI);
+      ManifestPackage theManifestPackage = (ManifestPackage) EPackage.Registry.INSTANCE.getEPackage(ManifestPackage.eNS_URI);
 
       // Create type parameters
       addETypeParameter(eListEDataType, "T");

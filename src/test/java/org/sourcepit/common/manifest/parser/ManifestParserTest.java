@@ -31,11 +31,9 @@ import org.junit.Test;
 /**
  * @author Bernd
  */
-public class ManifestParserTest
-{
+public class ManifestParserTest {
    @Test
-   public void testParse() throws Exception
-   {
+   public void testParse() throws Exception {
       java.util.jar.Manifest manifest = new java.util.jar.Manifest();
       manifest.getMainAttributes().putValue(Name.MANIFEST_VERSION.toString(), "1.0");
       manifest.getMainAttributes().putValue("Main", "main value");
@@ -50,20 +48,16 @@ public class ManifestParserTest
 
       @SuppressWarnings("unchecked")
       final Map<String, String>[] headers = new Map[] { mainHeaders, sectionHeaders };
-      new ManifestParser().parse(new ByteArrayInputStream(out.toByteArray()), new AbstractManifestVisitor()
-      {
+      new ManifestParser().parse(new ByteArrayInputStream(out.toByteArray()), new AbstractManifestVisitor() {
          private int i = -1;
 
          @Override
-         public void visitSection(boolean isMainSection, String name)
-         {
-            if (isMainSection)
-            {
+         public void visitSection(boolean isMainSection, String name) {
+            if (isMainSection) {
                i++;
                assertEquals(0, i);
             }
-            else
-            {
+            else {
                assertEquals("Section", name);
                i++;
                assertEquals(1, i);
@@ -71,8 +65,7 @@ public class ManifestParserTest
          }
 
          @Override
-         public void visitHeader(String name, String value)
-         {
+         public void visitHeader(String name, String value) {
             headers[i].put(name, value);
          }
       });

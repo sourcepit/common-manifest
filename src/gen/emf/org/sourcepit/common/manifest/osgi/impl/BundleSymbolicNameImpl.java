@@ -35,8 +35,7 @@ import org.sourcepit.common.manifest.osgi.BundleSymbolicName;
  *
  * @generated
  */
-public class BundleSymbolicNameImpl extends ParameterizedImpl implements BundleSymbolicName
-{
+public class BundleSymbolicNameImpl extends ParameterizedImpl implements BundleSymbolicName {
    /**
     * The default value of the '{@link #getSymbolicName() <em>Symbolic Name</em>}' attribute.
     * <!-- begin-user-doc -->
@@ -65,8 +64,7 @@ public class BundleSymbolicNameImpl extends ParameterizedImpl implements BundleS
     * 
     * @generated
     */
-   protected BundleSymbolicNameImpl()
-   {
+   protected BundleSymbolicNameImpl() {
       super();
    }
 
@@ -77,8 +75,7 @@ public class BundleSymbolicNameImpl extends ParameterizedImpl implements BundleS
     * @generated
     */
    @Override
-   protected EClass eStaticClass()
-   {
+   protected EClass eStaticClass() {
       return BundleManifestPackage.Literals.BUNDLE_SYMBOLIC_NAME;
    }
 
@@ -88,8 +85,7 @@ public class BundleSymbolicNameImpl extends ParameterizedImpl implements BundleS
     * 
     * @generated
     */
-   public String getSymbolicName()
-   {
+   public String getSymbolicName() {
       return symbolicName;
    }
 
@@ -99,8 +95,7 @@ public class BundleSymbolicNameImpl extends ParameterizedImpl implements BundleS
     * 
     * @generated
     */
-   public void setSymbolicName(String newSymbolicName)
-   {
+   public void setSymbolicName(String newSymbolicName) {
       String oldSymbolicName = symbolicName;
       symbolicName = newSymbolicName;
       if (eNotificationRequired())
@@ -114,8 +109,7 @@ public class BundleSymbolicNameImpl extends ParameterizedImpl implements BundleS
     * 
     * @generated NOT
     */
-   public boolean isSingleton()
-   {
+   public boolean isSingleton() {
       final Boolean singleton = (Boolean) getParsedParameterValue("singleton");
       return singleton == null ? false : singleton.booleanValue();
    }
@@ -127,10 +121,8 @@ public class BundleSymbolicNameImpl extends ParameterizedImpl implements BundleS
     * @generated
     */
    @Override
-   public Object eGet(int featureID, boolean resolve, boolean coreType)
-   {
-      switch (featureID)
-      {
+   public Object eGet(int featureID, boolean resolve, boolean coreType) {
+      switch (featureID) {
          case BundleManifestPackage.BUNDLE_SYMBOLIC_NAME__SYMBOLIC_NAME :
             return getSymbolicName();
       }
@@ -144,10 +136,8 @@ public class BundleSymbolicNameImpl extends ParameterizedImpl implements BundleS
     * @generated
     */
    @Override
-   public void eSet(int featureID, Object newValue)
-   {
-      switch (featureID)
-      {
+   public void eSet(int featureID, Object newValue) {
+      switch (featureID) {
          case BundleManifestPackage.BUNDLE_SYMBOLIC_NAME__SYMBOLIC_NAME :
             setSymbolicName((String) newValue);
             return;
@@ -162,10 +152,8 @@ public class BundleSymbolicNameImpl extends ParameterizedImpl implements BundleS
     * @generated
     */
    @Override
-   public void eUnset(int featureID)
-   {
-      switch (featureID)
-      {
+   public void eUnset(int featureID) {
+      switch (featureID) {
          case BundleManifestPackage.BUNDLE_SYMBOLIC_NAME__SYMBOLIC_NAME :
             setSymbolicName(SYMBOLIC_NAME_EDEFAULT);
             return;
@@ -180,10 +168,8 @@ public class BundleSymbolicNameImpl extends ParameterizedImpl implements BundleS
     * @generated
     */
    @Override
-   public boolean eIsSet(int featureID)
-   {
-      switch (featureID)
-      {
+   public boolean eIsSet(int featureID) {
+      switch (featureID) {
          case BundleManifestPackage.BUNDLE_SYMBOLIC_NAME__SYMBOLIC_NAME :
             return SYMBOLIC_NAME_EDEFAULT == null ? symbolicName != null : !SYMBOLIC_NAME_EDEFAULT.equals(symbolicName);
       }
@@ -197,8 +183,7 @@ public class BundleSymbolicNameImpl extends ParameterizedImpl implements BundleS
     * @generated
     */
    @Override
-   public String toString()
-   {
+   public String toString() {
       if (eIsProxy())
          return super.toString();
 

@@ -27,22 +27,17 @@ import org.sourcepit.common.manifest.parser.ManifestBuilder;
 /**
  * @author Bernd
  */
-public class GenericManifestBuilder extends ManifestBuilder
-{
-   public GenericManifestBuilder()
-   {
+public class GenericManifestBuilder extends ManifestBuilder {
+   public GenericManifestBuilder() {
       super();
    }
 
-   public GenericManifestBuilder(Map<?, ?> options)
-   {
+   public GenericManifestBuilder(Map<?, ?> options) {
       super(options);
    }
 
-   public Manifest getManifest()
-   {
-      if (hasBundleManifestHeaders())
-      {
+   public Manifest getManifest() {
+      if (hasBundleManifestHeaders()) {
          BundleManifest bundleManifest = BundleManifestFactory.eINSTANCE.createBundleManifest();
          bundleManifest.getHeaders().addAll(manifest.getHeaders());
          bundleManifest.getSections().addAll(manifest.getSections());
@@ -51,12 +46,9 @@ public class GenericManifestBuilder extends ManifestBuilder
       return manifest;
    }
 
-   protected boolean hasBundleManifestHeaders()
-   {
-      for (BundleHeaderName bundleHeaderName : BundleHeaderName.VALUES)
-      {
-         if (manifest.getHeader(bundleHeaderName.getLiteral()) != null)
-         {
+   protected boolean hasBundleManifestHeaders() {
+      for (BundleHeaderName bundleHeaderName : BundleHeaderName.VALUES) {
+         if (manifest.getHeader(bundleHeaderName.getLiteral()) != null) {
             return true;
          }
       }

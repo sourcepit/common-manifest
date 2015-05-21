@@ -43,8 +43,7 @@ import org.sourcepit.common.manifest.ManifestPackage;
  *
  * @generated
  */
-public class SectionEntryImpl extends ManifestSectionImpl implements BasicEMap.Entry<String, EMap<String, String>>
-{
+public class SectionEntryImpl extends ManifestSectionImpl implements BasicEMap.Entry<String, EMap<String, String>> {
    /**
     * The default value of the '{@link #getTypedKey() <em>Key</em>}' attribute.
     * <!-- begin-user-doc -->
@@ -84,8 +83,7 @@ public class SectionEntryImpl extends ManifestSectionImpl implements BasicEMap.E
     * 
     * @generated
     */
-   protected SectionEntryImpl()
-   {
+   protected SectionEntryImpl() {
       super();
    }
 
@@ -96,8 +94,7 @@ public class SectionEntryImpl extends ManifestSectionImpl implements BasicEMap.E
     * @generated
     */
    @Override
-   protected EClass eStaticClass()
-   {
+   protected EClass eStaticClass() {
       return ManifestPackage.Literals.SECTION_ENTRY;
    }
 
@@ -107,8 +104,7 @@ public class SectionEntryImpl extends ManifestSectionImpl implements BasicEMap.E
     * 
     * @generated
     */
-   public String getTypedKey()
-   {
+   public String getTypedKey() {
       return key;
    }
 
@@ -118,8 +114,7 @@ public class SectionEntryImpl extends ManifestSectionImpl implements BasicEMap.E
     * 
     * @generated
     */
-   public void setTypedKey(String newKey)
-   {
+   public void setTypedKey(String newKey) {
       String oldKey = key;
       key = newKey;
       if (eNotificationRequired())
@@ -132,10 +127,8 @@ public class SectionEntryImpl extends ManifestSectionImpl implements BasicEMap.E
     * 
     * @generated
     */
-   public EMap<String, String> getTypedValue()
-   {
-      if (value == null)
-      {
+   public EMap<String, String> getTypedValue() {
+      if (value == null) {
          value = new EcoreEMap<String, String>(ManifestPackage.Literals.HEADER_ENTRY, HeaderEntryImpl.class, this,
             ManifestPackage.SECTION_ENTRY__VALUE);
       }
@@ -148,8 +141,7 @@ public class SectionEntryImpl extends ManifestSectionImpl implements BasicEMap.E
     * 
     * @generated NOT
     */
-   public String getName()
-   {
+   public String getName() {
       return getKey();
    }
 
@@ -160,10 +152,8 @@ public class SectionEntryImpl extends ManifestSectionImpl implements BasicEMap.E
     * @generated
     */
    @Override
-   public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
-   {
-      switch (featureID)
-      {
+   public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+      switch (featureID) {
          case ManifestPackage.SECTION_ENTRY__VALUE :
             return ((InternalEList<?>) getTypedValue()).basicRemove(otherEnd, msgs);
       }
@@ -177,10 +167,8 @@ public class SectionEntryImpl extends ManifestSectionImpl implements BasicEMap.E
     * @generated
     */
    @Override
-   public Object eGet(int featureID, boolean resolve, boolean coreType)
-   {
-      switch (featureID)
-      {
+   public Object eGet(int featureID, boolean resolve, boolean coreType) {
+      switch (featureID) {
          case ManifestPackage.SECTION_ENTRY__KEY :
             return getTypedKey();
          case ManifestPackage.SECTION_ENTRY__VALUE :
@@ -199,10 +187,8 @@ public class SectionEntryImpl extends ManifestSectionImpl implements BasicEMap.E
     * @generated
     */
    @Override
-   public void eSet(int featureID, Object newValue)
-   {
-      switch (featureID)
-      {
+   public void eSet(int featureID, Object newValue) {
+      switch (featureID) {
          case ManifestPackage.SECTION_ENTRY__KEY :
             setTypedKey((String) newValue);
             return;
@@ -220,10 +206,8 @@ public class SectionEntryImpl extends ManifestSectionImpl implements BasicEMap.E
     * @generated
     */
    @Override
-   public void eUnset(int featureID)
-   {
-      switch (featureID)
-      {
+   public void eUnset(int featureID) {
+      switch (featureID) {
          case ManifestPackage.SECTION_ENTRY__KEY :
             setTypedKey(KEY_EDEFAULT);
             return;
@@ -241,10 +225,8 @@ public class SectionEntryImpl extends ManifestSectionImpl implements BasicEMap.E
     * @generated
     */
    @Override
-   public boolean eIsSet(int featureID)
-   {
-      switch (featureID)
-      {
+   public boolean eIsSet(int featureID) {
+      switch (featureID) {
          case ManifestPackage.SECTION_ENTRY__KEY :
             return KEY_EDEFAULT == null ? key != null : !KEY_EDEFAULT.equals(key);
          case ManifestPackage.SECTION_ENTRY__VALUE :
@@ -260,8 +242,7 @@ public class SectionEntryImpl extends ManifestSectionImpl implements BasicEMap.E
     * @generated
     */
    @Override
-   public String toString()
-   {
+   public String toString() {
       if (eIsProxy())
          return super.toString();
 
@@ -286,10 +267,8 @@ public class SectionEntryImpl extends ManifestSectionImpl implements BasicEMap.E
     * 
     * @generated
     */
-   public int getHash()
-   {
-      if (hash == -1)
-      {
+   public int getHash() {
+      if (hash == -1) {
          Object theKey = getKey();
          hash = (theKey == null ? 0 : theKey.hashCode());
       }
@@ -302,8 +281,7 @@ public class SectionEntryImpl extends ManifestSectionImpl implements BasicEMap.E
     * 
     * @generated
     */
-   public void setHash(int hash)
-   {
+   public void setHash(int hash) {
       this.hash = hash;
    }
 
@@ -313,8 +291,7 @@ public class SectionEntryImpl extends ManifestSectionImpl implements BasicEMap.E
     * 
     * @generated
     */
-   public String getKey()
-   {
+   public String getKey() {
       return getTypedKey();
    }
 
@@ -324,8 +301,7 @@ public class SectionEntryImpl extends ManifestSectionImpl implements BasicEMap.E
     * 
     * @generated
     */
-   public void setKey(String key)
-   {
+   public void setKey(String key) {
       setTypedKey(key);
    }
 
@@ -335,14 +311,12 @@ public class SectionEntryImpl extends ManifestSectionImpl implements BasicEMap.E
     * 
     * @generated
     */
-   public EMap<String, String> getValue()
-   {
+   public EMap<String, String> getValue() {
       return getTypedValue();
    }
 
    @Override
-   public EMap<String, String> getHeaders()
-   {
+   public EMap<String, String> getHeaders() {
       return getValue();
    }
 
@@ -352,8 +326,7 @@ public class SectionEntryImpl extends ManifestSectionImpl implements BasicEMap.E
     * 
     * @generated
     */
-   public EMap<String, String> setValue(EMap<String, String> value)
-   {
+   public EMap<String, String> setValue(EMap<String, String> value) {
       EMap<String, String> oldValue = getValue();
       getTypedValue().clear();
       getTypedValue().addAll(value);
@@ -367,8 +340,7 @@ public class SectionEntryImpl extends ManifestSectionImpl implements BasicEMap.E
     * @generated
     */
    @SuppressWarnings("unchecked")
-   public EMap<String, EMap<String, String>> getEMap()
-   {
+   public EMap<String, EMap<String, String>> getEMap() {
       EObject container = eContainer();
       return container == null ? null : (EMap<String, EMap<String, String>>) container.eGet(eContainmentFeature());
    }

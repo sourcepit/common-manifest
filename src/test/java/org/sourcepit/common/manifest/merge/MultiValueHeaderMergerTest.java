@@ -21,10 +21,8 @@ import junit.framework.TestCase;
 /**
  * @author Bernd
  */
-public class MultiValueHeaderMergerTest extends TestCase
-{
-   public void test1() throws Exception
-   {
+public class MultiValueHeaderMergerTest extends TestCase {
+   public void test1() throws Exception {
       String newValue;
 
       MultiValueHeaderMerger merger = new MultiValueHeaderMerger();

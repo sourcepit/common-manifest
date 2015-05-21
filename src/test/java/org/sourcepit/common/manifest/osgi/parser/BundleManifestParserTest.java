@@ -23,11 +23,9 @@ import static org.sourcepit.common.manifest.osgi.parser.BundleManifestParser.tri
 import org.hamcrest.core.IsEqual;
 import org.junit.Test;
 
-public class BundleManifestParserTest
-{
+public class BundleManifestParserTest {
    @Test
-   public void testTrimQuotes()
-   {
+   public void testTrimQuotes() {
       assertNull(trimQuotes(null));
       assertThat(trimQuotes(""), IsEqual.equalTo(""));
       assertThat(trimQuotes("\""), IsEqual.equalTo(""));

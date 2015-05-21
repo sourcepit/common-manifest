@@ -27,31 +27,25 @@ import org.sourcepit.common.manifest.resource.ManifestResourceImpl;
 /**
  * @author Bernd
  */
-public class BundleManifestResourceImpl extends ManifestResourceImpl
-{
-   public BundleManifestResourceImpl()
-   {
+public class BundleManifestResourceImpl extends ManifestResourceImpl {
+   public BundleManifestResourceImpl() {
       super();
    }
 
-   public BundleManifestResourceImpl(BytesByLine bytesByLine)
-   {
+   public BundleManifestResourceImpl(BytesByLine bytesByLine) {
       super(bytesByLine);
    }
 
-   public BundleManifestResourceImpl(URI uri)
-   {
+   public BundleManifestResourceImpl(URI uri) {
       super(uri);
    }
 
-   public BundleManifestResourceImpl(URI uri, BytesByLine bytesByLine)
-   {
+   public BundleManifestResourceImpl(URI uri, BytesByLine bytesByLine) {
       super(uri, bytesByLine);
    }
 
    @Override
-   protected ManifestBuilder createManifestBuilder(Map<?, ?> options)
-   {
+   protected ManifestBuilder createManifestBuilder(Map<?, ?> options) {
       return new BundleManifestBuilder(options);
    }
 }

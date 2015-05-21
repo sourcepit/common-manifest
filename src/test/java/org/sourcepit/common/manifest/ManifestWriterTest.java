@@ -28,146 +28,117 @@ import org.sourcepit.common.manifest.merge.ManifestWriter;
 /**
  * @author Bernd Vogt <bernd.vogt@sourcepit.org>
  */
-public class ManifestWriterTest
-{
+public class ManifestWriterTest {
    @Test
-   public void testIllegalStates() throws Exception
-   {
+   public void testIllegalStates() throws Exception {
       ManifestWriter mw = new ManifestWriter(new ByteArrayOutputStream());
 
-      try
-      {
+      try {
          mw.endMain();
          fail();
       }
-      catch (IllegalStateException e)
-      {
+      catch (IllegalStateException e) {
       }
 
-      try
-      {
+      try {
          mw.startSection("foo");
          fail();
       }
-      catch (IllegalStateException e)
-      {
+      catch (IllegalStateException e) {
       }
 
-      try
-      {
+      try {
          mw.endSection();
          fail();
       }
-      catch (IllegalStateException e)
-      {
+      catch (IllegalStateException e) {
       }
 
-      try
-      {
+      try {
          mw.attribute("name", "value");
          fail();
       }
-      catch (IllegalStateException e)
-      {
+      catch (IllegalStateException e) {
       }
 
       mw.startMain("1.0");
 
-      try
-      {
+      try {
          mw.startSection("foo");
          fail();
       }
-      catch (IllegalStateException e)
-      {
+      catch (IllegalStateException e) {
       }
 
-      try
-      {
+      try {
          mw.endSection();
          fail();
       }
-      catch (IllegalStateException e)
-      {
+      catch (IllegalStateException e) {
       }
 
-      try
-      {
+      try {
          mw.startMain("1.0");
          fail();
       }
-      catch (IllegalStateException e)
-      {
+      catch (IllegalStateException e) {
       }
 
       mw.attribute("name", "value");
 
       mw.endMain();
 
-      try
-      {
+      try {
          mw.startMain("1.0");
          fail();
       }
-      catch (IllegalStateException e)
-      {
+      catch (IllegalStateException e) {
       }
 
-      try
-      {
+      try {
          mw.endMain();
          fail();
       }
-      catch (IllegalStateException e)
-      {
+      catch (IllegalStateException e) {
       }
 
-      try
-      {
+      try {
          mw.attribute("name", "value");
          fail();
       }
-      catch (IllegalStateException e)
-      {
+      catch (IllegalStateException e) {
       }
 
       mw.startSection("foo");
 
-      try
-      {
+      try {
          mw.startSection("foo");
          fail();
       }
-      catch (IllegalStateException e)
-      {
+      catch (IllegalStateException e) {
       }
 
       mw.attribute("name", "value");
 
-      try
-      {
+      try {
          mw.endMain();
          fail();
       }
-      catch (IllegalStateException e)
-      {
+      catch (IllegalStateException e) {
       }
 
       mw.endSection();
 
-      try
-      {
+      try {
          mw.endSection();
          fail();
       }
-      catch (IllegalStateException e)
-      {
+      catch (IllegalStateException e) {
       }
    }
 
    @Test
-   public void testCRLF() throws Exception
-   {
+   public void testCRLF() throws Exception {
       StringBuilder win = new StringBuilder();
       win.append("Manifest-Version: 1.0\r\n");
       win.append("baed: äßß\r\n");
@@ -199,8 +170,7 @@ public class ManifestWriterTest
    }
 
    @Test
-   public void testLF() throws Exception
-   {
+   public void testLF() throws Exception {
       StringBuilder unix = new StringBuilder();
       unix.append("Manifest-Version: 1.0\n");
       unix.append("baed: äßß\n");

@@ -36,37 +36,30 @@ import org.sourcepit.common.manifest.resource.ManifestResource;
 /**
  * @author Bernd Vogt <bernd.vogt@sourcepit.org>
  */
-public final class ManifestUtils
-{
-   private ManifestUtils()
-   {
+public final class ManifestUtils {
+   private ManifestUtils() {
       super();
    }
 
-   public static Manifest readJarManifest(File jarFile) throws IOException
-   {
+   public static Manifest readJarManifest(File jarFile) throws IOException {
       final URI manifestUri = URI.createURI("jar:" + URI.createFileURI(jarFile.getAbsolutePath()) + "!/"
          + JarFile.MANIFEST_NAME);
 
       final ManifestResource resource = new GenericManifestResourceImpl(manifestUri);
 
       ZipInputStream jarIn = null;
-      try
-      {
+      try {
          jarIn = new ZipInputStream(new BufferedInputStream(FileUtils.openInputStream(jarFile)));
          ZipEntry zipEntry = jarIn.getNextEntry();
-         while (zipEntry != null)
-         {
-            if (JarFile.MANIFEST_NAME.equals(zipEntry.getName()))
-            {
+         while (zipEntry != null) {
+            if (JarFile.MANIFEST_NAME.equals(zipEntry.getName())) {
                resource.load(jarIn, null);
                break;
             }
             zipEntry = jarIn.getNextEntry();
          }
       }
-      finally
-      {
+      finally {
          IOUtils.closeQuietly(jarIn);
       }
 
@@ -74,24 +67,20 @@ public final class ManifestUtils
 
    }
 
-   public static Manifest toManifest(java.util.jar.Manifest manifest)
-   {
+   public static Manifest toManifest(java.util.jar.Manifest manifest) {
       GenericManifestBuilder builder = new GenericManifestBuilder();
 
       // map main section
       builder.visitSection(true, null);
-      for (Map.Entry<Object, Object> header : manifest.getMainAttributes().entrySet())
-      {
+      for (Map.Entry<Object, Object> header : manifest.getMainAttributes().entrySet()) {
          builder.visitHeader(header.getKey().toString(), header.getValue().toString());
       }
 
       // map other section
-      for (Map.Entry<String, Attributes> entry : manifest.getEntries().entrySet())
-      {
+      for (Map.Entry<String, Attributes> entry : manifest.getEntries().entrySet()) {
          builder.visitSection(false, entry.getKey());
          Attributes attributes = entry.getValue();
-         for (Map.Entry<Object, Object> header : attributes.entrySet())
-         {
+         for (Map.Entry<Object, Object> header : attributes.entrySet()) {
             builder.visitHeader(header.getKey().toString(), header.getValue().toString());
          }
       }

@@ -37,8 +37,7 @@ import org.sourcepit.common.manifest.osgi.ClassPathEntry;
  *
  * @generated
  */
-public class ClassPathEntryImpl extends ParameterizedImpl implements ClassPathEntry
-{
+public class ClassPathEntryImpl extends ParameterizedImpl implements ClassPathEntry {
    /**
     * The cached value of the '{@link #getPaths() <em>Paths</em>}' attribute list.
     * <!-- begin-user-doc -->
@@ -56,8 +55,7 @@ public class ClassPathEntryImpl extends ParameterizedImpl implements ClassPathEn
     * 
     * @generated
     */
-   protected ClassPathEntryImpl()
-   {
+   protected ClassPathEntryImpl() {
       super();
    }
 
@@ -68,8 +66,7 @@ public class ClassPathEntryImpl extends ParameterizedImpl implements ClassPathEn
     * @generated
     */
    @Override
-   protected EClass eStaticClass()
-   {
+   protected EClass eStaticClass() {
       return BundleManifestPackage.Literals.CLASS_PATH_ENTRY;
    }
 
@@ -79,10 +76,8 @@ public class ClassPathEntryImpl extends ParameterizedImpl implements ClassPathEn
     * 
     * @generated
     */
-   public EList<String> getPaths()
-   {
-      if (paths == null)
-      {
+   public EList<String> getPaths() {
+      if (paths == null) {
          paths = new EDataTypeUniqueEList<String>(String.class, this, BundleManifestPackage.CLASS_PATH_ENTRY__PATHS);
       }
       return paths;
@@ -95,10 +90,8 @@ public class ClassPathEntryImpl extends ParameterizedImpl implements ClassPathEn
     * @generated
     */
    @Override
-   public Object eGet(int featureID, boolean resolve, boolean coreType)
-   {
-      switch (featureID)
-      {
+   public Object eGet(int featureID, boolean resolve, boolean coreType) {
+      switch (featureID) {
          case BundleManifestPackage.CLASS_PATH_ENTRY__PATHS :
             return getPaths();
       }
@@ -113,10 +106,8 @@ public class ClassPathEntryImpl extends ParameterizedImpl implements ClassPathEn
     */
    @SuppressWarnings("unchecked")
    @Override
-   public void eSet(int featureID, Object newValue)
-   {
-      switch (featureID)
-      {
+   public void eSet(int featureID, Object newValue) {
+      switch (featureID) {
          case BundleManifestPackage.CLASS_PATH_ENTRY__PATHS :
             getPaths().clear();
             getPaths().addAll((Collection<? extends String>) newValue);
@@ -132,10 +123,8 @@ public class ClassPathEntryImpl extends ParameterizedImpl implements ClassPathEn
     * @generated
     */
    @Override
-   public void eUnset(int featureID)
-   {
-      switch (featureID)
-      {
+   public void eUnset(int featureID) {
+      switch (featureID) {
          case BundleManifestPackage.CLASS_PATH_ENTRY__PATHS :
             getPaths().clear();
             return;
@@ -150,10 +139,8 @@ public class ClassPathEntryImpl extends ParameterizedImpl implements ClassPathEn
     * @generated
     */
    @Override
-   public boolean eIsSet(int featureID)
-   {
-      switch (featureID)
-      {
+   public boolean eIsSet(int featureID) {
+      switch (featureID) {
          case BundleManifestPackage.CLASS_PATH_ENTRY__PATHS :
             return paths != null && !paths.isEmpty();
       }
@@ -167,8 +154,7 @@ public class ClassPathEntryImpl extends ParameterizedImpl implements ClassPathEn
     * @generated
     */
    @Override
-   public String toString()
-   {
+   public String toString() {
       if (eIsProxy())
          return super.toString();
 

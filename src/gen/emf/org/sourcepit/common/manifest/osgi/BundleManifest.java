@@ -32,8 +32,7 @@ import org.sourcepit.common.manifest.Manifest;
  * @model
  * @generated
  */
-public interface BundleManifest extends Manifest
-{
+public interface BundleManifest extends Manifest {
    /**
     * <!-- begin-user-doc -->
     * <!-- end-user-doc -->

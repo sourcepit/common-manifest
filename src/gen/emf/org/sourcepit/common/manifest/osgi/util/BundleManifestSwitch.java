@@ -51,8 +51,7 @@ import org.sourcepit.common.manifest.osgi.Parameterized;
  * @see org.sourcepit.common.manifest.osgi.BundleManifestPackage
  * @generated
  */
-public class BundleManifestSwitch<T> extends Switch<T>
-{
+public class BundleManifestSwitch<T> extends Switch<T> {
    /**
     * The cached model package
     * <!-- begin-user-doc -->
@@ -69,10 +68,8 @@ public class BundleManifestSwitch<T> extends Switch<T>
     * 
     * @generated
     */
-   public BundleManifestSwitch()
-   {
-      if (modelPackage == null)
-      {
+   public BundleManifestSwitch() {
+      if (modelPackage == null) {
          modelPackage = BundleManifestPackage.eINSTANCE;
       }
    }
@@ -87,8 +84,7 @@ public class BundleManifestSwitch<T> extends Switch<T>
     * @generated
     */
    @Override
-   protected boolean isSwitchFor(EPackage ePackage)
-   {
+   protected boolean isSwitchFor(EPackage ePackage) {
       return ePackage == modelPackage;
    }
 
@@ -101,12 +97,9 @@ public class BundleManifestSwitch<T> extends Switch<T>
     * @generated
     */
    @Override
-   protected T doSwitch(int classifierID, EObject theEObject)
-   {
-      switch (classifierID)
-      {
-         case BundleManifestPackage.BUNDLE_MANIFEST :
-         {
+   protected T doSwitch(int classifierID, EObject theEObject) {
+      switch (classifierID) {
+         case BundleManifestPackage.BUNDLE_MANIFEST : {
             BundleManifest bundleManifest = (BundleManifest) theEObject;
             T result = caseBundleManifest(bundleManifest);
             if (result == null)
@@ -117,16 +110,14 @@ public class BundleManifestSwitch<T> extends Switch<T>
                result = defaultCase(theEObject);
             return result;
          }
-         case BundleManifestPackage.PARAMETERIZED :
-         {
+         case BundleManifestPackage.PARAMETERIZED : {
             Parameterized parameterized = (Parameterized) theEObject;
             T result = caseParameterized(parameterized);
             if (result == null)
                result = defaultCase(theEObject);
             return result;
          }
-         case BundleManifestPackage.PARAMETER :
-         {
+         case BundleManifestPackage.PARAMETER : {
             Parameter parameter = (Parameter) theEObject;
             T result = caseParameter(parameter);
             if (result == null)
@@ -135,8 +126,7 @@ public class BundleManifestSwitch<T> extends Switch<T>
                result = defaultCase(theEObject);
             return result;
          }
-         case BundleManifestPackage.BUNDLE_ACTIVATION_POLICY :
-         {
+         case BundleManifestPackage.BUNDLE_ACTIVATION_POLICY : {
             BundleActivationPolicy bundleActivationPolicy = (BundleActivationPolicy) theEObject;
             T result = caseBundleActivationPolicy(bundleActivationPolicy);
             if (result == null)
@@ -145,8 +135,7 @@ public class BundleManifestSwitch<T> extends Switch<T>
                result = defaultCase(theEObject);
             return result;
          }
-         case BundleManifestPackage.PACKAGES_DECLARATION :
-         {
+         case BundleManifestPackage.PACKAGES_DECLARATION : {
             PackagesDeclaration packagesDeclaration = (PackagesDeclaration) theEObject;
             T result = casePackagesDeclaration(packagesDeclaration);
             if (result == null)
@@ -155,8 +144,7 @@ public class BundleManifestSwitch<T> extends Switch<T>
                result = defaultCase(theEObject);
             return result;
          }
-         case BundleManifestPackage.PACKAGE_EXPORT :
-         {
+         case BundleManifestPackage.PACKAGE_EXPORT : {
             PackageExport packageExport = (PackageExport) theEObject;
             T result = casePackageExport(packageExport);
             if (result == null)
@@ -167,8 +155,7 @@ public class BundleManifestSwitch<T> extends Switch<T>
                result = defaultCase(theEObject);
             return result;
          }
-         case BundleManifestPackage.PACKAGE_IMPORT :
-         {
+         case BundleManifestPackage.PACKAGE_IMPORT : {
             PackageImport packageImport = (PackageImport) theEObject;
             T result = casePackageImport(packageImport);
             if (result == null)
@@ -179,8 +166,7 @@ public class BundleManifestSwitch<T> extends Switch<T>
                result = defaultCase(theEObject);
             return result;
          }
-         case BundleManifestPackage.BUNDLE_REQUIREMENT :
-         {
+         case BundleManifestPackage.BUNDLE_REQUIREMENT : {
             BundleRequirement bundleRequirement = (BundleRequirement) theEObject;
             T result = caseBundleRequirement(bundleRequirement);
             if (result == null)
@@ -189,8 +175,7 @@ public class BundleManifestSwitch<T> extends Switch<T>
                result = defaultCase(theEObject);
             return result;
          }
-         case BundleManifestPackage.BUNDLE_SYMBOLIC_NAME :
-         {
+         case BundleManifestPackage.BUNDLE_SYMBOLIC_NAME : {
             BundleSymbolicName bundleSymbolicName = (BundleSymbolicName) theEObject;
             T result = caseBundleSymbolicName(bundleSymbolicName);
             if (result == null)
@@ -199,8 +184,7 @@ public class BundleManifestSwitch<T> extends Switch<T>
                result = defaultCase(theEObject);
             return result;
          }
-         case BundleManifestPackage.CLASS_PATH_ENTRY :
-         {
+         case BundleManifestPackage.CLASS_PATH_ENTRY : {
             ClassPathEntry classPathEntry = (ClassPathEntry) theEObject;
             T result = caseClassPathEntry(classPathEntry);
             if (result == null)
@@ -209,8 +193,7 @@ public class BundleManifestSwitch<T> extends Switch<T>
                result = defaultCase(theEObject);
             return result;
          }
-         case BundleManifestPackage.FRAGMENT_HOST :
-         {
+         case BundleManifestPackage.FRAGMENT_HOST : {
             FragmentHost fragmentHost = (FragmentHost) theEObject;
             T result = caseFragmentHost(fragmentHost);
             if (result == null)
@@ -219,8 +202,7 @@ public class BundleManifestSwitch<T> extends Switch<T>
                result = defaultCase(theEObject);
             return result;
          }
-         case BundleManifestPackage.DYNAMIC_PACKAGE_IMPORT :
-         {
+         case BundleManifestPackage.DYNAMIC_PACKAGE_IMPORT : {
             DynamicPackageImport dynamicPackageImport = (DynamicPackageImport) theEObject;
             T result = caseDynamicPackageImport(dynamicPackageImport);
             if (result == null)
@@ -231,8 +213,7 @@ public class BundleManifestSwitch<T> extends Switch<T>
                result = defaultCase(theEObject);
             return result;
          }
-         case BundleManifestPackage.BUNDLE_LICENSE :
-         {
+         case BundleManifestPackage.BUNDLE_LICENSE : {
             BundleLicense bundleLicense = (BundleLicense) theEObject;
             T result = caseBundleLicense(bundleLicense);
             if (result == null)
@@ -258,8 +239,7 @@ public class BundleManifestSwitch<T> extends Switch<T>
     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
     * @generated
     */
-   public T caseBundleManifest(BundleManifest object)
-   {
+   public T caseBundleManifest(BundleManifest object) {
       return null;
    }
 
@@ -275,8 +255,7 @@ public class BundleManifestSwitch<T> extends Switch<T>
     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
     * @generated
     */
-   public T caseParameterized(Parameterized object)
-   {
+   public T caseParameterized(Parameterized object) {
       return null;
    }
 
@@ -292,8 +271,7 @@ public class BundleManifestSwitch<T> extends Switch<T>
     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
     * @generated
     */
-   public T caseParameter(Parameter object)
-   {
+   public T caseParameter(Parameter object) {
       return null;
    }
 
@@ -309,8 +287,7 @@ public class BundleManifestSwitch<T> extends Switch<T>
     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
     * @generated
     */
-   public T caseBundleActivationPolicy(BundleActivationPolicy object)
-   {
+   public T caseBundleActivationPolicy(BundleActivationPolicy object) {
       return null;
    }
 
@@ -326,8 +303,7 @@ public class BundleManifestSwitch<T> extends Switch<T>
     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
     * @generated
     */
-   public T casePackagesDeclaration(PackagesDeclaration object)
-   {
+   public T casePackagesDeclaration(PackagesDeclaration object) {
       return null;
    }
 
@@ -343,8 +319,7 @@ public class BundleManifestSwitch<T> extends Switch<T>
     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
     * @generated
     */
-   public T casePackageExport(PackageExport object)
-   {
+   public T casePackageExport(PackageExport object) {
       return null;
    }
 
@@ -360,8 +335,7 @@ public class BundleManifestSwitch<T> extends Switch<T>
     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
     * @generated
     */
-   public T casePackageImport(PackageImport object)
-   {
+   public T casePackageImport(PackageImport object) {
       return null;
    }
 
@@ -377,8 +351,7 @@ public class BundleManifestSwitch<T> extends Switch<T>
     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
     * @generated
     */
-   public T caseBundleRequirement(BundleRequirement object)
-   {
+   public T caseBundleRequirement(BundleRequirement object) {
       return null;
    }
 
@@ -394,8 +367,7 @@ public class BundleManifestSwitch<T> extends Switch<T>
     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
     * @generated
     */
-   public T caseBundleSymbolicName(BundleSymbolicName object)
-   {
+   public T caseBundleSymbolicName(BundleSymbolicName object) {
       return null;
    }
 
@@ -411,8 +383,7 @@ public class BundleManifestSwitch<T> extends Switch<T>
     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
     * @generated
     */
-   public T caseClassPathEntry(ClassPathEntry object)
-   {
+   public T caseClassPathEntry(ClassPathEntry object) {
       return null;
    }
 
@@ -428,8 +399,7 @@ public class BundleManifestSwitch<T> extends Switch<T>
     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
     * @generated
     */
-   public T caseFragmentHost(FragmentHost object)
-   {
+   public T caseFragmentHost(FragmentHost object) {
       return null;
    }
 
@@ -445,8 +415,7 @@ public class BundleManifestSwitch<T> extends Switch<T>
     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
     * @generated
     */
-   public T caseDynamicPackageImport(DynamicPackageImport object)
-   {
+   public T caseDynamicPackageImport(DynamicPackageImport object) {
       return null;
    }
 
@@ -462,8 +431,7 @@ public class BundleManifestSwitch<T> extends Switch<T>
     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
     * @generated
     */
-   public T caseBundleLicense(BundleLicense object)
-   {
+   public T caseBundleLicense(BundleLicense object) {
       return null;
    }
 
@@ -479,8 +447,7 @@ public class BundleManifestSwitch<T> extends Switch<T>
     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
     * @generated
     */
-   public T caseAbstractSection(AbstractSection object)
-   {
+   public T caseAbstractSection(AbstractSection object) {
       return null;
    }
 
@@ -496,8 +463,7 @@ public class BundleManifestSwitch<T> extends Switch<T>
     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
     * @generated
     */
-   public T caseManifest(Manifest object)
-   {
+   public T caseManifest(Manifest object) {
       return null;
    }
 
@@ -513,8 +479,7 @@ public class BundleManifestSwitch<T> extends Switch<T>
     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
     * @generated
     */
-   public T caseParseable(Parseable object)
-   {
+   public T caseParseable(Parseable object) {
       return null;
    }
 
@@ -531,8 +496,7 @@ public class BundleManifestSwitch<T> extends Switch<T>
     * @generated
     */
    @Override
-   public T defaultCase(EObject object)
-   {
+   public T defaultCase(EObject object) {
       return null;
    }
 

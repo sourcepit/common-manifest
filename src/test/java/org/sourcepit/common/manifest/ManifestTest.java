@@ -32,19 +32,16 @@ import org.junit.Test;
 /**
  * @author Bernd
  */
-public class ManifestTest
-{
+public class ManifestTest {
 
    @Test
-   public void testNew()
-   {
+   public void testNew() {
       Manifest manifest = ManifestFactory.eINSTANCE.createManifest();
       assertThat(manifest.getHeaderValue(MANIFEST_VERSION), IsEqual.equalTo("1.0"));
    }
 
    @Test
-   public void testHeaderOperations()
-   {
+   public void testHeaderOperations() {
       Manifest manifest = ManifestFactory.eINSTANCE.createManifest();
       assertThat(manifest.getHeader(MAIN_CLASS.getLiteral()), IsNull.nullValue());
       assertThat(manifest.getHeader(MAIN_CLASS), IsNull.nullValue());
@@ -82,25 +79,21 @@ public class ManifestTest
    }
 
    @Test
-   public void testNames() throws Exception
-   {
+   public void testNames() throws Exception {
       Manifest manifest = ManifestFactory.eINSTANCE.createManifest();
 
       manifest.getHeaders().put("good", "name");
 
-      try
-      {
+      try {
          manifest.getHeaders().put("bäd", "name");
          fail();
       }
-      catch (IllegalArgumentException e)
-      {
+      catch (IllegalArgumentException e) {
       }
    }
 
    @Test
-   public void testHeadersCaseInsensitive() throws Exception
-   {
+   public void testHeadersCaseInsensitive() throws Exception {
       Manifest manifest = ManifestFactory.eINSTANCE.createManifest();
 
       EMap<String, String> headers = manifest.getHeaders();

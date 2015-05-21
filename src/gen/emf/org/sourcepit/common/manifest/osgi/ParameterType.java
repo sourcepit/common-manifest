@@ -32,8 +32,7 @@ import org.eclipse.emf.common.util.Enumerator;
  * @model
  * @generated
  */
-public enum ParameterType implements Enumerator
-{
+public enum ParameterType implements Enumerator {
    /**
     * The '<em><b>ATTRIBUTE</b></em>' literal object.
     * <!-- begin-user-doc -->
@@ -113,13 +112,10 @@ public enum ParameterType implements Enumerator
     * 
     * @generated
     */
-   public static ParameterType get(String literal)
-   {
-      for (int i = 0; i < VALUES_ARRAY.length; ++i)
-      {
+   public static ParameterType get(String literal) {
+      for (int i = 0; i < VALUES_ARRAY.length; ++i) {
          ParameterType result = VALUES_ARRAY[i];
-         if (result.toString().equals(literal))
-         {
+         if (result.toString().equals(literal)) {
             return result;
          }
       }
@@ -133,13 +129,10 @@ public enum ParameterType implements Enumerator
     * 
     * @generated
     */
-   public static ParameterType getByName(String name)
-   {
-      for (int i = 0; i < VALUES_ARRAY.length; ++i)
-      {
+   public static ParameterType getByName(String name) {
+      for (int i = 0; i < VALUES_ARRAY.length; ++i) {
          ParameterType result = VALUES_ARRAY[i];
-         if (result.getName().equals(name))
-         {
+         if (result.getName().equals(name)) {
             return result;
          }
       }
@@ -153,10 +146,8 @@ public enum ParameterType implements Enumerator
     * 
     * @generated
     */
-   public static ParameterType get(int value)
-   {
-      switch (value)
-      {
+   public static ParameterType get(int value) {
+      switch (value) {
          case ATTRIBUTE_VALUE :
             return ATTRIBUTE;
          case DIRECTIVE_VALUE :
@@ -196,8 +187,7 @@ public enum ParameterType implements Enumerator
     * 
     * @generated
     */
-   private ParameterType(int value, String name, String literal)
-   {
+   private ParameterType(int value, String name, String literal) {
       this.value = value;
       this.name = name;
       this.literal = literal;
@@ -209,8 +199,7 @@ public enum ParameterType implements Enumerator
     * 
     * @generated
     */
-   public int getValue()
-   {
+   public int getValue() {
       return value;
    }
 
@@ -220,8 +209,7 @@ public enum ParameterType implements Enumerator
     * 
     * @generated
     */
-   public String getName()
-   {
+   public String getName() {
       return name;
    }
 
@@ -231,8 +219,7 @@ public enum ParameterType implements Enumerator
     * 
     * @generated
     */
-   public String getLiteral()
-   {
+   public String getLiteral() {
       return literal;
    }
 
@@ -244,8 +231,7 @@ public enum ParameterType implements Enumerator
     * @generated
     */
    @Override
-   public String toString()
-   {
+   public String toString() {
       return literal;
    }
 

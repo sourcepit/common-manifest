@@ -20,8 +20,7 @@ package org.sourcepit.common.manifest.parser;
 /**
  * @author Bernd
  */
-public abstract class AbstractManifestVisitor
-{
+public abstract class AbstractManifestVisitor {
    public abstract void visitSection(boolean isMainSection, String name);
 
    public abstract void visitHeader(String name, String value);

@@ -29,16 +29,14 @@ import org.sourcepit.common.manifest.ManifestSection;
  *
  * @generated
  */
-public abstract class ManifestSectionImpl extends AbstractSectionImpl implements ManifestSection
-{
+public abstract class ManifestSectionImpl extends AbstractSectionImpl implements ManifestSection {
    /**
     * <!-- begin-user-doc -->
     * <!-- end-user-doc -->
     * 
     * @generated
     */
-   protected ManifestSectionImpl()
-   {
+   protected ManifestSectionImpl() {
       super();
    }
 
@@ -49,8 +47,7 @@ public abstract class ManifestSectionImpl extends AbstractSectionImpl implements
     * @generated
     */
    @Override
-   protected EClass eStaticClass()
-   {
+   protected EClass eStaticClass() {
       return ManifestPackage.Literals.MANIFEST_SECTION;
    }
 
@@ -60,8 +57,7 @@ public abstract class ManifestSectionImpl extends AbstractSectionImpl implements
     * 
     * @generated
     */
-   public String getName()
-   {
+   public String getName() {
       // TODO: implement this method
       // Ensure that you remove @generated or mark it @generated NOT
       throw new UnsupportedOperationException();

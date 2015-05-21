@@ -22,8 +22,7 @@ import org.antlr.runtime.RecognitionException;
 import org.sourcepit.common.manifest.osgi.parser.BundleVersionLexer;
 import org.sourcepit.common.manifest.osgi.parser.BundleVersionParser;
 
-public class VersionRange
-{
+public class VersionRange {
    private final Version lowVersion;
    private final boolean lowInclusive;
    private final Version highVersion;
@@ -33,21 +32,17 @@ public class VersionRange
    // default for a non-specified version range is 0, which maps to [0.0.0,∞).
    public static final VersionRange INFINITE_RANGE = new VersionRange(Version.EMPTY_VERSION, true, null, false);
 
-   public static VersionRange parse(String range)
-   {
-      if (range == null || range.length() == 0)
-      {
+   public static VersionRange parse(String range) {
+      if (range == null || range.length() == 0) {
          return INFINITE_RANGE;
       }
 
       final BundleVersionParser parser = new BundleVersionParser(new CommonTokenStream(new BundleVersionLexer(
          new ANTLRStringStream(range))));
-      try
-      {
+      try {
          return parser.versionRange();
       }
-      catch (RecognitionException e)
-      {
+      catch (RecognitionException e) {
          String hdr = parser.getErrorHeader(e);
          String msg = parser.getErrorMessage(e, parser.getTokenNames());
          throw new IllegalArgumentException(hdr + " " + msg, e);
@@ -61,8 +56,7 @@ public class VersionRange
     * @param rangeTwo The second <code>VersionRange</code> for the intersection
     * @return The intersection of the two <code>VersionRanges</code>
     */
-   public static VersionRange intersect(VersionRange rangeOne, VersionRange rangeTwo)
-   {
+   public static VersionRange intersect(VersionRange rangeOne, VersionRange rangeTwo) {
       Version lowVersion;
       boolean lowInclusive;
 
@@ -70,78 +64,62 @@ public class VersionRange
       boolean highInclusive;
 
       int lowComparison = rangeOne.lowVersion.compareTo(rangeTwo.lowVersion);
-      if (lowComparison < 0)
-      {
+      if (lowComparison < 0) {
          lowVersion = rangeTwo.lowVersion;
          lowInclusive = rangeTwo.lowInclusive;
       }
-      else if (lowComparison > 0)
-      {
+      else if (lowComparison > 0) {
          lowVersion = rangeOne.lowVersion;
          lowInclusive = rangeOne.lowInclusive;
       }
-      else
-      {
+      else {
          lowVersion = rangeOne.lowVersion;
          lowInclusive = rangeOne.lowInclusive && rangeTwo.lowInclusive;
       }
 
-      if (rangeOne.highVersion == null)
-      {
-         if (rangeTwo.highVersion == null)
-         {
+      if (rangeOne.highVersion == null) {
+         if (rangeTwo.highVersion == null) {
             highVersion = null;
             highInclusive = false;
          }
-         else
-         {
+         else {
             highVersion = rangeTwo.highVersion;
             highInclusive = rangeTwo.highInclusive;
          }
       }
-      else if (rangeTwo.highVersion == null)
-      {
+      else if (rangeTwo.highVersion == null) {
          highVersion = rangeOne.highVersion;
          highInclusive = rangeOne.highInclusive;
       }
-      else
-      {
+      else {
          int highComparison = rangeOne.highVersion.compareTo(rangeTwo.highVersion);
-         if (highComparison > 0)
-         {
+         if (highComparison > 0) {
             highVersion = rangeTwo.highVersion;
             highInclusive = rangeTwo.highInclusive;
          }
-         else if (highComparison < 0)
-         {
+         else if (highComparison < 0) {
             highVersion = rangeOne.highVersion;
             highInclusive = rangeOne.highInclusive;
          }
-         else
-         {
+         else {
             highVersion = rangeOne.highVersion;
             highInclusive = rangeOne.highInclusive && rangeTwo.highInclusive;
          }
       }
 
-      if (lowVersion != null && highVersion != null)
-      {
+      if (lowVersion != null && highVersion != null) {
          boolean invalid = false;
          final int compare = lowVersion.compareTo(highVersion);
-         if (compare > 0)
-         {
+         if (compare > 0) {
             invalid = true;
          }
-         else if (compare == 0 && !highInclusive)
-         {
+         else if (compare == 0 && !highInclusive) {
             invalid = true;
          }
-         else if (compare == 0 && !lowInclusive)
-         {
+         else if (compare == 0 && !lowInclusive) {
             invalid = true;
          }
-         if (invalid)
-         {
+         if (invalid) {
             throw new IllegalArgumentException("Cannot intersect version ranges " + rangeOne + " and " + rangeTwo + ".");
          }
       }
@@ -149,44 +127,36 @@ public class VersionRange
       return new VersionRange(lowVersion, lowInclusive, highVersion, highInclusive);
    }
 
-   public VersionRange(Version lowVersion, boolean lowInclusive, Version highVersion, boolean highInclusive)
-   {
+   public VersionRange(Version lowVersion, boolean lowInclusive, Version highVersion, boolean highInclusive) {
       this.lowVersion = lowVersion;
       this.lowInclusive = lowInclusive;
       this.highVersion = highVersion;
       this.highInclusive = highInclusive;
    }
 
-   public Version getLowVersion()
-   {
+   public Version getLowVersion() {
       return lowVersion;
    }
 
-   public boolean isLowInclusive()
-   {
+   public boolean isLowInclusive() {
       return lowInclusive;
    }
 
-   public Version getHighVersion()
-   {
+   public Version getHighVersion() {
       return highVersion;
    }
 
-   public boolean isHighInclusive()
-   {
+   public boolean isHighInclusive() {
       return highInclusive;
    }
 
-   public boolean includes(Version version)
-   {
-      if (version == null)
-      {
+   public boolean includes(Version version) {
+      if (version == null) {
          version = Version.EMPTY_VERSION;
       }
       final int minCheck = lowInclusive ? 0 : 1;
       final int maxCheck = highInclusive ? 0 : -1;
-      if (lowVersion == null)
-      {
+      if (lowVersion == null) {
          throw new IllegalStateException("Low version may not be null.");
       }
       return version.compareTo(lowVersion) >= minCheck
@@ -194,8 +164,7 @@ public class VersionRange
    }
 
    @Override
-   public int hashCode()
-   {
+   public int hashCode() {
       final int prime = 31;
       int result = 1;
       result = prime * result + (highInclusive ? 1231 : 1237);
@@ -207,8 +176,7 @@ public class VersionRange
 
    // CSOFF generated code
    @Override
-   public boolean equals(Object obj)
-   {
+   public boolean equals(Object obj) {
       if (this == obj)
          return true;
       if (obj == null)
@@ -218,8 +186,7 @@ public class VersionRange
       VersionRange other = (VersionRange) obj;
       if (highInclusive != other.highInclusive)
          return false;
-      if (highVersion == null)
-      {
+      if (highVersion == null) {
          if (other.highVersion != null)
             return false;
       }
@@ -227,8 +194,7 @@ public class VersionRange
          return false;
       if (lowInclusive != other.lowInclusive)
          return false;
-      if (lowVersion == null)
-      {
+      if (lowVersion == null) {
          if (other.lowVersion != null)
             return false;
       }
@@ -237,14 +203,11 @@ public class VersionRange
       return true;
    } // CSON
 
-   public String toString()
-   {
-      if (highVersion != null)
-      {
+   public String toString() {
+      if (highVersion != null) {
          StringBuffer sb = new StringBuffer();
          sb.append(lowInclusive ? '[' : '(');
-         if (lowVersion != null)
-         {
+         if (lowVersion != null) {
             sb.append(lowVersion.toMinimalString());
          }
          sb.append(',');
@@ -252,8 +215,7 @@ public class VersionRange
          sb.append(highInclusive ? ']' : ')');
          return sb.toString();
       }
-      else
-      {
+      else {
          return lowVersion.toMinimalString();
       }
    }

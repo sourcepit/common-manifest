@@ -26,12 +26,10 @@ import org.junit.Test;
 /**
  * @author Bernd Vogt <bernd.vogt@sourcepit.org>
  */
-public class DynamicPackageImportTest
-{
+public class DynamicPackageImportTest {
 
    @Test
-   public void testSetVersion()
-   {
+   public void testSetVersion() {
       DynamicPackageImport packageExport = BundleManifestFactory.eINSTANCE.createDynamicPackageImport();
       assertThat(packageExport.getVersion(), IsNull.nullValue());
       assertThat(packageExport.getParameter("version"), IsNull.nullValue());
@@ -49,8 +47,7 @@ public class DynamicPackageImportTest
    }
 
    @Test
-   public void testSetBundleVersion()
-   {
+   public void testSetBundleVersion() {
       DynamicPackageImport packageImport = BundleManifestFactory.eINSTANCE.createDynamicPackageImport();
       assertThat(packageImport.getBundleVersion(), IsNull.nullValue());
       assertThat(packageImport.getParameter("bundle-version"), IsNull.nullValue());

@@ -35,8 +35,7 @@ import org.eclipse.emf.common.util.EMap;
  * @model
  * @generated
  */
-public interface Manifest extends AbstractSection
-{
+public interface Manifest extends AbstractSection {
    /**
     * Returns the value of the '<em><b>Headers</b></em>' map.
     * The key is of type {@link java.lang.String},

@@ -42,13 +42,11 @@ import org.sourcepit.common.manifest.osgi.VersionRange;
 /**
  * @author Bernd
  */
-public class BundleHeaderParserImplTest
-{
+public class BundleHeaderParserImplTest {
    private BundleHeaderParserImpl parser = new BundleHeaderParserImpl();
 
    @Test
-   public void testParameter()
-   {
+   public void testParameter() {
       String str = "name=foo";
       Parameter param = parseParameter(str);
       assertThat(param.getName(), IsEqual.equalTo("name"));
@@ -83,8 +81,7 @@ public class BundleHeaderParserImplTest
    }
 
    @Test
-   public void testVersionParameter()
-   {
+   public void testVersionParameter() {
       Version version = Version.parse("1.2.3");
 
       PackageExport export = parser.parseExportPackage("a.b.c;d.e.f;version=" + version.toString()).get(0);
@@ -100,8 +97,7 @@ public class BundleHeaderParserImplTest
    }
 
    @Test
-   public void testVersionRangeParameter()
-   {
+   public void testVersionRangeParameter() {
       VersionRange range = VersionRange.parse("[1,2)");
 
       PackageImport export = parser.parseImportPackage("a.b.c;d.e.f;version=\"" + range.toString() + "\"").get(0);
@@ -117,8 +113,7 @@ public class BundleHeaderParserImplTest
    }
 
    @Test
-   public void testSupportBrokenVersionRange() throws Exception
-   {
+   public void testSupportBrokenVersionRange() throws Exception {
       // MANIFEST.MF of org.eclipse.birt.core_2.6.2.r262_v20110209.jar has a broken Require-Bundle header :-(
       VersionRange range = VersionRange.parse("[1,2)");
       PackageImport export = parser.parseImportPackage("a.b.c;version=\"" + range.toString()).get(0);
@@ -136,14 +131,12 @@ public class BundleHeaderParserImplTest
       assertThat(importPackages.get(1).getParameterValue("version"), IsEqual.equalTo("[1,3)"));
    }
 
-   protected Parameter parseParameter(String parameter)
-   {
+   protected Parameter parseParameter(String parameter) {
       PackageExport export = parser.parseExportPackage("a.b.bc;" + parameter).get(0);
       return getFirstParameter(export);
    }
 
-   protected Parameter getFirstParameter(Parameterized parameterized)
-   {
+   protected Parameter getFirstParameter(Parameterized parameterized) {
       EList<Parameter> parameters = parameterized.getParameters();
       assertThat(parameters.size(), Is.is(1));
       Parameter p = parameters.get(0);
@@ -152,8 +145,7 @@ public class BundleHeaderParserImplTest
    }
 
    @Test
-   public void testParameterToValueString() throws Exception
-   {
+   public void testParameterToValueString() throws Exception {
       // force init of static initializers
       BundleManifestFactory.eINSTANCE.createBundleManifest();
 
@@ -166,8 +158,7 @@ public class BundleHeaderParserImplTest
    }
 
    @Test
-   public void testExportPackageToString() throws Exception
-   {
+   public void testExportPackageToString() throws Exception {
       BundleManifest manifest = BundleManifestFactory.eINSTANCE.createBundleManifest();
       manifest.setHeader(BundleHeaderName.EXPORT_PACKAGE, "a.b.c;d.e.f;version=1.0,g.h.i");
 
@@ -177,8 +168,7 @@ public class BundleHeaderParserImplTest
    }
 
    @Test
-   public void testBundleLicenseToString() throws Exception
-   {
+   public void testBundleLicenseToString() throws Exception {
       BundleManifest manifest = BundleManifestFactory.eINSTANCE.createBundleManifest();
       manifest.setHeader(BundleHeaderName.BUNDLE_LICENSE,
          "Apache License Version 2.0;link=\"http://www.apache.org/licenses/LICENSE-2.0\"");
@@ -191,8 +181,7 @@ public class BundleHeaderParserImplTest
    }
 
    @Test
-   public void testBundleLicenseWithSOmeSpecialChars() throws Exception
-   {
+   public void testBundleLicenseWithSOmeSpecialChars() throws Exception {
       BundleManifest manifest = BundleManifestFactory.eINSTANCE.createBundleManifest();
       manifest.setHeader(BundleHeaderName.BUNDLE_LICENSE, "\"The License\"");
 

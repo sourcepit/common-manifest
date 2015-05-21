@@ -37,22 +37,18 @@ import org.sourcepit.common.manifest.osgi.Parameter;
 /**
  * @author Bernd Vogt <bernd.vogt@sourcepit.org>
  */
-public class ParseableTest
-{
+public class ParseableTest {
 
    @SuppressWarnings("unchecked")
    @Test
-   public void testSetValue()
-   {
+   public void testSetValue() {
       BundleManifest mf = BundleManifestFactory.eINSTANCE.createBundleManifest();
       mf.setHeader(EXPORT_PACKAGE, "foo");
 
       final List<Notification> notifications = new ArrayList<Notification>();
 
-      mf.eAdapters().add(new EContentAdapter()
-      {
-         public void notifyChanged(org.eclipse.emf.common.notify.Notification notification)
-         {
+      mf.eAdapters().add(new EContentAdapter() {
+         public void notifyChanged(org.eclipse.emf.common.notify.Notification notification) {
             super.notifyChanged(notification);
             notifications.add(notification);
          };
@@ -95,17 +91,14 @@ public class ParseableTest
 
    @SuppressWarnings("unchecked")
    @Test
-   public void testSetParsedValue()
-   {
+   public void testSetParsedValue() {
       BundleManifest mf = BundleManifestFactory.eINSTANCE.createBundleManifest();
       mf.setHeader(EXPORT_PACKAGE, "foo");
 
       final List<Notification> notifications = new ArrayList<Notification>();
 
-      mf.eAdapters().add(new EContentAdapter()
-      {
-         public void notifyChanged(org.eclipse.emf.common.notify.Notification notification)
-         {
+      mf.eAdapters().add(new EContentAdapter() {
+         public void notifyChanged(org.eclipse.emf.common.notify.Notification notification) {
             super.notifyChanged(notification);
             notifications.add(notification);
          };

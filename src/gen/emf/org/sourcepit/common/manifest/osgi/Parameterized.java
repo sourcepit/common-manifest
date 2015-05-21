@@ -35,8 +35,7 @@ import org.eclipse.emf.ecore.EObject;
  * @model abstract="true"
  * @generated
  */
-public interface Parameterized extends EObject
-{
+public interface Parameterized extends EObject {
    /**
     * Returns the value of the '<em><b>Parameters</b></em>' containment reference list.
     * The list contents are of type {@link org.sourcepit.common.manifest.osgi.Parameter}.

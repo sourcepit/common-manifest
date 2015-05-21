@@ -27,8 +27,7 @@ package org.sourcepit.common.manifest;
  * @model abstract="true"
  * @generated
  */
-public interface Header extends Parseable
-{
+public interface Header extends Parseable {
    /**
     * <!-- begin-user-doc -->
     * <!-- end-user-doc -->

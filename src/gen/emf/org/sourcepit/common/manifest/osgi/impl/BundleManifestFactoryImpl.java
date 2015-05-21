@@ -50,8 +50,7 @@ import org.sourcepit.common.manifest.osgi.VersionRange;
  * 
  * @generated
  */
-public class BundleManifestFactoryImpl extends EFactoryImpl implements BundleManifestFactory
-{
+public class BundleManifestFactoryImpl extends EFactoryImpl implements BundleManifestFactory {
    /**
     * Creates the default factory implementation.
     * <!-- begin-user-doc -->
@@ -59,19 +58,14 @@ public class BundleManifestFactoryImpl extends EFactoryImpl implements BundleMan
     * 
     * @generated
     */
-   public static BundleManifestFactory init()
-   {
-      try
-      {
-         BundleManifestFactory theBundleManifestFactory = (BundleManifestFactory) EPackage.Registry.INSTANCE
-            .getEFactory(BundleManifestPackage.eNS_URI);
-         if (theBundleManifestFactory != null)
-         {
+   public static BundleManifestFactory init() {
+      try {
+         BundleManifestFactory theBundleManifestFactory = (BundleManifestFactory) EPackage.Registry.INSTANCE.getEFactory(BundleManifestPackage.eNS_URI);
+         if (theBundleManifestFactory != null) {
             return theBundleManifestFactory;
          }
       }
-      catch (Exception exception)
-      {
+      catch (Exception exception) {
          EcorePlugin.INSTANCE.log(exception);
       }
       return new BundleManifestFactoryImpl();
@@ -84,8 +78,7 @@ public class BundleManifestFactoryImpl extends EFactoryImpl implements BundleMan
     * 
     * @generated
     */
-   public BundleManifestFactoryImpl()
-   {
+   public BundleManifestFactoryImpl() {
       super();
    }
 
@@ -96,10 +89,8 @@ public class BundleManifestFactoryImpl extends EFactoryImpl implements BundleMan
     * @generated
     */
    @Override
-   public EObject create(EClass eClass)
-   {
-      switch (eClass.getClassifierID())
-      {
+   public EObject create(EClass eClass) {
+      switch (eClass.getClassifierID()) {
          case BundleManifestPackage.BUNDLE_MANIFEST :
             return createBundleManifest();
          case BundleManifestPackage.PARAMETER :
@@ -134,10 +125,8 @@ public class BundleManifestFactoryImpl extends EFactoryImpl implements BundleMan
     * @generated
     */
    @Override
-   public Object createFromString(EDataType eDataType, String initialValue)
-   {
-      switch (eDataType.getClassifierID())
-      {
+   public Object createFromString(EDataType eDataType, String initialValue) {
+      switch (eDataType.getClassifierID()) {
          case BundleManifestPackage.BUNDLE_HEADER_NAME :
             return createBundleHeaderNameFromString(eDataType, initialValue);
          case BundleManifestPackage.ACTIVATION_POLICY :
@@ -162,10 +151,8 @@ public class BundleManifestFactoryImpl extends EFactoryImpl implements BundleMan
     * @generated
     */
    @Override
-   public String convertToString(EDataType eDataType, Object instanceValue)
-   {
-      switch (eDataType.getClassifierID())
-      {
+   public String convertToString(EDataType eDataType, Object instanceValue) {
+      switch (eDataType.getClassifierID()) {
          case BundleManifestPackage.BUNDLE_HEADER_NAME :
             return convertBundleHeaderNameToString(eDataType, instanceValue);
          case BundleManifestPackage.ACTIVATION_POLICY :
@@ -189,8 +176,7 @@ public class BundleManifestFactoryImpl extends EFactoryImpl implements BundleMan
     * 
     * @generated
     */
-   public Parameter createParameter()
-   {
+   public Parameter createParameter() {
       ParameterImpl parameter = new ParameterImpl();
       return parameter;
    }
@@ -201,8 +187,7 @@ public class BundleManifestFactoryImpl extends EFactoryImpl implements BundleMan
     * 
     * @generated
     */
-   public BundleActivationPolicy createBundleActivationPolicy()
-   {
+   public BundleActivationPolicy createBundleActivationPolicy() {
       BundleActivationPolicyImpl bundleActivationPolicy = new BundleActivationPolicyImpl();
       return bundleActivationPolicy;
    }
@@ -213,8 +198,7 @@ public class BundleManifestFactoryImpl extends EFactoryImpl implements BundleMan
     * 
     * @generated
     */
-   public BundleManifest createBundleManifest()
-   {
+   public BundleManifest createBundleManifest() {
       BundleManifestImpl bundleManifest = new BundleManifestImpl();
       return bundleManifest;
    }
@@ -225,8 +209,7 @@ public class BundleManifestFactoryImpl extends EFactoryImpl implements BundleMan
     * 
     * @generated
     */
-   public PackageExport createPackageExport()
-   {
+   public PackageExport createPackageExport() {
       PackageExportImpl packageExport = new PackageExportImpl();
       return packageExport;
    }
@@ -237,8 +220,7 @@ public class BundleManifestFactoryImpl extends EFactoryImpl implements BundleMan
     * 
     * @generated
     */
-   public PackageImport createPackageImport()
-   {
+   public PackageImport createPackageImport() {
       PackageImportImpl packageImport = new PackageImportImpl();
       return packageImport;
    }
@@ -249,8 +231,7 @@ public class BundleManifestFactoryImpl extends EFactoryImpl implements BundleMan
     * 
     * @generated
     */
-   public BundleRequirement createBundleRequirement()
-   {
+   public BundleRequirement createBundleRequirement() {
       BundleRequirementImpl bundleRequirement = new BundleRequirementImpl();
       return bundleRequirement;
    }
@@ -261,8 +242,7 @@ public class BundleManifestFactoryImpl extends EFactoryImpl implements BundleMan
     * 
     * @generated
     */
-   public BundleSymbolicName createBundleSymbolicName()
-   {
+   public BundleSymbolicName createBundleSymbolicName() {
       BundleSymbolicNameImpl bundleSymbolicName = new BundleSymbolicNameImpl();
       return bundleSymbolicName;
    }
@@ -273,8 +253,7 @@ public class BundleManifestFactoryImpl extends EFactoryImpl implements BundleMan
     * 
     * @generated
     */
-   public ClassPathEntry createClassPathEntry()
-   {
+   public ClassPathEntry createClassPathEntry() {
       ClassPathEntryImpl classPathEntry = new ClassPathEntryImpl();
       return classPathEntry;
    }
@@ -285,8 +264,7 @@ public class BundleManifestFactoryImpl extends EFactoryImpl implements BundleMan
     * 
     * @generated
     */
-   public FragmentHost createFragmentHost()
-   {
+   public FragmentHost createFragmentHost() {
       FragmentHostImpl fragmentHost = new FragmentHostImpl();
       return fragmentHost;
    }
@@ -297,8 +275,7 @@ public class BundleManifestFactoryImpl extends EFactoryImpl implements BundleMan
     * 
     * @generated
     */
-   public DynamicPackageImport createDynamicPackageImport()
-   {
+   public DynamicPackageImport createDynamicPackageImport() {
       DynamicPackageImportImpl dynamicPackageImport = new DynamicPackageImportImpl();
       return dynamicPackageImport;
    }
@@ -309,8 +286,7 @@ public class BundleManifestFactoryImpl extends EFactoryImpl implements BundleMan
     * 
     * @generated
     */
-   public BundleLicense createBundleLicense()
-   {
+   public BundleLicense createBundleLicense() {
       BundleLicenseImpl bundleLicense = new BundleLicenseImpl();
       return bundleLicense;
    }
@@ -321,8 +297,7 @@ public class BundleManifestFactoryImpl extends EFactoryImpl implements BundleMan
     * 
     * @generated
     */
-   public BundleHeaderName createBundleHeaderNameFromString(EDataType eDataType, String initialValue)
-   {
+   public BundleHeaderName createBundleHeaderNameFromString(EDataType eDataType, String initialValue) {
       BundleHeaderName result = BundleHeaderName.get(initialValue);
       if (result == null)
          throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '"
@@ -336,8 +311,7 @@ public class BundleManifestFactoryImpl extends EFactoryImpl implements BundleMan
     * 
     * @generated
     */
-   public String convertBundleHeaderNameToString(EDataType eDataType, Object instanceValue)
-   {
+   public String convertBundleHeaderNameToString(EDataType eDataType, Object instanceValue) {
       return instanceValue == null ? null : instanceValue.toString();
    }
 
@@ -347,8 +321,7 @@ public class BundleManifestFactoryImpl extends EFactoryImpl implements BundleMan
     * 
     * @generated
     */
-   public ParameterType createParameterTypeFromString(EDataType eDataType, String initialValue)
-   {
+   public ParameterType createParameterTypeFromString(EDataType eDataType, String initialValue) {
       ParameterType result = ParameterType.get(initialValue);
       if (result == null)
          throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '"
@@ -362,8 +335,7 @@ public class BundleManifestFactoryImpl extends EFactoryImpl implements BundleMan
     * 
     * @generated
     */
-   public String convertParameterTypeToString(EDataType eDataType, Object instanceValue)
-   {
+   public String convertParameterTypeToString(EDataType eDataType, Object instanceValue) {
       return instanceValue == null ? null : instanceValue.toString();
    }
 
@@ -373,8 +345,7 @@ public class BundleManifestFactoryImpl extends EFactoryImpl implements BundleMan
     * 
     * @generated
     */
-   public ActivationPolicy createActivationPolicyFromString(EDataType eDataType, String initialValue)
-   {
+   public ActivationPolicy createActivationPolicyFromString(EDataType eDataType, String initialValue) {
       ActivationPolicy result = ActivationPolicy.get(initialValue);
       if (result == null)
          throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '"
@@ -388,8 +359,7 @@ public class BundleManifestFactoryImpl extends EFactoryImpl implements BundleMan
     * 
     * @generated
     */
-   public String convertActivationPolicyToString(EDataType eDataType, Object instanceValue)
-   {
+   public String convertActivationPolicyToString(EDataType eDataType, Object instanceValue) {
       return instanceValue == null ? null : instanceValue.toString();
    }
 
@@ -399,8 +369,7 @@ public class BundleManifestFactoryImpl extends EFactoryImpl implements BundleMan
     * 
     * @generated
     */
-   public List<?> createEListFromString(EDataType eDataType, String initialValue)
-   {
+   public List<?> createEListFromString(EDataType eDataType, String initialValue) {
       return (List<?>) super.createFromString(initialValue);
    }
 
@@ -410,8 +379,7 @@ public class BundleManifestFactoryImpl extends EFactoryImpl implements BundleMan
     * 
     * @generated
     */
-   public String convertEListToString(EDataType eDataType, Object instanceValue)
-   {
+   public String convertEListToString(EDataType eDataType, Object instanceValue) {
       return super.convertToString(instanceValue);
    }
 
@@ -421,8 +389,7 @@ public class BundleManifestFactoryImpl extends EFactoryImpl implements BundleMan
     * 
     * @generated NOT
     */
-   public Version createVersionFromString(EDataType eDataType, String initialValue)
-   {
+   public Version createVersionFromString(EDataType eDataType, String initialValue) {
       return Version.parse(initialValue);
    }
 
@@ -432,8 +399,7 @@ public class BundleManifestFactoryImpl extends EFactoryImpl implements BundleMan
     * 
     * @generated NOT
     */
-   public String convertVersionToString(EDataType eDataType, Object instanceValue)
-   {
+   public String convertVersionToString(EDataType eDataType, Object instanceValue) {
       return ((Version) instanceValue).toMinimalString();
    }
 
@@ -443,8 +409,7 @@ public class BundleManifestFactoryImpl extends EFactoryImpl implements BundleMan
     * 
     * @generated NOT
     */
-   public VersionRange createVersionRangeFromString(EDataType eDataType, String initialValue)
-   {
+   public VersionRange createVersionRangeFromString(EDataType eDataType, String initialValue) {
       return VersionRange.parse(initialValue);
    }
 
@@ -454,8 +419,7 @@ public class BundleManifestFactoryImpl extends EFactoryImpl implements BundleMan
     * 
     * @generated
     */
-   public String convertVersionRangeToString(EDataType eDataType, Object instanceValue)
-   {
+   public String convertVersionRangeToString(EDataType eDataType, Object instanceValue) {
       return super.convertToString(eDataType, instanceValue);
    }
 
@@ -465,8 +429,7 @@ public class BundleManifestFactoryImpl extends EFactoryImpl implements BundleMan
     * 
     * @generated
     */
-   public BundleManifestPackage getBundleManifestPackage()
-   {
+   public BundleManifestPackage getBundleManifestPackage() {
       return (BundleManifestPackage) getEPackage();
    }
 
@@ -478,8 +441,7 @@ public class BundleManifestFactoryImpl extends EFactoryImpl implements BundleMan
     * @generated
     */
    @Deprecated
-   public static BundleManifestPackage getPackage()
-   {
+   public static BundleManifestPackage getPackage() {
       return BundleManifestPackage.eINSTANCE;
    }
 

@@ -38,8 +38,7 @@ import org.sourcepit.common.manifest.osgi.VersionRange;
  *
  * @generated
  */
-public class BundleRequirementImpl extends ParameterizedImpl implements BundleRequirement
-{
+public class BundleRequirementImpl extends ParameterizedImpl implements BundleRequirement {
    /**
     * The cached value of the '{@link #getSymbolicNames() <em>Symbolic Names</em>}' attribute list.
     * <!-- begin-user-doc -->
@@ -57,8 +56,7 @@ public class BundleRequirementImpl extends ParameterizedImpl implements BundleRe
     * 
     * @generated
     */
-   protected BundleRequirementImpl()
-   {
+   protected BundleRequirementImpl() {
       super();
    }
 
@@ -69,8 +67,7 @@ public class BundleRequirementImpl extends ParameterizedImpl implements BundleRe
     * @generated
     */
    @Override
-   protected EClass eStaticClass()
-   {
+   protected EClass eStaticClass() {
       return BundleManifestPackage.Literals.BUNDLE_REQUIREMENT;
    }
 
@@ -80,10 +77,8 @@ public class BundleRequirementImpl extends ParameterizedImpl implements BundleRe
     * 
     * @generated
     */
-   public EList<String> getSymbolicNames()
-   {
-      if (symbolicNames == null)
-      {
+   public EList<String> getSymbolicNames() {
+      if (symbolicNames == null) {
          symbolicNames = new EDataTypeUniqueEList<String>(String.class, this,
             BundleManifestPackage.BUNDLE_REQUIREMENT__SYMBOLIC_NAMES);
       }
@@ -96,8 +91,7 @@ public class BundleRequirementImpl extends ParameterizedImpl implements BundleRe
     * 
     * @generated NOT
     */
-   public VersionRange getBundleVersion()
-   {
+   public VersionRange getBundleVersion() {
       return (VersionRange) getParsedParameterValue("bundle-version");
    }
 
@@ -107,8 +101,7 @@ public class BundleRequirementImpl extends ParameterizedImpl implements BundleRe
     * 
     * @generated NOT
     */
-   public void setBundleVersion(VersionRange bundleVersion)
-   {
+   public void setBundleVersion(VersionRange bundleVersion) {
       PackageImportImpl.setVersionRange(this, bundleVersion, true);
    }
 
@@ -119,10 +112,8 @@ public class BundleRequirementImpl extends ParameterizedImpl implements BundleRe
     * @generated
     */
    @Override
-   public Object eGet(int featureID, boolean resolve, boolean coreType)
-   {
-      switch (featureID)
-      {
+   public Object eGet(int featureID, boolean resolve, boolean coreType) {
+      switch (featureID) {
          case BundleManifestPackage.BUNDLE_REQUIREMENT__SYMBOLIC_NAMES :
             return getSymbolicNames();
       }
@@ -137,10 +128,8 @@ public class BundleRequirementImpl extends ParameterizedImpl implements BundleRe
     */
    @SuppressWarnings("unchecked")
    @Override
-   public void eSet(int featureID, Object newValue)
-   {
-      switch (featureID)
-      {
+   public void eSet(int featureID, Object newValue) {
+      switch (featureID) {
          case BundleManifestPackage.BUNDLE_REQUIREMENT__SYMBOLIC_NAMES :
             getSymbolicNames().clear();
             getSymbolicNames().addAll((Collection<? extends String>) newValue);
@@ -156,10 +145,8 @@ public class BundleRequirementImpl extends ParameterizedImpl implements BundleRe
     * @generated
     */
    @Override
-   public void eUnset(int featureID)
-   {
-      switch (featureID)
-      {
+   public void eUnset(int featureID) {
+      switch (featureID) {
          case BundleManifestPackage.BUNDLE_REQUIREMENT__SYMBOLIC_NAMES :
             getSymbolicNames().clear();
             return;
@@ -174,10 +161,8 @@ public class BundleRequirementImpl extends ParameterizedImpl implements BundleRe
     * @generated
     */
    @Override
-   public boolean eIsSet(int featureID)
-   {
-      switch (featureID)
-      {
+   public boolean eIsSet(int featureID) {
+      switch (featureID) {
          case BundleManifestPackage.BUNDLE_REQUIREMENT__SYMBOLIC_NAMES :
             return symbolicNames != null && !symbolicNames.isEmpty();
       }
@@ -191,8 +176,7 @@ public class BundleRequirementImpl extends ParameterizedImpl implements BundleRe
     * @generated
     */
    @Override
-   public String toString()
-   {
+   public String toString() {
       if (eIsProxy())
          return super.toString();
 

@@ -46,8 +46,7 @@ import org.sourcepit.common.manifest.osgi.impl.BundleManifestPackageImpl;
  * 
  * @generated
  */
-public class ManifestPackageImpl extends EPackageImpl implements ManifestPackage
-{
+public class ManifestPackageImpl extends EPackageImpl implements ManifestPackage {
    /**
     * <!-- begin-user-doc -->
     * <!-- end-user-doc -->
@@ -134,8 +133,7 @@ public class ManifestPackageImpl extends EPackageImpl implements ManifestPackage
     * @see #init()
     * @generated
     */
-   private ManifestPackageImpl()
-   {
+   private ManifestPackageImpl() {
       super(eNS_URI, ManifestFactory.eINSTANCE);
    }
 
@@ -160,8 +158,7 @@ public class ManifestPackageImpl extends EPackageImpl implements ManifestPackage
     * @see #initializePackageContents()
     * @generated
     */
-   public static ManifestPackage init()
-   {
+   public static ManifestPackage init() {
       if (isInited)
          return (ManifestPackage) EPackage.Registry.INSTANCE.getEPackage(ManifestPackage.eNS_URI);
 
@@ -173,9 +170,9 @@ public class ManifestPackageImpl extends EPackageImpl implements ManifestPackage
       isInited = true;
 
       // Obtain or create and register interdependencies
-      BundleManifestPackageImpl theBundleManifestPackage = (BundleManifestPackageImpl) (EPackage.Registry.INSTANCE
-         .getEPackage(BundleManifestPackage.eNS_URI) instanceof BundleManifestPackageImpl ? EPackage.Registry.INSTANCE
-         .getEPackage(BundleManifestPackage.eNS_URI) : BundleManifestPackage.eINSTANCE);
+      BundleManifestPackageImpl theBundleManifestPackage = (BundleManifestPackageImpl) (EPackage.Registry.INSTANCE.getEPackage(BundleManifestPackage.eNS_URI) instanceof BundleManifestPackageImpl
+         ? EPackage.Registry.INSTANCE.getEPackage(BundleManifestPackage.eNS_URI)
+         : BundleManifestPackage.eINSTANCE);
 
       // Create package meta-data objects
       theManifestPackage.createPackageContents();
@@ -200,8 +197,7 @@ public class ManifestPackageImpl extends EPackageImpl implements ManifestPackage
     * 
     * @generated
     */
-   public EClass getManifest()
-   {
+   public EClass getManifest() {
       return manifestEClass;
    }
 
@@ -211,8 +207,7 @@ public class ManifestPackageImpl extends EPackageImpl implements ManifestPackage
     * 
     * @generated
     */
-   public EReference getManifest_Headers()
-   {
+   public EReference getManifest_Headers() {
       return (EReference) manifestEClass.getEStructuralFeatures().get(0);
    }
 
@@ -222,8 +217,7 @@ public class ManifestPackageImpl extends EPackageImpl implements ManifestPackage
     * 
     * @generated
     */
-   public EReference getManifest_Sections()
-   {
+   public EReference getManifest_Sections() {
       return (EReference) manifestEClass.getEStructuralFeatures().get(1);
    }
 
@@ -233,8 +227,7 @@ public class ManifestPackageImpl extends EPackageImpl implements ManifestPackage
     * 
     * @generated
     */
-   public EClass getManifestSection()
-   {
+   public EClass getManifestSection() {
       return manifestSectionEClass;
    }
 
@@ -244,8 +237,7 @@ public class ManifestPackageImpl extends EPackageImpl implements ManifestPackage
     * 
     * @generated
     */
-   public EClass getHeader()
-   {
+   public EClass getHeader() {
       return headerEClass;
    }
 
@@ -255,8 +247,7 @@ public class ManifestPackageImpl extends EPackageImpl implements ManifestPackage
     * 
     * @generated
     */
-   public EClass getSectionEntry()
-   {
+   public EClass getSectionEntry() {
       return sectionEntryEClass;
    }
 
@@ -266,8 +257,7 @@ public class ManifestPackageImpl extends EPackageImpl implements ManifestPackage
     * 
     * @generated
     */
-   public EAttribute getSectionEntry_Key()
-   {
+   public EAttribute getSectionEntry_Key() {
       return (EAttribute) sectionEntryEClass.getEStructuralFeatures().get(0);
    }
 
@@ -277,8 +267,7 @@ public class ManifestPackageImpl extends EPackageImpl implements ManifestPackage
     * 
     * @generated
     */
-   public EReference getSectionEntry_Value()
-   {
+   public EReference getSectionEntry_Value() {
       return (EReference) sectionEntryEClass.getEStructuralFeatures().get(1);
    }
 
@@ -288,8 +277,7 @@ public class ManifestPackageImpl extends EPackageImpl implements ManifestPackage
     * 
     * @generated
     */
-   public EClass getHeaderEntry()
-   {
+   public EClass getHeaderEntry() {
       return headerEntryEClass;
    }
 
@@ -299,8 +287,7 @@ public class ManifestPackageImpl extends EPackageImpl implements ManifestPackage
     * 
     * @generated
     */
-   public EAttribute getHeaderEntry_Key()
-   {
+   public EAttribute getHeaderEntry_Key() {
       return (EAttribute) headerEntryEClass.getEStructuralFeatures().get(0);
    }
 
@@ -310,8 +297,7 @@ public class ManifestPackageImpl extends EPackageImpl implements ManifestPackage
     * 
     * @generated
     */
-   public EReference getHeaderEntry_Manifest()
-   {
+   public EReference getHeaderEntry_Manifest() {
       return (EReference) headerEntryEClass.getEStructuralFeatures().get(1);
    }
 
@@ -321,8 +307,7 @@ public class ManifestPackageImpl extends EPackageImpl implements ManifestPackage
     * 
     * @generated
     */
-   public EClass getAbstractSection()
-   {
+   public EClass getAbstractSection() {
       return abstractSectionEClass;
    }
 
@@ -332,8 +317,7 @@ public class ManifestPackageImpl extends EPackageImpl implements ManifestPackage
     * 
     * @generated
     */
-   public EClass getParseable()
-   {
+   public EClass getParseable() {
       return parseableEClass;
    }
 
@@ -343,8 +327,7 @@ public class ManifestPackageImpl extends EPackageImpl implements ManifestPackage
     * 
     * @generated
     */
-   public EAttribute getParseable_ParsedValue()
-   {
+   public EAttribute getParseable_ParsedValue() {
       return (EAttribute) parseableEClass.getEStructuralFeatures().get(0);
    }
 
@@ -354,8 +337,7 @@ public class ManifestPackageImpl extends EPackageImpl implements ManifestPackage
     * 
     * @generated
     */
-   public EAttribute getParseable_Value()
-   {
+   public EAttribute getParseable_Value() {
       return (EAttribute) parseableEClass.getEStructuralFeatures().get(1);
    }
 
@@ -365,8 +347,7 @@ public class ManifestPackageImpl extends EPackageImpl implements ManifestPackage
     * 
     * @generated
     */
-   public EEnum getHeaderName()
-   {
+   public EEnum getHeaderName() {
       return headerNameEEnum;
    }
 
@@ -376,8 +357,7 @@ public class ManifestPackageImpl extends EPackageImpl implements ManifestPackage
     * 
     * @generated
     */
-   public EDataType getEEMap()
-   {
+   public EDataType getEEMap() {
       return eeMapEDataType;
    }
 
@@ -387,8 +367,7 @@ public class ManifestPackageImpl extends EPackageImpl implements ManifestPackage
     * 
     * @generated
     */
-   public ManifestFactory getManifestFactory()
-   {
+   public ManifestFactory getManifestFactory() {
       return (ManifestFactory) getEFactoryInstance();
    }
 
@@ -408,8 +387,7 @@ public class ManifestPackageImpl extends EPackageImpl implements ManifestPackage
     * 
     * @generated
     */
-   public void createPackageContents()
-   {
+   public void createPackageContents() {
       if (isCreated)
          return;
       isCreated = true;
@@ -460,8 +438,7 @@ public class ManifestPackageImpl extends EPackageImpl implements ManifestPackage
     * 
     * @generated
     */
-   public void initializePackageContents()
-   {
+   public void initializePackageContents() {
       if (isInitialized)
          return;
       isInitialized = true;
@@ -472,8 +449,7 @@ public class ManifestPackageImpl extends EPackageImpl implements ManifestPackage
       setNsURI(eNS_URI);
 
       // Obtain other dependent packages
-      BundleManifestPackage theBundleManifestPackage = (BundleManifestPackage) EPackage.Registry.INSTANCE
-         .getEPackage(BundleManifestPackage.eNS_URI);
+      BundleManifestPackage theBundleManifestPackage = (BundleManifestPackage) EPackage.Registry.INSTANCE.getEPackage(BundleManifestPackage.eNS_URI);
 
       // Add subpackages
       getESubpackages().add(theBundleManifestPackage);

@@ -47,8 +47,7 @@ import org.sourcepit.common.manifest.osgi.Parameterized;
  * @see org.sourcepit.common.manifest.osgi.BundleManifestPackage
  * @generated
  */
-public class BundleManifestAdapterFactory extends AdapterFactoryImpl
-{
+public class BundleManifestAdapterFactory extends AdapterFactoryImpl {
    /**
     * The cached model package.
     * <!-- begin-user-doc -->
@@ -65,10 +64,8 @@ public class BundleManifestAdapterFactory extends AdapterFactoryImpl
     * 
     * @generated
     */
-   public BundleManifestAdapterFactory()
-   {
-      if (modelPackage == null)
-      {
+   public BundleManifestAdapterFactory() {
+      if (modelPackage == null) {
          modelPackage = BundleManifestPackage.eINSTANCE;
       }
    }
@@ -84,14 +81,11 @@ public class BundleManifestAdapterFactory extends AdapterFactoryImpl
     * @generated
     */
    @Override
-   public boolean isFactoryForType(Object object)
-   {
-      if (object == modelPackage)
-      {
+   public boolean isFactoryForType(Object object) {
+      if (object == modelPackage) {
          return true;
       }
-      if (object instanceof EObject)
-      {
+      if (object instanceof EObject) {
          return ((EObject) object).eClass().getEPackage() == modelPackage;
       }
       return false;
@@ -104,107 +98,89 @@ public class BundleManifestAdapterFactory extends AdapterFactoryImpl
     * 
     * @generated
     */
-   protected BundleManifestSwitch<Adapter> modelSwitch = new BundleManifestSwitch<Adapter>()
-   {
+   protected BundleManifestSwitch<Adapter> modelSwitch = new BundleManifestSwitch<Adapter>() {
       @Override
-      public Adapter caseBundleManifest(BundleManifest object)
-      {
+      public Adapter caseBundleManifest(BundleManifest object) {
          return createBundleManifestAdapter();
       }
 
       @Override
-      public Adapter caseParameterized(Parameterized object)
-      {
+      public Adapter caseParameterized(Parameterized object) {
          return createParameterizedAdapter();
       }
 
       @Override
-      public Adapter caseParameter(Parameter object)
-      {
+      public Adapter caseParameter(Parameter object) {
          return createParameterAdapter();
       }
 
       @Override
-      public Adapter caseBundleActivationPolicy(BundleActivationPolicy object)
-      {
+      public Adapter caseBundleActivationPolicy(BundleActivationPolicy object) {
          return createBundleActivationPolicyAdapter();
       }
 
       @Override
-      public Adapter casePackagesDeclaration(PackagesDeclaration object)
-      {
+      public Adapter casePackagesDeclaration(PackagesDeclaration object) {
          return createPackagesDeclarationAdapter();
       }
 
       @Override
-      public Adapter casePackageExport(PackageExport object)
-      {
+      public Adapter casePackageExport(PackageExport object) {
          return createPackageExportAdapter();
       }
 
       @Override
-      public Adapter casePackageImport(PackageImport object)
-      {
+      public Adapter casePackageImport(PackageImport object) {
          return createPackageImportAdapter();
       }
 
       @Override
-      public Adapter caseBundleRequirement(BundleRequirement object)
-      {
+      public Adapter caseBundleRequirement(BundleRequirement object) {
          return createBundleRequirementAdapter();
       }
 
       @Override
-      public Adapter caseBundleSymbolicName(BundleSymbolicName object)
-      {
+      public Adapter caseBundleSymbolicName(BundleSymbolicName object) {
          return createBundleSymbolicNameAdapter();
       }
 
       @Override
-      public Adapter caseClassPathEntry(ClassPathEntry object)
-      {
+      public Adapter caseClassPathEntry(ClassPathEntry object) {
          return createClassPathEntryAdapter();
       }
 
       @Override
-      public Adapter caseFragmentHost(FragmentHost object)
-      {
+      public Adapter caseFragmentHost(FragmentHost object) {
          return createFragmentHostAdapter();
       }
 
       @Override
-      public Adapter caseDynamicPackageImport(DynamicPackageImport object)
-      {
+      public Adapter caseDynamicPackageImport(DynamicPackageImport object) {
          return createDynamicPackageImportAdapter();
       }
 
       @Override
-      public Adapter caseBundleLicense(BundleLicense object)
-      {
+      public Adapter caseBundleLicense(BundleLicense object) {
          return createBundleLicenseAdapter();
       }
 
       @Override
-      public Adapter caseAbstractSection(AbstractSection object)
-      {
+      public Adapter caseAbstractSection(AbstractSection object) {
          return createAbstractSectionAdapter();
       }
 
       @Override
-      public Adapter caseManifest(Manifest object)
-      {
+      public Adapter caseManifest(Manifest object) {
          return createManifestAdapter();
       }
 
       @Override
-      public Adapter caseParseable(Parseable object)
-      {
+      public Adapter caseParseable(Parseable object) {
          return createParseableAdapter();
       }
 
       @Override
-      public Adapter defaultCase(EObject object)
-      {
+      public Adapter defaultCase(EObject object) {
          return createEObjectAdapter();
       }
    };
@@ -219,8 +195,7 @@ public class BundleManifestAdapterFactory extends AdapterFactoryImpl
     * @generated
     */
    @Override
-   public Adapter createAdapter(Notifier target)
-   {
+   public Adapter createAdapter(Notifier target) {
       return modelSwitch.doSwitch((EObject) target);
    }
 
@@ -237,8 +212,7 @@ public class BundleManifestAdapterFactory extends AdapterFactoryImpl
     * @see org.sourcepit.common.manifest.osgi.BundleManifest
     * @generated
     */
-   public Adapter createBundleManifestAdapter()
-   {
+   public Adapter createBundleManifestAdapter() {
       return null;
    }
 
@@ -254,8 +228,7 @@ public class BundleManifestAdapterFactory extends AdapterFactoryImpl
     * @see org.sourcepit.common.manifest.osgi.Parameterized
     * @generated
     */
-   public Adapter createParameterizedAdapter()
-   {
+   public Adapter createParameterizedAdapter() {
       return null;
    }
 
@@ -271,8 +244,7 @@ public class BundleManifestAdapterFactory extends AdapterFactoryImpl
     * @see org.sourcepit.common.manifest.osgi.Parameter
     * @generated
     */
-   public Adapter createParameterAdapter()
-   {
+   public Adapter createParameterAdapter() {
       return null;
    }
 
@@ -288,8 +260,7 @@ public class BundleManifestAdapterFactory extends AdapterFactoryImpl
     * @see org.sourcepit.common.manifest.osgi.BundleActivationPolicy
     * @generated
     */
-   public Adapter createBundleActivationPolicyAdapter()
-   {
+   public Adapter createBundleActivationPolicyAdapter() {
       return null;
    }
 
@@ -305,8 +276,7 @@ public class BundleManifestAdapterFactory extends AdapterFactoryImpl
     * @see org.sourcepit.common.manifest.osgi.PackagesDeclaration
     * @generated
     */
-   public Adapter createPackagesDeclarationAdapter()
-   {
+   public Adapter createPackagesDeclarationAdapter() {
       return null;
    }
 
@@ -322,8 +292,7 @@ public class BundleManifestAdapterFactory extends AdapterFactoryImpl
     * @see org.sourcepit.common.manifest.osgi.PackageExport
     * @generated
     */
-   public Adapter createPackageExportAdapter()
-   {
+   public Adapter createPackageExportAdapter() {
       return null;
    }
 
@@ -339,8 +308,7 @@ public class BundleManifestAdapterFactory extends AdapterFactoryImpl
     * @see org.sourcepit.common.manifest.osgi.PackageImport
     * @generated
     */
-   public Adapter createPackageImportAdapter()
-   {
+   public Adapter createPackageImportAdapter() {
       return null;
    }
 
@@ -356,8 +324,7 @@ public class BundleManifestAdapterFactory extends AdapterFactoryImpl
     * @see org.sourcepit.common.manifest.osgi.BundleRequirement
     * @generated
     */
-   public Adapter createBundleRequirementAdapter()
-   {
+   public Adapter createBundleRequirementAdapter() {
       return null;
    }
 
@@ -373,8 +340,7 @@ public class BundleManifestAdapterFactory extends AdapterFactoryImpl
     * @see org.sourcepit.common.manifest.osgi.BundleSymbolicName
     * @generated
     */
-   public Adapter createBundleSymbolicNameAdapter()
-   {
+   public Adapter createBundleSymbolicNameAdapter() {
       return null;
    }
 
@@ -390,8 +356,7 @@ public class BundleManifestAdapterFactory extends AdapterFactoryImpl
     * @see org.sourcepit.common.manifest.osgi.ClassPathEntry
     * @generated
     */
-   public Adapter createClassPathEntryAdapter()
-   {
+   public Adapter createClassPathEntryAdapter() {
       return null;
    }
 
@@ -407,8 +372,7 @@ public class BundleManifestAdapterFactory extends AdapterFactoryImpl
     * @see org.sourcepit.common.manifest.osgi.FragmentHost
     * @generated
     */
-   public Adapter createFragmentHostAdapter()
-   {
+   public Adapter createFragmentHostAdapter() {
       return null;
    }
 
@@ -424,8 +388,7 @@ public class BundleManifestAdapterFactory extends AdapterFactoryImpl
     * @see org.sourcepit.common.manifest.osgi.DynamicPackageImport
     * @generated
     */
-   public Adapter createDynamicPackageImportAdapter()
-   {
+   public Adapter createDynamicPackageImportAdapter() {
       return null;
    }
 
@@ -441,8 +404,7 @@ public class BundleManifestAdapterFactory extends AdapterFactoryImpl
     * @see org.sourcepit.common.manifest.osgi.BundleLicense
     * @generated
     */
-   public Adapter createBundleLicenseAdapter()
-   {
+   public Adapter createBundleLicenseAdapter() {
       return null;
    }
 
@@ -458,8 +420,7 @@ public class BundleManifestAdapterFactory extends AdapterFactoryImpl
     * @see org.sourcepit.common.manifest.AbstractSection
     * @generated
     */
-   public Adapter createAbstractSectionAdapter()
-   {
+   public Adapter createAbstractSectionAdapter() {
       return null;
    }
 
@@ -474,8 +435,7 @@ public class BundleManifestAdapterFactory extends AdapterFactoryImpl
     * @see org.sourcepit.common.manifest.Manifest
     * @generated
     */
-   public Adapter createManifestAdapter()
-   {
+   public Adapter createManifestAdapter() {
       return null;
    }
 
@@ -490,8 +450,7 @@ public class BundleManifestAdapterFactory extends AdapterFactoryImpl
     * @see org.sourcepit.common.manifest.Parseable
     * @generated
     */
-   public Adapter createParseableAdapter()
-   {
+   public Adapter createParseableAdapter() {
       return null;
    }
 
@@ -504,8 +463,7 @@ public class BundleManifestAdapterFactory extends AdapterFactoryImpl
     * @return the new adapter.
     * @generated
     */
-   public Adapter createEObjectAdapter()
-   {
+   public Adapter createEObjectAdapter() {
       return null;
    }
 

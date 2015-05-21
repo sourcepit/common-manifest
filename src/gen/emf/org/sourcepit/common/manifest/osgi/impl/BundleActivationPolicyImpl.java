@@ -36,8 +36,7 @@ import org.sourcepit.common.manifest.osgi.BundleManifestPackage;
  *
  * @generated
  */
-public class BundleActivationPolicyImpl extends ParameterizedImpl implements BundleActivationPolicy
-{
+public class BundleActivationPolicyImpl extends ParameterizedImpl implements BundleActivationPolicy {
    /**
     * The default value of the '{@link #getPolicy() <em>Policy</em>}' attribute.
     * <!-- begin-user-doc -->
@@ -66,8 +65,7 @@ public class BundleActivationPolicyImpl extends ParameterizedImpl implements Bun
     * 
     * @generated
     */
-   protected BundleActivationPolicyImpl()
-   {
+   protected BundleActivationPolicyImpl() {
       super();
    }
 
@@ -78,8 +76,7 @@ public class BundleActivationPolicyImpl extends ParameterizedImpl implements Bun
     * @generated
     */
    @Override
-   protected EClass eStaticClass()
-   {
+   protected EClass eStaticClass() {
       return BundleManifestPackage.Literals.BUNDLE_ACTIVATION_POLICY;
    }
 
@@ -89,8 +86,7 @@ public class BundleActivationPolicyImpl extends ParameterizedImpl implements Bun
     * 
     * @generated
     */
-   public ActivationPolicy getPolicy()
-   {
+   public ActivationPolicy getPolicy() {
       return policy;
    }
 
@@ -100,8 +96,7 @@ public class BundleActivationPolicyImpl extends ParameterizedImpl implements Bun
     * 
     * @generated
     */
-   public void setPolicy(ActivationPolicy newPolicy)
-   {
+   public void setPolicy(ActivationPolicy newPolicy) {
       ActivationPolicy oldPolicy = policy;
       policy = newPolicy == null ? POLICY_EDEFAULT : newPolicy;
       if (eNotificationRequired())
@@ -116,10 +111,8 @@ public class BundleActivationPolicyImpl extends ParameterizedImpl implements Bun
     * @generated
     */
    @Override
-   public Object eGet(int featureID, boolean resolve, boolean coreType)
-   {
-      switch (featureID)
-      {
+   public Object eGet(int featureID, boolean resolve, boolean coreType) {
+      switch (featureID) {
          case BundleManifestPackage.BUNDLE_ACTIVATION_POLICY__POLICY :
             return getPolicy();
       }
@@ -133,10 +126,8 @@ public class BundleActivationPolicyImpl extends ParameterizedImpl implements Bun
     * @generated
     */
    @Override
-   public void eSet(int featureID, Object newValue)
-   {
-      switch (featureID)
-      {
+   public void eSet(int featureID, Object newValue) {
+      switch (featureID) {
          case BundleManifestPackage.BUNDLE_ACTIVATION_POLICY__POLICY :
             setPolicy((ActivationPolicy) newValue);
             return;
@@ -151,10 +142,8 @@ public class BundleActivationPolicyImpl extends ParameterizedImpl implements Bun
     * @generated
     */
    @Override
-   public void eUnset(int featureID)
-   {
-      switch (featureID)
-      {
+   public void eUnset(int featureID) {
+      switch (featureID) {
          case BundleManifestPackage.BUNDLE_ACTIVATION_POLICY__POLICY :
             setPolicy(POLICY_EDEFAULT);
             return;
@@ -169,10 +158,8 @@ public class BundleActivationPolicyImpl extends ParameterizedImpl implements Bun
     * @generated
     */
    @Override
-   public boolean eIsSet(int featureID)
-   {
-      switch (featureID)
-      {
+   public boolean eIsSet(int featureID) {
+      switch (featureID) {
          case BundleManifestPackage.BUNDLE_ACTIVATION_POLICY__POLICY :
             return policy != POLICY_EDEFAULT;
       }
@@ -186,8 +173,7 @@ public class BundleActivationPolicyImpl extends ParameterizedImpl implements Bun
     * @generated
     */
    @Override
-   public String toString()
-   {
+   public String toString() {
       if (eIsProxy())
          return super.toString();
 

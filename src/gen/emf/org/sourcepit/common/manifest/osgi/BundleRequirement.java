@@ -34,8 +34,7 @@ import org.eclipse.emf.common.util.EList;
  * @model
  * @generated
  */
-public interface BundleRequirement extends Parameterized
-{
+public interface BundleRequirement extends Parameterized {
    /**
     * Returns the value of the '<em><b>Symbolic Names</b></em>' attribute list.
     * The list contents are of type {@link java.lang.String}.

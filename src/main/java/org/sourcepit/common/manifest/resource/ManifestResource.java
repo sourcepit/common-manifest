@@ -19,8 +19,7 @@ package org.sourcepit.common.manifest.resource;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.sourcepit.common.manifest.merge.BytesByLine;
 
-public interface ManifestResource extends Resource
-{
+public interface ManifestResource extends Resource {
    String OPTION_BYTES_BY_LINE = "bytesByLine";
 
    BytesByLine getBytesByLine();

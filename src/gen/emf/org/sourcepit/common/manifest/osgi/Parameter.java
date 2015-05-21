@@ -37,8 +37,7 @@ import org.sourcepit.common.manifest.Parseable;
  * @model
  * @generated
  */
-public interface Parameter extends Parseable
-{
+public interface Parameter extends Parseable {
    /**
     * Returns the value of the '<em><b>Name</b></em>' attribute.
     * <!-- begin-user-doc -->

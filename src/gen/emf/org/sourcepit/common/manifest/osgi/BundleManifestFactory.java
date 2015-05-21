@@ -27,8 +27,7 @@ import org.eclipse.emf.ecore.EFactory;
  * @see org.sourcepit.common.manifest.osgi.BundleManifestPackage
  * @generated
  */
-public interface BundleManifestFactory extends EFactory
-{
+public interface BundleManifestFactory extends EFactory {
    /**
     * The singleton instance of the factory.
     * <!-- begin-user-doc -->

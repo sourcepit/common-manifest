@@ -38,8 +38,7 @@ import org.sourcepit.common.manifest.osgi.parser.BundleVersionParser;
  * {@code Version} objects are immutable.
  */
 
-public final class Version implements Comparable<Version>
-{
+public final class Version implements Comparable<Version> {
    private final boolean isMinorSet;
    private final boolean isMicroSet;
    private final int major;
@@ -77,37 +76,30 @@ public final class Version implements Comparable<Version>
     *         empty string then {@code emptyVersion} will be returned.
     * @throws IllegalArgumentException If {@code version} is improperly formatted.
     */
-   public static Version parse(String version)
-   {
+   public static Version parse(String version) {
       return parseVersion(version, true);
    }
 
-   private static Version parseVersion(String version, boolean validate)
-   {
-      if (version == null)
-      {
+   private static Version parseVersion(String version, boolean validate) {
+      if (version == null) {
          return EMPTY_VERSION;
       }
 
       version = version.trim();
-      if (version.length() == 0)
-      {
+      if (version.length() == 0) {
          return EMPTY_VERSION;
       }
 
       final BundleVersionParser parser = new BundleVersionParser(new CommonTokenStream(new BundleVersionLexer(
          new ANTLRStringStream(version))));
-      try
-      {
+      try {
          final Version versionObj = parser.version();
-         if (validate)
-         {
+         if (validate) {
             versionObj.validate();
          }
          return versionObj;
       }
-      catch (RecognitionException e)
-      {
+      catch (RecognitionException e) {
          String hdr = parser.getErrorHeader(e);
          String msg = parser.getErrorMessage(e, parser.getTokenNames());
          throw new IllegalArgumentException(hdr + " " + msg, e);
@@ -125,8 +117,7 @@ public final class Version implements Comparable<Version>
     * @param micro Micro component of the version identifier.
     * @throws IllegalArgumentException If the numerical components are negative.
     */
-   public Version(int major, int minor, int micro)
-   {
+   public Version(int major, int minor, int micro) {
       this(major, minor, micro, null);
    }
 
@@ -140,10 +131,8 @@ public final class Version implements Comparable<Version>
     *           will be set to the empty string.
     * @throws IllegalArgumentException If the numerical components are negative or the qualifier string is invalid.
     */
-   public Version(int major, int minor, int micro, String qualifier)
-   {
-      if (qualifier == null)
-      {
+   public Version(int major, int minor, int micro, String qualifier) {
+      if (qualifier == null) {
          qualifier = "";
       }
 
@@ -164,56 +153,43 @@ public final class Version implements Comparable<Version>
     * 
     * @throws IllegalArgumentException If the numerical components are negative or the qualifier string is invalid.
     */
-   private void validate()
-   {
+   private void validate() {
       validateNumbers();
       validateQualifier();
    }
 
-   private void validateNumbers()
-   {
-      if (major < 0)
-      {
+   private void validateNumbers() {
+      if (major < 0) {
          throw new IllegalArgumentException("negative major");
       }
-      if (minor < 0)
-      {
+      if (minor < 0) {
          throw new IllegalArgumentException("negative minor");
       }
-      if (micro < 0)
-      {
+      if (micro < 0) {
          throw new IllegalArgumentException("negative minor");
       }
-      if (!isMinorSet && (isMicroSet || qualifier.length() > 0))
-      {
+      if (!isMinorSet && (isMicroSet || qualifier.length() > 0)) {
          throw new IllegalArgumentException("negative minor");
       }
-      if (!isMicroSet && qualifier.length() > 0)
-      {
+      if (!isMicroSet && qualifier.length() > 0) {
          throw new IllegalArgumentException("negative minor");
       }
    }
 
-   private void validateQualifier()
-   {
+   private void validateQualifier() {
       char[] chars = qualifier.toCharArray();
-      for (int i = 0, length = chars.length; i < length; i++)
-      {
+      for (int i = 0, length = chars.length; i < length; i++) {
          char ch = chars[i];
-         if (('A' <= ch) && (ch <= 'Z'))
-         {
+         if (('A' <= ch) && (ch <= 'Z')) {
             continue;
          }
-         if (('a' <= ch) && (ch <= 'z'))
-         {
+         if (('a' <= ch) && (ch <= 'z')) {
             continue;
          }
-         if (('0' <= ch) && (ch <= '9'))
-         {
+         if (('0' <= ch) && (ch <= '9')) {
             continue;
          }
-         if ((ch == '_') || (ch == '-'))
-         {
+         if ((ch == '_') || (ch == '-')) {
             continue;
          }
          throw new IllegalArgumentException("invalid qualifier: " + qualifier);
@@ -225,8 +201,7 @@ public final class Version implements Comparable<Version>
     * 
     * @return The major component.
     */
-   public int getMajor()
-   {
+   public int getMajor() {
       return major;
    }
 
@@ -235,8 +210,7 @@ public final class Version implements Comparable<Version>
     * 
     * @return The minor component.
     */
-   public int getMinor()
-   {
+   public int getMinor() {
       return minor;
    }
 
@@ -245,8 +219,7 @@ public final class Version implements Comparable<Version>
     * 
     * @return The micro component.
     */
-   public int getMicro()
-   {
+   public int getMicro() {
       return micro;
    }
 
@@ -255,15 +228,12 @@ public final class Version implements Comparable<Version>
     * 
     * @return The qualifier component.
     */
-   public String getQualifier()
-   {
+   public String getQualifier() {
       return qualifier;
    }
 
-   public Version trimQualifier()
-   {
-      if (qualifier.length() == 0)
-      {
+   public Version trimQualifier() {
+      if (qualifier.length() == 0) {
          return this;
       }
       return new Version(major, minor, micro);
@@ -285,8 +255,7 @@ public final class Version implements Comparable<Version>
     * @see #toFullString()
     * @see #toMinimalString()
     */
-   public String toString()
-   {
+   public String toString() {
       return toFullString();
    }
 
@@ -306,10 +275,8 @@ public final class Version implements Comparable<Version>
     * @see #toString(boolean)
     * @see #toMinimalString()
     */
-   public String toFullString()
-   {
-      if (fullString != null)
-      {
+   public String toFullString() {
+      if (fullString != null) {
          return fullString;
       }
       fullString = toString(true);
@@ -333,33 +300,27 @@ public final class Version implements Comparable<Version>
     * @see #toString(boolean)
     * @see #toMinimalString()
     */
-   public String toMinimalString()
-   {
-      if (minimalString != null)
-      {
+   public String toMinimalString() {
+      if (minimalString != null) {
          return minimalString;
       }
       minimalString = toString(false);
       return minimalString;
    }
 
-   public String toString(boolean expand)
-   {
+   public String toString(boolean expand) {
       int q = qualifier.length();
       StringBuilder result = new StringBuilder(20 + q);
       result.append(major);
-      if (expand || isMinorSet)
-      {
+      if (expand || isMinorSet) {
          result.append(SEPARATOR);
          result.append(minor);
       }
-      if (expand || isMicroSet)
-      {
+      if (expand || isMicroSet) {
          result.append(SEPARATOR);
          result.append(micro);
       }
-      if (q > 0)
-      {
+      if (q > 0) {
          result.append(SEPARATOR);
          result.append(qualifier);
       }
@@ -371,8 +332,7 @@ public final class Version implements Comparable<Version>
     * 
     * @return An integer which is a hash code value for this object.
     */
-   public int hashCode()
-   {
+   public int hashCode() {
       return (major << 24) + (minor << 16) + (micro << 8) + qualifier.hashCode();
    }
 
@@ -386,15 +346,12 @@ public final class Version implements Comparable<Version>
     * @param object The {@code Version} object to be compared.
     * @return {@code true} if {@code object} is a {@code Version} and is equal to this object; {@code false} otherwise.
     */
-   public boolean equals(Object object)
-   {
-      if (object == this)
-      { // quicktest
+   public boolean equals(Object object) {
+      if (object == this) { // quicktest
          return true;
       }
 
-      if (!(object instanceof Version))
-      {
+      if (!(object instanceof Version)) {
          return false;
       }
 
@@ -422,28 +379,23 @@ public final class Version implements Comparable<Version>
     *         the specified {@code Version} object.
     * @throws ClassCastException If the specified object is not a {@code Version} object.
     */
-   public int compareTo(Version other)
-   {
-      if (other == this)
-      { // quicktest
+   public int compareTo(Version other) {
+      if (other == this) { // quicktest
          return 0;
       }
 
       int result = major - other.major;
-      if (result != 0)
-      {
+      if (result != 0) {
          return result;
       }
 
       result = minor - other.minor;
-      if (result != 0)
-      {
+      if (result != 0) {
          return result;
       }
 
       result = micro - other.micro;
-      if (result != 0)
-      {
+      if (result != 0) {
          return result;
       }
 

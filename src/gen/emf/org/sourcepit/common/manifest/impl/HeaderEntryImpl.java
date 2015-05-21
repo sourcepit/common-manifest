@@ -43,8 +43,7 @@ import org.sourcepit.common.manifest.parser.HeaderParser;
  *
  * @generated
  */
-public class HeaderEntryImpl extends HeaderImpl implements BasicEMap.Entry<String, String>
-{
+public class HeaderEntryImpl extends HeaderImpl implements BasicEMap.Entry<String, String> {
    /**
     * The default value of the '{@link #getTypedKey() <em>Key</em>}' attribute.
     * <!-- begin-user-doc -->
@@ -73,8 +72,7 @@ public class HeaderEntryImpl extends HeaderImpl implements BasicEMap.Entry<Strin
     * 
     * @generated
     */
-   protected HeaderEntryImpl()
-   {
+   protected HeaderEntryImpl() {
       super();
    }
 
@@ -85,8 +83,7 @@ public class HeaderEntryImpl extends HeaderImpl implements BasicEMap.Entry<Strin
     * @generated
     */
    @Override
-   protected EClass eStaticClass()
-   {
+   protected EClass eStaticClass() {
       return ManifestPackage.Literals.HEADER_ENTRY;
    }
 
@@ -96,8 +93,7 @@ public class HeaderEntryImpl extends HeaderImpl implements BasicEMap.Entry<Strin
     * 
     * @generated
     */
-   public String getTypedKey()
-   {
+   public String getTypedKey() {
       return key;
    }
 
@@ -107,8 +103,7 @@ public class HeaderEntryImpl extends HeaderImpl implements BasicEMap.Entry<Strin
     * 
     * @generated NOT
     */
-   public void setTypedKey(String newKey)
-   {
+   public void setTypedKey(String newKey) {
       String oldKey = key;
       key = new java.util.jar.Attributes.Name(newKey).toString();
       if (eNotificationRequired())
@@ -121,8 +116,7 @@ public class HeaderEntryImpl extends HeaderImpl implements BasicEMap.Entry<Strin
     * 
     * @generated
     */
-   public Manifest getManifest()
-   {
+   public Manifest getManifest() {
       if (eContainerFeatureID() != ManifestPackage.HEADER_ENTRY__MANIFEST)
          return null;
       return (Manifest) eInternalContainer();
@@ -134,8 +128,7 @@ public class HeaderEntryImpl extends HeaderImpl implements BasicEMap.Entry<Strin
     * 
     * @generated
     */
-   public NotificationChain basicSetManifest(Manifest newManifest, NotificationChain msgs)
-   {
+   public NotificationChain basicSetManifest(Manifest newManifest, NotificationChain msgs) {
       msgs = eBasicSetContainer((InternalEObject) newManifest, ManifestPackage.HEADER_ENTRY__MANIFEST, msgs);
       return msgs;
    }
@@ -146,11 +139,9 @@ public class HeaderEntryImpl extends HeaderImpl implements BasicEMap.Entry<Strin
     * 
     * @generated
     */
-   public void setManifest(Manifest newManifest)
-   {
+   public void setManifest(Manifest newManifest) {
       if (newManifest != eInternalContainer()
-         || (eContainerFeatureID() != ManifestPackage.HEADER_ENTRY__MANIFEST && newManifest != null))
-      {
+         || (eContainerFeatureID() != ManifestPackage.HEADER_ENTRY__MANIFEST && newManifest != null)) {
          if (EcoreUtil.isAncestor(this, newManifest))
             throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
          NotificationChain msgs = null;
@@ -175,10 +166,8 @@ public class HeaderEntryImpl extends HeaderImpl implements BasicEMap.Entry<Strin
     * @generated
     */
    @Override
-   public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs)
-   {
-      switch (featureID)
-      {
+   public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+      switch (featureID) {
          case ManifestPackage.HEADER_ENTRY__MANIFEST :
             if (eInternalContainer() != null)
                msgs = eBasicRemoveFromContainer(msgs);
@@ -194,10 +183,8 @@ public class HeaderEntryImpl extends HeaderImpl implements BasicEMap.Entry<Strin
     * @generated
     */
    @Override
-   public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
-   {
-      switch (featureID)
-      {
+   public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+      switch (featureID) {
          case ManifestPackage.HEADER_ENTRY__MANIFEST :
             return basicSetManifest(null, msgs);
       }
@@ -211,10 +198,8 @@ public class HeaderEntryImpl extends HeaderImpl implements BasicEMap.Entry<Strin
     * @generated
     */
    @Override
-   public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs)
-   {
-      switch (eContainerFeatureID())
-      {
+   public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
+      switch (eContainerFeatureID()) {
          case ManifestPackage.HEADER_ENTRY__MANIFEST :
             return eInternalContainer().eInverseRemove(this, ManifestPackage.MANIFEST__HEADERS, Manifest.class, msgs);
       }
@@ -228,10 +213,8 @@ public class HeaderEntryImpl extends HeaderImpl implements BasicEMap.Entry<Strin
     * @generated
     */
    @Override
-   public Object eGet(int featureID, boolean resolve, boolean coreType)
-   {
-      switch (featureID)
-      {
+   public Object eGet(int featureID, boolean resolve, boolean coreType) {
+      switch (featureID) {
          case ManifestPackage.HEADER_ENTRY__KEY :
             return getTypedKey();
          case ManifestPackage.HEADER_ENTRY__MANIFEST :
@@ -247,10 +230,8 @@ public class HeaderEntryImpl extends HeaderImpl implements BasicEMap.Entry<Strin
     * @generated
     */
    @Override
-   public void eSet(int featureID, Object newValue)
-   {
-      switch (featureID)
-      {
+   public void eSet(int featureID, Object newValue) {
+      switch (featureID) {
          case ManifestPackage.HEADER_ENTRY__KEY :
             setTypedKey((String) newValue);
             return;
@@ -268,10 +249,8 @@ public class HeaderEntryImpl extends HeaderImpl implements BasicEMap.Entry<Strin
     * @generated
     */
    @Override
-   public void eUnset(int featureID)
-   {
-      switch (featureID)
-      {
+   public void eUnset(int featureID) {
+      switch (featureID) {
          case ManifestPackage.HEADER_ENTRY__KEY :
             setTypedKey(KEY_EDEFAULT);
             return;
@@ -289,10 +268,8 @@ public class HeaderEntryImpl extends HeaderImpl implements BasicEMap.Entry<Strin
     * @generated
     */
    @Override
-   public boolean eIsSet(int featureID)
-   {
-      switch (featureID)
-      {
+   public boolean eIsSet(int featureID) {
+      switch (featureID) {
          case ManifestPackage.HEADER_ENTRY__KEY :
             return KEY_EDEFAULT == null ? key != null : !KEY_EDEFAULT.equals(key);
          case ManifestPackage.HEADER_ENTRY__MANIFEST :
@@ -308,11 +285,9 @@ public class HeaderEntryImpl extends HeaderImpl implements BasicEMap.Entry<Strin
     * @generated NOT
     */
    @Override
-   public String toString()
-   {
+   public String toString() {
       final String string = HeaderParser.INSTANCE.toString(this, true);
-      if (string != null)
-      {
+      if (string != null) {
          return string;
       }
 
@@ -342,10 +317,8 @@ public class HeaderEntryImpl extends HeaderImpl implements BasicEMap.Entry<Strin
     * 
     * @generated NOT
     */
-   public int getHash()
-   {
-      if (hash == -1)
-      {
+   public int getHash() {
+      if (hash == -1) {
          String theKey = getKey();
          hash = (theKey == null ? 0 : theKey.toLowerCase().hashCode());
       }
@@ -358,8 +331,7 @@ public class HeaderEntryImpl extends HeaderImpl implements BasicEMap.Entry<Strin
     * 
     * @generated
     */
-   public void setHash(int hash)
-   {
+   public void setHash(int hash) {
       this.hash = hash;
    }
 
@@ -369,14 +341,12 @@ public class HeaderEntryImpl extends HeaderImpl implements BasicEMap.Entry<Strin
     * 
     * @generated
     */
-   public String getKey()
-   {
+   public String getKey() {
       return getTypedKey();
    }
 
    @Override
-   public String getName()
-   {
+   public String getName() {
       return getKey();
    }
 
@@ -386,8 +356,7 @@ public class HeaderEntryImpl extends HeaderImpl implements BasicEMap.Entry<Strin
     * 
     * @generated
     */
-   public void setKey(String key)
-   {
+   public void setKey(String key) {
       setTypedKey(key);
    }
 
@@ -397,8 +366,7 @@ public class HeaderEntryImpl extends HeaderImpl implements BasicEMap.Entry<Strin
     * 
     * @generated NOT
     */
-   public String getValue()
-   {
+   public String getValue() {
       return super.getValue();
    }
 
@@ -408,8 +376,7 @@ public class HeaderEntryImpl extends HeaderImpl implements BasicEMap.Entry<Strin
     * 
     * @generated NOT
     */
-   public String setValue(String value)
-   {
+   public String setValue(String value) {
       return super.setValue(value);
    }
 
@@ -420,8 +387,7 @@ public class HeaderEntryImpl extends HeaderImpl implements BasicEMap.Entry<Strin
     * @generated
     */
    @SuppressWarnings("unchecked")
-   public EMap<String, String> getEMap()
-   {
+   public EMap<String, String> getEMap() {
       EObject container = eContainer();
       return container == null ? null : (EMap<String, String>) container.eGet(eContainmentFeature());
    }

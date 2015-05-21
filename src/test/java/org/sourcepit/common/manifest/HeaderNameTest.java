@@ -21,19 +21,16 @@ import static org.junit.Assert.assertSame;
 
 import org.junit.Test;
 
-public class HeaderNameTest
-{
+public class HeaderNameTest {
    @Test
-   public void testGet()
-   {
+   public void testGet() {
       assertNull(HeaderName.get("foo"));
       assertSame(HeaderName.MANIFEST_VERSION, HeaderName.get("Manifest-Version"));
       assertSame(HeaderName.MANIFEST_VERSION, HeaderName.get("Manifest-version"));
    }
 
    @Test
-   public void testGetByName()
-   {
+   public void testGetByName() {
       assertNull(HeaderName.get("foo"));
       assertNull(HeaderName.getByName("Manifest-Version"));
       assertSame(HeaderName.MANIFEST_VERSION, HeaderName.getByName("MANIFEST_VERSION"));

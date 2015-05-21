@@ -40,8 +40,7 @@ import org.sourcepit.common.manifest.ManifestPackage;
  * @model kind="package"
  * @generated
  */
-public interface BundleManifestPackage extends EPackage
-{
+public interface BundleManifestPackage extends EPackage {
    /**
     * The package name.
     * <!-- begin-user-doc -->
@@ -1131,8 +1130,7 @@ public interface BundleManifestPackage extends EPackage
     * 
     * @generated
     */
-   interface Literals
-   {
+   interface Literals {
       /**
        * The meta object literal for the '{@link org.sourcepit.common.manifest.osgi.impl.BundleManifestImpl
        * <em>Bundle Manifest</em>}' class.

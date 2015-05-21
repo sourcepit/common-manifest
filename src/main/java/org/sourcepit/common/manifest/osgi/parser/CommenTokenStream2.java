@@ -19,44 +19,35 @@ package org.sourcepit.common.manifest.osgi.parser;
 import org.antlr.runtime.CommonTokenStream;
 import org.antlr.runtime.TokenSource;
 
-public class CommenTokenStream2 extends CommonTokenStream
-{
+public class CommenTokenStream2 extends CommonTokenStream {
    private boolean skip = true;
 
-   public CommenTokenStream2(TokenSource tokenSource, int channel)
-   {
+   public CommenTokenStream2(TokenSource tokenSource, int channel) {
       super(tokenSource, channel);
    }
 
-   public CommenTokenStream2(TokenSource tokenSource)
-   {
+   public CommenTokenStream2(TokenSource tokenSource) {
       super(tokenSource);
    }
 
-   public void setSkip(boolean skip)
-   {
+   public void setSkip(boolean skip) {
       this.skip = skip;
    }
 
-   public boolean isSkip()
-   {
+   public boolean isSkip() {
       return skip;
    }
 
    @Override
-   public void consume()
-   {
-      if (p == -1)
-      {
+   public void consume() {
+      if (p == -1) {
          setup();
       }
       p++;
       sync(p);
 
-      if (skip)
-      {
-         while (tokens.get(p).getChannel() != channel)
-         {
+      if (skip) {
+         while (tokens.get(p).getChannel() != channel) {
             p++;
             sync(p);
          }
@@ -64,10 +55,8 @@ public class CommenTokenStream2 extends CommonTokenStream
    }
 
    @Override
-   protected int skipOffTokenChannels(int i)
-   {
-      if (skip)
-      {
+   protected int skipOffTokenChannels(int i) {
+      if (skip) {
          return super.skipOffTokenChannels(i);
       }
       sync(i);
@@ -75,10 +64,8 @@ public class CommenTokenStream2 extends CommonTokenStream
    }
 
    @Override
-   protected int skipOffTokenChannelsReverse(int i)
-   {
-      if (skip)
-      {
+   protected int skipOffTokenChannelsReverse(int i) {
+      if (skip) {
          return super.skipOffTokenChannelsReverse(i);
       }
       return i;

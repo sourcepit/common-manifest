@@ -18,39 +18,32 @@ package org.sourcepit.common.manifest.merge;
 /**
  * @author Bernd
  */
-public class DefaultHeaderMerger implements HeaderMerger
-{
+public class DefaultHeaderMerger implements HeaderMerger {
    private boolean sourceDominant = true;
 
-   public DefaultHeaderMerger()
-   {
+   public DefaultHeaderMerger() {
       super();
    }
 
-   public DefaultHeaderMerger(boolean sourceDominant)
-   {
+   public DefaultHeaderMerger(boolean sourceDominant) {
       this.sourceDominant = sourceDominant;
    }
 
-   public boolean isSourceDominant()
-   {
+   public boolean isSourceDominant() {
       return sourceDominant;
    }
 
-   public void setSourceDominant(boolean sourceDominant)
-   {
+   public void setSourceDominant(boolean sourceDominant) {
       this.sourceDominant = sourceDominant;
    }
 
    @Override
-   public String computeNewValue(String headerName, String targetValue, String sourceValue)
-   {
+   public String computeNewValue(String headerName, String targetValue, String sourceValue) {
       return sourceDominant ? sourceValue : targetValue;
    }
 
    @Override
-   public boolean isResponsibleFor(String sectionName, String headerName, String targetValue, String sourceValue)
-   {
+   public boolean isResponsibleFor(String sectionName, String headerName, String targetValue, String sourceValue) {
       return true;
    }
 }

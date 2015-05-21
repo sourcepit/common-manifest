@@ -32,16 +32,14 @@ import org.sourcepit.common.manifest.ManifestPackage;
  *
  * @generated
  */
-public abstract class AbstractSectionImpl extends EObjectImpl implements AbstractSection
-{
+public abstract class AbstractSectionImpl extends EObjectImpl implements AbstractSection {
    /**
     * <!-- begin-user-doc -->
     * <!-- end-user-doc -->
     * 
     * @generated
     */
-   protected AbstractSectionImpl()
-   {
+   protected AbstractSectionImpl() {
       super();
    }
 
@@ -52,8 +50,7 @@ public abstract class AbstractSectionImpl extends EObjectImpl implements Abstrac
     * @generated
     */
    @Override
-   protected EClass eStaticClass()
-   {
+   protected EClass eStaticClass() {
       return ManifestPackage.Literals.ABSTRACT_SECTION;
    }
 
@@ -63,8 +60,7 @@ public abstract class AbstractSectionImpl extends EObjectImpl implements Abstrac
     * 
     * @generated NOT
     */
-   public Header getHeader(String name)
-   {
+   public Header getHeader(String name) {
       final int idx = getHeaders().indexOfKey(name);
       return idx > -1 ? (Header) getHeaders().get(idx) : null;
    }
@@ -75,14 +71,11 @@ public abstract class AbstractSectionImpl extends EObjectImpl implements Abstrac
     * 
     * @generated NOT
     */
-   public void setHeader(String name, String value)
-   {
-      if (value == null)
-      {
+   public void setHeader(String name, String value) {
+      if (value == null) {
          getHeaders().removeKey(name);
       }
-      else
-      {
+      else {
          getHeaders().put(name, value);
       }
    }
@@ -93,14 +86,11 @@ public abstract class AbstractSectionImpl extends EObjectImpl implements Abstrac
     * 
     * @generated NOT
     */
-   public void setHeader(String name, Object parsedValue)
-   {
-      if (parsedValue == null)
-      {
+   public void setHeader(String name, Object parsedValue) {
+      if (parsedValue == null) {
          getHeaders().removeKey(name);
       }
-      else
-      {
+      else {
          getHeaders().put(name, null);
          getHeader(name).setParsedValue(parsedValue);
       }
@@ -112,8 +102,7 @@ public abstract class AbstractSectionImpl extends EObjectImpl implements Abstrac
     * 
     * @generated NOT
     */
-   public String getHeaderValue(String name)
-   {
+   public String getHeaderValue(String name) {
       return getHeaders().get(name);
    }
 
@@ -123,11 +112,9 @@ public abstract class AbstractSectionImpl extends EObjectImpl implements Abstrac
     * 
     * @generated NOT
     */
-   public Object getParsedHeaderValue(String name)
-   {
+   public Object getParsedHeaderValue(String name) {
       final Header header = getHeader(name);
-      if (header == null)
-      {
+      if (header == null) {
          return null;
       }
       return header.getParsedValue();

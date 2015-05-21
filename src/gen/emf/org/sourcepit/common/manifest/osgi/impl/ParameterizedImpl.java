@@ -42,8 +42,7 @@ import org.sourcepit.common.manifest.osgi.Parameterized;
  *
  * @generated
  */
-public abstract class ParameterizedImpl extends EObjectImpl implements Parameterized
-{
+public abstract class ParameterizedImpl extends EObjectImpl implements Parameterized {
    /**
     * The cached value of the '{@link #getParameters() <em>Parameters</em>}' containment reference list.
     * <!-- begin-user-doc -->
@@ -61,8 +60,7 @@ public abstract class ParameterizedImpl extends EObjectImpl implements Parameter
     * 
     * @generated
     */
-   protected ParameterizedImpl()
-   {
+   protected ParameterizedImpl() {
       super();
    }
 
@@ -73,8 +71,7 @@ public abstract class ParameterizedImpl extends EObjectImpl implements Parameter
     * @generated
     */
    @Override
-   protected EClass eStaticClass()
-   {
+   protected EClass eStaticClass() {
       return BundleManifestPackage.Literals.PARAMETERIZED;
    }
 
@@ -84,10 +81,8 @@ public abstract class ParameterizedImpl extends EObjectImpl implements Parameter
     * 
     * @generated
     */
-   public EList<Parameter> getParameters()
-   {
-      if (parameters == null)
-      {
+   public EList<Parameter> getParameters() {
+      if (parameters == null) {
          parameters = new EObjectContainmentWithInverseEList<Parameter>(Parameter.class, this,
             BundleManifestPackage.PARAMETERIZED__PARAMETERS, BundleManifestPackage.PARAMETER__PARAMETERIZED);
       }
@@ -100,12 +95,9 @@ public abstract class ParameterizedImpl extends EObjectImpl implements Parameter
     * 
     * @generated NOT
     */
-   public Parameter getParameter(String name)
-   {
-      for (Parameter parameter : getParameters())
-      {
-         if (name.equals(parameter.getName()))
-         {
+   public Parameter getParameter(String name) {
+      for (Parameter parameter : getParameters()) {
+         if (name.equals(parameter.getName())) {
             return parameter;
          }
       }
@@ -118,11 +110,9 @@ public abstract class ParameterizedImpl extends EObjectImpl implements Parameter
     * 
     * @generated NOT
     */
-   public String getParameterValue(String name)
-   {
+   public String getParameterValue(String name) {
       final Parameter parameter = getParameter(name);
-      if (parameter == null)
-      {
+      if (parameter == null) {
          return null;
       }
       return parameter.getValue();
@@ -134,11 +124,9 @@ public abstract class ParameterizedImpl extends EObjectImpl implements Parameter
     * 
     * @generated NOT
     */
-   public Object getParsedParameterValue(String name)
-   {
+   public Object getParsedParameterValue(String name) {
       final Parameter parameter = getParameter(name);
-      if (parameter == null)
-      {
+      if (parameter == null) {
          return null;
       }
       return parameter.getParsedValue();
@@ -152,10 +140,8 @@ public abstract class ParameterizedImpl extends EObjectImpl implements Parameter
     */
    @SuppressWarnings("unchecked")
    @Override
-   public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs)
-   {
-      switch (featureID)
-      {
+   public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+      switch (featureID) {
          case BundleManifestPackage.PARAMETERIZED__PARAMETERS :
             return ((InternalEList<InternalEObject>) (InternalEList<?>) getParameters()).basicAdd(otherEnd, msgs);
       }
@@ -169,10 +155,8 @@ public abstract class ParameterizedImpl extends EObjectImpl implements Parameter
     * @generated
     */
    @Override
-   public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
-   {
-      switch (featureID)
-      {
+   public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+      switch (featureID) {
          case BundleManifestPackage.PARAMETERIZED__PARAMETERS :
             return ((InternalEList<?>) getParameters()).basicRemove(otherEnd, msgs);
       }
@@ -186,10 +170,8 @@ public abstract class ParameterizedImpl extends EObjectImpl implements Parameter
     * @generated
     */
    @Override
-   public Object eGet(int featureID, boolean resolve, boolean coreType)
-   {
-      switch (featureID)
-      {
+   public Object eGet(int featureID, boolean resolve, boolean coreType) {
+      switch (featureID) {
          case BundleManifestPackage.PARAMETERIZED__PARAMETERS :
             return getParameters();
       }
@@ -204,10 +186,8 @@ public abstract class ParameterizedImpl extends EObjectImpl implements Parameter
     */
    @SuppressWarnings("unchecked")
    @Override
-   public void eSet(int featureID, Object newValue)
-   {
-      switch (featureID)
-      {
+   public void eSet(int featureID, Object newValue) {
+      switch (featureID) {
          case BundleManifestPackage.PARAMETERIZED__PARAMETERS :
             getParameters().clear();
             getParameters().addAll((Collection<? extends Parameter>) newValue);
@@ -223,10 +203,8 @@ public abstract class ParameterizedImpl extends EObjectImpl implements Parameter
     * @generated
     */
    @Override
-   public void eUnset(int featureID)
-   {
-      switch (featureID)
-      {
+   public void eUnset(int featureID) {
+      switch (featureID) {
          case BundleManifestPackage.PARAMETERIZED__PARAMETERS :
             getParameters().clear();
             return;
@@ -241,10 +219,8 @@ public abstract class ParameterizedImpl extends EObjectImpl implements Parameter
     * @generated
     */
    @Override
-   public boolean eIsSet(int featureID)
-   {
-      switch (featureID)
-      {
+   public boolean eIsSet(int featureID) {
+      switch (featureID) {
          case BundleManifestPackage.PARAMETERIZED__PARAMETERS :
             return parameters != null && !parameters.isEmpty();
       }

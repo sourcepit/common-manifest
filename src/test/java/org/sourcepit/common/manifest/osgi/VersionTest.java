@@ -28,41 +28,32 @@ import org.junit.Test;
 /**
  * @author Bernd
  */
-public class VersionTest extends AbstractVersionCompatibilityTest
-{
+public class VersionTest extends AbstractVersionCompatibilityTest {
 
    @Test
-   public void testInvalidParse()
-   {
-      for (Class<?> versionType : versionTypes)
-      {
+   public void testInvalidParse() {
+      for (Class<?> versionType : versionTypes) {
          testInvalidParse(versionType);
       }
    }
 
-   private <V> void testInvalidParse(Class<V> versionType)
-   {
-      try
-      {
+   private <V> void testInvalidParse(Class<V> versionType) {
+      try {
          parse(versionType, "1.2.3.4.5");
          fail();
       }
-      catch (IllegalArgumentException e)
-      { // noop
+      catch (IllegalArgumentException e) { // noop
       }
    }
 
    @Test
-   public void testParse()
-   {
-      for (Class<?> versionType : versionTypes)
-      {
+   public void testParse() {
+      for (Class<?> versionType : versionTypes) {
          testParse(versionType);
       }
    }
 
-   protected <V> void testParse(Class<V> versionType)
-   {
+   protected <V> void testParse(Class<V> versionType) {
       V version = parse(versionType, null);
       assertThat(version, IsSame.sameInstance(getEmptyVerstion(versionType)));
 
@@ -125,75 +116,59 @@ public class VersionTest extends AbstractVersionCompatibilityTest
    }
 
    @Test
-   public void testCompare()
-   {
-      for (Class<? extends Comparable<Object>> versionType : versionTypes)
-      {
+   public void testCompare() {
+      for (Class<? extends Comparable<Object>> versionType : versionTypes) {
          testCompare(versionType);
       }
    }
 
    @Test
-   public void testConstructor() throws Exception
-   {
-      try
-      {
+   public void testConstructor() throws Exception {
+      try {
          new Version(-1, -1, -1);
          fail();
       }
-      catch (IllegalArgumentException e)
-      { // noop
+      catch (IllegalArgumentException e) { // noop
       }
 
-      try
-      {
+      try {
          new Version(-1, -1, 0);
          fail();
       }
-      catch (IllegalArgumentException e)
-      { // noop
+      catch (IllegalArgumentException e) { // noop
       }
 
-      try
-      {
+      try {
          new Version(-1, 0, 0);
          fail();
       }
-      catch (IllegalArgumentException e)
-      { // noop
+      catch (IllegalArgumentException e) { // noop
       }
 
-      try
-      {
+      try {
          new Version(0, -1, 0);
          fail();
       }
-      catch (IllegalArgumentException e)
-      { // noop
+      catch (IllegalArgumentException e) { // noop
       }
 
-      try
-      {
+      try {
          new Version(0, -1, -1, "quali");
          fail();
       }
-      catch (IllegalArgumentException e)
-      { // noop
+      catch (IllegalArgumentException e) { // noop
       }
 
-      try
-      {
+      try {
          new Version(0, 0, -1, "quali");
          fail();
       }
-      catch (IllegalArgumentException e)
-      { // noop
+      catch (IllegalArgumentException e) { // noop
       }
    }
 
    @Test
-   public void testToMinimalString()
-   {
+   public void testToMinimalString() {
       String string = "1";
       Version version = Version.parse(string);
       assertThat(version.toString(false), IsEqual.equalTo(string));
@@ -220,16 +195,13 @@ public class VersionTest extends AbstractVersionCompatibilityTest
    }
 
    @Test
-   public void testToString()
-   {
-      for (Class<?> versionType : versionTypes)
-      {
+   public void testToString() {
+      for (Class<?> versionType : versionTypes) {
          testToString(versionType);
       }
    }
 
-   protected <V> void testToString(Class<V> versionType)
-   {
+   protected <V> void testToString(Class<V> versionType) {
       String string = "1";
       V version = parse(versionType, string);
       assertThat(version.toString(), IsEqual.equalTo("1.0.0"));
@@ -247,12 +219,10 @@ public class VersionTest extends AbstractVersionCompatibilityTest
       assertThat(version.toString(), IsEqual.equalTo("1.2.3.foo"));
    }
 
-   protected <V extends Comparable<Object>> void testCompare(Class<V> versionType)
-   {
+   protected <V extends Comparable<Object>> void testCompare(Class<V> versionType) {
       V[] versions1 = parseArray(versionType, "1", "1.2", "1.2.3", "1.2.3.qualifier");
       V[] versions2 = parseArray(versionType, "1", "1.2", "1.2.3", "1.2.3.qualifier");
-      for (int i = 0; i < versions1.length; i++)
-      {
+      for (int i = 0; i < versions1.length; i++) {
          V v1 = versions1[i];
          V v2 = versions2[i];
 
@@ -262,8 +232,7 @@ public class VersionTest extends AbstractVersionCompatibilityTest
 
       versions1 = parseArray(versionType, "2", "1.3", "1.2.4", "1.2.4.qualifier");
       versions2 = parseArray(versionType, "1", "1.2", "1.2.3", "1.2.3.qualifier");
-      for (int i = 0; i < versions1.length; i++)
-      {
+      for (int i = 0; i < versions1.length; i++) {
          V v1 = versions1[i];
          V v2 = versions2[i];
 
@@ -273,8 +242,7 @@ public class VersionTest extends AbstractVersionCompatibilityTest
 
       versions1 = parseArray(versionType, "3", "1.4", "1.2.5", "1.2.5.qualifier");
       versions2 = parseArray(versionType, "1", "1.2", "1.2.3", "1.2.3.qualifier");
-      for (int i = 0; i < versions1.length; i++)
-      {
+      for (int i = 0; i < versions1.length; i++) {
          V v1 = versions1[i];
          V v2 = versions2[i];
 
@@ -284,8 +252,7 @@ public class VersionTest extends AbstractVersionCompatibilityTest
 
       versions1 = parseArray(versionType, "0.0.0.1");
       versions2 = parseArray(versionType, "0.0.0.2");
-      for (int i = 0; i < versions1.length; i++)
-      {
+      for (int i = 0; i < versions1.length; i++) {
          V v1 = versions1[i];
          V v2 = versions2[i];
 
@@ -295,8 +262,7 @@ public class VersionTest extends AbstractVersionCompatibilityTest
 
       versions1 = parseArray(versionType, "0.0.0.abc");
       versions2 = parseArray(versionType, "0.0.0.cba");
-      for (int i = 0; i < versions1.length; i++)
-      {
+      for (int i = 0; i < versions1.length; i++) {
          V v1 = versions1[i];
          V v2 = versions2[i];
 
@@ -306,8 +272,7 @@ public class VersionTest extends AbstractVersionCompatibilityTest
    }
 
    @Test
-   public void testTrimQualifier() throws Exception
-   {
+   public void testTrimQualifier() throws Exception {
       Version version = Version.parse("1");
       assertEquals("1", version.trimQualifier().toMinimalString());
 
@@ -322,8 +287,7 @@ public class VersionTest extends AbstractVersionCompatibilityTest
    }
 
    @Test
-   public void testEmpty() throws Exception
-   {
+   public void testEmpty() throws Exception {
       Version version = Version.parse("0");
       assertEquals(Version.EMPTY_VERSION, version);
 

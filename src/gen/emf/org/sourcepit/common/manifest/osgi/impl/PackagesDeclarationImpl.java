@@ -37,8 +37,7 @@ import org.sourcepit.common.manifest.osgi.PackagesDeclaration;
  *
  * @generated
  */
-public abstract class PackagesDeclarationImpl extends ParameterizedImpl implements PackagesDeclaration
-{
+public abstract class PackagesDeclarationImpl extends ParameterizedImpl implements PackagesDeclaration {
    /**
     * The cached value of the '{@link #getPackageNames() <em>Package Names</em>}' attribute list.
     * <!-- begin-user-doc -->
@@ -56,8 +55,7 @@ public abstract class PackagesDeclarationImpl extends ParameterizedImpl implemen
     * 
     * @generated
     */
-   protected PackagesDeclarationImpl()
-   {
+   protected PackagesDeclarationImpl() {
       super();
    }
 
@@ -68,8 +66,7 @@ public abstract class PackagesDeclarationImpl extends ParameterizedImpl implemen
     * @generated
     */
    @Override
-   protected EClass eStaticClass()
-   {
+   protected EClass eStaticClass() {
       return BundleManifestPackage.Literals.PACKAGES_DECLARATION;
    }
 
@@ -79,10 +76,8 @@ public abstract class PackagesDeclarationImpl extends ParameterizedImpl implemen
     * 
     * @generated
     */
-   public EList<String> getPackageNames()
-   {
-      if (packageNames == null)
-      {
+   public EList<String> getPackageNames() {
+      if (packageNames == null) {
          packageNames = new EDataTypeUniqueEList<String>(String.class, this,
             BundleManifestPackage.PACKAGES_DECLARATION__PACKAGE_NAMES);
       }
@@ -96,10 +91,8 @@ public abstract class PackagesDeclarationImpl extends ParameterizedImpl implemen
     * @generated
     */
    @Override
-   public Object eGet(int featureID, boolean resolve, boolean coreType)
-   {
-      switch (featureID)
-      {
+   public Object eGet(int featureID, boolean resolve, boolean coreType) {
+      switch (featureID) {
          case BundleManifestPackage.PACKAGES_DECLARATION__PACKAGE_NAMES :
             return getPackageNames();
       }
@@ -114,10 +107,8 @@ public abstract class PackagesDeclarationImpl extends ParameterizedImpl implemen
     */
    @SuppressWarnings("unchecked")
    @Override
-   public void eSet(int featureID, Object newValue)
-   {
-      switch (featureID)
-      {
+   public void eSet(int featureID, Object newValue) {
+      switch (featureID) {
          case BundleManifestPackage.PACKAGES_DECLARATION__PACKAGE_NAMES :
             getPackageNames().clear();
             getPackageNames().addAll((Collection<? extends String>) newValue);
@@ -133,10 +124,8 @@ public abstract class PackagesDeclarationImpl extends ParameterizedImpl implemen
     * @generated
     */
    @Override
-   public void eUnset(int featureID)
-   {
-      switch (featureID)
-      {
+   public void eUnset(int featureID) {
+      switch (featureID) {
          case BundleManifestPackage.PACKAGES_DECLARATION__PACKAGE_NAMES :
             getPackageNames().clear();
             return;
@@ -151,10 +140,8 @@ public abstract class PackagesDeclarationImpl extends ParameterizedImpl implemen
     * @generated
     */
    @Override
-   public boolean eIsSet(int featureID)
-   {
-      switch (featureID)
-      {
+   public boolean eIsSet(int featureID) {
+      switch (featureID) {
          case BundleManifestPackage.PACKAGES_DECLARATION__PACKAGE_NAMES :
             return packageNames != null && !packageNames.isEmpty();
       }
@@ -168,8 +155,7 @@ public abstract class PackagesDeclarationImpl extends ParameterizedImpl implemen
     * @generated
     */
    @Override
-   public String toString()
-   {
+   public String toString() {
       if (eIsProxy())
          return super.toString();
 

@@ -32,8 +32,7 @@ import org.eclipse.emf.common.util.Enumerator;
  * @model
  * @generated
  */
-public enum HeaderName implements Enumerator
-{
+public enum HeaderName implements Enumerator {
    /**
     * The '<em><b>MANIFEST VERSION</b></em>' literal object.
     * <!-- begin-user-doc -->
@@ -521,13 +520,10 @@ public enum HeaderName implements Enumerator
     * 
     * @generated NOT
     */
-   public static HeaderName get(String literal)
-   {
-      for (int i = 0; i < VALUES_ARRAY.length; ++i)
-      {
+   public static HeaderName get(String literal) {
+      for (int i = 0; i < VALUES_ARRAY.length; ++i) {
          HeaderName result = VALUES_ARRAY[i];
-         if (equals(result.toString(), literal))
-         {
+         if (equals(result.toString(), literal)) {
             return result;
          }
       }
@@ -541,34 +537,27 @@ public enum HeaderName implements Enumerator
     * 
     * @generated
     */
-   public static HeaderName getByName(String name)
-   {
-      for (int i = 0; i < VALUES_ARRAY.length; ++i)
-      {
+   public static HeaderName getByName(String name) {
+      for (int i = 0; i < VALUES_ARRAY.length; ++i) {
          HeaderName result = VALUES_ARRAY[i];
-         if (result.getName().equals(name))
-         {
+         if (result.getName().equals(name)) {
             return result;
          }
       }
       return null;
    }
 
-   private static boolean equals(Object key, Object key2)
-   {
-      if (key == null)
-      {
+   private static boolean equals(Object key, Object key2) {
+      if (key == null) {
          return key2 == null;
       }
-      if (key2 == null)
-      {
+      if (key2 == null) {
          return false;
       }
       return normalize(key).equals(normalize(key2));
    }
 
-   private static String normalize(Object key)
-   {
+   private static String normalize(Object key) {
       return key.toString().toLowerCase();
    }
 
@@ -579,10 +568,8 @@ public enum HeaderName implements Enumerator
     * 
     * @generated
     */
-   public static HeaderName get(int value)
-   {
-      switch (value)
-      {
+   public static HeaderName get(int value) {
+      switch (value) {
          case MANIFEST_VERSION_VALUE :
             return MANIFEST_VERSION;
          case SIGNATURE_VERSION_VALUE :
@@ -652,8 +639,7 @@ public enum HeaderName implements Enumerator
     * 
     * @generated
     */
-   private HeaderName(int value, String name, String literal)
-   {
+   private HeaderName(int value, String name, String literal) {
       this.value = value;
       this.name = name;
       this.literal = literal;
@@ -665,8 +651,7 @@ public enum HeaderName implements Enumerator
     * 
     * @generated
     */
-   public int getValue()
-   {
+   public int getValue() {
       return value;
    }
 
@@ -676,8 +661,7 @@ public enum HeaderName implements Enumerator
     * 
     * @generated
     */
-   public String getName()
-   {
+   public String getName() {
       return name;
    }
 
@@ -687,8 +671,7 @@ public enum HeaderName implements Enumerator
     * 
     * @generated
     */
-   public String getLiteral()
-   {
+   public String getLiteral() {
       return literal;
    }
 
@@ -700,8 +683,7 @@ public enum HeaderName implements Enumerator
     * @generated
     */
    @Override
-   public String toString()
-   {
+   public String toString() {
       return literal;
    }
 

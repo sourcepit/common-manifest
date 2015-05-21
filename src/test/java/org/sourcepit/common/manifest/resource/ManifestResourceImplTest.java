@@ -42,11 +42,9 @@ import org.sourcepit.common.manifest.merge.BytesByLine;
 /**
  * @author Bernd
  */
-public class ManifestResourceImplTest
-{
+public class ManifestResourceImplTest {
    @Test
-   public void test() throws IOException
-   {
+   public void test() throws IOException {
       Manifest manifest = ManifestFactory.eINSTANCE.createManifest();
       manifest.setHeader(HeaderName.MAIN_CLASS, "foo");
       manifest.setHeader("foo", "bar");
@@ -80,15 +78,13 @@ public class ManifestResourceImplTest
       resource.load(new ByteArrayInputStream(out.toByteArray()), null);
       Manifest newManifest = (Manifest) resource.getContents().get(0);
       assertThat(newManifest.getHeaders().size(), Is.is(4));
-      for (Entry<String, String> header : manifest.getHeaders().entrySet())
-      {
+      for (Entry<String, String> header : manifest.getHeaders().entrySet()) {
          assertThat(newManifest.getHeaderValue(header.getKey()), IsEqual.equalTo(header.getValue()));
       }
    }
 
    @Test
-   public void testLoadFromUri() throws Exception
-   {
+   public void testLoadFromUri() throws Exception {
       URL url = getClass().getClassLoader().getResource("MANIFEST.MF");
       assertThat(url, IsNull.notNullValue());
       URI uri = URI.createURI(url.toString());
@@ -102,27 +98,23 @@ public class ManifestResourceImplTest
    }
 
    @Test
-   public void testLoadFromStream() throws Exception
-   {
+   public void testLoadFromStream() throws Exception {
       InputStream inputStream = getClass().getClassLoader().getResourceAsStream("MANIFEST.MF");
       assertThat(inputStream, IsNull.notNullValue());
-      try
-      {
+      try {
          Resource resource = new ManifestResourceImpl();
          resource.load(inputStream, null);
 
          Manifest manifest = (Manifest) resource.getContents().get(0);
          assertThat(manifest, IsNull.notNullValue());
       }
-      finally
-      {
+      finally {
          IOUtils.closeQuietly(inputStream);
       }
    }
 
    @Test
-   public void testGetBytesByLine() throws Exception
-   {
+   public void testGetBytesByLine() throws Exception {
       ManifestResource resource = new ManifestResourceImpl();
       assertEquals(BytesByLine._512, resource.getBytesByLine());
 

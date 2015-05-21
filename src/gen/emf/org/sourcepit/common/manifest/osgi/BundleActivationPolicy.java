@@ -33,8 +33,7 @@ package org.sourcepit.common.manifest.osgi;
  * @model
  * @generated
  */
-public interface BundleActivationPolicy extends Parameterized
-{
+public interface BundleActivationPolicy extends Parameterized {
    /**
     * Returns the value of the '<em><b>Policy</b></em>' attribute.
     * The default value is <code>"eager"</code>.

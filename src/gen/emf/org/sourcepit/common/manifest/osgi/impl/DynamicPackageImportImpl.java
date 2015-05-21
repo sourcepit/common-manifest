@@ -30,16 +30,14 @@ import org.sourcepit.common.manifest.osgi.VersionRange;
  *
  * @generated
  */
-public class DynamicPackageImportImpl extends PackagesDeclarationImpl implements DynamicPackageImport
-{
+public class DynamicPackageImportImpl extends PackagesDeclarationImpl implements DynamicPackageImport {
    /**
     * <!-- begin-user-doc -->
     * <!-- end-user-doc -->
     * 
     * @generated
     */
-   protected DynamicPackageImportImpl()
-   {
+   protected DynamicPackageImportImpl() {
       super();
    }
 
@@ -50,8 +48,7 @@ public class DynamicPackageImportImpl extends PackagesDeclarationImpl implements
     * @generated
     */
    @Override
-   protected EClass eStaticClass()
-   {
+   protected EClass eStaticClass() {
       return BundleManifestPackage.Literals.DYNAMIC_PACKAGE_IMPORT;
    }
 
@@ -61,8 +58,7 @@ public class DynamicPackageImportImpl extends PackagesDeclarationImpl implements
     * 
     * @generated NOT
     */
-   public VersionRange getVersion()
-   {
+   public VersionRange getVersion() {
       return (VersionRange) getParsedParameterValue("version");
    }
 
@@ -72,8 +68,7 @@ public class DynamicPackageImportImpl extends PackagesDeclarationImpl implements
     * 
     * @generated NOT
     */
-   public void setVersion(VersionRange version)
-   {
+   public void setVersion(VersionRange version) {
       PackageImportImpl.setVersionRange(this, version, false);
    }
 
@@ -83,8 +78,7 @@ public class DynamicPackageImportImpl extends PackagesDeclarationImpl implements
     * 
     * @generated NOT
     */
-   public VersionRange getBundleVersion()
-   {
+   public VersionRange getBundleVersion() {
       return (VersionRange) getParsedParameterValue("bundle-version");
    }
 
@@ -94,8 +88,7 @@ public class DynamicPackageImportImpl extends PackagesDeclarationImpl implements
     * 
     * @generated NOT
     */
-   public void setBundleVersion(VersionRange bundleVersion)
-   {
+   public void setBundleVersion(VersionRange bundleVersion) {
       PackageImportImpl.setVersionRange(this, bundleVersion, true);
    }
 

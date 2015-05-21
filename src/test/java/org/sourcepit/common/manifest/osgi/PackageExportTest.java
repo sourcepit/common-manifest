@@ -25,12 +25,10 @@ import org.junit.Test;
 /**
  * @author Bernd Vogt <bernd.vogt@sourcepit.org>
  */
-public class PackageExportTest
-{
+public class PackageExportTest {
 
    @Test
-   public void testSetVersion()
-   {
+   public void testSetVersion() {
       PackageExport packageExport = BundleManifestFactory.eINSTANCE.createPackageExport();
       assertThat(packageExport.getVersion(), IsNull.nullValue());
       assertThat(packageExport.getParameter("version"), IsNull.nullValue());

@@ -23,10 +23,8 @@ import org.sourcepit.common.manifest.Manifest;
 import org.sourcepit.common.manifest.ManifestFactory;
 import org.sourcepit.common.manifest.ManifestSection;
 
-public class ManifestMergerTest extends TestCase
-{
-   public void test1() throws Exception
-   {
+public class ManifestMergerTest extends TestCase {
+   public void test1() throws Exception {
       Manifest target = ManifestFactory.eINSTANCE.createManifest();
 
       Manifest source = ManifestFactory.eINSTANCE.createManifest();
@@ -39,8 +37,7 @@ public class ManifestMergerTest extends TestCase
       assertEquals("value", targetHeaders.get("key"));
    }
 
-   public void test2() throws Exception
-   {
+   public void test2() throws Exception {
       Manifest target = ManifestFactory.eINSTANCE.createManifest();
       target.getHeaders().put("key", "value");
 
@@ -54,8 +51,7 @@ public class ManifestMergerTest extends TestCase
       assertEquals("value", targetHeaders.get("key"));
    }
 
-   public void test3() throws Exception
-   {
+   public void test3() throws Exception {
       Manifest target = ManifestFactory.eINSTANCE.createManifest();
       target.getHeaders().put("key", "value");
 
@@ -69,8 +65,7 @@ public class ManifestMergerTest extends TestCase
       assertEquals("new value", targetHeaders.get("key"));
    }
 
-   public void test4() throws Exception
-   {
+   public void test4() throws Exception {
       Manifest target = ManifestFactory.eINSTANCE.createManifest();
       target.getHeaders().put("key", "value");
 
@@ -86,8 +81,7 @@ public class ManifestMergerTest extends TestCase
       assertEquals("value2", targetHeaders.get("key2"));
    }
 
-   public void test5() throws Exception
-   {
+   public void test5() throws Exception {
       Manifest target = ManifestFactory.eINSTANCE.createManifest();
       target.getHeaders().put("key", "value");
       target.getHeaders().put("key2", "value2");
@@ -103,8 +97,7 @@ public class ManifestMergerTest extends TestCase
       assertEquals("value2", targetHeaders.get("key2"));
    }
 
-   public void testSection1() throws Exception
-   {
+   public void testSection1() throws Exception {
       Manifest target = ManifestFactory.eINSTANCE.createManifest();
 
       Manifest source = ManifestFactory.eINSTANCE.createManifest();
@@ -120,8 +113,7 @@ public class ManifestMergerTest extends TestCase
       assertEquals("value", targetHeaders.get("key"));
    }
 
-   public void testSection2() throws Exception
-   {
+   public void testSection2() throws Exception {
       Manifest target = ManifestFactory.eINSTANCE.createManifest();
       ManifestSection targetSection = target.getSection("section", true);
       targetSection.getHeaders().put("key", "value");
@@ -137,8 +129,7 @@ public class ManifestMergerTest extends TestCase
       assertEquals("value", targetHeaders.get("key"));
    }
 
-   public void testSection3() throws Exception
-   {
+   public void testSection3() throws Exception {
       Manifest target = ManifestFactory.eINSTANCE.createManifest();
       ManifestSection targetSection = target.getSection("section", true);
       targetSection.getHeaders().put("key", "value");
@@ -156,8 +147,7 @@ public class ManifestMergerTest extends TestCase
       assertEquals("value", targetHeaders.get("key"));
    }
 
-   public void testSection4() throws Exception
-   {
+   public void testSection4() throws Exception {
       Manifest target = ManifestFactory.eINSTANCE.createManifest();
       ManifestSection targetSection = target.getSection("section", true);
       targetSection.getHeaders().put("key", "value");
@@ -176,8 +166,7 @@ public class ManifestMergerTest extends TestCase
       assertEquals("value2", targetHeaders.get("key2"));
    }
 
-   public void testSection5() throws Exception
-   {
+   public void testSection5() throws Exception {
       Manifest target = ManifestFactory.eINSTANCE.createManifest();
       ManifestSection targetSection = target.getSection("section", true);
       targetSection.getHeaders().put("key", "value");
@@ -199,8 +188,7 @@ public class ManifestMergerTest extends TestCase
       assertEquals("value2", targetHeaders.get("key2"));
    }
 
-   public void testSourceDominant1() throws Exception
-   {
+   public void testSourceDominant1() throws Exception {
       Manifest target = ManifestFactory.eINSTANCE.createManifest();
 
       Manifest source = ManifestFactory.eINSTANCE.createManifest();
@@ -213,8 +201,7 @@ public class ManifestMergerTest extends TestCase
       assertEquals("value", targetHeaders.get("key"));
    }
 
-   public void testSourceDominant2() throws Exception
-   {
+   public void testSourceDominant2() throws Exception {
       Manifest target = ManifestFactory.eINSTANCE.createManifest();
       target.getHeaders().put("key", "targetValue");
       Manifest source = ManifestFactory.eINSTANCE.createManifest();
@@ -227,8 +214,7 @@ public class ManifestMergerTest extends TestCase
       assertEquals("targetValue", targetHeaders.get("key"));
    }
 
-   public void testSourceDominant3() throws Exception
-   {
+   public void testSourceDominant3() throws Exception {
       Manifest target = ManifestFactory.eINSTANCE.createManifest();
 
       Manifest source = ManifestFactory.eINSTANCE.createManifest();
@@ -241,8 +227,7 @@ public class ManifestMergerTest extends TestCase
       assertEquals("sourceValue", targetHeaders.get("key"));
    }
 
-   public void testSectionSourceDominant1() throws Exception
-   {
+   public void testSectionSourceDominant1() throws Exception {
       Manifest target = ManifestFactory.eINSTANCE.createManifest();
 
       Manifest source = ManifestFactory.eINSTANCE.createManifest();
@@ -258,8 +243,7 @@ public class ManifestMergerTest extends TestCase
       assertEquals("value", targetHeaders.get("key"));
    }
 
-   public void testSectionSourceDominant2() throws Exception
-   {
+   public void testSectionSourceDominant2() throws Exception {
       Manifest target = ManifestFactory.eINSTANCE.createManifest();
 
       Manifest source = ManifestFactory.eINSTANCE.createManifest();
@@ -275,8 +259,7 @@ public class ManifestMergerTest extends TestCase
       assertEquals("value", targetHeaders.get("key"));
    }
 
-   public void testSectionSourceDominant3() throws Exception
-   {
+   public void testSectionSourceDominant3() throws Exception {
       Manifest target = ManifestFactory.eINSTANCE.createManifest();
       ManifestSection targetSection = target.getSection("section", true);
       targetSection.getHeaders().put("key", "targetValue");
@@ -294,8 +277,7 @@ public class ManifestMergerTest extends TestCase
       assertEquals("targetValue", targetHeaders.get("key"));
    }
 
-   public void testSectionSourceDominant4() throws Exception
-   {
+   public void testSectionSourceDominant4() throws Exception {
       Manifest target = ManifestFactory.eINSTANCE.createManifest();
       ManifestSection targetSection = target.getSection("section", true);
       targetSection.getHeaders().put("key", "targetValue");
