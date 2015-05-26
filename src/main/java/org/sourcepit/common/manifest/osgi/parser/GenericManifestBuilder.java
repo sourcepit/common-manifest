@@ -37,8 +37,8 @@ public class GenericManifestBuilder extends ManifestBuilder {
    }
 
    public Manifest getManifest() {
-      if (hasBundleManifestHeaders()) {
-         BundleManifest bundleManifest = BundleManifestFactory.eINSTANCE.createBundleManifest();
+      if (isBundleManifest()) {
+         final BundleManifest bundleManifest = BundleManifestFactory.eINSTANCE.createBundleManifest();
          bundleManifest.getHeaders().addAll(manifest.getHeaders());
          bundleManifest.getSections().addAll(manifest.getSections());
          return bundleManifest;
@@ -46,12 +46,9 @@ public class GenericManifestBuilder extends ManifestBuilder {
       return manifest;
    }
 
-   protected boolean hasBundleManifestHeaders() {
-      for (BundleHeaderName bundleHeaderName : BundleHeaderName.VALUES) {
-         if (manifest.getHeader(bundleHeaderName.getLiteral()) != null) {
-            return true;
-         }
-      }
-      return false;
+   protected boolean isBundleManifest() {
+      // Since OSGi 4.0, Bundle-SymbolicName is the only mandatory header (See
+      // http://wiki.osgi.org/wiki/Bundle-SymbolicName)
+      return manifest.getHeader(BundleHeaderName.BUNDLE_SYMBOLICNAME.getLiteral()) != null;
    };
 }

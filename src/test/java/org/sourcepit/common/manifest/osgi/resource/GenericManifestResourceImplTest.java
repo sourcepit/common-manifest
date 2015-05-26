@@ -36,9 +36,7 @@ public class GenericManifestResourceImplTest {
       StringBuilder sb = new StringBuilder();
       sb.append("Manifest-Version: 1.0");
       sb.append(EOL);
-      sb.append("Bundle-ManifestVersion: 2");
-      sb.append(EOL);
-      sb.append("Bundle-Version: 1.2.3");
+      sb.append("Bundle-SymbolicName: 2");
       sb.append(EOL);
       sb.append("Main-Class: foo.Bar");
       sb.append(EOL);
